@@ -1,0 +1,1129 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Entity Framework Part 5 | » Coding4ever’s Blog «</title>
+<meta name="description" content="Setelah selesai melakukan mapping, baik secara manual atau menggunakan tool seperti ADO.NET Entity Data Model Designer dan Entity Framework Power Tools, kita bisa langsung mencoba method-method dasar aplikasi database yang dikenal dengan istilah method CRUD seperti Save, Update, Delete dan Get.  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Entity Framework Part 5">
+<meta property="og:url" content="http://localhost:4000/blog/2014/04/01/entity-framework-part-5/">
+
+
+  <meta property="og:description" content="Setelah selesai melakukan mapping, baik secara manual atau menggunakan tool seperti ADO.NET Entity Data Model Designer dan Entity Framework Power Tools, kita bisa langsung mencoba method-method dasar aplikasi database yang dikenal dengan istilah method CRUD seperti Save, Update, Delete dan Get.  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2014-04-01T09:53:25+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/blog/2014/04/01/entity-framework-part-5/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://localhost:4000/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Entity Framework Part 5">
+    <meta itemprop="description" content="Setelah selesai melakukan mapping, baik secara manual atau menggunakan tool seperti ADO.NET Entity Data Model Designer dan Entity Framework Power Tools, kita bisa langsung mencoba method-method dasar aplikasi database yang dikenal dengan istilah method CRUD seperti Save, Update, Delete dan Get.">
+    <meta itemprop="datePublished" content="2014-04-01T09:53:25+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Entity Framework Part 5
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2014-04-01T09:53:25+07:00">April 1, 2014</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  6 minute read
+
+
+				
+				 • <a href="http://localhost:4000/blog/2014/04/01/entity-framework-part-5/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><img src="http://localhost:4000/assets/images/logo/ef-logo.png" alt="" class="align-left">Setelah selesai melakukan mapping, baik secara <a href="http://localhost:4000/blog/2014/03/21/entity-framework-part-2/">manual</a> atau menggunakan tool seperti <a href="http://localhost:4000/blog/2014/03/26/entity-framework-part-3/">ADO.NET Entity Data Model Designer</a> dan <a href="http://localhost:4000/blog/2014/03/27/entity-framework-part-4/">Entity Framework Power Tools</a>, kita bisa langsung mencoba method-method dasar aplikasi database yang dikenal dengan istilah method <a href="http://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> seperti Save, Update, Delete dan Get.</p>
+
+<p>Ingat tujuan kita menggunakan <a href="http://en.wikipedia.org/wiki/Object-relational_mapping">ORM</a> seperti <a href="http://msdn.microsoft.com/en-us/data/aa937723">Entity Framework</a> dalam pengembangan aplikasi database adalah agar kita tidak  lagi berhubungan secara langsung dengan database berikut objek-objeknya seperti tabel, view dan objek database lainnya, sehingga bisa lebih fokus ke aturan bisnis dari aplikasi yang sedang dikembangkan.</p>
+
+<!-- more -->
+
+<p>Dalam paradigma <a href="http://www.google.co.id/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0CCYQFjAA&amp;url=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FObject-oriented_programming&amp;ei=YOk0U--cLsS_rgfhqICQBg&amp;usg=AFQjCNHESpDSeAXQKCKWdjccXfDywTnxtg&amp;bvm=bv.63808443,d.bmk">OOP</a>, semuanya adalah objek. Saya, Anda, Customer, Supplier, Product adalah objek.</p>
+
+<p>Ada beberapa keuntungan yang kita dapatkan ketika berhubungan dengan class dan objek :</p>
+
+<ul>
+  <li>Persistence ignorance - Kita tidak perlu lagi khawatir bagaimana data disimpan ataupun media yang digunakan.</li>
+  <li>Strong typing - Kita tidak perlu lagi melakukan konversi secara manual untuk setiap tipe data kolom/field yang ada di dalam sebuah tabel ketika ingin mengambil nilainya.</li>
+  <li>Compile-time checking - Class mempunyai daftar property, jika kita mengetikkan nama property yang salah, secara langsung akan mendapatkan kompilasi error. Sehingga tidak perlu menjalankan aplikasi untuk mengetahui kesalahan penulisan kode.</li>
+  <li>Ease of development - Editor kode seperti Visual Studio mempunyai fitur IntelliSense untuk mempercepat proses pengembangan aplikasi. IntelliSense memberikan petunjuk kepada pengembang aplikasi tentang daftar property, event dan method yang dimiliki oleh sebuah class. Tetapi jika kita menggunakan DataSet atau DataReader, fitur IntelliSense jadi tidak berfungsi karena penulisan nama field/kolom berbasis teks (string).</li>
+</ul>
+
+<p>Di bawah ini kita akan membandingkan pembuatan method-method <a href="http://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> menggunakan library ADO.NET secara langsung dan menggunakan Entity Framework.</p>
+
+<p>Adapun sebagai targetnya adalah tabel Supplier yang diwakili oleh class Supplier.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/04/1.jpg" alt="1" class="align-center"></p>
+
+<p><strong>1. Save - Untuk menambahkan data baru</strong></p>
+
+<p><strong>ADO.NET</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">SaveUsingADONET</span><span class="p">(</span><span class="n">Supplier</span> <span class="n">supplier</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>            
+
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">conn</span> <span class="p">=</span> <span class="nf">GetOpenConnection</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">@"INSERT INTO Supplier (NamaSupplier, Jalan, Kota)
+                    VALUES (@1, @2, @3)"</span><span class="p">;</span>
+
+        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SqlCommand</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">conn</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">cmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">AddWithValue</span><span class="p">(</span><span class="s">"@1"</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">NamaSupplier</span><span class="p">);</span>
+            <span class="n">cmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">AddWithValue</span><span class="p">(</span><span class="s">"@2"</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">Jalan</span><span class="p">);</span>
+            <span class="n">cmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">AddWithValue</span><span class="p">(</span><span class="s">"@3"</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">Kota</span><span class="p">);</span>
+
+            <span class="n">result</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="nf">ExecuteNonQuery</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>Entity Framework (EF)</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">SaveUsingEF</span><span class="p">(</span><span class="n">Supplier</span> <span class="n">supplier</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">db</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RetailContext</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">db</span><span class="p">.</span><span class="nf">Entry</span><span class="p">(</span><span class="n">supplier</span><span class="p">).</span><span class="n">State</span> <span class="p">=</span> <span class="n">EntityState</span><span class="p">.</span><span class="n">Added</span><span class="p">;</span>
+        <span class="n">db</span><span class="p">.</span><span class="nf">SaveChanges</span><span class="p">();</span>
+
+        <span class="n">result</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Dari dua method di atas, kita bisa melihat bahwa method Save menggunakan Entity Framework (EF) lebih sederhana sehingga mengurangi kesalahan dalam penulisan kode dibandingkan dengan menggunakan ADO.NET secara langsung. Kita tidak lagi menuliskan perintah SQL INSERT yang masih berbasis teks (string).</p>
+
+<p>Contoh penggunaan :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">// buat objek supplier</span>
+<span class="kt">var</span> <span class="n">supplier</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Supplier</span>
+<span class="p">{</span>
+    <span class="n">NamaSupplier</span> <span class="p">=</span> <span class="s">"Morgan Bike Accessories"</span><span class="p">,</span>
+    <span class="n">Jalan</span> <span class="p">=</span> <span class="s">"6387 Scenic Avenue"</span><span class="p">,</span>
+    <span class="n">Kota</span> <span class="p">=</span> <span class="s">"Bothell"</span>
+<span class="p">};</span>
+
+<span class="kt">var</span> <span class="n">result1</span> <span class="p">=</span> <span class="nf">SaveUsingADONET</span><span class="p">(</span><span class="n">supplier</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">result2</span> <span class="p">=</span> <span class="nf">SaveUsingEF</span><span class="p">(</span><span class="n">supplier</span><span class="p">);</span></code></pre></figure>
+
+<p><strong>2. Update - Untuk mengupdate data</strong></p>
+
+<p><strong>ADO.NET</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">UpdateUsingADONET</span><span class="p">(</span><span class="n">Supplier</span> <span class="n">supplier</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">conn</span> <span class="p">=</span> <span class="nf">GetOpenConnection</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">@"UPDATE Supplier SET NamaSupplier = @1, Jalan = @2, Kota = @3
+                    WHERE SupplierID = @4"</span><span class="p">;</span>
+
+        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SqlCommand</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">conn</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">cmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">AddWithValue</span><span class="p">(</span><span class="s">"@1"</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">NamaSupplier</span><span class="p">);</span>
+            <span class="n">cmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">AddWithValue</span><span class="p">(</span><span class="s">"@2"</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">Jalan</span><span class="p">);</span>
+            <span class="n">cmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">AddWithValue</span><span class="p">(</span><span class="s">"@3"</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">Kota</span><span class="p">);</span>
+            <span class="n">cmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">AddWithValue</span><span class="p">(</span><span class="s">"@4"</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">SupplierID</span><span class="p">);</span>
+
+            <span class="n">result</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="nf">ExecuteNonQuery</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>Entity Framework (EF)</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">UpdateUsingEF</span><span class="p">(</span><span class="n">Supplier</span> <span class="n">supplier</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">db</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RetailContext</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">db</span><span class="p">.</span><span class="nf">Entry</span><span class="p">(</span><span class="n">supplier</span><span class="p">).</span><span class="n">State</span> <span class="p">=</span> <span class="n">EntityState</span><span class="p">.</span><span class="n">Modified</span><span class="p">;</span>
+        <span class="n">db</span><span class="p">.</span><span class="nf">SaveChanges</span><span class="p">();</span>
+
+        <span class="n">result</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Contoh penggunaan :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">// buat objek supplier</span>
+<span class="kt">var</span> <span class="n">supplier</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Supplier</span>
+<span class="p">{</span>
+    <span class="n">SupplierID</span> <span class="p">=</span> <span class="m">34</span><span class="p">,</span>
+    <span class="n">NamaSupplier</span> <span class="p">=</span> <span class="s">"Morgan Bike Accessories"</span><span class="p">,</span>
+    <span class="n">Jalan</span> <span class="p">=</span> <span class="s">"6387 Scenic Avenue"</span><span class="p">,</span>
+    <span class="n">Kota</span> <span class="p">=</span> <span class="s">"Bothell"</span>
+<span class="p">};</span>
+
+<span class="kt">var</span> <span class="n">result1</span> <span class="p">=</span> <span class="nf">UpdateUsingADONET</span><span class="p">(</span><span class="n">supplier</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">result2</span> <span class="p">=</span> <span class="nf">UpdateUsingEF</span><span class="p">(</span><span class="n">supplier</span><span class="p">);</span></code></pre></figure>
+
+<p><strong>3. Delete - Untuk menghapus data</strong></p>
+
+<p><strong>ADO.NET</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">DeleteUsingADONET</span><span class="p">(</span><span class="n">Supplier</span> <span class="n">supplier</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">conn</span> <span class="p">=</span> <span class="nf">GetOpenConnection</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">@"DELETE FROM Supplier
+                    WHERE SupplierID = @1"</span><span class="p">;</span>
+
+        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SqlCommand</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">conn</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">cmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">AddWithValue</span><span class="p">(</span><span class="s">"@1"</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">SupplierID</span><span class="p">);</span>
+
+            <span class="n">result</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="nf">ExecuteNonQuery</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>Entity Framework (EF)</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="kt">int</span> <span class="nf">DeleteUsingEF</span><span class="p">(</span><span class="n">Supplier</span> <span class="n">supplier</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">db</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RetailContext</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">db</span><span class="p">.</span><span class="nf">Entry</span><span class="p">(</span><span class="n">supplier</span><span class="p">).</span><span class="n">State</span> <span class="p">=</span> <span class="n">EntityState</span><span class="p">.</span><span class="n">Deleted</span><span class="p">;</span>
+        <span class="n">db</span><span class="p">.</span><span class="nf">SaveChanges</span><span class="p">();</span>
+
+        <span class="n">result</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Contoh penggunaan :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">// buat objek supplier</span>
+<span class="kt">var</span> <span class="n">supplier</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Supplier</span>
+<span class="p">{</span>
+    <span class="n">SupplierID</span> <span class="p">=</span> <span class="m">34</span>
+<span class="p">};</span>
+
+<span class="kt">var</span> <span class="n">result1</span> <span class="p">=</span> <span class="nf">DeleteUsingADONET</span><span class="p">(</span><span class="n">supplier</span><span class="p">);</span>
+<span class="kt">var</span> <span class="n">result2</span> <span class="p">=</span> <span class="nf">DeleteUsingEF</span><span class="p">(</span><span class="n">supplier</span><span class="p">);</span></code></pre></figure>
+
+<p><strong>4. GetAll - Untuk menampilkan semua data</strong></p>
+
+<p>Method ini akan mengembalikan kumpulan objek supplier, karena objek suppliernya bisa lebih dari satu maka dibutuhkan sebuah wadah (container) untuk menampung kumpulan objek supplier.</p>
+
+<p>Untuk contoh di bawah ini saya menggunakan objek <a href="http://msdn.microsoft.com/en-us/library/6sh2ey19%28v=vs.110%29.aspx">List</a> untuk menampung kumpulan objek supplier.</p>
+
+<p><strong>ADO.NET</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">IList</span><span class="p">&lt;</span><span class="n">Supplier</span><span class="p">&gt;</span> <span class="nf">GetAllUsingADONET</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">daftarSupplier</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Supplier</span><span class="p">&gt;();</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">conn</span> <span class="p">=</span> <span class="nf">GetOpenConnection</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">@"SELECT SupplierID, NamaSupplier, Jalan, Kota
+                    FROM Supplier
+                    ORDER BY NamaSupplier"</span><span class="p">;</span>
+
+        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SqlCommand</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">conn</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">dtr</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="nf">ExecuteReader</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="k">while</span> <span class="p">(</span><span class="n">dtr</span><span class="p">.</span><span class="nf">Read</span><span class="p">())</span>
+                <span class="p">{</span>
+                    <span class="kt">var</span> <span class="n">supplier</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Supplier</span>
+                    <span class="p">{</span>
+                        <span class="n">SupplierID</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"SupplierID"</span><span class="p">]</span> <span class="k">is</span> <span class="n">DBNull</span> <span class="p">?</span> <span class="m">0</span> <span class="p">:</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">dtr</span><span class="p">[</span><span class="s">"SupplierID"</span><span class="p">],</span>
+                        <span class="n">NamaSupplier</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"NamaSupplier"</span><span class="p">]</span> <span class="k">is</span> <span class="n">DBNull</span> <span class="p">?</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span> <span class="p">:</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">dtr</span><span class="p">[</span><span class="s">"NamaSupplier"</span><span class="p">],</span>
+                        <span class="n">Jalan</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"Jalan"</span><span class="p">]</span> <span class="k">is</span> <span class="n">DBNull</span> <span class="p">?</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span> <span class="p">:</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">dtr</span><span class="p">[</span><span class="s">"Jalan"</span><span class="p">],</span>
+                        <span class="n">Kota</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"Kota"</span><span class="p">]</span> <span class="k">is</span> <span class="n">DBNull</span> <span class="p">?</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span> <span class="p">:</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">dtr</span><span class="p">[</span><span class="s">"Kota"</span><span class="p">]</span>
+                    <span class="p">};</span>
+
+                    <span class="n">daftarSupplier</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">supplier</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">daftarSupplier</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Contoh penggunaan :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">noUrut</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">daftarSupplier</span> <span class="p">=</span> <span class="nf">GetAllUsingADONET</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">supplier</span> <span class="k">in</span> <span class="n">daftarSupplier</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0}. {1}"</span><span class="p">,</span> <span class="n">noUrut</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">NamaSupplier</span><span class="p">);</span>
+
+    <span class="n">noUrut</span><span class="p">++;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>Entity Framework (EF)</strong></p>
+
+<p>Tidak seperti ADO.NET yang masih menggunakan perintah SQL SELECT untuk mengakses data yang ada di dalam database, Entity Framework menggunakan <a href="http://msdn.microsoft.com/en-us/library/bb397926.aspx">LINQ</a>.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">IList</span><span class="p">&lt;</span><span class="n">Supplier</span><span class="p">&gt;</span> <span class="nf">GetAllUsingEF</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">daftarSupplier</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Supplier</span><span class="p">&gt;();</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">db</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RetailContext</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">daftarSupplier</span> <span class="p">=</span> <span class="n">db</span><span class="p">.</span><span class="n">Suppliers</span>
+                           <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">NamaSupplier</span><span class="p">)</span>
+                           <span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">daftarSupplier</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Contoh penggunaan :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">noUrut</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">daftarSupplier</span> <span class="p">=</span> <span class="nf">GetAllUsingEF</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">supplier</span> <span class="k">in</span> <span class="n">daftarSupplier</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0}. {1}"</span><span class="p">,</span> <span class="n">noUrut</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">NamaSupplier</span><span class="p">);</span>
+
+    <span class="n">noUrut</span><span class="p">++;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>5. GetByName - Untuk menampilkan data berdasarkan nama Supplier</strong></p>
+
+<p><strong>ADO.NET</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">IList</span><span class="p">&lt;</span><span class="n">Supplier</span><span class="p">&gt;</span> <span class="nf">GetByNameUsingADONET</span><span class="p">(</span><span class="kt">string</span> <span class="n">namaSupplier</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">daftarSupplier</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Supplier</span><span class="p">&gt;();</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">conn</span> <span class="p">=</span> <span class="nf">GetOpenConnection</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">@"SELECT SupplierID, NamaSupplier, Jalan, Kota
+                    FROM Supplier
+                    WHERE NamaSupplier LIKE @1
+                    ORDER BY NamaSupplier"</span><span class="p">;</span>
+
+        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SqlCommand</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">conn</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">cmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">AddWithValue</span><span class="p">(</span><span class="s">"@1"</span><span class="p">,</span> <span class="s">"%"</span> <span class="p">+</span> <span class="n">namaSupplier</span> <span class="p">+</span> <span class="s">"%"</span><span class="p">);</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">dtr</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="nf">ExecuteReader</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="k">while</span> <span class="p">(</span><span class="n">dtr</span><span class="p">.</span><span class="nf">Read</span><span class="p">())</span>
+                <span class="p">{</span>
+                    <span class="kt">var</span> <span class="n">supplier</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Supplier</span>
+                    <span class="p">{</span>
+                        <span class="n">SupplierID</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"SupplierID"</span><span class="p">]</span> <span class="k">is</span> <span class="n">DBNull</span> <span class="p">?</span> <span class="m">0</span> <span class="p">:</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">dtr</span><span class="p">[</span><span class="s">"SupplierID"</span><span class="p">],</span>
+                        <span class="n">NamaSupplier</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"NamaSupplier"</span><span class="p">]</span> <span class="k">is</span> <span class="n">DBNull</span> <span class="p">?</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span> <span class="p">:</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">dtr</span><span class="p">[</span><span class="s">"NamaSupplier"</span><span class="p">],</span>
+                        <span class="n">Jalan</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"Jalan"</span><span class="p">]</span> <span class="k">is</span> <span class="n">DBNull</span> <span class="p">?</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span> <span class="p">:</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">dtr</span><span class="p">[</span><span class="s">"Jalan"</span><span class="p">],</span>
+                        <span class="n">Kota</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"Kota"</span><span class="p">]</span> <span class="k">is</span> <span class="n">DBNull</span> <span class="p">?</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span> <span class="p">:</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">dtr</span><span class="p">[</span><span class="s">"Kota"</span><span class="p">]</span>
+                    <span class="p">};</span>
+
+                    <span class="n">daftarSupplier</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">supplier</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">daftarSupplier</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Contoh penggunaan :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">noUrut</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">daftarSupplier</span> <span class="p">=</span> <span class="nf">GetByNameUsingADONET</span><span class="p">(</span><span class="s">"new"</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">supplier</span> <span class="k">in</span> <span class="n">daftarSupplier</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0}. {1}"</span><span class="p">,</span> <span class="n">noUrut</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">NamaSupplier</span><span class="p">);</span>
+
+    <span class="n">noUrut</span><span class="p">++;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>Entity Framework (EF)</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">IList</span><span class="p">&lt;</span><span class="n">Supplier</span><span class="p">&gt;</span> <span class="nf">GetByNameUsingEF</span><span class="p">(</span><span class="kt">string</span> <span class="n">namaSupplier</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">daftarSupplier</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Supplier</span><span class="p">&gt;();</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">db</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RetailContext</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">daftarSupplier</span> <span class="p">=</span> <span class="n">db</span><span class="p">.</span><span class="n">Suppliers</span>
+                           <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">NamaSupplier</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="n">namaSupplier</span><span class="p">))</span>
+                           <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">NamaSupplier</span><span class="p">)</span>
+                           <span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">daftarSupplier</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Contoh penggunaan :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">noUrut</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+<span class="kt">var</span> <span class="n">daftarSupplier</span> <span class="p">=</span> <span class="nf">GetByNameUsingEF</span><span class="p">(</span><span class="s">"new"</span><span class="p">);</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">supplier</span> <span class="k">in</span> <span class="n">daftarSupplier</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0}. {1}"</span><span class="p">,</span> <span class="n">noUrut</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">NamaSupplier</span><span class="p">);</span>
+
+    <span class="n">noUrut</span><span class="p">++;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Dan method terakhir adalah …</p>
+
+<p><strong>6. GetByID - Untuk menampilkan data berdasarkan Supplier ID</strong></p>
+
+<p>Method ini hanya mengembalikan satu objek supplier jika ditemukan, selain itu akan mengembalikan nilai null.</p>
+
+<p><strong>ADO.NET</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">Supplier</span> <span class="nf">GetByIDUsingADONET</span><span class="p">(</span><span class="kt">int</span> <span class="n">supplierID</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Supplier</span> <span class="n">supplier</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">conn</span> <span class="p">=</span> <span class="nf">GetOpenConnection</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">@"SELECT SupplierID, NamaSupplier, Jalan, Kota
+                    FROM Supplier
+                    WHERE SupplierID = @1"</span><span class="p">;</span>
+
+        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SqlCommand</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="n">conn</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">cmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">AddWithValue</span><span class="p">(</span><span class="s">"@1"</span><span class="p">,</span> <span class="n">supplierID</span><span class="p">);</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">dtr</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="nf">ExecuteReader</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">dtr</span><span class="p">.</span><span class="nf">Read</span><span class="p">())</span>
+                <span class="p">{</span>
+                    <span class="n">supplier</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Supplier</span><span class="p">();</span>
+                    <span class="n">supplier</span><span class="p">.</span><span class="n">SupplierID</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"SupplierID"</span><span class="p">]</span> <span class="k">is</span> <span class="n">DBNull</span> <span class="p">?</span> <span class="m">0</span> <span class="p">:</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">dtr</span><span class="p">[</span><span class="s">"SupplierID"</span><span class="p">];</span>
+                    <span class="n">supplier</span><span class="p">.</span><span class="n">NamaSupplier</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"NamaSupplier"</span><span class="p">]</span> <span class="k">is</span> <span class="n">DBNull</span> <span class="p">?</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span> <span class="p">:</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">dtr</span><span class="p">[</span><span class="s">"NamaSupplier"</span><span class="p">];</span>
+                    <span class="n">supplier</span><span class="p">.</span><span class="n">Jalan</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"Jalan"</span><span class="p">]</span> <span class="k">is</span> <span class="n">DBNull</span> <span class="p">?</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span> <span class="p">:</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">dtr</span><span class="p">[</span><span class="s">"Jalan"</span><span class="p">];</span>
+                    <span class="n">supplier</span><span class="p">.</span><span class="n">Kota</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"Kota"</span><span class="p">]</span> <span class="k">is</span> <span class="n">DBNull</span> <span class="p">?</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span> <span class="p">:</span> <span class="p">(</span><span class="kt">string</span><span class="p">)</span><span class="n">dtr</span><span class="p">[</span><span class="s">"Kota"</span><span class="p">];</span>
+
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">supplier</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Contoh penggunaan :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">supplier</span> <span class="p">=</span> <span class="nf">GetByIDUsingADONET</span><span class="p">(</span><span class="m">19</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">supplier</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0}"</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">NamaSupplier</span><span class="p">);</span></code></pre></figure>
+
+<p><strong>Entity Framework (EF)</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">Supplier</span> <span class="nf">GetByIDUsingEF</span><span class="p">(</span><span class="kt">int</span> <span class="n">supplierID</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Supplier</span> <span class="n">supplier</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">db</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RetailContext</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="n">supplier</span> <span class="p">=</span> <span class="n">db</span><span class="p">.</span><span class="n">Suppliers</span>
+                     <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">s</span> <span class="p">=&gt;</span> <span class="n">s</span><span class="p">.</span><span class="n">SupplierID</span> <span class="p">==</span> <span class="n">supplierID</span><span class="p">)</span>
+                     <span class="p">.</span><span class="nf">SingleOrDefault</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">supplier</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Contoh penggunaan :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">supplier</span> <span class="p">=</span> <span class="nf">GetByIDUsingEF</span><span class="p">(</span><span class="m">19</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">supplier</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0}"</span><span class="p">,</span> <span class="n">supplier</span><span class="p">.</span><span class="n">NamaSupplier</span><span class="p">);</span></code></pre></figure>
+
+<p>Semua contoh method di atas masih menggunakan access modifier <em>private static</em> karena saya melakukan testingnya langsung di method Main (static void Main). Idealnya semua method di atas disimpan di dalam sebuah class dengan access modifier <em>public</em>.</p>
+
+<p>Dan kesimpulan akhirnya adalah, dengan menggunakan <a href="http://en.wikipedia.org/wiki/Object-relational_mapping">ORM</a> seperti <a href="http://msdn.microsoft.com/en-us/data/aa937723">Entity Framework</a>, kita bisa dengan mudah membuat standarisasi penulisan kode untuk mengakses database karena memiliki pola yang sama, yg membedakan hanya nilai Statenya saja.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/04/1.png" alt="1" class="align-center"></p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/04/2.png" alt="2" class="align-center"></p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/04/3.png" alt="3" class="align-center"></p>
+
+<p>Selamat <a href="https://github.com/k4m4r82/EntityFramework5">MENCOBA</a> <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/ado-net-entity-data-model-designer" class="page__taxonomy-item" rel="tag">ADO.NET Entity Data Model Designer</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/ado-net" class="page__taxonomy-item" rel="tag">ADO.NET</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/crud" class="page__taxonomy-item" rel="tag">CRUD</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/entity-framework-power-tools" class="page__taxonomy-item" rel="tag">Entity Framework Power Tools</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/oop" class="page__taxonomy-item" rel="tag">OOP</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/entity-framework" class="page__taxonomy-item" rel="tag">Entity Framework</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/orm" class="page__taxonomy-item" rel="tag">ORM</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/visual-c" class="page__taxonomy-item" rel="tag">Visual C#</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2014-04-01T09:53:25+07:00">April 1, 2014</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Entity+Framework+Part+5%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2014%2F04%2F01%2Fentity-framework-part-5%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2014%2F04%2F01%2Fentity-framework-part-5%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2014%2F04%2F01%2Fentity-framework-part-5%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2014/03/27/entity-framework-part-4/" class="pagination--pager" title="Entity Framework Part 4
+">Previous</a>
+    
+    
+      <a href="/blog/2014/04/03/entity-framework-part-6/" class="pagination--pager" title="Entity Framework Part 6
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/blog/2014/04/01/entity-framework-part-5/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/2014/04/01/entity-framework-part-5"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>

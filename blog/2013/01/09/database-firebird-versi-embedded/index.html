@@ -1,0 +1,809 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Database Firebird versi Embedded | » Coding4ever’s Blog «</title>
+<meta name="description" content="Horeee akhirnya bisa nulis lagi dan ini postingan pertama saya di awal tahun 2013 :blush:  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Database Firebird versi Embedded">
+<meta property="og:url" content="http://localhost:4000/blog/2013/01/09/database-firebird-versi-embedded/">
+
+
+  <meta property="og:description" content="Horeee akhirnya bisa nulis lagi dan ini postingan pertama saya di awal tahun 2013 :blush:  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2013-01-09T11:10:00+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/blog/2013/01/09/database-firebird-versi-embedded/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://localhost:4000/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Database Firebird versi Embedded">
+    <meta itemprop="description" content="Horeee akhirnya bisa nulis lagi dan ini postingan pertama saya di awal tahun 2013 :blush:">
+    <meta itemprop="datePublished" content="2013-01-09T11:10:00+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Database Firebird versi Embedded
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2013-01-09T11:10:00+07:00">January 9, 2013</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+
+				
+				 • <a href="http://localhost:4000/blog/2013/01/09/database-firebird-versi-embedded/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Horeee akhirnya bisa nulis lagi dan ini postingan pertama saya di awal tahun 2013 <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+<p>Beberapa waktu yang lalu saya sering menggunakan database Ms Access untuk pembuatan aplikasi standalone tetapi mengingat beberapa kekurangan yang dimiliki oleh database Ms Access seperti pembengkakan ukuran database yang sangat “mengerikan” <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20"> dan terkadang terjadi kerusakan database sehingga memaksa saya untuk mencari alternatif lain yang bisa menggantikan database Ms Access.</p>
+
+<!-- more -->
+
+<p>Usut punya usut ternyata database favorit saya (Firebird) juga menyediakan library yang memungkinan database Firebrid bisa diperlakukan seperti layaknya database Ms Access (tanpa membutuhkan konfigurasi server sama sekali).</p>
+
+<p>Pada postingan saya kali ini kita akan membahas apa saja yang diperlukan untuk memanfaatkan database Firebird versi Embedded setelah itu akan kita coba mengaksesnya dari bahasa pemrograman C#.</p>
+
+<p>1. Download terlebih dulu library database <a href="http://www.firebirdsql.org/en/firebird-2-5-2/">Firebird versi Embedded</a></p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2013/01/09012013-1.png" alt="09012013-1" class="align-center"></p>
+
+<p>Ekstrak file Firebird-2.5.2.26539-0_Win32_embed.zip kemudian dari file-file yang ada, yang kita butuhkan hanya file fbembed.dll, icudt30.dll, icuin30.dll dan icuuc30.dll.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2013/01/09012013-3.png" alt="09012013-3" class="align-center"></p>
+
+<p>Semua file diatas harus dicopykan ke folder aplikasi (bin\debug atau bin\release).</p>
+
+<p>2. Download <a href="http://www.firebirdsql.org/en/net-provider/">Firebird ADO.NET Data Provider</a></p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2013/01/09012013-2.png" alt="09012013-2" class="align-center"></p>
+
+<p>Pada gambar di atas saya mendownload file NETProvider-3.0.2.0-NET35.7z karena saya menggunakan C# 2008 yang membutuhkan .NET Framework 3.5 kemudian ekstrak file tersebut.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2013/01/09012013-4.png" alt="09012013-4" class="align-center"></p>
+
+<p>Yang kita butuhkan cukup file FirebirdSql.Data.FirebirdClient.dll</p>
+
+<p>3. String koneksi yang digunakan</p>
+
+<p>String koneksi yang digunakan untuk mengakses database Firebird versi non Embedded adalah seperti berikut :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">strConn</span> <span class="p">=</span> <span class="s">@"User ID=SYSDBA;Password=masterkey;Database=localhost:c:\database\test.fdb"</span><span class="p">;</span></code></pre></figure>
+
+<p>Sedangkan untuk versi Embeddednya seperti berikut :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">strConn</span> <span class="p">=</span> <span class="s">@"ServerType=1;User=SYSDBA;Password=masterkey;Dialect=3;Database=c:\database\test"</span><span class="p">;</span></code></pre></figure>
+
+<p>Setelah semua persiapan lengkap saatnya kita menuliskan kode untuk mengakses database Firebird versi Embedded</p>
+
+<ol>
+  <li>
+    <p>Buat project baru, untuk contoh disini saya menggunakan project dengan tipe Console Application</p>
+
+    <p><img src="http://coding4ever.files.wordpress.com/2013/01/09012013-5.png" alt="09012013-5" class="align-center"></p>
+  </li>
+  <li>
+    <p>Menambahkan referensi Firebird ADO.NET Data Provider</p>
+
+    <p>Untuk mengakses database Firebird kita membutuhkan libaray Firebird ADO.NET Data Provider.</p>
+
+    <p>Untuk menambahkan library tersebut kedalam project, caranya cukup mudah hanya dengan mengklik kanan Project -&gt; Add Reference…</p>
+
+    <p><img src="http://coding4ever.files.wordpress.com/2013/01/09012013-6.png" alt="09012013-6" class="align-center"></p>
+
+    <p>Kemudian tentukan lokasi file FirebirdSql.Data.FirebirdClient.dll</p>
+
+    <p><img src="http://coding4ever.files.wordpress.com/2013/01/09012013-7.png" alt="09012013-7" class="align-center"></p>
+
+    <p>Kemudian dilanjutkan dengan melakukan proses Build</p>
+
+    <p><img src="http://coding4ever.files.wordpress.com/2013/01/09012013-8.png" alt="09012013-8" class="align-center"></p>
+
+    <p>Proses ini dibutuhkan untuk menghasilkan folder bin\Debug atau bin\Release</p>
+  </li>
+  <li>
+    <p>Mengcopykan file fbembed.dll, icudt30.dll, icuin30.dll dan icuuc30.dll ke folder bin\Debug atau bin\Release</p>
+
+    <p><img src="http://coding4ever.files.wordpress.com/2013/01/09012013-9.png" alt="09012013-9" class="align-center"></p>
+  </li>
+</ol>
+
+<p>Setelah itu kita akan coba kode untuk melakukan koneksi ke database dan menampilkan datanya.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">namespace</span> <span class="nn">AksesFirebirdEmbedded</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">appPath</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Directory</span><span class="p">.</span><span class="nf">GetCurrentDirectory</span><span class="p">();</span>
+            <span class="kt">var</span> <span class="n">strConn</span> <span class="p">=</span> <span class="s">"ServerType=1;User=SYSDBA;Password=masterkey;Dialect=3;Database="</span> <span class="p">+</span> <span class="n">appPath</span> <span class="p">+</span> <span class="s">"\\TEST.FDB"</span><span class="p">;</span>
+
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">conn</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">FbConnection</span><span class="p">(</span><span class="n">strConn</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">conn</span><span class="p">.</span><span class="nf">Open</span><span class="p">();</span>
+
+                <span class="kt">var</span> <span class="n">strSql</span> <span class="p">=</span> <span class="s">"SELECT idagama, deskripsi FROM agama"</span><span class="p">;</span>
+                <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">FbCommand</span><span class="p">(</span><span class="n">strSql</span><span class="p">,</span> <span class="n">conn</span><span class="p">))</span>
+                <span class="p">{</span>
+                    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">dtr</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="nf">ExecuteReader</span><span class="p">())</span>
+                    <span class="p">{</span>
+                        <span class="k">while</span> <span class="p">(</span><span class="n">dtr</span><span class="p">.</span><span class="nf">Read</span><span class="p">())</span>
+                        <span class="p">{</span>
+                            <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">dtr</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="m">0</span><span class="p">)</span> <span class="p">+</span> <span class="s">", "</span> <span class="p">+</span> <span class="n">dtr</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="m">1</span><span class="p">));</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="n">Console</span><span class="p">.</span><span class="nf">ReadKey</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><img src="http://coding4ever.files.wordpress.com/2013/01/09012013-10.png" alt="09012013-10" class="align-center"></p>
+
+<p>Selamat <a href="https://github.com/k4m4r82/AksesFirebirdEmbedded">MENCOBA</a> <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/database" class="page__taxonomy-item" rel="tag">Database</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/embedded" class="page__taxonomy-item" rel="tag">Embedded</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/fbembed-dll" class="page__taxonomy-item" rel="tag">fbembed.dll</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/firebirdsql-data-firebirdclient-dll" class="page__taxonomy-item" rel="tag">FirebirdSql.Data.FirebirdClient.dll</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/firebird" class="page__taxonomy-item" rel="tag">firebird</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/icudt30-dll" class="page__taxonomy-item" rel="tag">icudt30.dll</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/icuin30-dll-dan-icuuc30-dll" class="page__taxonomy-item" rel="tag">icuin30.dll dan icuuc30.dll</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/firebird" class="page__taxonomy-item" rel="tag">Firebird</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/visual-c" class="page__taxonomy-item" rel="tag">Visual C#</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2013-01-09T11:10:00+07:00">January 9, 2013</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Database+Firebird+versi+Embedded%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2013%2F01%2F09%2Fdatabase-firebird-versi-embedded%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2013%2F01%2F09%2Fdatabase-firebird-versi-embedded%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2013%2F01%2F09%2Fdatabase-firebird-versi-embedded%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2012/08/07/update-smart-library-school-07-08-2012/" class="pagination--pager" title="Update Smart Library School 07-08-2012
+">Previous</a>
+    
+    
+      <a href="/blog/2013/01/10/todo-list/" class="pagination--pager" title="ToDo List
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/blog/2013/01/09/database-firebird-versi-embedded/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/2013/01/09/database-firebird-versi-embedded"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>

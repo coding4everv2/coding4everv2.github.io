@@ -1,0 +1,919 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Menggunakan library .NET di VB 6 | » Coding4ever’s Blog «</title>
+<meta name="description" content="Ini postingan lama sebenarnya, jawaban sy untuk salah satu pertanyaan member di forum i-bego.  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Menggunakan library .NET di VB 6">
+<meta property="og:url" content="http://localhost:4000/blog/2012/06/01/menggunakan-library-net-di-vb-6/">
+
+
+  <meta property="og:description" content="Ini postingan lama sebenarnya, jawaban sy untuk salah satu pertanyaan member di forum i-bego.  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2012-06-01T16:53:49+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/blog/2012/06/01/menggunakan-library-net-di-vb-6/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://localhost:4000/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Menggunakan library .NET di VB 6">
+    <meta itemprop="description" content="Ini postingan lama sebenarnya, jawaban sy untuk salah satu pertanyaan member di forum i-bego.">
+    <meta itemprop="datePublished" content="2012-06-01T16:53:49+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Menggunakan library .NET di VB 6
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2012-06-01T16:53:49+07:00">June 1, 2012</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+				
+				 • <a href="http://localhost:4000/blog/2012/06/01/menggunakan-library-net-di-vb-6/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Ini postingan lama sebenarnya, jawaban sy untuk salah satu pertanyaan member di forum <a href="http://www.i-bego.com/visual-basic-net/cara-buat-file-dll-net-assembly-com-visible-t2377.html">i-bego</a>.</p>
+
+<p>Sy posting kembali disini untuk tujuan dokumentasi saja, mana tau suatu saat sy butuhkan.</p>
+
+<p>Untuk contoh kasusnya adalah kita akan mengambil salah satu project open source yg bernama <a href="http://www.codeproject.com/Articles/20574/Open-Source-QRCode-Library">QRCode Library</a> dibuat menggunakan C#, dan dengan sedikit modifikasi library .NET ini akan bisa kita gunakan untuk VB 6.</p>
+
+<!-- more -->
+
+<p>Tapi sebelumnya kita lihat dulu apa itu QR Code ???</p>
+
+<blockquote>
+  <p>QR Code (abbreviated from Quick Response Code) is the trademark for a type of matrix barcode (or two-dimensional code) first designed for the automotive industry. More recently, the system has become popular outside the industry due to its fast readability and large storage capacity compared to standard UPC barcodes. The code consists of black modules (square dots) arranged in a square pattern on a white background. The information encoded can be made up of four standardized kinds (“modes”) of data (numeric, alphanumeric, byte/binary, Kanji), or through supported extensions, virtually any kind of data.</p>
+</blockquote>
+
+<p>Sumber : <a href="http://en.wikipedia.org/wiki/QR_code">http://en.wikipedia.org/wiki/QR_code</a></p>
+
+<p>Contoh QR Code</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2012/06/qrcode.png" alt="" class="align-center"></p>
+
+<p>Oke langsung saja download <a href="http://www.codeproject.com/Articles/20574/Open-Source-QRCode-Library">QRCode Library</a>, untuk contoh disini sy menggunakan C# 2005</p>
+
+<p>1. Aktifkan terlebih dulu project <a href="http://www.codeproject.com/Articles/20574/Open-Source-QRCode-Library">QRCode Library</a></p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2012/06/qrcode-lib.png" alt="" class="align-center"></p>
+
+<p>2. klik kanan Project (QRCodeLib) -&gt; Properties, aktifkan tab Application kemudian klik tombol Assembly Information … kemudian aktifkan pilihan Make assembly COM-Visible</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/09/18092011-1.png" alt="" class="align-center"></p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/09/18092011-2.png" alt="" class="align-center"></p>
+
+<p>3. Aktifkan tab Build kemudian aktifkan pilihan Register for COM interop</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/09/18092011-3.png" alt="" class="align-center"></p>
+
+<p>4. Mendaftarkan file ThoughtWorks.QRCode.dll dan ThoughtWorks.QRCode.tlb menggunakan tool RegAsm.exe yg ada di folder NET Framework</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">C:<span class="se">\W</span>indows<span class="se">\M</span>icrosoft.NET<span class="se">\F</span>ramework<span class="se">\v</span>2.0.50727</code></pre></figure>
+
+<p>Contoh saya menggunakan dot NET Framework 2, adapun perintahnya seperti berikut :</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">regasm ThoughtWorks.QRCode.dll /tlb: ThoughtWorks.QRCode.tlb /codebase</code></pre></figure>
+
+<p>Sampai disini QRCode Library sudah bisa diakses dari VB 6</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/09/18092011-4.png" alt="" class="align-center"></p>
+
+<p>Sekarang kita lihat sample asli dari QRCode Library</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/09/18092011-5.png" alt="" class="align-center"></p>
+
+<p>Dari sample tersebut kode (C#) untuk melakukan encode sebuah data bertipe string menjadi gambar dengan format <a href="http://id.wikipedia.org/wiki/Kode_QR">QR Code</a> adalah seperti berikut :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">btnEncode_Click_1</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">txtEncodeData</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="nf">Trim</span><span class="p">()</span> <span class="p">==</span> <span class="n">String</span><span class="p">.</span><span class="n">Empty</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">MessageBox</span><span class="p">.</span><span class="nf">Show</span><span class="p">(</span><span class="s">"Data must not be empty."</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">QRCodeEncoder</span> <span class="n">qrCodeEncoder</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">QRCodeEncoder</span><span class="p">();</span>
+    <span class="n">String</span> <span class="n">encoding</span> <span class="p">=</span> <span class="n">cboEncoding</span><span class="p">.</span><span class="n">Text</span> <span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">encoding</span> <span class="p">==</span> <span class="s">"Byte"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">qrCodeEncoder</span><span class="p">.</span><span class="n">QRCodeEncodeMode</span> <span class="p">=</span> <span class="n">QRCodeEncoder</span><span class="p">.</span><span class="n">ENCODE_MODE</span><span class="p">.</span><span class="n">BYTE</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">encoding</span> <span class="p">==</span> <span class="s">"AlphaNumeric"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">qrCodeEncoder</span><span class="p">.</span><span class="n">QRCodeEncodeMode</span> <span class="p">=</span> <span class="n">QRCodeEncoder</span><span class="p">.</span><span class="n">ENCODE_MODE</span><span class="p">.</span><span class="n">ALPHA_NUMERIC</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">encoding</span> <span class="p">==</span> <span class="s">"Numeric"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">qrCodeEncoder</span><span class="p">.</span><span class="n">QRCodeEncodeMode</span> <span class="p">=</span> <span class="n">QRCodeEncoder</span><span class="p">.</span><span class="n">ENCODE_MODE</span><span class="p">.</span><span class="n">NUMERIC</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">scale</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="nf">ToInt16</span><span class="p">(</span><span class="n">txtSize</span><span class="p">.</span><span class="n">Text</span><span class="p">);</span>
+        <span class="n">qrCodeEncoder</span><span class="p">.</span><span class="n">QRCodeScale</span> <span class="p">=</span> <span class="n">scale</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">MessageBox</span><span class="p">.</span><span class="nf">Show</span><span class="p">(</span><span class="s">"Invalid size!"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">version</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="nf">ToInt16</span><span class="p">(</span><span class="n">cboVersion</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span> <span class="p">;</span>
+        <span class="n">qrCodeEncoder</span><span class="p">.</span><span class="n">QRCodeVersion</span> <span class="p">=</span> <span class="n">version</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">MessageBox</span><span class="p">.</span><span class="nf">Show</span><span class="p">(</span><span class="s">"Invalid version !"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">string</span> <span class="n">errorCorrect</span> <span class="p">=</span> <span class="n">cboCorrectionLevel</span><span class="p">.</span><span class="n">Text</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">errorCorrect</span> <span class="p">==</span> <span class="s">"L"</span><span class="p">)</span>
+        <span class="n">qrCodeEncoder</span><span class="p">.</span><span class="n">QRCodeErrorCorrect</span> <span class="p">=</span> <span class="n">QRCodeEncoder</span><span class="p">.</span><span class="n">ERROR_CORRECTION</span><span class="p">.</span><span class="n">L</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">errorCorrect</span> <span class="p">==</span> <span class="s">"M"</span><span class="p">)</span>
+        <span class="n">qrCodeEncoder</span><span class="p">.</span><span class="n">QRCodeErrorCorrect</span> <span class="p">=</span> <span class="n">QRCodeEncoder</span><span class="p">.</span><span class="n">ERROR_CORRECTION</span><span class="p">.</span><span class="n">M</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">errorCorrect</span> <span class="p">==</span> <span class="s">"Q"</span><span class="p">)</span>
+        <span class="n">qrCodeEncoder</span><span class="p">.</span><span class="n">QRCodeErrorCorrect</span> <span class="p">=</span> <span class="n">QRCodeEncoder</span><span class="p">.</span><span class="n">ERROR_CORRECTION</span><span class="p">.</span><span class="n">Q</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">errorCorrect</span> <span class="p">==</span> <span class="s">"H"</span><span class="p">)</span>
+        <span class="n">qrCodeEncoder</span><span class="p">.</span><span class="n">QRCodeErrorCorrect</span> <span class="p">=</span> <span class="n">QRCodeEncoder</span><span class="p">.</span><span class="n">ERROR_CORRECTION</span><span class="p">.</span><span class="n">H</span><span class="p">;</span>
+
+    <span class="n">Image</span> <span class="n">image</span><span class="p">;</span>
+    <span class="n">String</span> <span class="n">data</span> <span class="p">=</span> <span class="n">txtEncodeData</span><span class="p">.</span><span class="n">Text</span><span class="p">;</span>
+    <span class="n">image</span> <span class="p">=</span> <span class="n">qrCodeEncoder</span><span class="p">.</span><span class="nf">Encode</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+    <span class="n">picEncode</span><span class="p">.</span><span class="n">Image</span> <span class="p">=</span> <span class="n">image</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Sedangkan untuk versi VB 6nya sy buat sesimple mungkin</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">cmdEncode_Click</span><span class="p">()</span>
+    <span class="k">Dim</span> <span class="nv">qrEncoder</span> <span class="ow">As</span> <span class="k">New</span> <span class="n">QRCodeEncoder</span>
+
+    <span class="n">qrEncoder</span><span class="p">.</span><span class="n">QRCodeEncodeMode</span> <span class="o">=</span> <span class="n">ENCODE_MODE</span><span class="p">.</span><span class="n">ENCODE_MODE_BYTE</span>
+    <span class="n">qrEncoder</span><span class="p">.</span><span class="n">QRCodeScale</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">qrEncoder</span><span class="p">.</span><span class="n">QRCodeVersion</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="n">qrEncoder</span><span class="p">.</span><span class="n">QRCodeErrorCorrect</span> <span class="o">=</span> <span class="n">ERROR_CORRECTION</span><span class="p">.</span><span class="n">ERROR_CORRECTION_M</span>
+
+    <span class="n">picEncode</span><span class="p">.</span><span class="n">Picture</span> <span class="o">=</span> <span class="n">qrEncoder</span><span class="p">.</span><span class="n">Encode</span><span class="p">(</span><span class="n">txtEncodeData</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span> <span class="c1">' error : Invalid procedure call or argument</span>
+<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
+
+<p>tapi hasilnya malah error ‘Invalid procedure call or argument’ <img class="emoji" title=":frowning:" alt=":frowning:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f626.png" height="20" width="20">, dan berdasarkan hasil pengamatan sementara, menurut sy penyebab errornya adalah karena method Encode adalah method yg dioverload sedangkan method overload belum disupport oleh VB 6.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">virtual</span> <span class="n">Bitmap</span> <span class="nf">Encode</span><span class="p">(</span><span class="n">String</span> <span class="n">content</span><span class="p">)</span>
+<span class="k">public</span> <span class="k">virtual</span> <span class="n">Bitmap</span> <span class="nf">Encode</span><span class="p">(</span><span class="n">String</span> <span class="n">content</span><span class="p">,</span> <span class="n">Encoding</span> <span class="n">encoding</span><span class="p">)</span></code></pre></figure>
+
+<p>Jadi sy putuskan untuk menambahkan method baru dengan nama EncodeVB6, kemudian mengganti perintah</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="n">picEncode</span><span class="p">.</span><span class="n">Picture</span> <span class="o">=</span> <span class="n">qrEncoder</span><span class="p">.</span><span class="n">Encode</span><span class="p">(</span><span class="n">txtEncodeData</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span></code></pre></figure>
+
+<p>menjadi</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="n">picEncode</span><span class="p">.</span><span class="n">Picture</span> <span class="o">=</span> <span class="n">qrEncoder</span><span class="p">.</span><span class="n">EncodeVB6</span><span class="p">(</span><span class="n">txtEncodeData</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span></code></pre></figure>
+
+<p>Kode lengkap method EncodeVB6</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">virtual</span> <span class="n">Bitmap</span> <span class="nf">EncodeVB6</span><span class="p">(</span><span class="n">String</span> <span class="n">content</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">QRCodeUtility</span><span class="p">.</span><span class="nf">IsUniCode</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">Encode</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">Unicode</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">Else</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">Encode</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">ASCII</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Horeeeeee gubrakk, ternyata…. masih error <img class="emoji" title=":frowning:" alt=":frowning:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f626.png" height="20" width="20"> ‘Type mismatch’</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="n">picEncode</span><span class="p">.</span><span class="n">Picture</span> <span class="o">=</span> <span class="n">qrEncoder</span><span class="p">.</span><span class="n">EncodeVB6</span><span class="p">(</span><span class="n">txtEncodeData</span><span class="p">.</span><span class="n">Text</span><span class="p">)</span> <span class="c1">' error : Type mismatch</span></code></pre></figure>
+
+<p>dari pesan errornya sudah jelas karena properties Picture bertipe StdPicture sedangkan method EncodeVB6 bertipe Bitmap dan di VB 6 enggak ada tipe Bitmap <img class="emoji" title=":frowning:" alt=":frowning:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f626.png" height="20" width="20">, tapi untungnya <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"> ada method ImageToIPicture yg diambil dari class Support (namespace Microsoft.VisualBasic.Compatibility.VB6) sehingga method EncodeVB6nya kita revisi menjadi :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">virtual</span> <span class="kt">object</span> <span class="nf">EncodeVB6</span><span class="p">(</span><span class="n">String</span> <span class="n">content</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">QRCodeUtility</span><span class="p">.</span><span class="nf">IsUniCode</span><span class="p">(</span><span class="n">content</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">VisualBasic</span><span class="p">.</span><span class="n">Compatibility</span><span class="p">.</span><span class="n">VB6</span><span class="p">.</span><span class="n">Support</span><span class="p">.</span><span class="nf">ImageToIPicture</span><span class="p">(</span><span class="nf">Encode</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">Unicode</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="n">Else</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">VisualBasic</span><span class="p">.</span><span class="n">Compatibility</span><span class="p">.</span><span class="n">VB6</span><span class="p">.</span><span class="n">Support</span><span class="p">.</span><span class="nf">ImageToIPicture</span><span class="p">(</span><span class="nf">Encode</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">Encoding</span><span class="p">.</span><span class="n">ASCII</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Sampai disi permasalah method EncodeVB6 sudah selesai <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+<p>Terakhir kita akan melakukan proses decode</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/09/18092011-6.png" alt="" class="align-center"></p>
+
+<p>dan kita lihat dulu kode aslinya (c#)</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">btnDecode_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">try</span>
+    <span class="p">{</span>
+        <span class="n">QRCodeDecoder</span> <span class="n">decoder</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">QRCodeDecoder</span><span class="p">();</span>
+        <span class="n">String</span> <span class="n">decodedString</span> <span class="p">=</span> <span class="n">decoder</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="k">new</span> <span class="nf">QRCodeBitmapImage</span><span class="p">(</span><span class="k">new</span> <span class="nf">Bitmap</span><span class="p">(</span><span class="n">picDecode</span><span class="p">.</span><span class="n">Image</span><span class="p">)));</span>
+
+        <span class="n">txtDecodedData</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">decodedString</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">MessageBox</span><span class="p">.</span><span class="nf">Show</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Dari kode diatas jelas tidak bisa langsung dikonversi ke VB 6 karena VB 6 tidak mendukung pemanggilan constructor class yg mempunyai parameter.</p>
+
+<p>Tapi ada baiknya kita lihat dulu constructor class QRCodeBitmapImage yg ternyata membutuhkan objek Bitmap pada saat dipanggil.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">///</span>
+<span class="p">&lt;</span><span class="n">summary</span><span class="p">&gt;</span> <span class="c1">/// Constructor</span>
+<span class="c1">/// &lt;/summary&gt;</span>
+<span class="c1">///Bitmap image/param&gt;</span>
+<span class="k">public</span> <span class="nf">QRCodeBitmapImage</span><span class="p">(</span><span class="n">Bitmap</span> <span class="n">image</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="n">image</span> <span class="p">=</span> <span class="n">image</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Solusinya kita akan menambahkan costructor default (constructor tanpa parameter)</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="c1">// default constructor</span>
+<span class="n">Public</span> <span class="nf">QRCodeBitmapImage</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>trus untuk melewatkan objek Bitmap ke class QRCodeBitmapImage kita akan menambahkan property baru misal dengan nama SetBitmap, adapun kodenya seperti berikut :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">virtual</span> <span class="n">Bitmap</span> <span class="n">SetBitmap</span>
+<span class="p">{</span>
+    <span class="k">set</span> <span class="p">{</span> <span class="n">image</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Properties SetBitmap diatas bertipe Bitmap, tapi sayang di VB 6 belum ada padanan tipe datanya jadi kita akan menggunakan tipe Object, kemudian untuk mengkonversi ke tipe Bitmap kita menggunakan method IPictureToImage yg diambil dari class Support (namespace Microsoft.VisualBasic.Compatibility.VB6)</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">virtual</span> <span class="kt">object</span> <span class="n">SetBitmap</span>
+<span class="p">{</span>
+    <span class="k">set</span> <span class="p">{</span> <span class="n">image</span> <span class="p">=</span> <span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Bitmap</span><span class="p">)</span><span class="n">Microsoft</span><span class="p">.</span><span class="n">VisualBasic</span><span class="p">.</span><span class="n">Compatibility</span><span class="p">.</span><span class="n">VB6</span><span class="p">.</span><span class="n">Support</span><span class="p">.</span><span class="nf">IPictureToImage</span><span class="p">(</span><span class="k">value</span><span class="p">);</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Setelah itu baru kita bisa melakukan konversi dengan aman di VB 6</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">cmdDecode_Click</span><span class="p">()</span>
+    <span class="k">Dim</span> <span class="nv">decoder</span> <span class="ow">As</span> <span class="k">New</span> <span class="n">QRCodeDecoder</span>
+
+    <span class="k">Dim</span> <span class="nv">decodedString</span> <span class="ow">As</span> <span class="kt">String</span>
+
+    <span class="k">Dim</span> <span class="nv">qrCodeImage</span> <span class="ow">As</span> <span class="k">New</span> <span class="n">QRCodeBitmapImage</span>
+    <span class="n">qrCodeImage</span><span class="p">.</span><span class="n">SetBitmap</span> <span class="o">=</span> <span class="n">picEncode</span><span class="p">.</span><span class="n">Picture</span>
+
+    <span class="n">decodedString</span> <span class="o">=</span> <span class="n">decoder</span><span class="p">.</span><span class="n">decodeVB6</span><span class="p">(</span><span class="n">qrCodeImage</span><span class="p">)</span>
+
+    <span class="n">MsgBox</span> <span class="s">"Hasil decode : "</span> <span class="o">&amp;</span> <span class="n">vbCrLf</span> <span class="o">&amp;</span> <span class="n">decodedString</span><span class="p">,</span> <span class="n">vbInformation</span><span class="p">,</span> <span class="s">"Informasi"</span>
+<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/09/18092011-7.png" alt="" class="align-center"></p>
+
+<p>Yuph akhirnya selesai juga <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+<p>Selamat <a href="http://www.4shared.com/file/PCRQSJzV/QRCode.html">MENCOBA</a> <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/com-visible" class="page__taxonomy-item" rel="tag">com-visible</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/qr-code" class="page__taxonomy-item" rel="tag">qr code</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/qrcode-library" class="page__taxonomy-item" rel="tag">qrcode library</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/visual-basic" class="page__taxonomy-item" rel="tag">Visual Basic</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/visual-c" class="page__taxonomy-item" rel="tag">Visual C#</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2012-06-01T16:53:49+07:00">June 1, 2012</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Menggunakan+library+.NET+di+VB+6%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2012%2F06%2F01%2Fmenggunakan-library-net-di-vb-6%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2012%2F06%2F01%2Fmenggunakan-library-net-di-vb-6%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2012%2F06%2F01%2Fmenggunakan-library-net-di-vb-6%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2012/05/30/pembuatan-aplikasi-client-server-dengan-arsitektur-3-tier-part-5/" class="pagination--pager" title="Pembuatan Aplikasi Client Server dengan Arsitektur 3-tier Part 5
+">Previous</a>
+    
+    
+      <a href="/blog/2012/07/23/the-power-of-firebird-events/" class="pagination--pager" title="The Power of Firebird Events
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/blog/2012/06/01/menggunakan-library-net-di-vb-6/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/2012/06/01/menggunakan-library-net-di-vb-6"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>

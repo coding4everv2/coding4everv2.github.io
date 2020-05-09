@@ -1,0 +1,784 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Membuat paket instalasi update program menggunakan Inno Setup | » Coding4ever’s Blog «</title>
+<meta name="description" content="Masalah update program adalah masalah klasik untuk para programmer aplikasi desktop, bagaimana tidak biasanya kita selalu disibukan dengan masalah yang satu ini. Update… update… dan update … :grin: apalagi dengan jumlah klien yang banyak wahhhh cape deh.  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Membuat paket instalasi update program menggunakan Inno Setup">
+<meta property="og:url" content="http://localhost:4000/blog/2009/12/29/membuat-paket-instalasi-update-program-menggunakan-inno-setup/">
+
+
+  <meta property="og:description" content="Masalah update program adalah masalah klasik untuk para programmer aplikasi desktop, bagaimana tidak biasanya kita selalu disibukan dengan masalah yang satu ini. Update… update… dan update … :grin: apalagi dengan jumlah klien yang banyak wahhhh cape deh.  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2009-12-29T13:35:58+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/blog/2009/12/29/membuat-paket-instalasi-update-program-menggunakan-inno-setup/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://localhost:4000/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Membuat paket instalasi update program menggunakan Inno Setup">
+    <meta itemprop="description" content="Masalah update program adalah masalah klasik untuk para programmer aplikasi desktop, bagaimana tidak biasanya kita selalu disibukan dengan masalah yang satu ini. Update… update… dan update … :grin: apalagi dengan jumlah klien yang banyak wahhhh cape deh.">
+    <meta itemprop="datePublished" content="2009-12-29T13:35:58+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Membuat paket instalasi update program menggunakan Inno Setup
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2009-12-29T13:35:58+07:00">December 29, 2009</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+
+				
+				 • <a href="http://localhost:4000/blog/2009/12/29/membuat-paket-instalasi-update-program-menggunakan-inno-setup/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Masalah update program adalah masalah klasik untuk para programmer aplikasi desktop, bagaimana tidak biasanya kita selalu disibukan dengan masalah yang satu ini. Update… update… dan update … <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20"> apalagi dengan jumlah klien yang banyak wahhhh cape deh.</p>
+
+<p>Sebenarnya proses update sendiri pada dasarnya adalah masalah sederhana <strong>“tinggal copy program yang baru untuk menimpa program yang lama”</strong>. Permasalahan biasanya muncul jika yang harus melakukan update adalah klien kita yang benar^5 END USER <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">. Ya mungking cuma bisa ngetik di word atau mantan operator dos yang baru pindah ke windows de el el.</p>
+
+<!-- more -->
+
+<p>Sehingga dengan adanya program update yang baik <strong>“User nyaman kita pun tenang”</strong> <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">.</p>
+
+<p><a href="http://jrsoftware.org">Inno Setup</a> merupakan tool untuk membuat paket instalasi dengan lisensi open source.</p>
+
+<p>Ada satu hal penting sebelum kita bisa membuat paket instalasi update program yaitu mengetahui informasi dimana program kita diinstall.</p>
+
+<p>Ada banyak cara untuk melakukan hal ini :</p>
+
+<p><strong>1. Mencatat lokasi program pada saat instalasi</strong></p>
+
+<p>Contoh:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="o">[</span>Registry]
+Root: HKCU<span class="p">;</span> Subkey: <span class="s2">"Software</span><span class="se">\P</span><span class="s2">T ALBASI</span><span class="se">\S</span><span class="s2">PBB"</span><span class="p">;</span> ValueName: <span class="s2">"installDir"</span><span class="p">;</span> ValueType: String<span class="p">;</span> ValueData: <span class="o">{</span>app<span class="o">}</span><span class="p">;</span> Flags: uninsdeletevalue</code></pre></figure>
+
+<p><strong>2. Mencatat lokasi program pada saat start up</strong></p>
+
+<p>Contoh menggunakan vb:</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Public</span> <span class="k">Sub</span> <span class="nf">Main</span><span class="p">()</span>
+   <span class="k">Call</span> <span class="n">saveString</span><span class="p">(</span><span class="n">HKEY_CURRENT_USER</span><span class="p">,</span> <span class="s">"Software\PT ALBASI\SPBB"</span><span class="p">,</span> <span class="s">"installDir"</span><span class="p">,</span> <span class="n">App</span><span class="p">.</span><span class="n">Path</span><span class="p">)</span>
+<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
+
+<p>Contoh skrip sederhana untuk membuat paket instalasi update :</p>
+
+<figure class="highlight"><pre><code class="language-pascal" data-lang="pascal"><span class="p">[</span><span class="n">Setup</span><span class="p">]</span>
+<span class="n">AppName</span><span class="p">=</span><span class="n">Update</span> <span class="n">Sistem</span> <span class="n">Pembelian</span> <span class="n">Bahan</span> <span class="n">Baku</span>
+<span class="n">AppVerName</span><span class="p">=</span><span class="n">Update</span> <span class="n">Sistem</span> <span class="n">Pembelian</span> <span class="n">Bahan</span> <span class="n">Baku</span> <span class="n">Versi</span> <span class="m">1.0.0.00</span>
+<span class="n">AppPublisher</span><span class="p">=</span><span class="n">K4m4r82</span><span class="s">'s Laboratory
+AppPublisherURL=http://coding4ever.wordpress.com/
+AppVersion=1.0.0.00
+AppCopyright=Copyright © 2009. K4m4r82'</span><span class="n">s</span> <span class="n">Laboratory</span>
+<span class="n">VersionInfoVersion</span><span class="p">=</span><span class="m">1.0.0.00</span>
+<span class="n">OutputBaseFilename</span><span class="p">=</span><span class="n">updateAlbasi</span>
+<span class="n">DisableProgramGroupPage</span><span class="p">=</span><span class="n">yes</span>
+<span class="n">CreateAppDir</span><span class="p">=</span><span class="n">no</span>
+<span class="n">Compression</span> <span class="p">=</span> <span class="n">lzma</span>
+<span class="n">SolidCompression</span> <span class="p">=</span> <span class="n">yes</span>
+<span class="n">LanguageDetectionMethod</span><span class="p">=</span><span class="n">none</span>
+<span class="n">ShowLanguageDialog</span><span class="p">=</span><span class="n">no</span>
+<span class="n">PrivilegesRequired</span> <span class="p">=</span> <span class="n">admin</span>
+<span class="n">SetupIconFile</span><span class="p">=</span><span class="n">Setup</span><span class="p">.</span><span class="n">ico</span>
+<span class="n">WizardImageFile</span><span class="p">=</span><span class="n">SetupModern21</span><span class="p">.</span><span class="n">bmp</span>
+<span class="n">WizardSmallImageFile</span><span class="p">=</span><span class="n">SetupModernSmall21</span><span class="p">.</span><span class="n">bmp</span>
+<span class="n">CreateUninstallRegKey</span><span class="p">=</span><span class="n">no</span>
+
+<span class="p">[</span><span class="n">Languages</span><span class="p">]</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">ina</span><span class="p">;</span> <span class="n">MessagesFile</span><span class="p">:</span> <span class="n">compiler</span><span class="p">:</span><span class="n">Indonesia</span><span class="p">.</span><span class="n">isl</span>
+
+<span class="p">[</span><span class="n">Files</span><span class="p">]</span>
+<span class="n">Source</span><span class="p">:</span> <span class="err">"</span><span class="n">core</span><span class="p">\</span><span class="n">exe</span><span class="p">\</span><span class="n">Albasi</span><span class="p">.</span><span class="n">exe</span><span class="err">"</span><span class="p">;</span> <span class="n">DestDir</span><span class="p">:</span> <span class="err">"</span><span class="cm">{code:GetAppPath}</span><span class="err">"</span><span class="p">;</span> <span class="n">Flags</span><span class="p">:</span> <span class="n">ignoreversion</span>
+
+<span class="p">[</span><span class="n">Code</span><span class="p">]</span>
+<span class="k">var</span>
+  <span class="n">installDir</span> <span class="p">:</span> <span class="k">string</span><span class="p">;</span>
+
+<span class="k">function</span> <span class="n">InitializeSetup</span><span class="p">():</span> <span class="kt">Boolean</span><span class="p">;</span>
+<span class="k">var</span>
+  <span class="n">ResultCode</span><span class="p">:</span> <span class="kt">Integer</span><span class="p">;</span>
+  <span class="n">FileName</span><span class="p">:</span> <span class="k">string</span><span class="p">;</span>
+
+<span class="k">begin</span>
+  <span class="c1">// CEK APLIKASI SEDANG JALAN ATAU TIDAK
+</span>  <span class="k">if</span> <span class="n">FindWindowByWindowName</span><span class="p">(</span><span class="s">'SPBB PT ALBASI'</span><span class="p">)</span> <span class="p">&gt;</span> <span class="m">0</span> <span class="k">then</span>
+  <span class="k">begin</span>
+      <span class="n">MsgBox</span><span class="p">(</span><span class="s">'Program SPBB PT ALBASI sedang dijalankan.'</span><span class="p">#</span><span class="m">10</span><span class="s">'Silakan tutup aplikasi tersebut terlebih dahulu.'</span><span class="p">,</span> <span class="n">mbInformation</span><span class="p">,</span> <span class="n">MB_OK</span><span class="p">);</span>
+      <span class="n">Result</span> <span class="p">:=</span> <span class="nb">False</span><span class="p">;</span>
+  <span class="k">end</span>
+
+  <span class="n">Result</span> <span class="p">:=</span> <span class="nb">True</span><span class="p">;</span>
+  <span class="n">RegQueryStringValue</span><span class="p">(</span><span class="n">HKEY_CURRENT_USER</span><span class="p">,</span> <span class="s">'Software\PT ALBASI\SPBB'</span><span class="p">,</span> <span class="s">'installDir'</span><span class="p">,</span> <span class="n">installDir</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="n">installDir</span> <span class="p">=</span> <span class="s">''</span> <span class="k">then</span>
+  <span class="k">begin</span>
+      <span class="n">MsgBox</span><span class="p">(</span><span class="s">'Lokasi instalasi Program SPBB PT ALBASI tidak ditemukan.'</span><span class="p">#</span><span class="m">10</span><span class="s">'Proses update batal.'</span><span class="p">,</span> <span class="n">mbInformation</span><span class="p">,</span> <span class="n">MB_OK</span><span class="p">);</span>
+      <span class="n">Result</span> <span class="p">:=</span> <span class="nb">False</span><span class="p">;</span>
+  <span class="k">end</span>
+  <span class="k">else</span>
+  <span class="k">begin</span>
+      <span class="n">Result</span> <span class="p">:=</span> <span class="nb">True</span><span class="p">;</span>
+  <span class="k">end</span>
+<span class="k">end</span><span class="p">;</span>
+
+<span class="k">function</span> <span class="n">GetAppPath</span><span class="p">(</span><span class="n">Param</span><span class="p">:</span> <span class="k">string</span><span class="p">):</span> <span class="k">string</span><span class="p">;</span>
+<span class="k">begin</span>
+  <span class="n">Result</span> <span class="p">:=</span> <span class="n">installDir</span><span class="p">;</span>
+<span class="k">end</span><span class="p">;</span></code></pre></figure>
+
+<p>Untuk memperkecil ukuran file update Anda bisa menggunakan plugin <a href="http://www.tibed.net/vpatch">VPatch</a> dengan menggunakan VPatch yang dicatat hanya perbedaan versi sebelumnya dengan yang terakhir sehingga bisa memperkecil ukuran file update. File patch yang dihasilkan juga bisa digunakan untuk inno setup</p>
+
+<p>Selamat mencoba <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/inno-setup" class="page__taxonomy-item" rel="tag">inno setup</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/instalasi" class="page__taxonomy-item" rel="tag">instalasi</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/paket-instalasi" class="page__taxonomy-item" rel="tag">paket instalasi</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/update-program" class="page__taxonomy-item" rel="tag">update program</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/inno-setup" class="page__taxonomy-item" rel="tag">Inno Setup</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/tools-installer" class="page__taxonomy-item" rel="tag">Tools Installer</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2009-12-29T13:35:58+07:00">December 29, 2009</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Membuat+paket+instalasi+update+program+menggunakan+Inno+Setup%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2009%2F12%2F29%2Fmembuat-paket-instalasi-update-program-menggunakan-inno-setup%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2009%2F12%2F29%2Fmembuat-paket-instalasi-update-program-menggunakan-inno-setup%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2009%2F12%2F29%2Fmembuat-paket-instalasi-update-program-menggunakan-inno-setup%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2009/12/29/membuat-paket-instalasi-update-program-menggunakan-nsis/" class="pagination--pager" title="Membuat paket instalasi update program menggunakan NSIS
+">Previous</a>
+    
+    
+      <a href="/blog/2009/12/29/membuat-fungsi-koneksi-untuk-beberapa-database-firebird-mysql-ms-sql-server-dan-ms-access/" class="pagination--pager" title="Membuat fungsi koneksi untuk beberapa database (Firebird, MySQL, Ms SQL Server dan Ms Access)
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/blog/2009/12/29/membuat-paket-instalasi-update-program-menggunakan-inno-setup/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/2009/12/29/membuat-paket-instalasi-update-program-menggunakan-inno-setup"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>

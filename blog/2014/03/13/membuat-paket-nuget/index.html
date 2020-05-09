@@ -1,0 +1,828 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Membuat Paket NuGet | » Coding4ever’s Blog «</title>
+<meta name="description" content="Sedikit lagi tentang NuGet, pada postingan sebelumnya kita sudah berhasil menginstall server NuGet lokal baik untuk keperluan pribadi atau internal kantor.  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Membuat Paket NuGet">
+<meta property="og:url" content="http://localhost:4000/blog/2014/03/13/membuat-paket-nuget/">
+
+
+  <meta property="og:description" content="Sedikit lagi tentang NuGet, pada postingan sebelumnya kita sudah berhasil menginstall server NuGet lokal baik untuk keperluan pribadi atau internal kantor.  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2014-03-13T15:22:02+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/blog/2014/03/13/membuat-paket-nuget/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://localhost:4000/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Membuat Paket NuGet">
+    <meta itemprop="description" content="Sedikit lagi tentang NuGet, pada postingan sebelumnya kita sudah berhasil menginstall server NuGet lokal baik untuk keperluan pribadi atau internal kantor.">
+    <meta itemprop="datePublished" content="2014-03-13T15:22:02+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Membuat Paket NuGet
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2014-03-13T15:22:02+07:00">March 13, 2014</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+
+				
+				 • <a href="http://localhost:4000/blog/2014/03/13/membuat-paket-nuget/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><img src="http://localhost:4000/assets/images/logo/nuget-logo.png" alt="" class="align-left">Sedikit lagi tentang <a href="http://www.nuget.org/">NuGet</a>, pada <a href="http://localhost:4000/blog/2014/03/12/menginstall-server-nuget-lokal/">postingan</a> sebelumnya kita sudah berhasil menginstall server NuGet lokal baik untuk keperluan pribadi atau internal kantor.</p>
+
+<p>Ada beberapa alasan kenapa kita sebaiknya mempunyai server <a href="http://localhost:4000/blog/2014/03/12/menginstall-server-nuget-lokal/">NuGet</a> sendiri, dua diantaranya :</p>
+
+<ol>
+  <li>Untuk menghemat bandwidth internet</li>
+  <li>Sebagai media sharing library</li>
+</ol>
+
+<!-- more -->
+
+<p>Nah pada postingan kali saya akan memberikan contoh untuk alasan nomor 2.</p>
+
+<p>Misalkan kita bekerja di dalam sebuah tim, kemudian kita ditugaskan untuk membuat sebuah library dengan nama CalculatorLib, yang mana library ini akan digunakan oleh beberapa orang programmer.</p>
+
+<p>Untuk versi awal (1.0.0) hanya mempunyai dua buah method yaitu :</p>
+
+<ul>
+  <li>Penjumlahan</li>
+  <li>Pengurangan</li>
+</ul>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/1.jpg" alt="1" class="align-center"></p>
+
+<p>Setelah selesai kita pun segera merilisnya agar bisa digunakan.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/24.png" alt="2" class="align-center"></p>
+
+<p>Ada beberapa media yang bisa kita gunakan untuk mendistribusikannya :</p>
+
+<ol>
+  <li>Flash disk</li>
+  <li>Share folder</li>
+  <li><a href="http://localhost:4000/blog/2014/03/12/menginstall-server-nuget-lokal/">Server NuGet Lokal</a></li>
+  <li>Media lainnya</li>
+</ol>
+
+<p>Terserah Anda mau menggunakan cara yang mana, kalo saya untuk saat ini jelas memilih media yang nomor 3.</p>
+
+<p><strong>Membuat paket NuGet</strong></p>
+
+<p>Agar library yang baru kita buat (CalculatorLib.dll), bisa dibaca oleh server NuGet, tentunya tidak bisa langsung dicopy ke folder package NuGet Server tetapi ada tahapan yang harus kita kerjakan.</p>
+
+<ol>
+  <li>Download <a href="http://nuget.codeplex.com/releases/view/58939">NuGet.exe</a>
+</li>
+  <li>Membuat skrip XML kemudian simpan dengan ekstensi <a href="http://docs.nuget.org/docs/reference/nuspec-reference">.nuspec</a>, jangan lupa untuk menyimpannya di folder yang sama dengan file NuGet.exe</li>
+  <li>Meng-compile skrip <a href="http://docs.nuget.org/docs/reference/nuspec-reference">.nuspec</a> untuk menghasilkan file .nupkg, nah file .nupkg ini lah yang akan kita copykan ke folder package NuGet Server</li>
+</ol>
+
+<p>Contoh isi file <a href="http://docs.nuget.org/docs/reference/nuspec-reference">.nuspec</a></p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/102.png" alt="10" class="align-center"></p>
+
+<p>Untuk informasi lebih lengkap tentang file nuspec bisa langsung meluncur ke<a href="http://docs.nuget.org/docs/reference/nuspec-reference">sini</a>.</p>
+
+<p>Untuk meng-compile skrip <a href="http://docs.nuget.org/docs/reference/nuspec-reference">.nuspec</a> gunakan perintah berikut :</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">NuGet pack <span class="s2">"nama_file_nuspec.nuspec"</span> <span class="nt">-o</span> <span class="s2">"folder_output"</span></code></pre></figure>
+
+<p>Contoh :</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">NuGet pack <span class="s2">"CalculatorLib.nuspec"</span> <span class="nt">-o</span> <span class="s2">"D:</span><span class="se">\S</span><span class="s2">erverNuGetLocal</span><span class="se">\P</span><span class="s2">ackages"</span></code></pre></figure>
+
+<p>Jika berhasil akan dibuatkan file baru dengan nama CalculatorLib.1.0.0.nupkg.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/32.png" alt="3" class="align-center"></p>
+
+<p>Sampai tahap ini kita sudah berhasil membuat file paket NuGet.</p>
+
+<p>Jika kita mempunyai banyak file <a href="http://docs.nuget.org/docs/reference/nuspec-reference">.nuspec</a>, dan untuk mempermudah meng-compile skrip <a href="http://docs.nuget.org/docs/reference/nuspec-reference">.nuspec</a>, kita bisa memanfaatkan registry windows untuk menambahkan context menu “Build NuGet Package” setiap mengklik kanan file dengan ekstensi <a href="http://docs.nuget.org/docs/reference/nuspec-reference">.nuspec</a>.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">Windows Registry Editor Version 5.00
+
+<span class="o">[</span>HKEY_CLASSES_ROOT<span class="se">\.</span>nuspec]
+
+<span class="o">[</span>HKEY_CLASSES_ROOT<span class="se">\.</span>nuspec<span class="se">\S</span>hell]
+
+<span class="o">[</span>HKEY_CLASSES_ROOT<span class="se">\.</span>nuspec<span class="se">\S</span>hell<span class="se">\B</span>uildNuGet]
+@<span class="o">=</span><span class="s2">"Build NuGet Package"</span>
+
+<span class="o">[</span>HKEY_CLASSES_ROOT<span class="se">\.</span>nuspec<span class="se">\S</span>hell<span class="se">\B</span>uildNuGet<span class="se">\C</span>ommand]
+@<span class="o">=</span><span class="s2">"E:</span><span class="se">\\</span><span class="s2">Master</span><span class="se">\\</span><span class="s2">Developer Tools</span><span class="se">\\</span><span class="s2">nuget package</span><span class="se">\\</span><span class="s2">build</span><span class="se">\\</span><span class="s2">NuGet.exe pack </span><span class="se">\"</span><span class="s2">%1</span><span class="se">\"</span><span class="s2"> -o </span><span class="se">\"</span><span class="s2">E:</span><span class="se">\\</span><span class="s2">Master</span><span class="se">\\</span><span class="s2">Developer Tools</span><span class="se">\\</span><span class="s2">nuget package</span><span class="se">\\</span><span class="s2">build</span><span class="se">\\</span><span class="s2">package</span><span class="se">\"</span><span class="s2">"</span></code></pre></figure>
+
+<p>Pada skrip di atas tinggal sesuaikan lokasi file NuGet.exe dan folder target.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/141.png" alt="14" class="align-center"></p>
+
+<p><strong>Mengakses paket CalculatorLib dari NuGet Package Manager</strong></p>
+
+<p>Untuk mendemokan ini, saya akan membuat project baru dengan nama CalculatorApp, kemudian menambahkan library CalculatorLib via NuGet Package Manager.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/33.png" alt="3" class="align-center"></p>
+
+<p>pada dialog NuGet Package Manager pilih paket CalculatorLib kemudian Install.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/42.png" alt="4" class="align-center"></p>
+
+<p>jika berhasil pada node References sudah ditambahkan library CalculatorLib.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/52.png" alt="5" class="align-center"></p>
+
+<p>Sekarang kita coba untuk membuat objek dari class Calculator.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/62.png" alt="6" class="align-center"></p>
+
+<p>Sipp method yang nampil sesuai dengan yang sudah kita definisikan di dalam library CalculatorLib versi awal (1.0.0)</p>
+
+<p><strong>CalculatorLib Versi 1.1.0</strong></p>
+
+<p>Library CalculatorLib yang sudah kita buat (versi 1.0.0), baru mempunyai dua method yaitu : Penjumlahan dan Pengurangan.</p>
+
+<p>Kita akan menambahkan dua method lagi yaitu Perkalian dan Pembagian.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/72.png" alt="7" class="align-center"></p>
+
+<p>Sebelum merilis ulang (build) library ini, naikkan dulu nilai versinya menjadi 1.1.0</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/82.png" alt="8" class="align-center"></p>
+
+<p>kemudian edit juga file nuspecnya, dengan mengganti nilai versionnya menjadi 1.1.0</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/94.png" alt="9" class="align-center"></p>
+
+<p>Compile ulang skrip <a href="http://docs.nuget.org/docs/reference/nuspec-reference">.nuspec</a> gunakan perintah berikut :</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">NuGet pack <span class="s2">"CalculatorLib.nuspec"</span> <span class="nt">-o</span> <span class="s2">"D:</span><span class="se">\S</span><span class="s2">erverNuGetLocal</span><span class="se">\P</span><span class="s2">ackages"</span></code></pre></figure>
+
+<p>jika berhasil kita akan mempunyai file paket CalculatorLib terbaru dengan versi 1.1.0</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/112.png" alt="11" class="align-center"></p>
+
+<p>Sekarang kita aktifkan lagi project CalculatorAppnya, kemudian cek NuGet Package Manager, apakah sudah ada updatean untuk paket CalculatorLibnya.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/121.png" alt="12" class="align-center"></p>
+
+<p>Yuph ternyata sudah ada, langsung saja di update kemudian kita cek lagi source code CalculatorApp, apa sudah ada tambahan dua method lagi ?</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2014/03/131.png" alt="13" class="align-center"></p>
+
+<p>Selamat mencoba <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/context-menu" class="page__taxonomy-item" rel="tag">context menu</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/nuget-exe" class="page__taxonomy-item" rel="tag">nuget.exe</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/nupkg" class="page__taxonomy-item" rel="tag">nupkg</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/nuspec" class="page__taxonomy-item" rel="tag">nuspec</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/windows-registry" class="page__taxonomy-item" rel="tag">windows registry</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/nuget" class="page__taxonomy-item" rel="tag">NuGet</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2014-03-13T15:22:02+07:00">March 13, 2014</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Membuat+Paket+NuGet%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2014%2F03%2F13%2Fmembuat-paket-nuget%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2014%2F03%2F13%2Fmembuat-paket-nuget%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2014%2F03%2F13%2Fmembuat-paket-nuget%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2014/03/12/menginstall-server-nuget-lokal/" class="pagination--pager" title="Menginstall Server NuGet Lokal
+">Previous</a>
+    
+    
+      <a href="/blog/2014/03/18/entity-framework-part-1/" class="pagination--pager" title="Entity Framework Part 1
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/blog/2014/03/13/membuat-paket-nuget/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/2014/03/13/membuat-paket-nuget"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>

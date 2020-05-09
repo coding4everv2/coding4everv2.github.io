@@ -1,0 +1,897 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>The Power of Visual Studio .NET Build Events Part #2 | » Coding4ever’s Blog «</title>
+<meta name="description" content="Melanjutkan pembahasan postingan sebelumnya yaitu tentang fitur Build Events yang dimiliki oleh Visual Studio .NET.  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="The Power of Visual Studio .NET Build Events Part #2">
+<meta property="og:url" content="http://localhost:4000/blog/2015/07/01/the-power-of-visual-studio-net-build-events-part-number-2/">
+
+
+  <meta property="og:description" content="Melanjutkan pembahasan postingan sebelumnya yaitu tentang fitur Build Events yang dimiliki oleh Visual Studio .NET.  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2015-07-01T10:20:30+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/blog/2015/07/01/the-power-of-visual-studio-net-build-events-part-number-2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://localhost:4000/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="The Power of Visual Studio .NET Build Events Part #2">
+    <meta itemprop="description" content="Melanjutkan pembahasan postingan sebelumnya yaitu tentang fitur Build Events yang dimiliki oleh Visual Studio .NET.">
+    <meta itemprop="datePublished" content="2015-07-01T10:20:30+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">The Power of Visual Studio .NET Build Events Part #2
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2015-07-01T10:20:30+07:00">July 1, 2015</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+				
+				 • <a href="http://localhost:4000/blog/2015/07/01/the-power-of-visual-studio-net-build-events-part-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><img src="http://localhost:4000/assets/images/logo/vs-logo.png" alt="" class="align-left">Melanjutkan pembahasan <a href="http://localhost:4000/blog/2015/06/25/the-power-of-visual-studio-net-build-events-part-number-1/">postingan</a> sebelumnya yaitu tentang fitur <code class="language-plaintext highlighter-rouge">Build Events</code> yang dimiliki oleh Visual Studio .NET.</p>
+
+<p>Di postingan <a href="http://localhost:4000/blog/2015/06/25/the-power-of-visual-studio-net-build-events-part-number-1/">bagian #1</a> kita memanfaatkan fitur ini untuk melakukan proses copy file (exe, dll, config) secara otomatis setelah proses build project selesai.</p>
+
+<p>Nah di <a href="http://localhost:4000/blog/2015/07/01/the-power-of-visual-studio-net-build-events-part-number-2/">postingan</a> kali ini kita akan menambahkan perintah untuk mengcompile skrip <a href="http://localhost:4000/categories/inno-setup/">Inno Setup</a> sehingga proses pembuatan paket installer pun jadi otomatis.</p>
+
+<!-- more -->
+
+<p><strong>Inno Setup</strong></p>
+
+<p><a href="http://jrsoftware.org/">Inno Setup</a> adalah salah satu software favorit untuk membuat paket installer berbasis windows. Selain gratis software ini juga didukung oleh dokumentasi yang lengkap sehingga memudahkan kita untuk mempelajarinya. Saya juga ada menulis beberapa postingan tentang <a href="http://localhost:4000/categories/inno-setup/">Inno Setup</a> yang bisa anda baca di<a href="http://localhost:4000/categories/inno-setup/">sini</a>.</p>
+
+<p>Jadi untuk melanjutkan pembahasan ini, saya mengasumsikan Anda sudah pernah menggunakan <a href="http://jrsoftware.org/">Inno Setup</a> untuk membuat paket installer.</p>
+
+<p>Untuk membuat skrip <a href="http://localhost:4000/categories/inno-setup/">Inno Setup</a> itu gampang, contohnya seperti berikut :</p>
+
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="nn">[Setup]</span>
+<span class="py">AppName</span><span class="p">=</span><span class="s">{code:GetAppName}</span>
+<span class="py">AppVerName</span><span class="p">=</span><span class="s">{code:GetAppName} Versi {code:GetAppVersion}</span>
+<span class="py">AppPublisher</span><span class="p">=</span><span class="s">{code:GetVendorName}</span>
+<span class="py">AppVersion</span><span class="p">=</span><span class="s">{code:GetAppVersion}</span>
+<span class="py">AllowCancelDuringInstall</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">DefaultDirName</span><span class="p">=</span><span class="s">{pf}</span><span class="se">\K</span><span class="s">RSchool</span>
+<span class="py">DefaultGroupName</span><span class="p">=</span><span class="s">{code:GetAppName}</span>
+<span class="py">Compression</span> <span class="p">=</span> <span class="s">lzma</span>
+<span class="py">SolidCompression</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">OutputBaseFilename</span><span class="p">=</span><span class="s">SetupKRSchool</span>
+<span class="py">AllowNoIcons</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">AlwaysRestart</span> <span class="p">=</span> <span class="s">no</span>
+<span class="py">AlwaysShowComponentsList</span> <span class="p">=</span> <span class="s">no</span>
+<span class="py">DisableProgramGroupPage</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">AppendDefaultDirName</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">CreateUninstallRegKey</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">DisableStartupPrompt</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">LanguageDetectionMethod</span><span class="p">=</span><span class="s">none</span>
+<span class="py">ShowLanguageDialog</span><span class="p">=</span><span class="s">no</span>
+<span class="py">UsePreviousLanguage</span><span class="p">=</span><span class="s">no</span>
+<span class="py">Uninstallable</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">UninstallFilesDir</span><span class="p">=</span><span class="s">{app}</span><span class="se">\u</span><span class="s">ninst</span>
+<span class="py">UninstallDisplayIcon</span><span class="p">=</span><span class="s">{app}</span><span class="se">\K</span><span class="s">RSchool.exe,0</span>
+<span class="py">UninstallDisplayName</span><span class="p">=</span><span class="s">{code:GetAppName}</span>
+<span class="py">WindowVisible</span> <span class="p">=</span> <span class="s">no</span>
+<span class="py">AppCopyright</span><span class="p">=</span><span class="s">Copyright © 2015. {code:GetVendorName}</span>
+<span class="py">FlatComponentsList</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">PrivilegesRequired</span> <span class="p">=</span> <span class="s">admin</span>
+<span class="py">VersionInfoVersion</span><span class="p">=</span><span class="s">1.0.0.0</span>
+<span class="py">SetupIconFile</span><span class="p">=</span><span class="s">E:</span><span class="se">\M</span><span class="s">aster</span><span class="se">\D</span><span class="s">eveloper Tools</span><span class="se">\P</span><span class="s">ackage</span><span class="se">\S</span><span class="s">etup.ico</span>
+<span class="py">WizardImageFile</span><span class="p">=</span><span class="s">E:</span><span class="se">\M</span><span class="s">aster</span><span class="se">\D</span><span class="s">eveloper Tools</span><span class="se">\I</span><span class="s">nno Setup</span><span class="se">\W</span><span class="s">izardImages</span><span class="se">\M</span><span class="s">odern</span><span class="se">\S</span><span class="s">etupModern16.bmp</span>
+<span class="py">WizardSmallImageFile</span><span class="p">=</span><span class="s">E:</span><span class="se">\M</span><span class="s">aster</span><span class="se">\D</span><span class="s">eveloper Tools</span><span class="se">\I</span><span class="s">nno Setup</span><span class="se">\W</span><span class="s">izardImages</span><span class="se">\M</span><span class="s">odern</span><span class="se">\S</span><span class="s">mall</span><span class="se">\S</span><span class="s">etupModernSmall26.bmp</span>
+
+<span class="nn">[Languages]</span>
+<span class="err">Name:</span> <span class="err">ina</span><span class="c">; MessagesFile: compiler:Indonesia.isl
+</span><span class="err">Name:</span> <span class="err">en</span><span class="c">; MessagesFile: compiler:grin:efault.isl
+</span>
+<span class="nn">[Tasks]</span>
+<span class="err">Name:</span> <span class="err">desktopicon</span><span class="c">; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: checkedonce
+</span><span class="err">Name:</span> <span class="err">quicklaunchicon</span><span class="c">; Description: {cm:CreateQuickLaunchIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
+</span>
+<span class="nn">[Files]</span>
+<span class="c">;My Application Runtime
+</span><span class="err">Source:</span> <span class="err">*.*</span><span class="c">; DestDir: {app}; Flags: ignoreversion
+</span>
+<span class="c">; .net framework
+</span><span class="err">Source:</span> <span class="err">"E:\Master\Developer</span> <span class="err">Tools\dotNET</span> <span class="err">Framework\dotNetFx40_Full_x86_x64.exe"</span><span class="c">; DestDir: {tmp}; Flags: deleteafterinstall; Check: FrameworkIsNotInstalled 
+</span>
+<span class="c">;skin
+</span><span class="err">Source:</span> <span class="err">E:\Master\Developer</span> <span class="err">Tools\Package\dll&amp;ocx\ISSkin.dll</span><span class="c">; DestDir: {app}; Flags: dontcopy
+</span><span class="err">Source:</span> <span class="err">E:\Master\Developer</span> <span class="err">Tools\Package\dll&amp;ocx\Office2007.cjstyles</span><span class="c">; DestDir: {tmp}; Flags: dontcopy
+</span>
+<span class="nn">[Icons]</span>
+<span class="err">Name:</span> <span class="err">{group}\{code:GetAppName}</span><span class="c">; Filename: {app}\KRSchool.exe; WorkingDir: {app}; IconFilename: {app}\main.ico
+</span><span class="err">Name:</span> <span class="err">{userdesktop}\{code:GetAppName}</span><span class="c">; Filename: {app}\KRSchool.exe; WorkingDir: {app}; IconFilename: {app}\main.ico; Tasks: desktopicon
+</span>
+<span class="nn">[Registry]</span>
+<span class="c">;INSTALL DIR
+</span><span class="err">Root:</span> <span class="err">HKCU</span><span class="c">; Subkey: "Software\{code:GetVendorName}\{code:GetAppName}"; ValueName: "installDir"; ValueType: String; ValueData: {app}; Flags: uninsdeletevalue
+</span>
+<span class="nn">[Run]</span>
+<span class="err">Filename:</span> <span class="err">{tmp}\dotNetFx40_Full_x86_x64.exe</span><span class="c">; Parameters: "/q:a /c:""install /l /q"""; Check: FrameworkIsNotInstalled; StatusMsg: "Sedang menginstall Microsoft Framework 4.0 ..."
+</span>
+<span class="nn">[Code]</span>
+<span class="err">const</span>
+  <span class="py">AppName</span> <span class="p">=</span> <span class="s">'KR School'</span><span class="c">;
+</span>  <span class="s">AppVersion = '1.0.0';</span>
+  <span class="py">VendorName</span> <span class="p">=</span> <span class="s">'KR Software'</span><span class="c">;
+</span>
+<span class="err">//</span> <span class="err">Importing</span> <span class="err">LoadSkin</span> <span class="err">API</span> <span class="err">from</span> <span class="err">ISSkin.DLL</span>
+<span class="err">procedure</span> <span class="err">LoadSkin(lpszPath:</span> <span class="err">String</span><span class="c">; lpszIniFileName: String);
+</span><span class="err">external</span> <span class="err">'LoadSkin@files:isskin.dll</span> <span class="err">stdcall'</span><span class="c">;
+</span>
+<span class="err">//</span> <span class="err">Importing</span> <span class="err">UnloadSkin</span> <span class="err">API</span> <span class="err">from</span> <span class="err">ISSkin.DLL</span>
+<span class="err">procedure</span> <span class="err">UnloadSkin()</span><span class="c">;
+</span><span class="err">external</span> <span class="err">'UnloadSkin@files:isskin.dll</span> <span class="err">stdcall'</span><span class="c">;
+</span>
+<span class="err">//</span> <span class="err">Importing</span> <span class="err">ShowWindow</span> <span class="err">Windows</span> <span class="err">API</span> <span class="err">from</span> <span class="err">User32.DLL</span>
+<span class="err">function</span> <span class="err">ShowWindow(hWnd:</span> <span class="err">Integer</span><span class="c">; uType: Integer): Integer;
+</span><span class="err">external</span> <span class="err">'ShowWindow@user32.dll</span> <span class="err">stdcall'</span><span class="c">;
+</span>
+<span class="err">function</span> <span class="err">IsDotNetDetected(version:</span> <span class="err">string</span><span class="c">; service: cardinal): boolean;
+</span><span class="err">//</span> <span class="err">Indicates</span> <span class="err">whether</span> <span class="err">the</span> <span class="err">specified</span> <span class="err">version</span> <span class="err">and</span> <span class="err">service</span> <span class="err">pack</span> <span class="err">of</span> <span class="err">the</span> <span class="err">.NET</span> <span class="err">Framework</span> <span class="err">is</span> <span class="err">installed.</span>
+<span class="err">//</span>
+<span class="err">//</span> <span class="err">version</span> <span class="err">--</span> <span class="err">Specify</span> <span class="err">one</span> <span class="err">of</span> <span class="err">these</span> <span class="err">strings</span> <span class="err">for</span> <span class="err">the</span> <span class="err">required</span> <span class="err">.NET</span> <span class="err">Framework</span> <span class="err">version:</span>
+<span class="err">//</span>    <span class="err">'v1.1.4322'</span>     <span class="err">.NET</span> <span class="err">Framework</span> <span class="err">1.1</span>
+<span class="err">//</span>    <span class="err">'v2.0.50727'</span>    <span class="err">.NET</span> <span class="err">Framework</span> <span class="err">2.0</span>
+<span class="err">//</span>    <span class="err">'v3.0'</span>          <span class="err">.NET</span> <span class="err">Framework</span> <span class="err">3.0</span>
+<span class="err">//</span>    <span class="err">'v3.5'</span>          <span class="err">.NET</span> <span class="err">Framework</span> <span class="err">3.5</span>
+<span class="err">//</span>    <span class="err">'v4\Client'</span>     <span class="err">.NET</span> <span class="err">Framework</span> <span class="err">4.0</span> <span class="err">Client</span> <span class="err">Profile</span>
+<span class="err">//</span>    <span class="err">'v4\Full'</span>       <span class="err">.NET</span> <span class="err">Framework</span> <span class="err">4.0</span> <span class="err">Full</span> <span class="err">Installation</span>
+<span class="err">//</span>
+<span class="err">//</span> <span class="err">service</span> <span class="err">--</span> <span class="err">Specify</span> <span class="err">any</span> <span class="err">non-negative</span> <span class="err">integer</span> <span class="err">for</span> <span class="err">the</span> <span class="err">required</span> <span class="err">service</span> <span class="err">pack</span> <span class="err">level:</span>
+<span class="err">//</span>    <span class="err">0</span>               <span class="err">No</span> <span class="err">service</span> <span class="err">packs</span> <span class="err">required</span>
+<span class="err">//</span>    <span class="err">1,</span> <span class="err">2,</span> <span class="err">etc.</span>      <span class="err">Service</span> <span class="err">pack</span> <span class="err">1,</span> <span class="err">2,</span> <span class="err">etc.</span> <span class="err">required</span>
+<span class="err">var</span>
+    <span class="err">key:</span> <span class="err">string</span><span class="c">;
+</span>    <span class="err">install,</span> <span class="err">serviceCount:</span> <span class="err">cardinal</span><span class="c">;
+</span>    <span class="err">success:</span> <span class="err">boolean</span><span class="c">;
+</span><span class="err">begin</span>
+    <span class="err">key</span> <span class="err">:=</span> <span class="err">'SOFTWARE\Microsoft\NET</span> <span class="err">Framework</span> <span class="err">Setup\NDP\'</span> <span class="err">+</span> <span class="err">version</span><span class="c">;
+</span>
+    <span class="err">//</span> <span class="err">.NET</span> <span class="err">3.0</span> <span class="err">uses</span> <span class="err">value</span> <span class="err">InstallSuccess</span> <span class="err">in</span> <span class="err">subkey</span> <span class="err">Setup</span>
+    <span class="err">if</span> <span class="err">Pos('v3.0',</span> <span class="err">version)</span> <span class="err">=</span> <span class="err">1</span> <span class="err">then</span> <span class="err">begin</span>
+        <span class="err">success</span> <span class="err">:=</span> <span class="err">RegQueryDWordValue(HKLM,</span> <span class="err">key</span> <span class="err">+</span> <span class="err">'\Setup',</span> <span class="err">'InstallSuccess',</span> <span class="err">install)</span><span class="c">;
+</span>    <span class="err">end</span> <span class="err">else</span> <span class="err">begin</span>
+        <span class="err">success</span> <span class="err">:=</span> <span class="err">RegQueryDWordValue(HKLM,</span> <span class="err">key,</span> <span class="err">'Install',</span> <span class="err">install)</span><span class="c">;
+</span>    <span class="err">end</span><span class="c">;
+</span>
+    <span class="err">//</span> <span class="err">.NET</span> <span class="err">4.0</span> <span class="err">uses</span> <span class="err">value</span> <span class="err">Servicing</span> <span class="err">instead</span> <span class="err">of</span> <span class="err">SP</span>
+    <span class="err">if</span> <span class="err">Pos('v4',</span> <span class="err">version)</span> <span class="err">=</span> <span class="err">1</span> <span class="err">then</span> <span class="err">begin</span>
+        <span class="err">success</span> <span class="err">:=</span> <span class="err">success</span> <span class="err">and</span> <span class="err">RegQueryDWordValue(HKLM,</span> <span class="err">key,</span> <span class="err">'Servicing',</span> <span class="err">serviceCount)</span><span class="c">;
+</span>    <span class="err">end</span> <span class="err">else</span> <span class="err">begin</span>
+        <span class="err">success</span> <span class="err">:=</span> <span class="err">success</span> <span class="err">and</span> <span class="err">RegQueryDWordValue(HKLM,</span> <span class="err">key,</span> <span class="err">'SP',</span> <span class="err">serviceCount)</span><span class="c">;
+</span>    <span class="err">end</span><span class="c">;
+</span>
+    <span class="err">result</span> <span class="err">:=</span> <span class="err">success</span> <span class="err">and</span> <span class="err">(</span><span class="py">install</span> <span class="p">=</span> <span class="s">1) and (serviceCount &gt;= service);</span>
+<span class="err">end</span><span class="c">;
+</span>
+<span class="err">function</span> <span class="err">FrameworkIsNotInstalled:</span> <span class="err">Boolean</span><span class="c">;
+</span><span class="err">begin</span>
+    <span class="err">Result</span> <span class="err">:=</span> <span class="err">not</span> <span class="err">IsDotNetDetected('v4\Full',</span> <span class="err">0)</span><span class="c">;
+</span><span class="err">end</span><span class="c">;
+</span>
+<span class="err">function</span> <span class="err">GetVendorName(Param:</span> <span class="err">string):</span> <span class="err">string</span><span class="c">;
+</span><span class="err">begin</span>
+  <span class="err">Result</span> <span class="err">:=</span> <span class="err">VendorName</span><span class="c">;
+</span><span class="err">end</span><span class="c">;
+</span>
+<span class="err">function</span> <span class="err">GetAppVersion(Param:</span> <span class="err">string):</span> <span class="err">string</span><span class="c">;
+</span><span class="err">begin</span>
+  <span class="err">Result</span> <span class="err">:=</span> <span class="err">AppVersion</span><span class="c">;
+</span><span class="err">end</span><span class="c">;
+</span>
+<span class="err">function</span> <span class="err">GetAppName(Param:</span> <span class="err">string):</span> <span class="err">string</span><span class="c">;
+</span><span class="err">begin</span>
+  <span class="err">Result</span> <span class="err">:=</span> <span class="err">AppName</span><span class="c">;
+</span><span class="err">end</span><span class="c">;
+</span>
+<span class="err">function</span> <span class="err">InitializeSetup():</span> <span class="err">Boolean</span><span class="c">;
+</span><span class="err">begin</span>
+
+  <span class="err">ExtractTemporaryFile('Office2007.cjstyles')</span><span class="c">;
+</span>  <span class="err">LoadSkin(ExpandConstant('{tmp}\Office2007.cjstyles'),</span> <span class="err">'NormalAqua.ini')</span><span class="c">;
+</span>	    
+  <span class="err">Result</span> <span class="err">:=</span> <span class="err">True</span><span class="c">;
+</span><span class="err">end</span><span class="c">;
+</span>
+<span class="err">procedure</span> <span class="err">DeinitializeSetup()</span><span class="c">;
+</span><span class="err">begin</span>
+	<span class="err">//</span> <span class="err">Hide</span> <span class="err">Window</span> <span class="err">before</span> <span class="err">unloading</span> <span class="err">skin</span> <span class="err">so</span> <span class="err">user</span> <span class="err">does</span> <span class="err">not</span> <span class="err">get</span>
+	<span class="err">//</span> <span class="err">a</span> <span class="err">glimse</span> <span class="err">of</span> <span class="err">an</span> <span class="err">unskinned</span> <span class="err">window</span> <span class="err">before</span> <span class="err">it</span> <span class="err">is</span> <span class="err">closed.</span>
+	<span class="err">ShowWindow(StrToInt(ExpandConstant('{wizardhwnd}')),</span> <span class="err">0)</span><span class="c">;
+</span>	<span class="err">UnloadSkin()</span><span class="c">;
+</span><span class="err">end;</span></code></pre></figure>
+
+<p>Kemudian skrip di atas kita simpan di folder <code class="language-plaintext highlighter-rouge">Rilis</code> misal dengan nama ` SetupKRSchool.iss`</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/07/010715-01.png" alt="" class="align-center"></p>
+
+<p>File <code class="language-plaintext highlighter-rouge">SetupKRSchool.iss</code> di atas akan kita compile menggunakan tool bawaan <a href="http://jrsoftware.org/">Inno Setup</a> yaitu <code class="language-plaintext highlighter-rouge">ISCC.exe</code>. Untuk contoh penggunaanya seperti ini :</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">iscc <span class="s2">"c:</span><span class="se">\r</span><span class="s2">ilis</span><span class="se">\S</span><span class="s2">etupKRSchool.iss"</span></code></pre></figure>
+
+<p>Nah perintah di atas akan kita panggil melalui Dialog Build Events</p>
+
+<p><strong>Revisi Perintah Build Event</strong></p>
+
+<p>Pada <a href="http://localhost:4000/blog/2015/06/25/the-power-of-visual-studio-net-build-events-part-number-1/">postingan</a> sebelumnya kita sudah menulis perintah sederhana di dialog Build Events</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/07/010715-02.png" alt="" class="align-center"></p>
+
+<p>Kita akan merivisi perintah diatas untuk menjalankan  tool bawaan <a href="http://jrsoftware.org/">Inno Setup</a> yaitu <code class="language-plaintext highlighter-rouge">ISCC.exe</code>. Dengan tool ini kita bisa langsung mengcompile skrip <a href="http://jrsoftware.org/">Inno Setup</a>.</p>
+
+<p>Berikut perintah lengkapnya.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/07/010715-03.png" alt="" class="align-center"></p>
+
+<p>Pada perintah di atas saya menambahkan kondisi</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="k">if</span> <span class="s2">"</span><span class="si">$(</span>ConfigurationName<span class="si">)</span><span class="s2">"</span> <span class="o">==</span> <span class="s2">"Debug"</span> goto skip</code></pre></figure>
+
+<p>yang artinya perintah build event di atas hanya akan dijalankan jika <code class="language-plaintext highlighter-rouge">Solution Configuration</code> atau  <code class="language-plaintext highlighter-rouge">Configuration Manager</code> di set <code class="language-plaintext highlighter-rouge">Release</code>.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/07/010715-04.png" alt="" class="align-center"></p>
+
+<p>Setelah itu lakukan proses <code class="language-plaintext highlighter-rouge">build -&gt; project</code>, maka semua file dll atau exe yang ada di folder <code class="language-plaintext highlighter-rouge">bin\Debug</code> atau <code class="language-plaintext highlighter-rouge">bin\Release</code> akan dicopykan ke folder <code class="language-plaintext highlighter-rouge">C:\Rilis</code>, kemudian akan dilanjutkan dengan mengcompile skrip <a href="http://jrsoftware.org/">Inno Setup</a>.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/07/010715-05.png" alt="" class="align-center"></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/07/010715-06.png" alt="" class="align-center"></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/07/010715-07.png" alt="" class="align-center"></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/07/010715-08.png" alt="" class="align-center"></p>
+
+<p>Selamat mencoba <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/build-events" class="page__taxonomy-item" rel="tag">Build Events</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/inno-setup" class="page__taxonomy-item" rel="tag">inno setup</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/visual-studio-net" class="page__taxonomy-item" rel="tag">Visual Studio .NET</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/build-events" class="page__taxonomy-item" rel="tag">Build Events</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/visual-studio-net" class="page__taxonomy-item" rel="tag">Visual Studio .NET</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2015-07-01T10:20:30+07:00">July 1, 2015</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=The+Power+of+Visual+Studio+.NET+Build+Events+Part+%232%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2015%2F07%2F01%2Fthe-power-of-visual-studio-net-build-events-part-number-2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2015%2F07%2F01%2Fthe-power-of-visual-studio-net-build-events-part-number-2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2015%2F07%2F01%2Fthe-power-of-visual-studio-net-build-events-part-number-2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2015/06/25/the-power-of-visual-studio-net-build-events-part-number-1/" class="pagination--pager" title="The Power of Visual Studio .NET Build Events Part #1
+">Previous</a>
+    
+    
+      <a href="/blog/2015/07/04/the-power-of-visual-studio-net-build-events-part-number-3/" class="pagination--pager" title="The Power of Visual Studio .NET Build Events Part #3
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/blog/2015/07/01/the-power-of-visual-studio-net-build-events-part-number-2/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/2015/07/01/the-power-of-visual-studio-net-build-events-part-number-2"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>

@@ -1,0 +1,867 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Membangun Server CI (Continuous Integration) di Windows untuk Platform .NET Menggunakan Jenkins Bagian #2 | » Coding4ever’s Blog «</title>
+<meta name="description" content="Pada postingan sebelumnya kita sudah membuat project/job sederhana menggunakan Jenkins untuk melakukan proses build, dan untuk postingan kali ini kita akan menambahkan proses deploy. Kalo masih bingung dengan istilah deploy di sini, anggap saja seperti kita membuat paket installer yang akan didistribusikan ke komputer klien. Nah dengan menggunakan CI semua proses ini bisa dilakukan secara otomatis dan terpusat, sehingga kita mempunyai histori hasil build dan deploy dari waktu ke waktu. Jadi untuk mencari file setup/paket installer terakhir enggak usah lagi nanya ke developer karena bisa langsung kita download dari server CI-nya.  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Membangun Server CI (Continuous Integration) di Windows untuk Platform .NET Menggunakan Jenkins Bagian #2">
+<meta property="og:url" content="http://localhost:4000/blog/2016/10/01/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-2/">
+
+
+  <meta property="og:description" content="Pada postingan sebelumnya kita sudah membuat project/job sederhana menggunakan Jenkins untuk melakukan proses build, dan untuk postingan kali ini kita akan menambahkan proses deploy. Kalo masih bingung dengan istilah deploy di sini, anggap saja seperti kita membuat paket installer yang akan didistribusikan ke komputer klien. Nah dengan menggunakan CI semua proses ini bisa dilakukan secara otomatis dan terpusat, sehingga kita mempunyai histori hasil build dan deploy dari waktu ke waktu. Jadi untuk mencari file setup/paket installer terakhir enggak usah lagi nanya ke developer karena bisa langsung kita download dari server CI-nya.  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2016-10-01T22:35:57+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/blog/2016/10/01/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://localhost:4000/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Membangun Server CI (Continuous Integration) di Windows untuk Platform .NET Menggunakan Jenkins Bagian #2">
+    <meta itemprop="description" content="Pada postingan sebelumnya kita sudah membuat project/job sederhana menggunakan Jenkins untuk melakukan proses build, dan untuk postingan kali ini kita akan menambahkan proses deploy. Kalo masih bingung dengan istilah deploy di sini, anggap saja seperti kita membuat paket installer yang akan didistribusikan ke komputer klien. Nah dengan menggunakan CI semua proses ini bisa dilakukan secara otomatis dan terpusat, sehingga kita mempunyai histori hasil build dan deploy dari waktu ke waktu. Jadi untuk mencari file setup/paket installer terakhir enggak usah lagi nanya ke developer karena bisa langsung kita download dari server CI-nya.">
+    <meta itemprop="datePublished" content="2016-10-01T22:35:57+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Membangun Server CI (Continuous Integration) di Windows untuk Platform .NET Menggunakan Jenkins Bagian #2
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2016-10-01T22:35:57+07:00">October 1, 2016</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+				
+				 • <a href="http://localhost:4000/blog/2016/10/01/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><img src="http://localhost:4000/assets/images/logo/ci-logo.png" alt="" class="align-left">Pada <a href="http://localhost:4000/blog/2016/09/29/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1/">postingan</a> sebelumnya kita sudah membuat project/job sederhana menggunakan <a href="https://jenkins.io/">Jenkins</a> untuk melakukan proses build, dan untuk postingan kali ini kita akan menambahkan proses deploy. Kalo masih bingung dengan istilah <code class="language-plaintext highlighter-rouge">deploy</code> di sini, anggap saja seperti kita membuat paket installer yang akan didistribusikan ke komputer klien. Nah dengan menggunakan CI semua proses ini bisa dilakukan secara otomatis dan terpusat, sehingga kita mempunyai histori hasil build dan deploy dari waktu ke waktu. Jadi untuk mencari file setup/paket installer terakhir enggak usah lagi nanya ke developer karena bisa langsung kita download dari server CI-nya.</p>
+
+<!-- more -->
+
+<p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-01.png" alt="" class="align-center"></p>
+
+<h3 id="inno-setup">Inno Setup</h3>
+
+<p><a href="http://jrsoftware.org/">Inno Setup</a> adalah tool untuk membuat <a href="http://localhost:4000/categories/tools-installer/">paket installer</a> yang gratis dan open source. Selain itu kita juga bisa menggunakan <a href="http://localhost:4000/categories/tools-installer/">tool installer</a> lainnya seperti <a href="http://nsis.sourceforge.net/">NSIS</a>. Untuk informasi lebih lanjut tentang <a href="http://jrsoftware.org/">Inno Setup</a> dan <a href="http://nsis.sourceforge.net/">NSIS</a> bisa langsung ke <a href="http://localhost:4000/categories/inno-setup/">sini</a> dan <a href="http://localhost:4000/categories/nsis/">sini</a>.</p>
+
+<p>Jadi di postingan kali ini kita akan menggunakan <a href="http://jrsoftware.org/">Inno Setup</a> untuk keperluan proses <code class="language-plaintext highlighter-rouge">deploy</code>. Sebagai contoh berikut adalah skrip <a href="http://jrsoftware.org/">Inno Setup</a> untuk project <a href="https://github.com/k4m4r82/Northwind">Northwind</a> yang kita gunakan sebagai contoh project.</p>
+
+<figure class="highlight"><pre><code class="language-ini" data-lang="ini"><span class="c">#define AppName 'Northwind App'
+#define AppDir 'Northwind'
+#define AppExeName 'Northwind.WinFormApp.exe'
+#define AppVendorName 'KR Software'
+#define AppCopyright 'Copyright © 2016. ' + AppVendorName
+#define AppURL 'http://localhost:4000/'
+#define AppVersion GetFileVersion('bin\' + AppExeName)
+#define AppMainIcon 'mainIcon.ico'
+</span>
+<span class="nn">[Setup]</span>
+<span class="py">AppName</span><span class="p">=</span><span class="s">{#AppName}</span>
+<span class="py">AppVerName</span><span class="p">=</span><span class="s">{#AppName} Versi {#AppVersion}</span>
+<span class="py">AppPublisher</span><span class="p">=</span><span class="s">{#AppVendorName}</span>
+<span class="py">AppVersion</span><span class="p">=</span><span class="s">{#AppVersion}</span>
+<span class="py">AllowCancelDuringInstall</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">DefaultDirName</span><span class="p">=</span><span class="s">{pf}</span><span class="se">\{</span><span class="c">#AppVendorName}\{#AppDir}
+</span><span class="s">DefaultGroupName={#AppVendorName}</span>
+<span class="py">Compression</span> <span class="p">=</span> <span class="s">lzma</span>
+<span class="py">SolidCompression</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">OutputDir</span><span class="p">=</span><span class="s">new-release</span>
+<span class="py">OutputBaseFilename</span><span class="p">=</span><span class="s">Setup-v{#AppVersion}</span>
+<span class="py">AllowNoIcons</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">AlwaysRestart</span> <span class="p">=</span> <span class="s">no</span>
+<span class="py">AlwaysShowComponentsList</span> <span class="p">=</span> <span class="s">no</span>
+<span class="py">DisableProgramGroupPage</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">AppendDefaultDirName</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">CreateUninstallRegKey</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">DisableStartupPrompt</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">LanguageDetectionMethod</span><span class="p">=</span><span class="s">none</span>
+<span class="py">ShowLanguageDialog</span><span class="p">=</span><span class="s">no</span>
+<span class="py">UsePreviousLanguage</span><span class="p">=</span><span class="s">no</span>
+<span class="py">Uninstallable</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">UninstallFilesDir</span><span class="p">=</span><span class="s">{app}</span><span class="se">\u</span><span class="s">ninst</span>
+<span class="py">UninstallDisplayIcon</span><span class="p">=</span><span class="s">{app}</span><span class="se">\{</span><span class="c">#AppExeName},0
+</span><span class="s">UninstallDisplayName={#AppName}</span>
+<span class="py">WindowVisible</span> <span class="p">=</span> <span class="s">no</span>
+<span class="py">AppCopyright</span><span class="p">=</span><span class="s">{#AppCopyright}</span>
+<span class="py">FlatComponentsList</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">PrivilegesRequired</span> <span class="p">=</span> <span class="s">admin</span>
+<span class="py">VersionInfoVersion</span><span class="p">=</span><span class="s">{#AppVersion}</span>
+
+<span class="nn">[Tasks]</span>
+<span class="err">Name:</span> <span class="err">desktopicon</span><span class="c">; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: checkedonce
+</span><span class="err">Name:</span> <span class="err">quicklaunchicon</span><span class="c">; Description: {cm:CreateQuickLaunchIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
+</span>
+<span class="nn">[Files]</span>
+<span class="c">;My Application Runtime
+</span><span class="err">Source:</span> <span class="err">bin\*.exe</span><span class="c">; DestDir: {app}; Flags: ignoreversion
+</span><span class="err">Source:</span> <span class="err">bin\*.dll</span><span class="c">; DestDir: {app}; Flags: ignoreversion
+</span>
+<span class="nn">[Icons]</span>
+<span class="err">Name:</span> <span class="err">{group}\{</span><span class="c">#AppName}; Filename: {app}\{#AppExeName}; WorkingDir: {app}; IconFilename: {app}\{#AppMainIcon}
+</span><span class="err">Name:</span> <span class="err">{userdesktop}\{</span><span class="c">#AppName}; Filename: {app}\{#AppExeName}; WorkingDir: {app}; IconFilename: {app}\{#AppMainIcon}; Tasks: desktopicon
+</span>
+<span class="nn">[Code]</span>
+<span class="err">procedure</span> <span class="err">AboutButtonOnClick(Sender:</span> <span class="err">TObject)</span><span class="c">;
+</span><span class="err">begin</span>
+  <span class="err">MsgBox('{</span><span class="c">#AppName}' #13#13 '{#AppCopyright}' #13 '{#AppURL}', mbInformation, mb_Ok);
+</span><span class="err">end</span><span class="c">;
+</span>
+<span class="err">procedure</span> <span class="err">CreateAboutButtonAndURLLabel(ParentForm:</span> <span class="err">TSetupForm</span><span class="c">; CancelButton: TNewButton);
+</span><span class="err">var</span>
+  <span class="err">AboutButton:</span> <span class="err">TNewButton</span><span class="c">;
+</span><span class="err">begin</span>
+  <span class="err">AboutButton</span> <span class="err">:=</span> <span class="err">TNewButton.Create(ParentForm)</span><span class="c">;
+</span>  <span class="err">AboutButton.Left</span> <span class="err">:=</span> <span class="err">ParentForm.ClientWidth</span> <span class="err">-</span> <span class="err">CancelButton.Left</span> <span class="err">-</span> <span class="err">CancelButton.Width</span><span class="c">;
+</span>  <span class="err">AboutButton.Top</span> <span class="err">:=</span> <span class="err">CancelButton.Top</span><span class="c">;
+</span>  <span class="err">AboutButton.Width</span> <span class="err">:=</span> <span class="err">CancelButton.Width</span><span class="c">;
+</span>  <span class="err">AboutButton.Height</span> <span class="err">:=</span> <span class="err">CancelButton.Height</span><span class="c">;
+</span>  <span class="err">AboutButton.Caption</span> <span class="err">:=</span> <span class="err">'&amp;About...'</span><span class="c">;
+</span>  <span class="err">AboutButton.OnClick</span> <span class="err">:=</span> <span class="err">@AboutButtonOnClick</span><span class="c">;
+</span>  <span class="err">AboutButton.Parent</span> <span class="err">:=</span> <span class="err">ParentForm</span><span class="c">;  
+</span><span class="err">end</span><span class="c">;
+</span>
+<span class="err">procedure</span> <span class="err">InitializeWizard()</span><span class="c">;
+</span><span class="err">begin</span>
+  <span class="err">CreateAboutButtonAndURLLabel(WizardForm,</span> <span class="err">WizardForm.CancelButton)</span><span class="c">;  
+</span><span class="err">end;</span></code></pre></figure>
+
+<p>Kemudian simpan skrip di atas di folder <code class="language-plaintext highlighter-rouge">workspace\deploy</code>. Workspace adalah folder di mana project atau job disimpan.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-02.png" alt="" class="align-center"></p>
+
+<h3 id="menambahkan-proses-deploy">Menambahkan Proses Deploy</h3>
+
+<ul>
+  <li>Akses link : http://localhost:8080/, kemudian login</li>
+  <li>
+    <p>Klik link project <code class="language-plaintext highlighter-rouge">northwind-build</code></p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-03.png" alt="" class="align-center"></p>
+  </li>
+  <li>
+    <p>Di halaman project <code class="language-plaintext highlighter-rouge">northwind-build</code>, klik link <code class="language-plaintext highlighter-rouge">Configure</code></p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-04.png" alt="" class="align-center"></p>
+  </li>
+  <li>
+    <p>Berikutnya aktifkan tab <code class="language-plaintext highlighter-rouge">Build</code>, klik <code class="language-plaintext highlighter-rouge">Add build step</code> kemudian pilih <code class="language-plaintext highlighter-rouge">Execute Windows batch command</code></p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-051.png" alt="" class="align-center"></p>
+
+    <p>Kemudian isikan skripnya seperti berikut</p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-06.png" alt="" class="align-center"></p>
+
+    <p>Tidak ada yang aneh dengan skrip di atas, hanya sekumpulan <a href="http://www.robvanderwoude.com/batchcommands.php">batch commands</a> yang tentunya Anda dan Saya sudah familiar dengannya. Coba perhatikan lagi skrip di atas, di sana ada variabel <code class="language-plaintext highlighter-rouge">%WORKSPACE%</code> yang merupakan variabel built-innya Jenkins, dan jika mengacu pada project <code class="language-plaintext highlighter-rouge">northwind-build</code>  di atas maka isinya adalah “C:\Program Files (x86)\Jenkins\workspace\northwind-build”.</p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-07.png" alt="" class="align-center"></p>
+  </li>
+</ul>
+
+<h3 id="menambahkan-artifact">Menambahkan Artifact</h3>
+
+<p>Artifact adalah output dari proses build, bisa berupa file exe, dll atau file dengan ekstensi lainnya. File-file artifact ini nantinya akan tersedia untuk di download di halaman project. Berikut langkah-langkah untuk menambahkan artifact :</p>
+
+<ul>
+  <li>
+    <p>Masih di halaman <code class="language-plaintext highlighter-rouge">Configure</code>, aktifkan tab <code class="language-plaintext highlighter-rouge">Post-build Actions</code> klik <code class="language-plaintext highlighter-rouge">Add post-build action</code> kemudian pilih <code class="language-plaintext highlighter-rouge">Archive the artifacts</code>.</p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-08.png" alt="" class="align-center"></p>
+  </li>
+  <li>
+    <p>Isikan nama-nama file artifact yang perlu di arsipkan, misal kita hanya mengarsipkan file Setup.exe</p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-09.png" alt="" class="align-center"></p>
+
+    <p>Jika file artifactnya lebih dari satu pisahkan dengan tanda koma, contoh : <code class="language-plaintext highlighter-rouge">deploy\new-release\Setup*.exe</code>, <code class="language-plaintext highlighter-rouge">deploy\help\file_bantuan.chm</code>, <code class="language-plaintext highlighter-rouge">deploy\help\video_tutorial.avi</code>.</p>
+  </li>
+  <li>
+    <p>Terakhir klik Save</p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-10.png" alt="" class="align-center"></p>
+  </li>
+</ul>
+
+<h3 id="testing-build-dan-deploy">Testing Build dan Deploy</h3>
+
+<p>Setelah menyelesaikan tambahan konfigurasi <code class="language-plaintext highlighter-rouge">deploy</code>, saatnya melakukan pengetesan apakah konfigurasinya sudah benar. Berikut langkah-langkahnya :</p>
+
+<ul>
+  <li>
+    <p>Kembali ke halaman project <code class="language-plaintext highlighter-rouge">northwind-build</code>, kemudian klik link <code class="language-plaintext highlighter-rouge">Build Now</code></p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-11.png" alt="" class="align-center"></p>
+  </li>
+  <li>
+    <p>Di informasi <code class="language-plaintext highlighter-rouge">Build History</code> akan terlihat progress build dengan nama #1, #2, … dst</p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-12.png" alt="" class="align-center"></p>
+  </li>
+  <li>
+    <p>Jika proses build-nya sukses penanda bulat-nya berwarna biru, jika warna merah berarti gagal</p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-13.png" alt="" class="align-center"></p>
+  </li>
+  <li>
+    <p>Setelah build selesai, di halaman project <code class="language-plaintext highlighter-rouge">northwind-build</code> akan tersedia link download file artifact</p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2016/10/261001-14.png" alt="" class="align-center"></p>
+  </li>
+</ul>
+
+<p>Selamat mencoba <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/artifact" class="page__taxonomy-item" rel="tag">Artifact</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/continuous-integration" class="page__taxonomy-item" rel="tag">continuous integration</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/inno-setup" class="page__taxonomy-item" rel="tag">inno setup</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/jenkins" class="page__taxonomy-item" rel="tag">jenkins</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/nsis" class="page__taxonomy-item" rel="tag">nsis</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/continuous-integration" class="page__taxonomy-item" rel="tag">continuous integration</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/jenkins" class="page__taxonomy-item" rel="tag">jenkins</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-10-01T22:35:57+07:00">October 1, 2016</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Membangun+Server+CI+%28Continuous+Integration%29+di+Windows+untuk+Platform+.NET+Menggunakan+Jenkins+Bagian+%232%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2016%2F10%2F01%2Fmembangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2016%2F10%2F01%2Fmembangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2016%2F10%2F01%2Fmembangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2016/09/29/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1/" class="pagination--pager" title="Membangun Server CI (Continuous Integration) di Windows untuk Platform .NET Menggunakan Jenkins Bagian #1
+">Previous</a>
+    
+    
+      <a href="/blog/2016/11/07/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-3/" class="pagination--pager" title="Membangun Server CI (Continuous Integration) di Windows untuk Platform .NET Menggunakan Jenkins Bagian #3
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://localhost:4000/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/blog/2016/10/01/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-2/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/2016/10/01/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-2"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>
