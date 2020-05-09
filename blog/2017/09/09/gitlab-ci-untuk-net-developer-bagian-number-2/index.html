@@ -20,7 +20,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content=">> Coding4ever's Blog <<">
 <meta property="og:title" content="GitLab CI untuk .NET Developer Bagian #2">
-<meta property="og:url" content="http://localhost:4000/blog/2017/09/09/gitlab-ci-untuk-net-developer-bagian-number-2/">
+<meta property="og:url" content="http://coding4ever.net/blog/2017/09/09/gitlab-ci-untuk-net-developer-bagian-number-2/">
 
 
   <meta property="og:description" content="Melanjutkan pembahasan tentang Continuous Integration menggunakan GitLab CI. Di postingan sebelumnya kita sudah melakukan konfigurasi GitLab CI dengan menambahkan file  .gitlab-ci.yml.  ">
@@ -42,7 +42,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/blog/2017/09/09/gitlab-ci-untuk-net-developer-bagian-number-2/">
+<link rel="canonical" href="http://coding4ever.net/blog/2017/09/09/gitlab-ci-untuk-net-developer-bagian-number-2/">
 
 
 
@@ -53,7 +53,7 @@
     
       "@type": "Person",
       "name": "Kamarudin",
-      "url": "http://localhost:4000/",
+      "url": "http://coding4ever.net/",
       "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
     
   }
@@ -316,7 +316,7 @@
 
 
 				
-				 • <a href="http://localhost:4000/blog/2017/09/09/gitlab-ci-untuk-net-developer-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+				 • <a href="http://coding4ever.net/blog/2017/09/09/gitlab-ci-untuk-net-developer-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
 			</p>
           
         </header>
@@ -324,9 +324,9 @@
 
       <section class="page__content" itemprop="text">
         
-        <p><img src="http://localhost:4000/assets/images/logo/gitlabci-logo.png" alt="" class="align-left">Melanjutkan pembahasan tentang <a href="http://localhost:4000/categories/continuous-integration/">Continuous Integration</a> menggunakan <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a>. Di <a href="http://localhost:4000/blog/2017/08/30/gitlab-ci-untuk-net-developer-bagian-number-1/">postingan</a> sebelumnya kita sudah melakukan konfigurasi <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> dengan menambahkan file  <a href="https://gist.github.com/k4m4r82/f88e4bb02eb8ade0d9d049a07ec6ee30">.gitlab-ci.yml</a>.</p>
+        <p><img src="http://coding4ever.net/assets/images/logo/gitlabci-logo.png" alt="" class="align-left">Melanjutkan pembahasan tentang <a href="http://coding4ever.net/categories/continuous-integration/">Continuous Integration</a> menggunakan <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a>. Di <a href="http://coding4ever.net/blog/2017/08/30/gitlab-ci-untuk-net-developer-bagian-number-1/">postingan</a> sebelumnya kita sudah melakukan konfigurasi <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> dengan menambahkan file  <a href="https://gist.github.com/k4m4r82/f88e4bb02eb8ade0d9d049a07ec6ee30">.gitlab-ci.yml</a>.</p>
 
-<p>Di konfigurasi awal ini kita sudah menambahkan dua job yang bertugas untuk merestore paket nuget dan melakukan proses build. Berikutnya kita akan menambahkan satu job lagi yang bertugas untuk membuat paket instalasi menggunakan <a href="http://localhost:4000/categories/inno-setup/">Inno Setup</a> jika job pertama dan kedua berhasil dijalankan. Nah dengan menggunakan CI semua proses ini bisa dilakukan secara otomatis dan terpusat, sehingga kita mempunyai histori hasil build dari waktu ke waktu. Jadi untuk mencari file setup/paket installer terakhir enggak usah lagi nanya ke developer karena bisa langsung kita download dari server CI-nya.</p>
+<p>Di konfigurasi awal ini kita sudah menambahkan dua job yang bertugas untuk merestore paket nuget dan melakukan proses build. Berikutnya kita akan menambahkan satu job lagi yang bertugas untuk membuat paket instalasi menggunakan <a href="http://coding4ever.net/categories/inno-setup/">Inno Setup</a> jika job pertama dan kedua berhasil dijalankan. Nah dengan menggunakan CI semua proses ini bisa dilakukan secara otomatis dan terpusat, sehingga kita mempunyai histori hasil build dari waktu ke waktu. Jadi untuk mencari file setup/paket installer terakhir enggak usah lagi nanya ke developer karena bisa langsung kita download dari server CI-nya.</p>
 
 <!-- more -->
 
@@ -334,7 +334,7 @@
 
 <h3 id="inno-setup">Inno Setup</h3>
 
-<p><a href="http://jrsoftware.org/">Inno Setup</a> adalah tool yang digunakan untuk membuat <a href="http://localhost:4000/categories/tools-installer/">paket installer</a> yang gratis dan open source. Selain <a href="http://jrsoftware.org/">Inno Setup</a>, kita juga bisa menggunakan <a href="http://localhost:4000/categories/tools-installer/">tool installer</a> lainnya seperti <a href="http://nsis.sourceforge.net/">NSIS</a>. Untuk informasi lebih lanjut tentang <a href="http://jrsoftware.org/">Inno Setup</a> dan <a href="http://nsis.sourceforge.net/">NSIS</a> bisa langsung ke <a href="http://localhost:4000/categories/inno-setup/">sini</a> dan <a href="http://localhost:4000/categories/nsis/">sini</a>.</p>
+<p><a href="http://jrsoftware.org/">Inno Setup</a> adalah tool yang digunakan untuk membuat <a href="http://coding4ever.net/categories/tools-installer/">paket installer</a> yang gratis dan open source. Selain <a href="http://jrsoftware.org/">Inno Setup</a>, kita juga bisa menggunakan <a href="http://coding4ever.net/categories/tools-installer/">tool installer</a> lainnya seperti <a href="http://nsis.sourceforge.net/">NSIS</a>. Untuk informasi lebih lanjut tentang <a href="http://jrsoftware.org/">Inno Setup</a> dan <a href="http://nsis.sourceforge.net/">NSIS</a> bisa langsung ke <a href="http://coding4ever.net/categories/inno-setup/">sini</a> dan <a href="http://coding4ever.net/categories/nsis/">sini</a>.</p>
 
 <p>Jadi di postingan kali ini kita akan menggunakan <a href="http://jrsoftware.org/">Inno Setup</a> untuk keperluan pembuatan file setup/paket installer. Sebagai contoh, berikut adalah skrip <a href="http://jrsoftware.org/">Inno Setup</a> yang digunakan untuk membuat file setup/paket installer untuk project <a href="https://gitlab.com/rudi.krsoftware/Northwind">Northwind</a> yang kita gunakan sebagai contoh project.</p>
 
@@ -470,11 +470,11 @@
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=GitLab+CI+untuk+.NET+Developer+Bagian+%232%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2017%2F09%2F09%2Fgitlab-ci-untuk-net-developer-bagian-number-2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=GitLab+CI+untuk+.NET+Developer+Bagian+%232%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2017%2F09%2F09%2Fgitlab-ci-untuk-net-developer-bagian-number-2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2017%2F09%2F09%2Fgitlab-ci-untuk-net-developer-bagian-number-2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2017%2F09%2F09%2Fgitlab-ci-untuk-net-developer-bagian-number-2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2017%2F09%2F09%2Fgitlab-ci-untuk-net-developer-bagian-number-2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2017%2F09%2F09%2Fgitlab-ci-untuk-net-developer-bagian-number-2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -531,7 +531,7 @@
 
 
 		
-		 • <a href="http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -570,7 +570,7 @@
 
 
 		
-		 • <a href="http://localhost:4000/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -609,7 +609,7 @@
 
 
 		
-		 • <a href="http://localhost:4000/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -648,7 +648,7 @@
 
 
 		
-		 • <a href="http://localhost:4000/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -737,7 +737,7 @@
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/blog/2017/09/09/gitlab-ci-untuk-net-developer-bagian-number-2/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.url = "http://coding4ever.net/blog/2017/09/09/gitlab-ci-untuk-net-developer-bagian-number-2/";  /* Replace PAGE_URL with your page's canonical URL variable */
       this.page.identifier = "/blog/2017/09/09/gitlab-ci-untuk-net-developer-bagian-number-2"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */

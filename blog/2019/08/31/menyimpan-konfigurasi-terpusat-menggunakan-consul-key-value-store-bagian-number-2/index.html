@@ -20,7 +20,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content=">> Coding4ever's Blog <<">
 <meta property="og:title" content="Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2">
-<meta property="og:url" content="http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/">
+<meta property="og:url" content="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/">
 
 
   <meta property="og:description" content="Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika pada postingan sebelumnya fokus pembahasan pada instalasi kemudian dilanjutkan dengan demo cara mengakses data yang tersimpan pada key-value store menggunakan salah satu tool REST Client favorit saya yaitu Postman, maka fokus pembahasan kali ini adalah bagaimana cara mengakses data key-value store menggunakan bahasa pemrograman Visual Basic 6 dan C# (.NET).  ">
@@ -42,7 +42,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/">
+<link rel="canonical" href="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/">
 
 
 
@@ -53,7 +53,7 @@
     
       "@type": "Person",
       "name": "Kamarudin",
-      "url": "http://localhost:4000/",
+      "url": "http://coding4ever.net/",
       "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
     
   }
@@ -316,7 +316,7 @@
 
 
 				
-				 • <a href="http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+				 • <a href="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
 			</p>
           
         </header>
@@ -324,7 +324,7 @@
 
       <section class="page__content" itemprop="text">
         
-        <p><img src="http://localhost:4000/assets/images/logo/consul-logo.png" alt="" class="align-left">Oke, hari ini saya ingin melanjutkan pembahasan <a href="http://localhost:4000/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/">postingan</a> saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan <a href="https://www.consul.io/">consul</a>. Jika pada <a href="http://localhost:4000/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/">postingan</a> sebelumnya fokus pembahasan pada instalasi kemudian dilanjutkan dengan demo cara mengakses data yang tersimpan pada <code class="language-plaintext highlighter-rouge">key-value store</code> menggunakan salah satu tool REST Client favorit saya yaitu <a href="https://www.getpostman.com/downloads/">Postman</a>, maka fokus pembahasan kali ini adalah bagaimana cara mengakses data <code class="language-plaintext highlighter-rouge">key-value store</code> menggunakan bahasa pemrograman Visual Basic 6 dan C# (.NET).</p>
+        <p><img src="http://coding4ever.net/assets/images/logo/consul-logo.png" alt="" class="align-left">Oke, hari ini saya ingin melanjutkan pembahasan <a href="http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/">postingan</a> saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan <a href="https://www.consul.io/">consul</a>. Jika pada <a href="http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/">postingan</a> sebelumnya fokus pembahasan pada instalasi kemudian dilanjutkan dengan demo cara mengakses data yang tersimpan pada <code class="language-plaintext highlighter-rouge">key-value store</code> menggunakan salah satu tool REST Client favorit saya yaitu <a href="https://www.getpostman.com/downloads/">Postman</a>, maka fokus pembahasan kali ini adalah bagaimana cara mengakses data <code class="language-plaintext highlighter-rouge">key-value store</code> menggunakan bahasa pemrograman Visual Basic 6 dan C# (.NET).</p>
 
 <!-- more -->
 
@@ -384,7 +384,7 @@
 
 <h3 id="mengakses-data-key-value-store-dari-c-net">Mengakses Data Key-Value Store Dari C# (.NET)</h3>
 
-<p>Untuk contoh berikutnya kita akan mengakses data <code class="language-plaintext highlighter-rouge">Key-Value Store</code> menggunakan bahasa pemrograman C# (.NET). Di C# saya biasanya menggunakan library <a href="https://www.nuget.org/packages/RestSharp/">RestSharp</a> untuk mengakses web api, selain itu kita juga membutuhkan library <a href="https://www.nuget.org/packages/Newtonsoft.Json">Newtonsoft.Json</a>, kenapa? Karena hasil dari pemanggilan web apinya berupa string dengan format json. Jadi kita membutuhkan library ini untuk mengkonversi string json ke objek class. Untuk menginstall kedua library ini Anda bisa menggunakan  <a href="http://localhost:4000/categories/nuget/">Nuget Package Manager Console</a> dengan perintah berikut:</p>
+<p>Untuk contoh berikutnya kita akan mengakses data <code class="language-plaintext highlighter-rouge">Key-Value Store</code> menggunakan bahasa pemrograman C# (.NET). Di C# saya biasanya menggunakan library <a href="https://www.nuget.org/packages/RestSharp/">RestSharp</a> untuk mengakses web api, selain itu kita juga membutuhkan library <a href="https://www.nuget.org/packages/Newtonsoft.Json">Newtonsoft.Json</a>, kenapa? Karena hasil dari pemanggilan web apinya berupa string dengan format json. Jadi kita membutuhkan library ini untuk mengkonversi string json ke objek class. Untuk menginstall kedua library ini Anda bisa menggunakan  <a href="http://coding4ever.net/categories/nuget/">Nuget Package Manager Console</a> dengan perintah berikut:</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell">Install-Package RestSharp <span class="nt">-Version</span> 105.2.3
 Install-Package Newtonsoft.Json <span class="nt">-v</span> 9.0.1</code></pre></figure>
@@ -473,11 +473,11 @@ Install-Package Newtonsoft.Json <span class="nt">-v</span> 9.0.1</code></pre></f
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Menyimpan+konfigurasi+aplikasi+secara+terpusat+menggunakan+Consul+Key-Value+Store+Bagian+%232%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2019%2F08%2F31%2Fmenyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Menyimpan+konfigurasi+aplikasi+secara+terpusat+menggunakan+Consul+Key-Value+Store+Bagian+%232%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2019%2F08%2F31%2Fmenyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2019%2F08%2F31%2Fmenyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2019%2F08%2F31%2Fmenyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2019%2F08%2F31%2Fmenyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2019%2F08%2F31%2Fmenyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -533,7 +533,7 @@ Install-Package Newtonsoft.Json <span class="nt">-v</span> 9.0.1</code></pre></f
 
 
 		
-		 • <a href="http://localhost:4000/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -572,7 +572,7 @@ Install-Package Newtonsoft.Json <span class="nt">-v</span> 9.0.1</code></pre></f
 
 
 		
-		 • <a href="http://localhost:4000/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -611,7 +611,7 @@ Install-Package Newtonsoft.Json <span class="nt">-v</span> 9.0.1</code></pre></f
 
 
 		
-		 • <a href="http://localhost:4000/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -650,7 +650,7 @@ Install-Package Newtonsoft.Json <span class="nt">-v</span> 9.0.1</code></pre></f
 
 
 		
-		 • <a href="http://localhost:4000/blog/2017/09/09/gitlab-ci-untuk-net-developer-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2017/09/09/gitlab-ci-untuk-net-developer-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -739,7 +739,7 @@ Install-Package Newtonsoft.Json <span class="nt">-v</span> 9.0.1</code></pre></f
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.url = "http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/";  /* Replace PAGE_URL with your page's canonical URL variable */
       this.page.identifier = "/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */

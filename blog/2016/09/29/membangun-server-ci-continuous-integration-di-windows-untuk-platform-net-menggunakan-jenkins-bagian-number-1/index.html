@@ -20,7 +20,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content=">> Coding4ever's Blog <<">
 <meta property="og:title" content="Membangun Server CI (Continuous Integration) di Windows untuk Platform .NET Menggunakan Jenkins Bagian #1">
-<meta property="og:url" content="http://localhost:4000/blog/2016/09/29/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1/">
+<meta property="og:url" content="http://coding4ever.net/blog/2016/09/29/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1/">
 
 
   <meta property="og:description" content="Melanjutkan pembahasan tentang Server CI (Continuous Integration), di mana persiapan awal sudah saya bahas di postingan saya yang berjudul “Persiapan Membangun Server CI (Continuous Integration) di Windows untuk Platform .NET” bagian satu dan dua.  ">
@@ -42,7 +42,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/blog/2016/09/29/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1/">
+<link rel="canonical" href="http://coding4ever.net/blog/2016/09/29/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1/">
 
 
 
@@ -53,7 +53,7 @@
     
       "@type": "Person",
       "name": "Kamarudin",
-      "url": "http://localhost:4000/",
+      "url": "http://coding4ever.net/",
       "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
     
   }
@@ -316,7 +316,7 @@
 
 
 				
-				 • <a href="http://localhost:4000/blog/2016/09/29/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+				 • <a href="http://coding4ever.net/blog/2016/09/29/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
 			</p>
           
         </header>
@@ -324,13 +324,13 @@
 
       <section class="page__content" itemprop="text">
         
-        <p><img src="http://localhost:4000/assets/images/logo/ci-logo.png" alt="" class="align-left">Melanjutkan pembahasan tentang <a href="http://localhost:4000/categories/continuous-integration/">Server CI (Continuous Integration)</a>, di mana persiapan awal sudah saya bahas di postingan saya yang berjudul “Persiapan Membangun Server CI (Continuous Integration) di Windows untuk Platform .NET” bagian <a href="http://localhost:4000/blog/2016/09/24/persiapan-membangun-server-ci-continuous-integration-pada-windows-untuk-platform-net-bagian-number-1/">satu</a> dan <a href="http://localhost:4000/blog/2016/09/26/persiapan-membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-bagian-number-2/">dua</a>.</p>
+        <p><img src="http://coding4ever.net/assets/images/logo/ci-logo.png" alt="" class="align-left">Melanjutkan pembahasan tentang <a href="http://coding4ever.net/categories/continuous-integration/">Server CI (Continuous Integration)</a>, di mana persiapan awal sudah saya bahas di postingan saya yang berjudul “Persiapan Membangun Server CI (Continuous Integration) di Windows untuk Platform .NET” bagian <a href="http://coding4ever.net/blog/2016/09/24/persiapan-membangun-server-ci-continuous-integration-pada-windows-untuk-platform-net-bagian-number-1/">satu</a> dan <a href="http://coding4ever.net/blog/2016/09/26/persiapan-membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-bagian-number-2/">dua</a>.</p>
 
-<p><a href="http://localhost:4000/categories/continuous-integration/">Continuous Integration</a>, untuk selanjutnya kita sebut CI saja, merupakan salah satu kegiatan untuk meningkatkan produktivitas dalam pengembangan aplikasi di mana seluruh hasil kerja (source code) dari masing-masing developer digabungkan (push) ke dalam satu wadah (server repository source code). Bisa sekali sehari, bisa juga beberapa kali dalam sehari. Setiap penggabungan source code akan diverifikasi secara otomatis oleh server CI, yang memungkinkan tim untuk mendeteksi secara dini jika ada masalah/konflik/error pada saat penggabungan source code.</p>
+<p><a href="http://coding4ever.net/categories/continuous-integration/">Continuous Integration</a>, untuk selanjutnya kita sebut CI saja, merupakan salah satu kegiatan untuk meningkatkan produktivitas dalam pengembangan aplikasi di mana seluruh hasil kerja (source code) dari masing-masing developer digabungkan (push) ke dalam satu wadah (server repository source code). Bisa sekali sehari, bisa juga beberapa kali dalam sehari. Setiap penggabungan source code akan diverifikasi secara otomatis oleh server CI, yang memungkinkan tim untuk mendeteksi secara dini jika ada masalah/konflik/error pada saat penggabungan source code.</p>
 
 <!-- more -->
 
-<p>Setelah penggabungan hasil kerja (source code) selesai, server CI otomatis akan melakukan proses <code class="language-plaintext highlighter-rouge">build</code> untuk memastikan tidak ada kode yang merusak/membuat proses <code class="language-plaintext highlighter-rouge">build</code> gagal. Jadi semakin cepat kegagalan <code class="language-plaintext highlighter-rouge">build</code> ini diketahui semakin cepat pula kita meresponnya.  Dan jika proses <code class="language-plaintext highlighter-rouge">build</code>-nya berhasil akan dilanjutkan dengan proses <code class="language-plaintext highlighter-rouge">deploy</code>. Selain itu server CI juga bisa dikonfigurasi untuk melakukan proses lain seperti menjalankan <a href="http://localhost:4000/blog/2016/07/20/unit-testing-menggunakan-nunit/">unit testing</a>, <a href="http://localhost:4000/blog/2016/07/28/integration-testing-menggunakan-nunit/">integration testing</a> dan <a href="http://localhost:4000/categories/software-testing/">testing otomatis</a> lainnya.</p>
+<p>Setelah penggabungan hasil kerja (source code) selesai, server CI otomatis akan melakukan proses <code class="language-plaintext highlighter-rouge">build</code> untuk memastikan tidak ada kode yang merusak/membuat proses <code class="language-plaintext highlighter-rouge">build</code> gagal. Jadi semakin cepat kegagalan <code class="language-plaintext highlighter-rouge">build</code> ini diketahui semakin cepat pula kita meresponnya.  Dan jika proses <code class="language-plaintext highlighter-rouge">build</code>-nya berhasil akan dilanjutkan dengan proses <code class="language-plaintext highlighter-rouge">deploy</code>. Selain itu server CI juga bisa dikonfigurasi untuk melakukan proses lain seperti menjalankan <a href="http://coding4ever.net/blog/2016/07/20/unit-testing-menggunakan-nunit/">unit testing</a>, <a href="http://coding4ever.net/blog/2016/07/28/integration-testing-menggunakan-nunit/">integration testing</a> dan <a href="http://coding4ever.net/categories/software-testing/">testing otomatis</a> lainnya.</p>
 
 <p>Sebagai .NET developer kita sudah biasa melakukan proses <code class="language-plaintext highlighter-rouge">build</code> dengan menekan tombol F5 (Start Debugging) atau Ctrl+F5 (Start Without Debugging) baik pada waktu development atau perbaikan bug. Sedangkan untuk contoh <code class="language-plaintext highlighter-rouge">deploy</code> anggap saja seperti kita membuat paket installer yang akan didistribusikan ke komputer/server klien. Nah dengan menggunakan CI semua proses ini bisa dilakukan secara otomatis dan terpusat, sehingga kita mempunyai arsip hasil <code class="language-plaintext highlighter-rouge">build</code> dan <code class="language-plaintext highlighter-rouge">deploy</code> dari waktu ke waktu. Jadi untuk mencari file setup/paket installer terakhir enggak usah lagi nanya ke developer karena bisa langsung kita download dari server CI-nya.</p>
 
@@ -342,7 +342,7 @@
   <li>Menulis kode, build dan tes di komputer masing-masing (seperti biasa).</li>
   <li>Commit dan push kode ke server repository/source control seperti GIT atau SVN.
 Di masing-masing repository kita pasang <code class="language-plaintext highlighter-rouge">hook script</code> untuk memanggil job/project yang sudah kita buat dan konfigurasi di server CI.</li>
-  <li>Server CI akan meng-clone repository kemudian melakukan build, menjalankan <a href="http://localhost:4000/categories/software-testing/">tes otomatis</a> (jika ada) dan deploy secara otomatis. Jika buildnya gagal ulangi lagi langkah pertama</li>
+  <li>Server CI akan meng-clone repository kemudian melakukan build, menjalankan <a href="http://coding4ever.net/categories/software-testing/">tes otomatis</a> (jika ada) dan deploy secara otomatis. Jika buildnya gagal ulangi lagi langkah pertama</li>
 </ul>
 
 <p>Cukup ya intronya, berikutnya akan kita bahas tool/software yang bisa kita gunakan untuk mengimplementasikan CI, salah satunya adalah <a href="https://jenkins.io">Jenkins</a>.</p>
@@ -367,7 +367,7 @@ Di masing-masing repository kita pasang <code class="language-plaintext highligh
 <a href="http://www.jrsoftware.org/">Inno Setup</a> atau <a href="http://nsis.sourceforge.net/">NSIS</a> – untuk keperluan proses deploy/pembuatan paket installer</li>
 </ul>
 
-<p>Tool-tool di atas selain perlu disiapkan juga harus tau cara penggunaannya, klo belum ya silahkan mampir dulu ke <a href="http://localhost:4000/blog/2016/09/24/persiapan-membangun-server-ci-continuous-integration-pada-windows-untuk-platform-net-bagian-number-1/">sini</a> dan <a href="http://localhost:4000/blog/2016/09/26/persiapan-membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-bagian-number-2/">sini</a>.</p>
+<p>Tool-tool di atas selain perlu disiapkan juga harus tau cara penggunaannya, klo belum ya silahkan mampir dulu ke <a href="http://coding4ever.net/blog/2016/09/24/persiapan-membangun-server-ci-continuous-integration-pada-windows-untuk-platform-net-bagian-number-1/">sini</a> dan <a href="http://coding4ever.net/blog/2016/09/26/persiapan-membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-bagian-number-2/">sini</a>.</p>
 
 <p>Sebelum kita lanjut ke pembahasan, kita lihat tool/software untuk <code class="language-plaintext highlighter-rouge">Environment Test</code> yang saya gunakan baik di sisi server (Server CI) dan client (developer).</p>
 
@@ -382,7 +382,7 @@ Di masing-masing repository kita pasang <code class="language-plaintext highligh
   <li>Source/version control <a href="https://git-scm.com/">Git</a>
 </li>
   <li><a href="https://bonobogitserver.com/">Server Repository Git</a></li>
-  <li>Package Installer <a href="http://localhost:4000/categories/inno-setup/">Inno Setup</a>
+  <li>Package Installer <a href="http://coding4ever.net/categories/inno-setup/">Inno Setup</a>
 </li>
   <li><a href="https://dist.nuget.org/index.html">NuGet</a></li>
 </ul>
@@ -498,7 +498,7 @@ Di masing-masing repository kita pasang <code class="language-plaintext highligh
 
     <p><img src="https://coding4ever.files.wordpress.com/2016/09/260929-08.png" alt="" class="align-center"></p>
 
-    <p>Untuk contoh di atas dengan asumsi instalasi <a href="https://jenkins.io">Jenkins</a> dan <a href="http://localhost:4000/blog/2016/09/24/persiapan-membangun-server-ci-continuous-integration-pada-windows-untuk-platform-net-bagian-number-1/">server repository Git</a> di mesin yang sama.</p>
+    <p>Untuk contoh di atas dengan asumsi instalasi <a href="https://jenkins.io">Jenkins</a> dan <a href="http://coding4ever.net/blog/2016/09/24/persiapan-membangun-server-ci-continuous-integration-pada-windows-untuk-platform-net-bagian-number-1/">server repository Git</a> di mesin yang sama.</p>
 
     <p><a href="https://jenkins.io">Jenkins</a> selalu bekerja dengan <code class="language-plaintext highlighter-rouge">branch</code> dan secara default menggunakan branch <code class="language-plaintext highlighter-rouge">master</code>.</p>
   </li>
@@ -673,11 +673,11 @@ Di masing-masing repository kita pasang <code class="language-plaintext highligh
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Membangun+Server+CI+%28Continuous+Integration%29+di+Windows+untuk+Platform+.NET+Menggunakan+Jenkins+Bagian+%231%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2016%2F09%2F29%2Fmembangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Membangun+Server+CI+%28Continuous+Integration%29+di+Windows+untuk+Platform+.NET+Menggunakan+Jenkins+Bagian+%231%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2016%2F09%2F29%2Fmembangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2016%2F09%2F29%2Fmembangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2016%2F09%2F29%2Fmembangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2016%2F09%2F29%2Fmembangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2016%2F09%2F29%2Fmembangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -734,7 +734,7 @@ Di masing-masing repository kita pasang <code class="language-plaintext highligh
 
 
 		
-		 • <a href="http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -773,7 +773,7 @@ Di masing-masing repository kita pasang <code class="language-plaintext highligh
 
 
 		
-		 • <a href="http://localhost:4000/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -812,7 +812,7 @@ Di masing-masing repository kita pasang <code class="language-plaintext highligh
 
 
 		
-		 • <a href="http://localhost:4000/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -851,7 +851,7 @@ Di masing-masing repository kita pasang <code class="language-plaintext highligh
 
 
 		
-		 • <a href="http://localhost:4000/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -940,7 +940,7 @@ Di masing-masing repository kita pasang <code class="language-plaintext highligh
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/blog/2016/09/29/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.url = "http://coding4ever.net/blog/2016/09/29/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1/";  /* Replace PAGE_URL with your page's canonical URL variable */
       this.page.identifier = "/blog/2016/09/29/membangun-server-ci-continuous-integration-di-windows-untuk-platform-net-menggunakan-jenkins-bagian-number-1"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */

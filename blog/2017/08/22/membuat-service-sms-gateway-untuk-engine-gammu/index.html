@@ -20,7 +20,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content=">> Coding4ever's Blog <<">
 <meta property="og:title" content="Membuat Service SMS Gateway untuk Engine Gammu">
-<meta property="og:url" content="http://localhost:4000/blog/2017/08/22/membuat-service-sms-gateway-untuk-engine-gammu/">
+<meta property="og:url" content="http://coding4ever.net/blog/2017/08/22/membuat-service-sms-gateway-untuk-engine-gammu/">
 
 
   <meta property="og:description" content="Pasti udah pada tau kan apa itu Gammu ? Klo enggak ya keterlaluan he he. Itu loh engine yang biasa digunakan untuk mengirim dan menerima sms dan biasanya sering digunakan untuk membuat sms gateway.  ">
@@ -42,7 +42,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/blog/2017/08/22/membuat-service-sms-gateway-untuk-engine-gammu/">
+<link rel="canonical" href="http://coding4ever.net/blog/2017/08/22/membuat-service-sms-gateway-untuk-engine-gammu/">
 
 
 
@@ -53,7 +53,7 @@
     
       "@type": "Person",
       "name": "Kamarudin",
-      "url": "http://localhost:4000/",
+      "url": "http://coding4ever.net/",
       "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
     
   }
@@ -316,7 +316,7 @@
 
 
 				
-				 • <a href="http://localhost:4000/blog/2017/08/22/membuat-service-sms-gateway-untuk-engine-gammu/#disqus_thread" class="disqus-comment-count">Comments</a>
+				 • <a href="http://coding4ever.net/blog/2017/08/22/membuat-service-sms-gateway-untuk-engine-gammu/#disqus_thread" class="disqus-comment-count">Comments</a>
 			</p>
           
         </header>
@@ -324,7 +324,7 @@
 
       <section class="page__content" itemprop="text">
         
-        <p><img src="http://localhost:4000/assets/images/logo/gammu-logo.png" alt="" class="align-left">Pasti udah pada tau kan apa itu <a href="https://wammu.eu/gammu/">Gammu</a> ? Klo enggak ya keterlaluan he he. Itu loh engine yang biasa digunakan untuk mengirim dan menerima sms dan biasanya sering digunakan untuk membuat sms gateway.</p>
+        <p><img src="http://coding4ever.net/assets/images/logo/gammu-logo.png" alt="" class="align-left">Pasti udah pada tau kan apa itu <a href="https://wammu.eu/gammu/">Gammu</a> ? Klo enggak ya keterlaluan he he. Itu loh engine yang biasa digunakan untuk mengirim dan menerima sms dan biasanya sering digunakan untuk membuat sms gateway.</p>
 
 <p>Di postingan ini saya tidak akan membahas bagaimana cara instalasi <a href="https://wammu.eu/gammu/">Gammu</a>, konfigurasi dan database yang digunakan. Jadi saya mengasumsikan bahwa service Gammu Anda (GammuSMSD) sudah berjalan dengan baik, dengan kata lain jika ada sms masuk ke nomor yang Anda gunakan sebagai sms center, maka service <a href="https://wammu.eu/gammu/">Gammu</a> otomatis akan meng-INSERT-kan sms tersebut ke tabel inbox.</p>
 
@@ -405,7 +405,7 @@
   <li>Windows 7 Pro 64 bit</li>
   <li>Visual Studio Community 2013 – untuk bahasa yang digunakan C#</li>
   <li>Tipe aplikasi – Windows Service</li>
-  <li>Micro ORM <a href="http://localhost:4000/categories/dapper-net/">Dapper.NET</a>
+  <li>Micro ORM <a href="http://coding4ever.net/categories/dapper-net/">Dapper.NET</a>
 </li>
   <li>Gammu-1.38.4-Windows-64bit</li>
   <li>Database SQLite – untuk menyimpan data siswa, mata pelajaran dan nilai</li>
@@ -432,9 +432,9 @@ CEKNILAI#NIS#&lt;KODE MP&gt; <span class="c"># request data nilai, kode mp optio
 
 <h3 id="project-sms-gateway">Project SMS Gateway</h3>
 
-<p>Project SMS Gateway ini dibangun dengan menggunakan <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">konsep separation  of  concern</a> atau pemisahan kode program berdasarkan fungsinya. Semua kode untuk akses database harus dipisahkan dengan kode untuk pengaturan user inteface. Hal ini memungkinkan kode akses database yang dibuat untuk aplikasi desktop, dengan mudah digunakan untuk aplikasi lainnya seperti web, console atau windows service. Selain itu penerapan konsep <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation  of  concern</a> secara disiplin, dapat menghasilkan kode program yang dapat dites secara otomatis menggunakan tool <a href="http://localhost:4000/blog/2016/07/20/unit-testing-menggunakan-nunit/">Unit Testing</a>.</p>
+<p>Project SMS Gateway ini dibangun dengan menggunakan <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">konsep separation  of  concern</a> atau pemisahan kode program berdasarkan fungsinya. Semua kode untuk akses database harus dipisahkan dengan kode untuk pengaturan user inteface. Hal ini memungkinkan kode akses database yang dibuat untuk aplikasi desktop, dengan mudah digunakan untuk aplikasi lainnya seperti web, console atau windows service. Selain itu penerapan konsep <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separation  of  concern</a> secara disiplin, dapat menghasilkan kode program yang dapat dites secara otomatis menggunakan tool <a href="http://coding4ever.net/blog/2016/07/20/unit-testing-menggunakan-nunit/">Unit Testing</a>.</p>
 
-<p>Untuk urusan kode akses database, project ini menggunakan pattern/pola <a href="http://localhost:4000/blog/2016/02/22/repository-pattern/">Repository Pattern</a> yang berisi semua kode untuk mengakses database. Semua kode yang sepesifik terhadap implementasi akses database berhenti di sini, lapisan lebih atas tidak boleh tahu bagaimana akses database diterapkan, apakah menggunakan ADO.NET murni (raw ADO.NET) atau menggunakan tool ORM/Micro ORM seperti <a href="http://localhost:4000/categories/dapper-net/">Dapper.NET</a>, <a href="http://localhost:4000/categories/entity-framework/">Entity Framework</a> atau NHibernate. Lapisan lainya hanya perlu tahu fungsionalitas dari suatu method di dalam class Repository, tidak perlu tahu bagimana method tersebut diimplementasikan.</p>
+<p>Untuk urusan kode akses database, project ini menggunakan pattern/pola <a href="http://coding4ever.net/blog/2016/02/22/repository-pattern/">Repository Pattern</a> yang berisi semua kode untuk mengakses database. Semua kode yang sepesifik terhadap implementasi akses database berhenti di sini, lapisan lebih atas tidak boleh tahu bagaimana akses database diterapkan, apakah menggunakan ADO.NET murni (raw ADO.NET) atau menggunakan tool ORM/Micro ORM seperti <a href="http://coding4ever.net/categories/dapper-net/">Dapper.NET</a>, <a href="http://coding4ever.net/categories/entity-framework/">Entity Framework</a> atau NHibernate. Lapisan lainya hanya perlu tahu fungsionalitas dari suatu method di dalam class Repository, tidak perlu tahu bagimana method tersebut diimplementasikan.</p>
 
 <p>Idealnya secara logic, arsitektur aplikasi yang kita gunakan seperti berikut:</p>
 
@@ -572,11 +572,11 @@ CEKNILAI#NIS#&lt;KODE MP&gt; <span class="c"># request data nilai, kode mp optio
       <section class="page__share">
   
 
-  <a href="https://twitter.com/intent/tweet?text=Membuat+Service+SMS+Gateway+untuk+Engine+Gammu%20http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2017%2F08%2F22%2Fmembuat-service-sms-gateway-untuk-engine-gammu%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Membuat+Service+SMS+Gateway+untuk+Engine+Gammu%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2017%2F08%2F22%2Fmembuat-service-sms-gateway-untuk-engine-gammu%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2017%2F08%2F22%2Fmembuat-service-sms-gateway-untuk-engine-gammu%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2017%2F08%2F22%2Fmembuat-service-sms-gateway-untuk-engine-gammu%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2017%2F08%2F22%2Fmembuat-service-sms-gateway-untuk-engine-gammu%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2017%2F08%2F22%2Fmembuat-service-sms-gateway-untuk-engine-gammu%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -633,7 +633,7 @@ CEKNILAI#NIS#&lt;KODE MP&gt; <span class="c"># request data nilai, kode mp optio
 
 
 		
-		 • <a href="http://localhost:4000/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -672,7 +672,7 @@ CEKNILAI#NIS#&lt;KODE MP&gt; <span class="c"># request data nilai, kode mp optio
 
 
 		
-		 • <a href="http://localhost:4000/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -711,7 +711,7 @@ CEKNILAI#NIS#&lt;KODE MP&gt; <span class="c"># request data nilai, kode mp optio
 
 
 		
-		 • <a href="http://localhost:4000/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -750,7 +750,7 @@ CEKNILAI#NIS#&lt;KODE MP&gt; <span class="c"># request data nilai, kode mp optio
 
 
 		
-		 • <a href="http://localhost:4000/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+		 • <a href="http://coding4ever.net/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
 	  </p>
 	  
     
@@ -839,7 +839,7 @@ CEKNILAI#NIS#&lt;KODE MP&gt; <span class="c"># request data nilai, kode mp optio
     
   <script>
     var disqus_config = function () {
-      this.page.url = "http://localhost:4000/blog/2017/08/22/membuat-service-sms-gateway-untuk-engine-gammu/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.url = "http://coding4ever.net/blog/2017/08/22/membuat-service-sms-gateway-untuk-engine-gammu/";  /* Replace PAGE_URL with your page's canonical URL variable */
       this.page.identifier = "/blog/2017/08/22/membuat-service-sms-gateway-untuk-engine-gammu"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
     };
     (function() { /* DON'T EDIT BELOW THIS LINE */
