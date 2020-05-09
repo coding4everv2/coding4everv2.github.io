@@ -1,0 +1,987 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Dapper .NET Micro-ORM Part 1 | » Coding4ever’s Blog «</title>
+<meta name="description" content="Sudah lama saya ingin mengembangkan aplikasi menggunakan tool-tool ORM seperti ADO.NET Entity Framework, MyBatis, LINQ to SQL, NHibernate dan tool ORM lainnya.  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Dapper .NET Micro-ORM Part 1">
+<meta property="og:url" content="http://coding4ever.net/blog/2013/02/07/dapper-net-micro-orm-part-1/">
+
+
+  <meta property="og:description" content="Sudah lama saya ingin mengembangkan aplikasi menggunakan tool-tool ORM seperti ADO.NET Entity Framework, MyBatis, LINQ to SQL, NHibernate dan tool ORM lainnya.  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2013-02-07T14:58:15+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://coding4ever.net/blog/2013/02/07/dapper-net-micro-orm-part-1/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://coding4ever.net/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Dapper .NET Micro-ORM Part 1">
+    <meta itemprop="description" content="Sudah lama saya ingin mengembangkan aplikasi menggunakan tool-tool ORM seperti ADO.NET Entity Framework, MyBatis, LINQ to SQL, NHibernate dan tool ORM lainnya.">
+    <meta itemprop="datePublished" content="2013-02-07T14:58:15+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Dapper .NET Micro-ORM Part 1
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2013-02-07T14:58:15+07:00">February 7, 2013</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+				
+				 • <a href="http://coding4ever.net/blog/2013/02/07/dapper-net-micro-orm-part-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><img src="http://coding4ever.net/assets/images/logo/dapper-logo.png" alt="" class="align-left">Sudah lama saya ingin mengembangkan aplikasi menggunakan tool-tool <a href="https://en.wikipedia.org/wiki/Object-relational_mapping">ORM</a> seperti ADO.NET Entity Framework, MyBatis, LINQ to SQL, NHibernate dan tool ORM lainnya.</p>
+
+<p>Sempat sedikit serius untuk mempelajari NHibernate tapi… dengan alasan sok sibuk <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20"> akhirnya stop ditengah jalan <img class="emoji" title=":frowning:" alt=":frowning:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f626.png" height="20" width="20">.</p>
+
+<p>Masih belum menyerah saya pun mencoba mencari alternatif lain penggunaan tool ORM dengan melakukan pencarian  menggunakan keyword “<strong>micro orm for .net</strong>” dari sekian banyak pilihan micro ORM yang ada pilihan saya jatuh ke <a href="https://code.google.com/p/dapper-dot-net/">Dapper .NET</a> dengan pertimbangan micro ORM ini sudah digunakan oleh website besar seperti <a href="http://stackoverflow.com/">Stack Overflow</a>, <a href="http://www.xapfest.com/">xpfest.com</a>, <a href="http://www.jitbit.com/helpdesk-software/">helpdesk</a>, <a href="http://www.worldcitycard.com/">worldcitycard</a>, <a href="http://www.ppmroadmap.com/">roadmap</a>.</p>
+
+<!-- more -->
+
+<p><a href="https://code.google.com/p/dapper-dot-net/">Dapper .NET</a> sendiri dibuat oleh om <a href="http://samsaffron.com/">Sam Saffron</a> salah seorang developer berbakat yang ada di belakang <a href="http://stackoverflow.com">Stack Overflow</a>.</p>
+
+<p>Sebelum menggunakan <a href="https://code.google.com/p/dapper-dot-net/">Dapper .NET</a> kita lihat dulu bagaimana mengakses database menggunakan library ADO .NET secara langsung.</p>
+
+<p>Contoh kasusnya sederhana kita akan menampilkan data Siswa dengan menggunakan bahasa pemrograman C# dan VB.NET sedangkan untuk databasenya menggunakan Ms Access.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2013/02/07022013-2.png" alt="07022013-2" class="align-center"></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System.Data.OleDb</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">SiswaDapperNET1</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">conn</span> <span class="p">=</span> <span class="nf">GetOpenConnection</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">strSql</span> <span class="p">=</span> <span class="s">"SELECT nis, nama FROM siswa"</span><span class="p">;</span>
+                <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">OleDbCommand</span><span class="p">(</span><span class="n">strSql</span><span class="p">,</span> <span class="n">conn</span><span class="p">))</span>
+                <span class="p">{</span>
+                    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">dtr</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="nf">ExecuteReader</span><span class="p">())</span>
+                    <span class="p">{</span>
+                        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"NIS\tNAMA"</span><span class="p">);</span>
+                        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"==================================="</span><span class="p">);</span>
+                        <span class="k">while</span> <span class="p">(</span><span class="n">dtr</span><span class="p">.</span><span class="nf">Read</span><span class="p">())</span>
+                        <span class="p">{</span>
+                            <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">dtr</span><span class="p">[</span><span class="s">"nis"</span><span class="p">]</span> <span class="p">+</span> <span class="s">"\t"</span> <span class="p">+</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"nama"</span><span class="p">].</span><span class="nf">ToString</span><span class="p">().</span><span class="nf">ToUpper</span><span class="p">());</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="n">Console</span><span class="p">.</span><span class="nf">ReadKey</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>atau jika Anda menggunakan VB.NET kodenya akan terlihat seperti berikut :</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Sub</span> <span class="nf">Main</span><span class="p">()</span>
+
+    <span class="k">Using</span> <span class="n">conn</span> <span class="ow">As</span> <span class="n">OleDbConnection</span> <span class="o">=</span> <span class="n">GetOpenConnection</span><span class="p">()</span>
+
+        <span class="k">Dim</span> <span class="nv">strSql</span> <span class="o">=</span> <span class="s">"SELECT nis, nama FROM siswa"</span>
+        <span class="k">Using</span> <span class="n">cmd</span> <span class="o">=</span> <span class="k">New</span> <span class="n">OleDbCommand</span><span class="p">(</span><span class="n">strSql</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+            <span class="k">Using</span> <span class="n">dtr</span> <span class="ow">As</span> <span class="n">OleDbDataReader</span> <span class="o">=</span> <span class="n">cmd</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">()</span>
+
+                <span class="nb">Console</span><span class="p">.</span><span class="n">WriteLine</span> <span class="p">(</span><span class="s">"NIS"</span> <span class="o">&amp;</span> <span class="n">vbTab</span> <span class="o">&amp;</span> <span class="s">"NAMA"</span><span class="p">)</span>
+                <span class="nb">Console</span><span class="p">.</span><span class="n">WriteLine</span> <span class="p">(</span><span class="s">"==================================="</span><span class="p">)</span>
+                <span class="k">While</span> <span class="n">dtr</span><span class="p">.</span><span class="n">Read</span><span class="p">()</span>
+                    <span class="nb">Console</span><span class="p">.</span><span class="n">WriteLine</span> <span class="p">(</span><span class="n">dtr</span><span class="p">(</span><span class="s">"nis"</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">vbTab</span> <span class="o">&amp;</span> <span class="n">dtr</span><span class="p">(</span><span class="s">"nama"</span><span class="p">))</span>
+                <span class="k">End</span> <span class="k">While</span>
+
+            <span class="k">End</span> <span class="k">Using</span>
+        <span class="k">End</span> <span class="k">Using</span>
+    <span class="k">End</span> <span class="k">Using</span>
+
+<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
+
+<p>Method Main di atas membutuhkan method GetOpenConnection yang digunakan untuk membuat koneksi ke database Ms Access.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">OleDbConnection</span> <span class="nf">GetOpenConnection</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">OleDbConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="k">try</span>
+    <span class="p">{</span>
+
+        <span class="kt">var</span> <span class="n">appDir</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Directory</span><span class="p">.</span><span class="nf">GetCurrentDirectory</span><span class="p">();</span>
+        <span class="kt">var</span> <span class="n">strConn</span> <span class="p">=</span> <span class="s">"Provider=Microsoft.Jet.OLEDB.4.0;Data Source="</span> <span class="p">+</span> <span class="n">appDir</span> <span class="p">+</span> <span class="s">"\\SISWA.MDB;User Id=admin;Password=;"</span><span class="p">;</span>
+
+        <span class="n">conn</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">OleDbConnection</span><span class="p">(</span><span class="n">strConn</span><span class="p">);</span>
+        <span class="n">conn</span><span class="p">.</span><span class="nf">Open</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">conn</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>dan untuk programmer VB.NET</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Function</span> <span class="nf">GetOpenConnection</span><span class="p">()</span> <span class="ow">As</span> <span class="n">OleDbConnection</span>
+    <span class="k">Dim</span> <span class="nv">conn</span> <span class="ow">As</span> <span class="n">OleDbConnection</span> <span class="o">=</span> <span class="k">Nothing</span>
+
+    <span class="k">Dim</span> <span class="nv">appDir</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Directory</span><span class="p">.</span><span class="n">GetCurrentDirectory</span><span class="p">()</span>
+    <span class="k">Dim</span> <span class="nv">strConn</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Provider=Microsoft.Jet.OLEDB.4.0;Data Source="</span> <span class="o">+</span> <span class="n">appDir</span> <span class="o">+</span> <span class="s">"\SISWA.MDB;User Id=admin;Password=;"</span>
+
+    <span class="k">Try</span>
+
+        <span class="n">conn</span> <span class="o">=</span> <span class="k">New</span> <span class="n">OleDbConnection</span><span class="p">(</span><span class="n">strConn</span><span class="p">)</span>
+        <span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">()</span>
+
+    <span class="k">Catch</span> <span class="n">ex</span> <span class="ow">As</span> <span class="n">Exception</span>
+
+    <span class="k">End</span> <span class="k">Try</span>
+
+    <span class="k">Return</span> <span class="n">conn</span>
+<span class="k">End</span> <span class="k">Function</span></code></pre></figure>
+
+<p>Selanjutnya kita akan memberikan sedikit sentuhan OOP terhadap kode di atas dengan melakukan mapping/pemetaan baris/row dari tabel menjadi objek.</p>
+
+<p>Perhatikan ilustrasi berikut :</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2013/02/26022013-31.png" alt="26022013-3" class="align-center"></p>
+
+<p>Mapping bisa dilakukan secara manual atau menggunakan tool ORM (Object Relational Mapping).</p>
+
+<p>Untuk contoh di bawah ini kita melakukan mapping secara manual, tetapi sebelumnya kita harus membuat sebuah class terlebih dulu yang disebut dengan class entity/model.</p>
+
+<p>Class ini merupakan representasi dari tabel-tabel yang ada di dalam sebuah database.</p>
+
+<p>Berdasarkan tabel Siswa di atas, kita akan membuat sebuah class dengan nama Siswa, field/property dari class ini sama persis dengan field-field yang ada di tabel Siswa.</p>
+
+<p>Untuk kode lengkapnya seperti berikut :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Siswa</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nis</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Nama</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Jika menggunakan VB.NET kodenya terlihat lebih banyak <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20"></p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Public</span> <span class="k">Class</span> <span class="nc">Siswa</span>
+
+    <span class="k">Private</span> <span class="n">_nis</span> <span class="ow">As</span> <span class="kt">String</span>
+    <span class="k">Public</span> <span class="k">Property</span> <span class="nf">Nis</span><span class="p">()</span> <span class="ow">As</span> <span class="kt">String</span>
+        <span class="k">Get</span>
+            <span class="k">Return</span> <span class="n">_nis</span>
+        <span class="k">End</span> <span class="k">Get</span>
+        <span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span> <span class="n">value</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span>
+            <span class="n">_nis</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">End</span> <span class="k">Set</span>
+    <span class="k">End</span> <span class="k">Property</span>
+
+    <span class="k">Private</span> <span class="n">_nama</span> <span class="ow">As</span> <span class="kt">String</span>
+    <span class="k">Public</span> <span class="k">Property</span> <span class="nf">Nama</span><span class="p">()</span> <span class="ow">As</span> <span class="kt">String</span>
+        <span class="k">Get</span>
+            <span class="k">Return</span> <span class="n">_nama</span>
+        <span class="k">End</span> <span class="k">Get</span>
+        <span class="k">Set</span><span class="p">(</span><span class="k">ByVal</span> <span class="n">value</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span>
+            <span class="n">_nama</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">End</span> <span class="k">Set</span>
+    <span class="k">End</span> <span class="k">Property</span>
+
+<span class="k">End</span> <span class="k">Class</span></code></pre></figure>
+
+<p>Kemudian kita juga akan menambahkan sebuah method baru dengan nama GetDataSiswa, method ini akan mengembalikan kumpulan (collection) dari data siswa.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Siswa</span><span class="p">&gt;</span> <span class="nf">GetDataSiswa</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">daftarSiswa</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Siswa</span><span class="p">&gt;();</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">conn</span> <span class="p">=</span> <span class="nf">GetOpenConnection</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">strSql</span> <span class="p">=</span> <span class="s">"SELECT nis, nama FROM siswa"</span><span class="p">;</span>
+        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">OleDbCommand</span><span class="p">(</span><span class="n">strSql</span><span class="p">,</span> <span class="n">conn</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">dtr</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="nf">ExecuteReader</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="k">while</span> <span class="p">(</span><span class="n">dtr</span><span class="p">.</span><span class="nf">Read</span><span class="p">())</span>
+                <span class="p">{</span>
+                    <span class="c1">// proses mapping dari row ke object</span>
+                    <span class="kt">var</span> <span class="n">siswa</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Siswa</span><span class="p">();</span>
+                    <span class="n">siswa</span><span class="p">.</span><span class="n">Nis</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"nis"</span><span class="p">]</span> <span class="p">==</span> <span class="k">null</span> <span class="p">?</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span> <span class="p">:</span> <span class="n">dtr</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="m">0</span><span class="p">);</span>
+                    <span class="n">siswa</span><span class="p">.</span><span class="n">Nama</span> <span class="p">=</span> <span class="n">dtr</span><span class="p">[</span><span class="s">"nama"</span><span class="p">]</span> <span class="p">==</span> <span class="k">null</span> <span class="p">?</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span> <span class="p">:</span> <span class="n">dtr</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="m">1</span><span class="p">).</span><span class="nf">ToUpper</span><span class="p">();</span>
+
+                    <span class="n">daftarSiswa</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">siswa</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">daftarSiswa</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>sementara di VB.NET akan terlihat seperti berikut :</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Function</span> <span class="nf">GetDataSiswa</span><span class="p">()</span> <span class="ow">As</span> <span class="n">List</span><span class="p">(</span><span class="k">Of</span> <span class="n">Siswa</span><span class="p">)</span>
+
+    <span class="k">Dim</span> <span class="nv">daftarSiswa</span> <span class="ow">As</span> <span class="k">New</span> <span class="n">List</span><span class="p">(</span><span class="k">Of</span> <span class="n">Siswa</span><span class="p">)</span>
+
+    <span class="k">Using</span> <span class="n">conn</span> <span class="ow">As</span> <span class="n">OleDbConnection</span> <span class="o">=</span> <span class="n">GetOpenConnection</span><span class="p">()</span>
+
+        <span class="k">Dim</span> <span class="nv">strSql</span> <span class="o">=</span> <span class="s">"SELECT nis, nama FROM siswa"</span>
+        <span class="k">Using</span> <span class="n">cmd</span> <span class="o">=</span> <span class="k">New</span> <span class="n">OleDbCommand</span><span class="p">(</span><span class="n">strSql</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
+            <span class="k">Using</span> <span class="n">dtr</span> <span class="ow">As</span> <span class="n">OleDbDataReader</span> <span class="o">=</span> <span class="n">cmd</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">()</span>
+
+                <span class="k">While</span> <span class="n">dtr</span><span class="p">.</span><span class="n">Read</span><span class="p">()</span>
+                    <span class="k">Dim</span> <span class="nv">siswa</span> <span class="ow">As</span> <span class="k">New</span> <span class="n">Siswa</span><span class="p">()</span>
+                    <span class="k">With</span> <span class="n">siswa</span>
+                        <span class="p">.</span><span class="n">Nis</span> <span class="o">=</span> <span class="n">IIf</span><span class="p">(</span><span class="n">IsDBNull</span><span class="p">(</span><span class="n">dtr</span><span class="p">(</span><span class="s">"nis"</span><span class="p">)),</span> <span class="kt">String</span><span class="p">.</span><span class="n">Empty</span><span class="p">,</span> <span class="n">dtr</span><span class="p">(</span><span class="s">"nis"</span><span class="p">).</span><span class="n">ToString</span><span class="p">())</span>
+                        <span class="p">.</span><span class="n">Nama</span> <span class="o">=</span> <span class="n">IIf</span><span class="p">(</span><span class="n">IsDBNull</span><span class="p">(</span><span class="n">dtr</span><span class="p">(</span><span class="s">"nama"</span><span class="p">)),</span> <span class="kt">String</span><span class="p">.</span><span class="n">Empty</span><span class="p">,</span> <span class="n">dtr</span><span class="p">(</span><span class="s">"nama"</span><span class="p">).</span><span class="n">ToString</span><span class="p">())</span>
+                    <span class="k">End</span> <span class="k">With</span>
+
+                    <span class="n">daftarSiswa</span><span class="p">.</span><span class="n">Add</span> <span class="p">(</span><span class="n">siswa</span><span class="p">)</span>
+                <span class="k">End</span> <span class="k">While</span>
+
+            <span class="k">End</span> <span class="k">Using</span>
+        <span class="k">End</span> <span class="k">Using</span>
+    <span class="k">End</span> <span class="k">Using</span>
+
+    <span class="k">Return</span> <span class="n">daftarSiswa</span>
+
+<span class="k">End</span> <span class="k">Function</span></code></pre></figure>
+
+<p>Terakhir kita akan melakukan revisi terhadap method Main diatas.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="cm">/*
+    using (var conn = GetOpenConnection())
+    {
+        var strSql = "SELECT nis, nama FROM siswa";
+        using (var cmd = new OleDbCommand(strSql, conn))
+        {
+            using (var dtr = cmd.ExecuteReader())
+            {
+                Console.WriteLine("NIS\tNAMA");
+                Console.WriteLine("===================================");
+                while (dtr.Read())
+                {
+                    Console.WriteLine(dtr["nis"] + "\t" + dtr["nama"].ToString().ToUpper());
+                }
+            }
+        }
+    }
+    */</span>
+
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"NIS\tNAMA"</span><span class="p">);</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"==================================="</span><span class="p">);</span>
+
+    <span class="kt">var</span> <span class="n">daftarSiswa</span> <span class="p">=</span> <span class="nf">GetDataSiswa</span><span class="p">();</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">siswa</span> <span class="k">in</span> <span class="n">daftarSiswa</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">siswa</span><span class="p">.</span><span class="n">Nis</span> <span class="p">+</span> <span class="s">"\t"</span> <span class="p">+</span> <span class="n">siswa</span><span class="p">.</span><span class="n">Nama</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">Console</span><span class="p">.</span><span class="nf">ReadKey</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>sekali lagi di VB.NET :</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Sub</span> <span class="nf">Main</span><span class="p">()</span>
+
+    <span class="c1">'Using conn As OleDbConnection = GetOpenConnection()</span>
+
+    <span class="c1">'    Dim strSql = "SELECT nis, nama FROM siswa"</span>
+    <span class="c1">'    Using cmd = New OleDbCommand(strSql, conn)</span>
+    <span class="c1">'        Using dtr As OleDbDataReader = cmd.ExecuteReader()</span>
+
+    <span class="c1">'            Console.WriteLine("NIS" &amp; vbTab &amp; "NAMA")</span>
+    <span class="c1">'            Console.WriteLine("===================================")</span>
+    <span class="c1">'            While dtr.Read()</span>
+    <span class="c1">'                Console.WriteLine(dtr("nis") &amp; vbTab &amp; dtr("nama"))</span>
+    <span class="c1">'            End While</span>
+
+    <span class="c1">'        End Using</span>
+    <span class="c1">'    End Using</span>
+    <span class="c1">'End Using</span>
+
+    <span class="nb">Console</span><span class="p">.</span><span class="n">WriteLine</span> <span class="p">(</span><span class="s">"NIS"</span> <span class="o">&amp;</span> <span class="n">vbTab</span> <span class="o">&amp;</span> <span class="s">"NAMA"</span><span class="p">)</span>
+    <span class="nb">Console</span><span class="p">.</span><span class="n">WriteLine</span> <span class="p">(</span><span class="s">"==================================="</span><span class="p">)</span>
+
+    <span class="k">Dim</span> <span class="nv">daftarSiswa</span> <span class="o">=</span> <span class="n">GetDataSiswa</span><span class="p">()</span>
+
+    <span class="k">For</span> <span class="k">Each</span> <span class="n">siswa</span> <span class="ow">In</span> <span class="n">daftarSiswa</span>
+        <span class="nb">Console</span><span class="p">.</span><span class="n">WriteLine</span> <span class="p">(</span><span class="n">siswa</span><span class="p">.</span><span class="n">Nis</span> <span class="o">&amp;</span> <span class="n">vbTab</span> <span class="o">&amp;</span> <span class="n">siswa</span><span class="p">.</span><span class="n">Nama</span><span class="p">)</span>
+    <span class="k">Next</span>
+
+    <span class="nb">Console</span><span class="p">.</span><span class="n">ReadKey</span><span class="p">()</span>
+
+<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
+
+<p>Jika program di atas dijalankan akan menghasilkan output seperti berikut :</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2013/02/07022013.png" alt="07022013" class="align-center"></p>
+
+<p>Untuk penggunaan micro ORM <a href="https://code.google.com/p/dapper-dot-net/">Dapper .NET</a>, insyaAllah akan kita mulai pembahasannya pada <a href="http://coding4ever.net/blog/2013/02/22/dapper-net-micro-orm-part-2/">postingan</a> berikutnya <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">.</p>
+
+<p>Selamat <a href="https://github.com/k4m4r82/MicroORMDapperNET1">MENCOBA</a> <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/c" class="page__taxonomy-item" rel="tag">c#</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/database" class="page__taxonomy-item" rel="tag">Database</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/micro-orm" class="page__taxonomy-item" rel="tag">micro orm</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/ms-access" class="page__taxonomy-item" rel="tag">ms access</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/dapper-net" class="page__taxonomy-item" rel="tag">Dapper .NET</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/orm" class="page__taxonomy-item" rel="tag">ORM</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/visual-basic-net" class="page__taxonomy-item" rel="tag">Visual Basic .NET</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/visual-c" class="page__taxonomy-item" rel="tag">Visual C#</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2013-02-07T14:58:15+07:00">February 7, 2013</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Dapper+.NET+Micro-ORM+Part+1%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2013%2F02%2F07%2Fdapper-net-micro-orm-part-1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2013%2F02%2F07%2Fdapper-net-micro-orm-part-1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2013%2F02%2F07%2Fdapper-net-micro-orm-part-1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2013/01/10/todo-list/" class="pagination--pager" title="ToDo List
+">Previous</a>
+    
+    
+      <a href="/blog/2013/02/22/dapper-net-micro-orm-part-2/" class="pagination--pager" title="Dapper .NET Micro-ORM Part 2
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://coding4ever.net/blog/2013/02/07/dapper-net-micro-orm-part-1/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/2013/02/07/dapper-net-micro-orm-part-1"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>

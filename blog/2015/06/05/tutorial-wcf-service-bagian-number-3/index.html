@@ -1,0 +1,843 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Tutorial WCF Service Bagian #3 | » Coding4ever’s Blog «</title>
+<meta name="description" content="Web service itu seperti parasit, tidak bisa hidup mandiri sehingga membutuhkan sebuah wadah (host) untuk kelangsungan hidupnya. Begitu juga dengan web service yang dibuat menggunakan WCF tetap membutuhkan sebuah wadah (host).  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Tutorial WCF Service Bagian #3">
+<meta property="og:url" content="http://coding4ever.net/blog/2015/06/05/tutorial-wcf-service-bagian-number-3/">
+
+
+  <meta property="og:description" content="Web service itu seperti parasit, tidak bisa hidup mandiri sehingga membutuhkan sebuah wadah (host) untuk kelangsungan hidupnya. Begitu juga dengan web service yang dibuat menggunakan WCF tetap membutuhkan sebuah wadah (host).  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2015-06-05T13:14:33+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://coding4ever.net/blog/2015/06/05/tutorial-wcf-service-bagian-number-3/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://coding4ever.net/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Tutorial WCF Service Bagian #3">
+    <meta itemprop="description" content="Web service itu seperti parasit, tidak bisa hidup mandiri sehingga membutuhkan sebuah wadah (host) untuk kelangsungan hidupnya. Begitu juga dengan web service yang dibuat menggunakan WCF tetap membutuhkan sebuah wadah (host).">
+    <meta itemprop="datePublished" content="2015-06-05T13:14:33+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Tutorial WCF Service Bagian #3
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2015-06-05T13:14:33+07:00">June 5, 2015</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+
+				
+				 • <a href="http://coding4ever.net/blog/2015/06/05/tutorial-wcf-service-bagian-number-3/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><img src="http://coding4ever.net/assets/images/logo/wcf-logo.png" alt="" class="align-left">Web service itu seperti parasit, tidak bisa hidup mandiri sehingga membutuhkan sebuah wadah (host) untuk kelangsungan hidupnya. Begitu juga dengan web service yang dibuat menggunakan WCF tetap membutuhkan sebuah wadah (host).</p>
+
+<!-- more -->
+
+<p>Ada beberapa cara yang bisa digunakan untuk menempatkan web service ke dalam wadahnya (host) yaitu :</p>
+
+<ul>
+  <li>Hosting in Internet Information Services (IIS)</li>
+  <li>Hosting in Windows Activation Services (WAS)</li>
+  <li>Hosting in a Console or Desktop application (Self hosting)</li>
+  <li>Hosting in a Windows Service</li>
+</ul>
+
+<p>Kita akan menggunakan cara yang pertama yaitu, <code class="language-plaintext highlighter-rouge">hosting WCF service di IIS</code>, berikut langkah-langkahnya :</p>
+
+<p><strong>1. Install Internet Information Services (IIS)</strong></p>
+
+<p>Untuk langkah-langkahnya bisa Anda ikuti di<a href="http://www.codeproject.com/Tips/365704/Install-IIS-on-Windows">sini</a></p>
+
+<p><strong>2. Membuat Folder Baru di wwwroot</strong></p>
+
+<p>Tambahkan folder baru di <code class="language-plaintext highlighter-rouge">C:\ C:\inetpub\wwwroot</code>, dengan nama <code class="language-plaintext highlighter-rouge">Calculator</code>, kemudian tambahkan juga folder <code class="language-plaintext highlighter-rouge">bin</code> di dalamnya</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-011.png" alt="" class="align-center"></p>
+
+<p>Folder <code class="language-plaintext highlighter-rouge">wwwroot</code> sama seperti folder <code class="language-plaintext highlighter-rouge">htdocs</code>-nya Apache.</p>
+
+<p><strong>3. Build Project CalculatorServer</strong></p>
+
+<p>Aktifkan kembali project <a href="https://github.com/k4m4r82/Calculator">Calculator</a>, kemudian lakukan proses <code class="language-plaintext highlighter-rouge">Build</code> project <code class="language-plaintext highlighter-rouge">CalculatorServer</code></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-02.png" alt="" class="align-center"></p>
+
+<p>Cek hasil build di bagian <code class="language-plaintext highlighter-rouge">Output</code></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-03.png" alt="" class="align-center"></p>
+
+<p>Kemudian buka folder hasil build</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-04.png" alt="" class="align-center"></p>
+
+<p>Di dalamnya ada dua file dengan tipe DLL yaitu <code class="language-plaintext highlighter-rouge">CalculatorLib.dll</code> dan <code class="language-plaintext highlighter-rouge">CalculatorServer.dll</code>. File <code class="language-plaintext highlighter-rouge">CalculatorLib.dll</code> di hasilkan dari project <code class="language-plaintext highlighter-rouge">CalculatorLib</code> sedangkan file ` CalculatorServer.dll<code class="language-plaintext highlighter-rouge"> dihasilkan dari project </code>CalculatorServer`</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-05.png" alt="" class="align-center"></p>
+
+<p>Dua file ini akan kita copykan ke folder <code class="language-plaintext highlighter-rouge">C:\inetpub\wwwroot\Calculator\bin</code></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-06.png" alt="" class="align-center"></p>
+
+<p><strong>4. Membuat File Text dengan Format .svc</strong></p>
+
+<p>File .svc merupakan file text biasa yang mirip dengan file .asmx (ASP.NET web service). Dengan kata lain WCF service yang di-host-kan ke dalam IIS direpresentasikan oleh sebuah file khusus dengan format .svc.</p>
+
+<p>File ini berisi informasi agar WCF service bisa berjalan dengan sukses. Adapun informasinya terdiri dari :</p>
+
+<ul>
+  <li>Pilihan bahasa (C# atau VB)</li>
+  <li>Nama service (namaspace + class)</li>
+  <li>Lokasi kode service</li>
+</ul>
+
+<p>Contoh isi file .svc</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="o">&lt;</span><span class="err">%@</span> <span class="n">ServiceHost</span> <span class="n">Language</span><span class="o">=</span><span class="s">"C#"</span> <span class="n">Service</span><span class="o">=</span><span class="s">"CalculatorServer.Calculator"</span> <span class="err">%</span><span class="o">&gt;</span></code></pre></figure>
+
+<p>Setelah mengetahui fungsi dari file .svc, berikutnya kita akan membuat file .svc dengan nama <code class="language-plaintext highlighter-rouge">ServiceCalculator.svc</code> di folder <code class="language-plaintext highlighter-rouge">C:\inetpub\wwwroot\Calculator</code></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-07.png" alt="" class="align-center"></p>
+
+<p>Kemudian copas skrip berikut :</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="o">&lt;</span><span class="err">%@</span> <span class="n">ServiceHost</span> <span class="n">Language</span><span class="o">=</span><span class="s">"C#"</span> <span class="n">Service</span><span class="o">=</span><span class="s">"CalculatorServer.Calculator"</span> <span class="err">%</span><span class="o">&gt;</span></code></pre></figure>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-08.png" alt="" class="align-center"></p>
+
+<p>Dari skrip di atas, coba perhatikan bagian <code class="language-plaintext highlighter-rouge">Service="CalculatorServer.Calculator"</code></p>
+
+<p>CalculatorServer adalah nama namespace, sedangkan Calculator adalah nama class servicenya. Informasi ini kita dapatkan dari struktur project <code class="language-plaintext highlighter-rouge">CalculatorServer</code></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-09.png" alt="" class="align-center"></p>
+
+<p><strong>5. Membuat File web.config</strong></p>
+
+<p>File web.config adalah file xml yang berisi konfigurasi dari aplikasi web berbasis ASP.NET. Karena WCF service ini akan kita host-kan ke dalam IIS, jadi kita juga perlu membuat file web.config untuk menyimpan konfigurasi dari web service.</p>
+
+<p>File web.config  ini akan kita buat di folder <code class="language-plaintext highlighter-rouge">C:\inetpub\wwwroot\Calculator</code>, satu folder dengan file <code class="language-plaintext highlighter-rouge">ServiceCalculator.svc</code></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-10.png" alt="" class="align-center"></p>
+
+<p>Kemudian copas skrip berikut</p>
+
+<script src="https://gist.github.com/f62303ed21a209b24de5.js"> </script>
+
+<p>Dari skrip di atas, coba perhatikan bagian <code class="language-plaintext highlighter-rouge">&lt;services&gt;</code></p>
+
+<script src="https://gist.github.com/3e306818c5096e2a860b.js"> </script>
+
+<p>Di bagian ini kita mendaftarkan service apa saja yang bisa diakses oleh aplikasi klien.</p>
+
+<ul>
+  <li>Service name = diisi dengan nama service</li>
+  <li>Contract = diisi dengan interface dari nama service</li>
+</ul>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-11.png" alt="" class="align-center"></p>
+
+<p>Di dalam WCF, bagian ini dikenal dengan istilah <a href="http://wcftutorial.net/EndPoint.aspx">EndPoint</a>, dan berhubung di postingan ini tidak membahas masalah <a href="http://wcftutorial.net/EndPoint.aspx">EndPoint</a>, sebagai referensi bisa Anda baca di<a href="http://wcftutorial.net/EndPoint.aspx">sini</a>.</p>
+
+<p><strong>6. Mendaftarkan Service Calculator ke IIS</strong></p>
+
+<p>Sebagai langkah terakhir, kita aktifkan Internet Information Services(IIS), kemudian expand node Sites -&gt; Default Web Site</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-12.png" alt="" class="align-center"></p>
+
+<p>Kemudian klik kanan <code class="language-plaintext highlighter-rouge">Calculator</code> -&gt; Convert to Application</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-13.png" alt="" class="align-center"></p>
+
+<p>Setelah itu akan tampil window <code class="language-plaintext highlighter-rouge">Add Application</code> kemudian klik tombol <code class="language-plaintext highlighter-rouge">Select</code></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-14.png" alt="" class="align-center"></p>
+
+<p>Pilih ASP.NET v4.0</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-15.png" alt="" class="align-center"></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-16.png" alt="" class="align-center"></p>
+
+<p>Jika berhasil icon folder Calculator akan berganti menjadi<img src="https://coding4ever.files.wordpress.com/2015/06/050615-20.png" alt=""></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-17.png" alt="" class="align-center"></p>
+
+<p><strong>7. Testing Web Service Calculator</strong></p>
+
+<p>Untuk mengetes apakah service Calculator ini berjalan dengan sukses, silahkan akses alamat : http://localhost/Calculator/ServiceCalculator.svc</p>
+
+<p>Seharusnya anda mendapatkan tampilan seperti berikut yang menandakan konfigurasi WCF service berhasil.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-18.png" alt="" class="align-center"></p>
+
+<p>Tampilan jika diakses dari <code class="language-plaintext highlighter-rouge">WCF Test Client</code></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2015/06/050615-19.png" alt="" class="align-center"></p>
+
+<p>Yuph sampai disini saja untuk postingan kali ini, insyaAlloh akan kita lanjutkan pada kesempatan berikutnya.</p>
+
+<p>Selamat <a href="https://github.com/k4m4r82/Calculator">MENCOBA</a> <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/iis" class="page__taxonomy-item" rel="tag">IIS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/internet-information-services" class="page__taxonomy-item" rel="tag">Internet Information Services</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/wcf" class="page__taxonomy-item" rel="tag">wcf</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/web-service" class="page__taxonomy-item" rel="tag">web service</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/windows-activation-services" class="page__taxonomy-item" rel="tag">Windows Activation Services</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/windows-service" class="page__taxonomy-item" rel="tag">Windows Service</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/visual-c" class="page__taxonomy-item" rel="tag">Visual C#</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/wcf" class="page__taxonomy-item" rel="tag">WCF</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2015-06-05T13:14:33+07:00">June 5, 2015</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Tutorial+WCF+Service+Bagian+%233%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2015%2F06%2F05%2Ftutorial-wcf-service-bagian-number-3%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2015%2F06%2F05%2Ftutorial-wcf-service-bagian-number-3%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2015%2F06%2F05%2Ftutorial-wcf-service-bagian-number-3%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2015/05/09/tutorial-wcf-service-bagian-number-2/" class="pagination--pager" title="Tutorial WCF Service Bagian #2
+">Previous</a>
+    
+    
+      <a href="/blog/2015/06/20/tutorial-wcf-service-bagian-number-4/" class="pagination--pager" title="Tutorial WCF Service Bagian #4
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://coding4ever.net/blog/2015/06/05/tutorial-wcf-service-bagian-number-3/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/2015/06/05/tutorial-wcf-service-bagian-number-3"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>
