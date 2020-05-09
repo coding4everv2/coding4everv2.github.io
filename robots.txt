@@ -1,1 +1,1 @@
-Sitemap: http://coding4ever.net/sitemap.xml
+Sitemap: http://coding4ever.net/blog/sitemap.xml

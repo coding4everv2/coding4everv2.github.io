@@ -1,0 +1,802 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>How can I detect whether my program is already running? | » Coding4ever’s Blog «</title>
+<meta name="description" content="Wah judulnya pake bahasa wong londo :grin:, ya kira-kira kalo kita artikan lebih kurang “Bagaimana cara mengecek program saya sudah jalan atau belum ?”.  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="How can I detect whether my program is already running?">
+<meta property="og:url" content="http://coding4ever.net/blog/2010/01/02/how-can-i-detect-whether-my-program-is-already-running/">
+
+
+  <meta property="og:description" content="Wah judulnya pake bahasa wong londo :grin:, ya kira-kira kalo kita artikan lebih kurang “Bagaimana cara mengecek program saya sudah jalan atau belum ?”.  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2010-01-02T06:17:29+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://coding4ever.net/blog/2010/01/02/how-can-i-detect-whether-my-program-is-already-running/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://coding4ever.net/blog/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/blog/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/blog/"><img src="/blog/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/blog/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/blog/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/blog/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/blog/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/blog/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/blog/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="How can I detect whether my program is already running?">
+    <meta itemprop="description" content="Wah judulnya pake bahasa wong londo :grin:, ya kira-kira kalo kita artikan lebih kurang “Bagaimana cara mengecek program saya sudah jalan atau belum ?”.">
+    <meta itemprop="datePublished" content="2010-01-02T06:17:29+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">How can I detect whether my program is already running?
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2010-01-02T06:17:29+07:00">January 2, 2010</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  2 minute read
+
+
+				
+				 • <a href="http://coding4ever.net/2010/01/02/how-can-i-detect-whether-my-program-is-already-running/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Wah judulnya pake bahasa wong londo <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">, ya kira-kira kalo kita artikan lebih kurang “Bagaimana cara mengecek program saya sudah jalan atau belum ?”.</p>
+
+<p>Kan sangat riskan sekali kalau program kita bisa dijalankan beberapa kali dalam waktu bersamaan dan dikomputer yang sama ditambah data yang diakses kritis lagi, karena secara default program/file exe yang dihasilkan oleh vb kalau dijalankan selalu membuat instance yang baru, dan tentunya ini tergantung kasus dimana kita ingin program kita tidak boleh dijalankan lebih dari 1 kali diwaktu dan komputer yang sama.</p>
+
+<!-- more -->
+
+<p>Sebenarnya sih penyelesaiannya gampang kita cukup mengetikkan kode berikut di form utama/form yang pertama kali dijalankan/load :</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">Form_Load</span><span class="p">()</span>
+    <span class="k">If</span> <span class="n">App</span><span class="p">.</span><span class="n">PrevInstance</span> <span class="k">Then</span>
+        <span class="n">MsgBox</span> <span class="s">"Program udah dijalankan"</span><span class="p">,</span> <span class="n">vbExclamation</span><span class="p">,</span> <span class="s">"Peringatan"</span>
+        <span class="k">End</span>
+    <span class="k">End</span> <span class="k">If</span>
+<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
+
+<p>Nah bagaimana kalo kita ingin program kita langsung aktif/fokus jika sebelumnya program sudah dijalankan (ya pengennya sih mirip Winamp gitu), caranya juga gampang kita tinggal revisi kode diatas trus tambahkan sebuah module dan copy paste kode berikut:</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Declare</span> <span class="k">Function</span> <span class="nf">FindWindow</span> <span class="k">Lib</span> <span class="s">"user32"</span> <span class="k">Alias</span> <span class="s">"FindWindowA"</span> <span class="p">(</span><span class="k">ByVal</span> <span class="n">lpClassName</span> <span class="ow">As</span> <span class="n">Any</span><span class="p">,</span> <span class="k">ByVal</span> <span class="n">lpWindowName</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Long</span>
+<span class="k">Private</span> <span class="k">Declare</span> <span class="k">Function</span> <span class="nf">ShowWindow</span> <span class="k">Lib</span> <span class="s">"user32"</span> <span class="p">(</span><span class="k">ByVal</span> <span class="n">hWnd</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">,</span> <span class="k">ByVal</span> <span class="n">nCmdShow</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Long</span>
+<span class="k">Private</span> <span class="k">Declare</span> <span class="k">Function</span> <span class="nf">IsIconic</span> <span class="k">Lib</span> <span class="s">"user32"</span> <span class="p">(</span><span class="k">ByVal</span> <span class="n">hWnd</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Long</span>
+<span class="k">Private</span> <span class="k">Const</span> <span class="nv">SW_RESTORE</span> <span class="o">=</span> <span class="mi">9</span>
+
+<span class="k">Public</span> <span class="k">Sub</span> <span class="nf">Main</span><span class="p">()</span>
+    <span class="k">Dim</span> <span class="nv">hWnd</span> <span class="ow">As</span> <span class="kt">Long</span>
+    <span class="k">Dim</span> <span class="nv">lres</span> <span class="ow">As</span> <span class="kt">Long</span>
+
+    <span class="k">If</span> <span class="n">App</span><span class="p">.</span><span class="n">PrevInstance</span> <span class="k">Then</span>
+        <span class="n">hWnd</span> <span class="o">=</span> <span class="n">FindWindow</span><span class="p">(</span><span class="mi">0</span><span class="o">&amp;</span><span class="p">,</span> <span class="s">"Menu Utama"</span><span class="p">)</span>
+        <span class="k">If</span> <span class="n">hWnd</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="k">Then</span>
+            <span class="k">If</span> <span class="n">IsIconic</span><span class="p">(</span><span class="n">hWnd</span><span class="p">)</span> <span class="k">Then</span> <span class="n">lres</span> <span class="o">=</span> <span class="n">ShowWindow</span><span class="p">(</span><span class="n">hWnd</span><span class="p">,</span> <span class="n">SW_RESTORE</span><span class="p">)</span>
+
+            <span class="n">AppActivate</span> <span class="s">"Menu Utama"</span>
+            <span class="k">Exit</span> <span class="k">Sub</span>
+        <span class="nf">End</span> <span class="k">If</span>
+
+    <span class="k">Else</span>
+        <span class="n">frmMain</span><span class="p">.</span><span class="n">Show</span>
+    <span class="k">End</span> <span class="k">If</span>
+<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
+
+<p>Sample diatas dengan asumsi form utama properties namenya diset = frmMain dan untuk captionnya diset = Menu Utama, selain itu Startup Object harus di set menjadi Sub Main</p>
+
+<p>Tetapi cara kedua hanya bekerja dengan baik jika kita menggunakan model <a href="http://en.wikipedia.org/wiki/Single_document_interface">SDI</a> tidak untuk <a href="http://en.wikipedia.org/wiki/Multiple_document_interface">MDI</a>, karena kode diatas untuk mengecek program kita sudah dijalankan atau belum berdasarkan properties Caption form utama. Oke mari kita lihat perbedaannya.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2010/01/1-18.jpg" alt="" class="align-center"></p>
+
+<p>Jadi kode kedua juga harus kita revisi lagi menjadi seperti berikut :</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Declare</span> <span class="k">Function</span> <span class="nf">FindWindow</span> <span class="k">Lib</span> <span class="s">"user32"</span> <span class="k">Alias</span> <span class="s">"FindWindowA"</span> <span class="p">(</span><span class="k">ByVal</span> <span class="n">lpClassName</span> <span class="ow">As</span> <span class="n">Any</span><span class="p">,</span> <span class="k">ByVal</span> <span class="n">lpWindowName</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Long</span>
+<span class="k">Private</span> <span class="k">Declare</span> <span class="k">Function</span> <span class="nf">ShowWindow</span> <span class="k">Lib</span> <span class="s">"user32"</span> <span class="p">(</span><span class="k">ByVal</span> <span class="n">hwnd</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">,</span> <span class="k">ByVal</span> <span class="n">nCmdShow</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Long</span>
+<span class="k">Private</span> <span class="k">Declare</span> <span class="k">Function</span> <span class="nf">IsIconic</span> <span class="k">Lib</span> <span class="s">"user32"</span> <span class="p">(</span><span class="k">ByVal</span> <span class="n">hwnd</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Long</span>
+<span class="k">Private</span> <span class="k">Declare</span> <span class="k">Function</span> <span class="nf">GetWindowText</span> <span class="k">Lib</span> <span class="s">"user32"</span> <span class="k">Alias</span> <span class="s">"GetWindowTextA"</span> <span class="p">(</span><span class="k">ByVal</span> <span class="n">hwnd</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">,</span> <span class="k">ByVal</span> <span class="n">lpString</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="k">ByVal</span> <span class="n">cch</span> <span class="ow">As</span> <span class="kt">Long</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Long</span>
+
+<span class="k">Private</span> <span class="k">Const</span> <span class="nv">SW_RESTORE</span> <span class="o">=</span> <span class="mi">9</span>
+
+<span class="k">Public</span> <span class="k">Sub</span> <span class="nf">Main</span><span class="p">()</span>
+    <span class="k">Dim</span> <span class="nv">formCaption</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">*</span> <span class="mi">256</span>
+
+    <span class="k">Dim</span> <span class="nv">hwnd</span>        <span class="ow">As</span> <span class="kt">Long</span>
+    <span class="k">Dim</span> <span class="nv">lres</span>        <span class="ow">As</span> <span class="kt">Long</span>
+
+    <span class="k">If</span> <span class="n">App</span><span class="p">.</span><span class="n">PrevInstance</span> <span class="k">Then</span>
+        <span class="n">hwnd</span> <span class="o">=</span> <span class="n">FindWindow</span><span class="p">(</span><span class="s">"ThunderRT6MDIForm"</span><span class="p">,</span> <span class="n">vbNullString</span><span class="p">)</span> <span class="c1">'ThunderRT6MDIForm -&gt; nama class MDIForm di VB</span>
+        <span class="k">If</span> <span class="n">hwnd</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span> <span class="k">Then</span>
+            <span class="n">GetWindowText</span> <span class="n">hwnd</span><span class="p">,</span> <span class="n">formCaption</span><span class="p">,</span> <span class="mi">256</span> <span class="c1">'GetWindowText -&gt; untuk mengambil judul/caption form</span>
+            <span class="k">If</span> <span class="n">IsIconic</span><span class="p">(</span><span class="n">hwnd</span><span class="p">)</span> <span class="k">Then</span> <span class="n">lres</span> <span class="o">=</span> <span class="n">ShowWindow</span><span class="p">(</span><span class="n">hwnd</span><span class="p">,</span> <span class="n">SW_RESTORE</span><span class="p">)</span>
+
+            <span class="n">AppActivate</span> <span class="n">formCaption</span>
+        <span class="k">End</span> <span class="k">If</span>
+
+    <span class="k">Else</span>
+        <span class="c1">'TODO : tampilkan frmLogin atau frmUtama disini</span>
+    <span class="k">End</span> <span class="k">If</span>
+<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
+
+<p>Selamat mencoba <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/blog/tags/appactivate" class="page__taxonomy-item" rel="tag">AppActivate</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/findwindow" class="page__taxonomy-item" rel="tag">FindWindow</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/getwindowtext" class="page__taxonomy-item" rel="tag">GetWindowText</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/isiconic" class="page__taxonomy-item" rel="tag">IsIconic</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/previnstance" class="page__taxonomy-item" rel="tag">PrevInstance</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/showwindow" class="page__taxonomy-item" rel="tag">ShowWindow</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/sw-restore" class="page__taxonomy-item" rel="tag">SW_RESTORE</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/thunderrt6mdiform" class="page__taxonomy-item" rel="tag">ThunderRT6MDIForm</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/blog/categories/visual-basic" class="page__taxonomy-item" rel="tag">Visual Basic</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2010-01-02T06:17:29+07:00">January 2, 2010</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=How+can+I+detect+whether+my+program+is+already+running%3F%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2010%2F01%2F02%2Fhow-can-i-detect-whether-my-program-is-already-running%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2010%2F01%2F02%2Fhow-can-i-detect-whether-my-program-is-already-running%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2010%2F01%2F02%2Fhow-can-i-detect-whether-my-program-is-already-running%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2010/01/01/menganalisa-dan-membuat-mesin-penjawab-otomatis-ym/" class="pagination--pager" title="Menganalisa dan membuat mesin penjawab otomatis Y!M
+">Previous</a>
+    
+    
+      <a href="/blog/2010/01/03/sekilas-windows-api/" class="pagination--pager" title="Sekilas windows API
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/blog/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-50866618-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://coding4ever.net/blog/2010/01/02/how-can-i-detect-whether-my-program-is-already-running/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/2010/01/02/how-can-i-detect-whether-my-program-is-already-running"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>
