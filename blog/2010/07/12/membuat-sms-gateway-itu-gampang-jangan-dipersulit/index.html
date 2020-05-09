@@ -1,0 +1,1181 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Membuat sms gateway itu gampang, jangan dipersulit !!! | » Coding4ever’s Blog «</title>
+<meta name="description" content="Berhubung banyaknya pengunjung yang nyasar ke blog ini, gara-gara keyword “sms gateway” saya jadi merasa bersalah klo enggax ikut-ikutan membahas artikel yang satu ini he he he :grin:.  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Membuat sms gateway itu gampang, jangan dipersulit !!!">
+<meta property="og:url" content="http://coding4ever.net/blog/2010/07/12/membuat-sms-gateway-itu-gampang-jangan-dipersulit/">
+
+
+  <meta property="og:description" content="Berhubung banyaknya pengunjung yang nyasar ke blog ini, gara-gara keyword “sms gateway” saya jadi merasa bersalah klo enggax ikut-ikutan membahas artikel yang satu ini he he he :grin:.  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2010-07-12T07:01:35+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://coding4ever.net/blog/2010/07/12/membuat-sms-gateway-itu-gampang-jangan-dipersulit/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://coding4ever.net/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Membuat sms gateway itu gampang, jangan dipersulit !!!">
+    <meta itemprop="description" content="Berhubung banyaknya pengunjung yang nyasar ke blog ini, gara-gara keyword “sms gateway” saya jadi merasa bersalah klo enggax ikut-ikutan membahas artikel yang satu ini he he he :grin:.">
+    <meta itemprop="datePublished" content="2010-07-12T07:01:35+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Membuat sms gateway itu gampang, jangan dipersulit !!!
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2010-07-12T07:01:35+07:00">July 12, 2010</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  9 minute read
+
+
+				
+				 • <a href="http://coding4ever.net/blog/2010/07/12/membuat-sms-gateway-itu-gampang-jangan-dipersulit/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Berhubung banyaknya pengunjung yang nyasar ke blog ini, gara-gara keyword “<strong>sms gateway</strong>” saya jadi merasa bersalah klo enggax ikut-ikutan membahas artikel yang satu ini he he he <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">.</p>
+
+<p>Walaupun sudah banyak blog yang membahas tentang masalah ini, tapi kayaxnya tema “<strong>sms gateway</strong>” masih hangat dan <strong>saru</strong> eh… seru untuk dibahas <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">, dan tentunya dengan adanya artikel ini saya berharap lebih banyak lagi yang tersesat ke blog ini <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">.</p>
+
+<p>Oke jadi kasusnya apa nih, kita ambil aja sample sederhana yaitu “<strong>pembuatan sms gateway untuk request nilai siswa</strong>” dan untuk menyederhanakan pembahasan keywordnya kita batasi saja yaitu <strong>request</strong> <strong>nilai tugas</strong> dan <strong>ulangan</strong>.</p>
+
+<p>Apa yang harus di persiapkan, pertama kita rancang dulu databasenya dan berhubung <a href="http://coding4ever.net/blog/2010/06/14/mengenal-lebih-dekat-database-sqlite/">artikel</a> saya yang membahas tentang database SQLite masih hangat jadi untuk databasenya kita menggunakan SQLite saja.</p>
+
+<!-- more -->
+
+<p>SQLite adalah database standalone yang kecil, mungil dan gratis. Bagaimana cara membuat database di SQLite sudah saya bahas di<a href="http://coding4ever.net/blog/2010/06/14/mengenal-lebih-dekat-database-sqlite/">sini</a> kemudian bagaimana mengaksesnya dari aplikasi juga sudah saya bahasa di<a href="http://coding4ever.net/blog/2010/07/05/mengakses-database-sqlite-menggunakan-library-dhsqlite/">sini</a>.</p>
+
+<p>Berikut adalah rancangan sederhana database sms yang akan kita buat :</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2010/07/12072010-1.png" alt="" class="align-center"></p>
+
+<p>Ada banyak cara untuk membaca sms masuk dan membalasanya, salah satunya adalah menggunakan perintah <a href="http://www.developershome.com/sms/atCommandsIntro.asp">AT COMMAND</a> dan Microsoft sendiri sudah menyediakan <a href="http://support.microsoft.com/kb/194922">komponen</a> yang bisa mengeksekusi perintah-perintah tersebut.</p>
+
+<p>Tentunya cara ini (menggunakan <a href="http://www.developershome.com/sms/atCommandsIntro.asp">AT COMMAND</a>) bukan cara yang favorit dikalangan programmer instan seperti Anda dan Saya <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">, jadi diartikel ini saya menggunakan <a href="http://www.activexperts.com/xmstoolkit/">komponen</a> pihak ketiga.</p>
+
+<blockquote>
+  <p>Ingat komponen ini adalah shareware, segala resiko (kemudahan dalam membuat aplikasi sms gateway) ditanggung sendiri <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">, saya disini hanya share dan tidak terikat kerja sama dengan pihak ketiga tersebut.</p>
+</blockquote>
+
+<p>Halah pernyataan ngawur <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20"></p>
+
+<p>Berikut adalah cuplikan source code untuk membaca dan mengirim sms menggunakan komponen <a href="http://www.activexperts.com/xmstoolkit/">ActiveXpert SMS</a></p>
+
+<p><strong>1. Membaca SMS Masuk</strong></p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">cmdBacaSMS_Click</span><span class="p">()</span>
+    <span class="k">Dim</span> <span class="nv">objGsmIn</span>        <span class="ow">As</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">GsmIn</span>
+
+    <span class="k">Set</span> <span class="n">objGsmIn</span> <span class="o">=</span> <span class="k">New</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">GsmIn</span>
+    <span class="k">With</span> <span class="n">objGsmIn</span>
+        <span class="p">.</span><span class="n">Activate</span> <span class="s">"XXX-XXXX-XXXX-XXXXX"</span>  <span class="c1">'diisi serial number yg Anda dapatkan secara ilegal</span>
+        <span class="p">.</span><span class="n">Device</span> <span class="o">=</span> <span class="s">"COM1"</span> <span class="c1">'disesuaikan dengan port COM yang digunakan</span>
+        <span class="p">.</span><span class="n">DeviceSpeed</span> <span class="o">=</span> <span class="mi">19200</span> <span class="c1">'default = 0</span>
+
+        <span class="p">.</span><span class="n">Storage</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">'0=sim 1=device 2=any</span>
+        <span class="p">.</span><span class="n">DeleteAfterReceive</span> <span class="o">=</span> <span class="k">True</span>
+        <span class="p">.</span><span class="n">Receive</span>
+
+        <span class="k">If</span> <span class="p">.</span><span class="n">LastError</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">Or</span> <span class="p">.</span><span class="n">LastError</span> <span class="o">=</span> <span class="mi">23140</span> <span class="k">Then</span> <span class="c1">' Success</span>
+            <span class="p">.</span><span class="n">GetFirstMessage</span>
+
+            <span class="k">While</span> <span class="p">.</span><span class="n">LastError</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">Debug</span><span class="p">.</span><span class="n">Print</span> <span class="s">"Pengirim : "</span> <span class="o">&amp;</span> <span class="p">.</span><span class="n">MessageSender</span>
+                <span class="n">Debug</span><span class="p">.</span><span class="n">Print</span> <span class="s">"Isi SMS : "</span> <span class="o">&amp;</span> <span class="p">.</span><span class="n">MessageData</span>
+
+                <span class="c1">'TODO : INSERT KE TABEL SMS_IN</span>
+
+                <span class="p">.</span><span class="n">GetNextMessage</span>
+            <span class="k">Wend</span>
+        <span class="k">End</span> <span class="k">If</span>
+    <span class="k">End</span> <span class="k">With</span>
+    <span class="k">Set</span> <span class="n">objGsmIn</span> <span class="o">=</span> <span class="k">Nothing</span>
+<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
+
+<p><strong>2. Mengirim sms</strong></p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">cmdKirimSMS_Click</span><span class="p">()</span>
+    <span class="k">Dim</span> <span class="nv">objGsmOut</span>       <span class="ow">As</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">GsmOut</span>
+    <span class="k">Dim</span> <span class="nv">objConstants</span>    <span class="ow">As</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">Constants</span>
+
+    <span class="k">Set</span> <span class="n">objGsmOut</span> <span class="o">=</span> <span class="k">New</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">GsmOut</span>
+    <span class="k">Set</span> <span class="n">objConstants</span> <span class="o">=</span> <span class="k">New</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">Constants</span>
+
+    <span class="k">With</span> <span class="n">objGsmOut</span>
+        <span class="p">.</span><span class="n">Activate</span> <span class="s">"XXX-XXXX-XXXX-XXXXX"</span>  <span class="c1">'diisi serial number yg Anda dapatkan secara ilegal</span>
+        <span class="p">.</span><span class="n">Device</span> <span class="o">=</span> <span class="s">"COM1"</span> <span class="c1">'disesuaikan dengan port COM yang digunakan</span>
+        <span class="p">.</span><span class="n">DeviceSpeed</span> <span class="o">=</span> <span class="mi">19200</span> <span class="c1">'default = 0</span>
+        <span class="p">.</span><span class="n">RequestStatusReport</span> <span class="o">=</span> <span class="k">False</span>
+
+        <span class="p">.</span><span class="n">MessageType</span> <span class="o">=</span> <span class="n">objConstants</span><span class="p">.</span><span class="n">asMESSAGETYPE_TEXT</span> <span class="c1">'mengirim pesan maksimal 160 karakter</span>
+        <span class="c1">'.MessageType = objConstants.asMESSAGETYPE_TEXT_MULTIPART 'jika lebih dari 160 karakter gunakan opsi ini</span>
+
+        <span class="p">.</span><span class="n">MessageRecipient</span> <span class="o">=</span> <span class="s">"nomor tujuan"</span> <span class="c1">'biasanya menggunakan prefix +62</span>
+        <span class="p">.</span><span class="n">MessageData</span> <span class="o">=</span> <span class="s">"isi pesan"</span>
+        <span class="p">.</span><span class="n">Send</span> <span class="c1">'kirim</span>
+    <span class="k">End</span> <span class="k">With</span>
+
+    <span class="k">Set</span> <span class="n">objConstants</span> <span class="o">=</span> <span class="k">Nothing</span>
+    <span class="k">Set</span> <span class="n">objGsmOut</span> <span class="o">=</span> <span class="k">Nothing</span>
+<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
+
+<p>Jadi cukup dengan bermodalkan 2 cuplikan kode diatas kita akan menyelesaikan aplikasi yg dibahas pada artikel kali ini.</p>
+
+<p>Adapun untuk keyword yang akan digunakan sebagai berikut :</p>
+
+<p><strong>1. Request nilai tugas</strong></p>
+
+<p>keyword : tgs#nis</p>
+
+<p>contoh :
+tgs#9941224165</p>
+
+<p>balasan :
+Nilai tugas (NAMA SISWA) : BI=95, IPA=75, IPS=80, MTK=85</p>
+
+<p><strong>2. Request nilai ulangan harian</strong></p>
+
+<p>keyword : uh#nis</p>
+
+<p>contoh :
+uh#9941224165</p>
+
+<p>balasan :
+Nilai ulangan (NAMA SISWA) : BI=95, IPA=75, IPS=80, MTK=85</p>
+
+<p>Berikut penjelasan ringkas beberapa cuplikan source code yang digunakan dalam pembuatan aplikasi sms gateway ini.</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Function</span> <span class="nf">connectToDevice</span><span class="p">(</span><span class="k">ByVal</span> <span class="n">device</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Boolean</span>
+    <span class="k">Dim</span> <span class="nv">objGsm</span>      <span class="ow">As</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">GsmOut</span>
+    <span class="k">Dim</span> <span class="nv">manufaktur</span>  <span class="ow">As</span> <span class="kt">String</span>
+
+    <span class="k">On</span> <span class="k">Error</span> <span class="k">GoTo</span> <span class="n">errHandle</span>
+
+    <span class="k">Set</span> <span class="n">objGsm</span> <span class="o">=</span> <span class="k">New</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">GsmOut</span>
+    <span class="k">With</span> <span class="n">objGsm</span>
+        <span class="p">.</span><span class="n">Activate</span> <span class="n">SERIAL_NUMBER</span>
+        <span class="p">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">device</span>
+
+        <span class="n">manufaktur</span> <span class="o">=</span> <span class="p">.</span><span class="n">SendCommand</span><span class="p">(</span><span class="s">"AT+CGMI"</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>  <span class="c1">'menampilkan informasi manufactur</span>
+        <span class="n">manufaktur</span> <span class="o">=</span> <span class="n">Replace</span><span class="err">$</span><span class="p">(</span><span class="n">manufaktur</span><span class="p">,</span> <span class="n">vbCrLf</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+        <span class="n">manufaktur</span> <span class="o">=</span> <span class="n">Replace</span><span class="err">$</span><span class="p">(</span><span class="n">manufaktur</span><span class="p">,</span> <span class="s">"OK"</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+        <span class="n">manufaktur</span> <span class="o">=</span> <span class="n">Replace</span><span class="err">$</span><span class="p">(</span><span class="n">manufaktur</span><span class="p">,</span> <span class="s">"ERROR"</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+        <span class="n">manufaktur</span> <span class="o">=</span> <span class="n">Replace</span><span class="err">$</span><span class="p">(</span><span class="n">manufaktur</span><span class="p">,</span> <span class="s">"AT+CGMI"</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+    <span class="k">End</span> <span class="k">With</span>
+    <span class="k">Set</span> <span class="n">objGsm</span> <span class="o">=</span> <span class="k">Nothing</span>
+
+    <span class="k">If</span> <span class="n">Len</span><span class="p">(</span><span class="n">manufaktur</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">Then</span>
+        <span class="n">txtModem</span><span class="p">.</span><span class="n">Text</span> <span class="o">=</span> <span class="n">manufaktur</span>
+        <span class="n">connectToDevice</span> <span class="o">=</span> <span class="k">True</span>
+    <span class="k">End</span> <span class="k">If</span>
+
+    <span class="k">Exit</span> <span class="k">Function</span>
+<span class="nf">errHandle</span><span class="p">:</span>
+    <span class="n">connectToDevice</span> <span class="o">=</span> <span class="k">False</span>
+<span class="k">End</span> <span class="k">Function</span></code></pre></figure>
+
+<p>Sesuai namanya fungsi connectToDevice digunakan untuk mengecek status modem sms yang terpasang, salah satu caranya adalah dengan mengirimkan <a href="http://www.developershome.com/sms/atCommandsIntro.asp">AT COMMAND</a> “AT+CGM”, <a href="http://www.developershome.com/sms/atCommandsIntro.asp">AT COMMAND</a> ini berfungsi untuk mendapatkan informasi manufaktur.</p>
+
+<p>Sebagai contoh jika modem sms yg digunakan adalah hp siemens maka nilai yg dihasilkan dari perintah ini adalah “SIEMENS” dan tentunya hp yg bersangkutan juga harus mendukung AT COMMAND.</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">readSMS</span><span class="p">()</span>
+    <span class="k">Dim</span> <span class="nv">objGsmIn</span>        <span class="ow">As</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">GsmIn</span>
+    <span class="k">Dim</span> <span class="nv">objConstants</span>    <span class="ow">As</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">Constants</span>
+    <span class="k">Dim</span> <span class="nv">cmd</span>             <span class="ow">As</span> <span class="n">cCommand</span>
+
+    <span class="k">Dim</span> <span class="nv">keyword</span>         <span class="ow">As</span> <span class="kt">String</span>
+    <span class="k">Dim</span> <span class="nv">phoneNumber</span>     <span class="ow">As</span> <span class="kt">String</span>
+    <span class="k">Dim</span> <span class="nv">i</span>               <span class="ow">As</span> <span class="kt">Integer</span>
+
+    <span class="k">On</span> <span class="k">Error</span> <span class="k">GoTo</span> <span class="n">errHandle</span>
+
+    <span class="n">Screen</span><span class="p">.</span><span class="n">MousePointer</span> <span class="o">=</span> <span class="n">vbHourglass</span>
+    <span class="n">cmdStop</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">False</span>
+    <span class="n">tmrReceiveSms</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">False</span>
+
+    <span class="n">DoEvents</span>
+
+    <span class="k">Set</span> <span class="n">objGsmIn</span> <span class="o">=</span> <span class="k">New</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">GsmIn</span>
+    <span class="k">Set</span> <span class="n">objConstants</span> <span class="o">=</span> <span class="k">New</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">Constants</span>
+
+    <span class="k">With</span> <span class="n">objGsmIn</span>
+        <span class="p">.</span><span class="n">Activate</span> <span class="n">SERIAL_NUMBER</span>
+        <span class="p">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">cmbPORT</span><span class="p">.</span><span class="n">Text</span>
+        <span class="p">.</span><span class="n">DeviceSpeed</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="p">.</span><span class="n">Storage</span> <span class="o">=</span> <span class="n">cmbStorage</span><span class="p">.</span><span class="n">ItemData</span><span class="p">(</span><span class="n">cmbStorage</span><span class="p">.</span><span class="n">ListIndex</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">DeleteAfterReceive</span> <span class="o">=</span> <span class="k">True</span> <span class="c1">'hapus sms jika sudah dibaca</span>
+        <span class="p">.</span><span class="n">Receive</span>
+
+        <span class="k">If</span> <span class="p">.</span><span class="n">LastError</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">Or</span> <span class="p">.</span><span class="n">LastError</span> <span class="o">=</span> <span class="mi">23140</span> <span class="k">Then</span> <span class="c1">'baca sms sukses</span>
+            <span class="p">.</span><span class="n">GetFirstMessage</span>
+
+            <span class="n">strSql</span> <span class="o">=</span> <span class="s">"INSERT INTO sms_in (phone_number, sms_keyword, date_in, time_in) VALUES (?, ?, ?, ?)"</span>
+            <span class="k">Set</span> <span class="n">cmd</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateCommand</span><span class="p">(</span><span class="n">strSql</span><span class="p">)</span>
+            <span class="n">conn</span><span class="p">.</span><span class="n">BeginTrans</span>
+
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">While</span> <span class="p">.</span><span class="n">LastError</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">phoneNumber</span> <span class="o">=</span> <span class="n">rep0to62</span><span class="p">(.</span><span class="n">MessageSender</span><span class="p">)</span>
+                <span class="n">keyword</span> <span class="o">=</span> <span class="p">.</span><span class="n">MessageData</span>
+
+                <span class="n">cmd</span><span class="p">.</span><span class="n">SetText</span> <span class="mi">1</span><span class="p">,</span> <span class="n">phoneNumber</span>
+                <span class="n">cmd</span><span class="p">.</span><span class="n">SetText</span> <span class="mi">2</span><span class="p">,</span> <span class="n">keyword</span>
+                <span class="n">cmd</span><span class="p">.</span><span class="n">SetDate</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Format</span><span class="p">(</span><span class="n">Now</span><span class="p">,</span> <span class="s">"yyyy/MM/dd"</span><span class="p">)</span>
+                <span class="n">cmd</span><span class="p">.</span><span class="n">SetTime</span> <span class="mi">4</span><span class="p">,</span> <span class="n">Format</span><span class="p">(</span><span class="n">Now</span><span class="p">,</span> <span class="s">"hh:mm:ss"</span><span class="p">)</span>
+
+                <span class="n">cmd</span><span class="p">.</span><span class="n">Execute</span>
+
+                <span class="k">If</span> <span class="n">i</span> <span class="ow">Mod</span> <span class="mi">10</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">Then</span>
+                    <span class="n">conn</span><span class="p">.</span><span class="n">CommitTrans</span>
+                    <span class="n">DoEvents</span>
+
+                    <span class="n">conn</span><span class="p">.</span><span class="n">BeginTrans</span>
+                <span class="k">End</span> <span class="k">If</span>
+
+                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+                <span class="p">.</span><span class="n">GetNextMessage</span>
+            <span class="k">Wend</span>
+
+            <span class="n">conn</span><span class="p">.</span><span class="n">CommitTrans</span>
+            <span class="k">Set</span> <span class="n">cmd</span> <span class="o">=</span> <span class="k">Nothing</span>
+
+        <span class="k">End</span> <span class="k">If</span>
+    <span class="k">End</span> <span class="k">With</span>
+    <span class="k">Set</span> <span class="n">objGsmIn</span> <span class="o">=</span> <span class="k">Nothing</span>
+
+    <span class="k">If</span> <span class="n">cekSMSIn</span> <span class="k">Then</span>
+        <span class="k">Call</span> <span class="n">sendSMS</span>
+    <span class="k">Else</span>
+        <span class="k">Call</span> <span class="n">Wait</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
+    <span class="k">End</span> <span class="k">If</span>
+
+    <span class="n">cmdStop</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">True</span>
+    <span class="n">Screen</span><span class="p">.</span><span class="n">MousePointer</span> <span class="o">=</span> <span class="n">vbDefault</span>
+
+    <span class="n">tmrReceiveSms</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">True</span>
+
+    <span class="k">Exit</span> <span class="k">Sub</span>
+<span class="nf">errHandle</span><span class="p">:</span>
+    <span class="n">tmrReceiveSms</span><span class="p">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="k">True</span>
+<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
+
+<p>Prosedur readSMS digunakan untuk membaca sms masuk dan menyimpannya ke tabel sms_in, berhubung komponen ActiveXpert SMS tidak mempunyai event yg menandai adanya sms masuk maka sebagai gantinya kita menggunakan timer untuk memanggil prosedur readSMS.</p>
+
+<p>Salah satu properties penting yang dimiliki oleh ActiveXpert SMS adalah DeleteAfterReceive, jika nilainya diset true maka sms yg masuk akan otomatis dihapus dan tentunya setelah smsnya dibaca.</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Function</span> <span class="nf">cekSMSIn</span><span class="p">()</span> <span class="ow">As</span> <span class="kt">Boolean</span>
+    <span class="k">Dim</span> <span class="nv">ret</span> <span class="ow">As</span> <span class="kt">Integer</span>
+
+    <span class="n">strSql</span> <span class="o">=</span> <span class="s">"SELECT COUNT(*) FROM sms_in WHERE status = 0"</span> <span class="c1">'jika status = 0 berarti sms masuk belum di proses</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="k">CInt</span><span class="p">(</span><span class="n">dbGetValue</span><span class="p">(</span><span class="n">strSql</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="k">If</span> <span class="n">ret</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">Then</span> <span class="c1">'ada sms yg belum diproses</span>
+        <span class="n">cekSMSIn</span> <span class="o">=</span> <span class="k">True</span>
+    <span class="k">End</span> <span class="k">If</span>
+<span class="k">End</span> <span class="k">Function</span></code></pre></figure>
+
+<p>Prosedur cekSMSIn dibutuhkan oleh prosedur readSMS, jadi dengan adanya prosedur cekSMSIn ini program akan mengetahui kapan waktu yg tepat untuk memanggil prosedur sendSMS.</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">sendSMS</span><span class="p">()</span>
+    <span class="k">Dim</span> <span class="nv">rsSend</span>          <span class="ow">As</span> <span class="n">cRecordset</span>
+    <span class="k">Dim</span> <span class="nv">cmd</span>             <span class="ow">As</span> <span class="n">cCommand</span>
+
+    <span class="k">Dim</span> <span class="nv">objGsmOut</span>       <span class="ow">As</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">GsmOut</span>
+    <span class="k">Dim</span> <span class="nv">objConstants</span>    <span class="ow">As</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">Constants</span>
+
+    <span class="k">Dim</span> <span class="nv">phoneNumber</span>     <span class="ow">As</span> <span class="kt">String</span>
+    <span class="k">Dim</span> <span class="nv">keyword</span>         <span class="ow">As</span> <span class="kt">String</span>
+    <span class="k">Dim</span> <span class="nv">smsBalasan</span>      <span class="ow">As</span> <span class="kt">String</span>
+
+    <span class="k">On</span> <span class="k">Error</span> <span class="k">GoTo</span> <span class="n">errHandle</span>
+
+    <span class="c1">'cek sms yang belum di proses, ditandai dg status = 0</span>
+    <span class="n">strSql</span> <span class="o">=</span> <span class="s">"SELECT id, phone_number, sms_keyword "</span> <span class="o">&amp;</span> <span class="n">_</span>
+             <span class="s">"FROM sms_in "</span> <span class="o">&amp;</span> <span class="n">_</span>
+             <span class="s">"WHERE status = 0 "</span> <span class="o">&amp;</span> <span class="n">_</span>
+             <span class="s">"ORDER BY id"</span>
+    <span class="k">Set</span> <span class="n">rsSend</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">OpenRecordset</span><span class="p">(</span><span class="n">strSql</span><span class="p">)</span>
+    <span class="k">If</span> <span class="k">Not</span> <span class="n">rsSend</span><span class="p">.</span><span class="n">EOF</span> <span class="k">Then</span>
+        <span class="k">Set</span> <span class="n">objGsmOut</span> <span class="o">=</span> <span class="k">New</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">GsmOut</span>
+        <span class="k">Set</span> <span class="n">objConstants</span> <span class="o">=</span> <span class="k">New</span> <span class="n">ASmsCtrl</span><span class="p">.</span><span class="n">Constants</span>
+
+        <span class="n">objGsmOut</span><span class="p">.</span><span class="n">Activate</span> <span class="n">SERIAL_NUMBER</span>
+        <span class="n">objGsmOut</span><span class="p">.</span><span class="n">device</span> <span class="o">=</span> <span class="n">cmbPORT</span><span class="p">.</span><span class="n">Text</span>
+        <span class="n">objGsmOut</span><span class="p">.</span><span class="n">DeviceSpeed</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">objGsmOut</span><span class="p">.</span><span class="n">RequestStatusReport</span> <span class="o">=</span> <span class="k">False</span>
+        <span class="n">objGsmOut</span><span class="p">.</span><span class="n">MessageType</span> <span class="o">=</span> <span class="n">objConstants</span><span class="p">.</span><span class="n">asMESSAGETYPE_TEXT_MULTIPART</span>
+
+        <span class="k">Do</span> <span class="k">While</span> <span class="k">Not</span> <span class="n">rsSend</span><span class="p">.</span><span class="n">EOF</span>
+            <span class="c1">'ganti prefix nomor hp 0 -&gt; +62</span>
+            <span class="n">phoneNumber</span> <span class="o">=</span> <span class="n">rep0to62</span><span class="p">(</span><span class="s">""</span> <span class="o">&amp;</span> <span class="n">rsSend</span><span class="p">(</span><span class="s">"phone_number"</span><span class="p">).</span><span class="n">Value</span><span class="p">)</span>
+            <span class="n">keyword</span> <span class="o">=</span> <span class="n">rsSend</span><span class="p">(</span><span class="s">"sms_keyword"</span><span class="p">).</span><span class="n">Value</span>
+
+            <span class="n">smsBalasan</span> <span class="o">=</span> <span class="n">getBalasanSms</span><span class="p">(</span><span class="n">keyword</span><span class="p">,</span> <span class="n">phoneNumber</span><span class="p">)</span>
+
+            <span class="n">objGsmOut</span><span class="p">.</span><span class="n">MessageRecipient</span> <span class="o">=</span> <span class="n">phoneNumber</span>
+            <span class="n">objGsmOut</span><span class="p">.</span><span class="n">MessageData</span> <span class="o">=</span> <span class="n">smsBalasan</span>
+            <span class="n">objGsmOut</span><span class="p">.</span><span class="n">Send</span>
+
+            <span class="k">If</span> <span class="n">objGsmOut</span><span class="p">.</span><span class="n">LastError</span> <span class="o">=</span> <span class="mi">0</span> <span class="ow">Or</span> <span class="n">objGsmOut</span><span class="p">.</span><span class="n">LastError</span> <span class="o">=</span> <span class="mi">23140</span> <span class="k">Then</span> <span class="c1">'sms sukses dikirim</span>
+                <span class="c1">'update status sms -&gt; 1</span>
+                <span class="n">strSql</span> <span class="o">=</span> <span class="s">"UPDATE sms_in SET status = ?, no_ref = ? "</span> <span class="o">&amp;</span> <span class="n">_</span>
+                         <span class="s">"WHERE id = ?"</span>
+                <span class="k">Set</span> <span class="n">cmd</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateCommand</span><span class="p">(</span><span class="n">strSql</span><span class="p">)</span>
+                <span class="k">With</span> <span class="n">cmd</span>
+                    <span class="p">.</span><span class="n">SetInt32</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+                    <span class="p">.</span><span class="n">SetInt32</span> <span class="mi">2</span><span class="p">,</span> <span class="n">objGsmOut</span><span class="p">.</span><span class="n">MessageReference</span>
+                    <span class="p">.</span><span class="n">SetInt32</span> <span class="mi">3</span><span class="p">,</span> <span class="n">rsSend</span><span class="p">(</span><span class="s">"id"</span><span class="p">).</span><span class="n">Value</span>
+
+                    <span class="p">.</span><span class="n">Execute</span>
+                <span class="k">End</span> <span class="k">With</span>
+                <span class="k">Set</span> <span class="n">cmd</span> <span class="o">=</span> <span class="k">Nothing</span>
+
+                <span class="c1">'insert ke tabel sms_out, untuk histori sms keluar</span>
+                <span class="n">strSql</span> <span class="o">=</span> <span class="s">"INSERT INTO sms_out (phone_number, replay_msg, date_out, time_out) VALUES (?, ?, ?, ?)"</span>
+                <span class="k">Set</span> <span class="n">cmd</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateCommand</span><span class="p">(</span><span class="n">strSql</span><span class="p">)</span>
+                <span class="k">With</span> <span class="n">cmd</span>
+                    <span class="p">.</span><span class="n">SetText</span> <span class="mi">1</span><span class="p">,</span> <span class="n">phoneNumber</span>
+                    <span class="p">.</span><span class="n">SetText</span> <span class="mi">2</span><span class="p">,</span> <span class="n">smsBalasan</span>
+                    <span class="p">.</span><span class="n">SetDate</span> <span class="mi">3</span><span class="p">,</span> <span class="n">Format</span><span class="p">(</span><span class="n">Now</span><span class="p">,</span> <span class="s">"yyyy/MM/dd"</span><span class="p">)</span>
+                    <span class="p">.</span><span class="n">SetTime</span> <span class="mi">4</span><span class="p">,</span> <span class="n">Format</span><span class="p">(</span><span class="n">Now</span><span class="p">,</span> <span class="s">"hh:mm:ss"</span><span class="p">)</span>
+
+                    <span class="p">.</span><span class="n">Execute</span>
+                <span class="k">End</span> <span class="k">With</span>
+                <span class="k">Set</span> <span class="n">cmd</span> <span class="o">=</span> <span class="k">Nothing</span>
+
+            <span class="k">Else</span> <span class="c1">'sms gagal dikirim</span>
+                <span class="c1">'update status sms -&gt; 1</span>
+
+                <span class="c1">'ini masih bisa dikembangkan lagi dengan menambah kolom max_jumlah_kirim di tabel sms_in</span>
+                <span class="c1">'jadi bisa diberi aturan sms yg gagal dikirim &gt; 3x baru status smsnya diupdate menjadi 1</span>
+                <span class="n">strSql</span> <span class="o">=</span> <span class="s">"UPDATE sms_in SET status = ?, no_ref = ? "</span> <span class="o">&amp;</span> <span class="n">_</span>
+                         <span class="s">"WHERE id = ?"</span>
+                <span class="k">Set</span> <span class="n">cmd</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">CreateCommand</span><span class="p">(</span><span class="n">strSql</span><span class="p">)</span>
+                <span class="k">With</span> <span class="n">cmd</span>
+                    <span class="p">.</span><span class="n">SetInt32</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+                    <span class="p">.</span><span class="n">SetInt32</span> <span class="mi">2</span><span class="p">,</span> <span class="n">objGsmOut</span><span class="p">.</span><span class="n">MessageReference</span>
+                    <span class="p">.</span><span class="n">SetInt32</span> <span class="mi">3</span><span class="p">,</span> <span class="n">rsSend</span><span class="p">(</span><span class="s">"id"</span><span class="p">).</span><span class="n">Value</span>
+
+                    <span class="p">.</span><span class="n">Execute</span>
+                <span class="k">End</span> <span class="k">With</span>
+                <span class="k">Set</span> <span class="n">cmd</span> <span class="o">=</span> <span class="k">Nothing</span>
+            <span class="k">End</span> <span class="k">If</span>
+
+            <span class="k">Call</span> <span class="n">Wait</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>
+
+            <span class="n">rsSend</span><span class="p">.</span><span class="n">MoveNext</span>
+        <span class="k">Loop</span>
+        <span class="k">Set</span> <span class="n">objConstants</span> <span class="o">=</span> <span class="k">Nothing</span>
+        <span class="k">Set</span> <span class="n">objGsmOut</span> <span class="o">=</span> <span class="k">Nothing</span>
+    <span class="k">End</span> <span class="k">If</span>
+
+    <span class="k">Exit</span> <span class="k">Sub</span>
+<span class="nf">errHandle</span><span class="p">:</span>
+    <span class="k">Resume</span> <span class="k">Next</span>
+<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
+
+<p>Prosedur sendSMS akan mengolah sms masuk yg belum di proses (ditandai dengan status = 0), mengupdate statusnya menjadi 1 jika berhasil mengirimkan sms, kemudian menyimpannya ke tabel sms_out sebagai histori pengiriman sms.</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">rep0to62</span><span class="p">(</span><span class="k">ByVal</span> <span class="n">phoneNumber</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">String</span>
+    <span class="c1">'fungsi untuk mengganti prefix 0 -&gt; +62</span>
+
+    <span class="n">rep0to62</span> <span class="o">=</span> <span class="n">phoneNumber</span>
+    <span class="k">If</span> <span class="n">Left</span><span class="p">(</span><span class="n">phoneNumber</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="s">"0"</span> <span class="k">Then</span> <span class="n">rep0to62</span> <span class="o">=</span> <span class="s">"+62"</span> <span class="o">&amp;</span> <span class="n">Right</span><span class="p">(</span><span class="n">phoneNumber</span><span class="p">,</span> <span class="n">Len</span><span class="p">(</span><span class="n">phoneNumber</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">End</span> <span class="k">Function</span></code></pre></figure>
+
+<p>Sesuai namanya fungsi ini berguna untuk mengganti prefix nomor hp 0 menjadi +62 (kode indonesia).</p>
+
+<p>Terakhir fungsi untuk memproses keyword sms yang masuk dan sekaligus sebagai balasan untuk sms keluar.</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Public</span> <span class="k">Function</span> <span class="nf">getBalasanSms</span><span class="p">(</span><span class="k">ByVal</span> <span class="n">keywordSms</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">,</span> <span class="k">ByVal</span> <span class="n">phoneNumber</span> <span class="ow">As</span> <span class="kt">String</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">String</span>
+    <span class="k">Dim</span> <span class="nv">rs</span>              <span class="ow">As</span> <span class="n">cRecordset</span>
+    <span class="k">Dim</span> <span class="nv">param1</span>          <span class="ow">As</span> <span class="kt">String</span>
+    <span class="k">Dim</span> <span class="nv">arrKeyword</span><span class="p">()</span>    <span class="ow">As</span> <span class="kt">String</span>
+
+    <span class="k">Dim</span> <span class="nv">prefix</span>          <span class="ow">As</span> <span class="kt">String</span>
+    <span class="k">Dim</span> <span class="nv">nilai</span>           <span class="ow">As</span> <span class="kt">String</span>
+    <span class="k">Dim</span> <span class="nv">nama</span>            <span class="ow">As</span> <span class="kt">String</span>
+
+    <span class="k">Dim</span> <span class="nv">tha</span>             <span class="ow">As</span> <span class="kt">String</span>
+    <span class="k">Dim</span> <span class="nv">semester</span>        <span class="ow">As</span> <span class="kt">String</span>
+
+    <span class="k">If</span> <span class="n">Len</span><span class="p">(</span><span class="n">keywordSms</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">Then</span>
+        <span class="k">If</span> <span class="n">InStr</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">keywordSms</span><span class="p">,</span> <span class="s">"#"</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">Then</span> <span class="c1">'karakter # -&gt; separator keyword</span>
+            <span class="n">arrKeyword</span> <span class="o">=</span> <span class="n">Split</span><span class="p">(</span><span class="n">keywordSms</span><span class="p">,</span> <span class="s">"#"</span><span class="p">)</span>
+            <span class="k">If</span> <span class="k">Not</span> <span class="p">(</span><span class="n">Len</span><span class="p">(</span><span class="n">arrKeyword</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">Then</span>
+                <span class="n">getBalasanSms</span> <span class="o">=</span> <span class="s">"Keyword sms salah"</span>
+                <span class="k">Exit</span> <span class="k">Function</span>
+
+            <span class="nf">Else</span>
+                <span class="c1">'do nothing</span>
+            <span class="k">End</span> <span class="k">If</span>
+
+        <span class="k">Else</span>
+            <span class="k">ReDim</span> <span class="n">arrKeyword</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">arrKeyword</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">=</span> <span class="n">keywordSms</span>
+        <span class="k">End</span> <span class="k">If</span>
+
+    <span class="k">Else</span>
+        <span class="n">getBalasanSms</span> <span class="o">=</span> <span class="s">"Keyword sms salah"</span>
+        <span class="k">Exit</span> <span class="k">Function</span>
+    <span class="nf">End</span> <span class="k">If</span>
+
+    <span class="n">prefix</span> <span class="o">=</span> <span class="n">arrKeyword</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="n">UCase</span><span class="err">$</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+
+    <span class="k">If</span> <span class="n">UBound</span><span class="p">(</span><span class="n">arrKeyword</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">Then</span> <span class="n">param1</span> <span class="o">=</span> <span class="n">arrKeyword</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">'untuk contoh disini param1 bernilai nomor induk siswa</span>
+
+    <span class="c1">'untuk pengembangan lebih lanjut tahun ajaran dan semester dibuat settingan tersendiri</span>
+    <span class="n">tha</span> <span class="o">=</span> <span class="s">"2009/2010"</span>
+    <span class="n">semester</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="k">Select</span> <span class="k">Case</span> <span class="n">prefix</span>
+        <span class="k">Case</span> <span class="s">"TGS"</span>
+            <span class="c1">'validasi nis siswa</span>
+            <span class="k">If</span> <span class="k">Not</span> <span class="n">isValidNIS</span><span class="p">(</span><span class="n">param1</span><span class="p">)</span> <span class="k">Then</span> <span class="n">getBalasanSms</span> <span class="o">=</span> <span class="n">Replace</span><span class="p">(</span><span class="n">NIS_SALAH</span><span class="p">,</span> <span class="s">"&lt;nis&gt;"</span><span class="p">,</span> <span class="n">param1</span><span class="p">):</span> <span class="k">Exit</span> <span class="k">Function</span>
+
+            <span class="c1">'validasi no hp siswa</span>
+            <span class="c1">'nama sekolah sebaiknya disimpan didalam variabel</span>
+            <span class="nf">If</span> <span class="k">Not</span> <span class="n">isValidHPSiswa</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">phoneNumber</span><span class="p">)</span> <span class="k">Then</span>
+                <span class="n">getBalasanSms</span> <span class="o">=</span> <span class="n">Replace</span><span class="p">(</span><span class="n">HP_UNREG</span><span class="p">,</span> <span class="s">"&lt;nama_sekolah&gt;"</span><span class="p">,</span> <span class="s">"SMA Negeri Yogyakarta"</span><span class="p">)</span>
+                <span class="n">getBalasanSms</span> <span class="o">=</span> <span class="n">Replace</span><span class="p">(</span><span class="n">getBalasanSms</span><span class="p">,</span> <span class="s">"&lt;no_hp&gt;"</span><span class="p">,</span> <span class="n">phoneNumber</span><span class="p">):</span> <span class="k">Exit</span> <span class="k">Function</span>
+            <span class="nf">End</span> <span class="k">If</span>
+
+            <span class="n">strSql</span> <span class="o">=</span> <span class="s">"SELECT UPPER(nama) FROM siswa WHERE nis = '"</span> <span class="o">&amp;</span> <span class="n">param1</span> <span class="o">&amp;</span> <span class="s">"'"</span>
+            <span class="n">nama</span> <span class="o">=</span> <span class="k">CStr</span><span class="p">(</span><span class="n">dbGetValue</span><span class="p">(</span><span class="n">strSql</span><span class="p">,</span> <span class="s">""</span><span class="p">))</span>
+
+            <span class="c1">'mulai proses pencarian nilai</span>
+            <span class="n">strSql</span> <span class="o">=</span> <span class="s">"SELECT matapelajaran_kode, nilai "</span> <span class="o">&amp;</span> <span class="n">_</span>
+                     <span class="s">"FROM nilai_tugas "</span> <span class="o">&amp;</span> <span class="n">_</span>
+                     <span class="s">"WHERE siswa_nis = '"</span> <span class="o">&amp;</span> <span class="n">param1</span> <span class="o">&amp;</span> <span class="s">"' AND tahun_ajaran = '"</span> <span class="o">&amp;</span> <span class="n">tha</span> <span class="o">&amp;</span> <span class="s">"' AND semester = "</span> <span class="o">&amp;</span> <span class="n">semester</span> <span class="o">&amp;</span> <span class="s">" "</span> <span class="o">&amp;</span> <span class="n">_</span>
+                     <span class="s">"ORDER BY matapelajaran_kode"</span>
+            <span class="k">Set</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">OpenRecordset</span><span class="p">(</span><span class="n">strSql</span><span class="p">)</span>
+            <span class="k">If</span> <span class="k">Not</span> <span class="n">rs</span><span class="p">.</span><span class="n">EOF</span> <span class="k">Then</span>
+                <span class="k">Do</span> <span class="k">While</span> <span class="k">Not</span> <span class="n">rs</span><span class="p">.</span><span class="n">EOF</span>
+                    <span class="n">nilai</span> <span class="o">=</span> <span class="n">nilai</span> <span class="o">&amp;</span> <span class="n">rs</span><span class="p">(</span><span class="s">"matapelajaran_kode"</span><span class="p">).</span><span class="n">Value</span> <span class="o">&amp;</span> <span class="s">"="</span> <span class="o">&amp;</span> <span class="n">rs</span><span class="p">(</span><span class="s">"nilai"</span><span class="p">).</span><span class="n">Value</span> <span class="o">&amp;</span> <span class="s">", "</span>
+                    <span class="n">rs</span><span class="p">.</span><span class="n">MoveNext</span>
+                <span class="k">Loop</span>
+            <span class="k">End</span> <span class="k">If</span>
+
+            <span class="k">If</span> <span class="n">Len</span><span class="p">(</span><span class="n">nilai</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">Then</span>
+                <span class="n">nilai</span> <span class="o">=</span> <span class="n">Left</span><span class="p">(</span><span class="n">nilai</span><span class="p">,</span> <span class="n">Len</span><span class="p">(</span><span class="n">nilai</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="n">getBalasanSms</span> <span class="o">=</span> <span class="s">"Nilai tugas ("</span> <span class="o">&amp;</span> <span class="n">nama</span> <span class="o">&amp;</span> <span class="s">") : "</span> <span class="o">&amp;</span> <span class="n">nilai</span>
+
+            <span class="k">Else</span>
+                <span class="n">getBalasanSms</span> <span class="o">=</span> <span class="s">"Nilai tugas ("</span> <span class="o">&amp;</span> <span class="n">nama</span> <span class="o">&amp;</span> <span class="s">") sedang dalam proses pendataan"</span>
+            <span class="k">End</span> <span class="k">If</span>
+
+        <span class="k">Case</span> <span class="s">"UH"</span>
+            <span class="c1">'validasi nis siswa</span>
+            <span class="k">If</span> <span class="k">Not</span> <span class="n">isValidNIS</span><span class="p">(</span><span class="n">param1</span><span class="p">)</span> <span class="k">Then</span> <span class="n">getBalasanSms</span> <span class="o">=</span> <span class="n">Replace</span><span class="p">(</span><span class="n">NIS_SALAH</span><span class="p">,</span> <span class="s">"&lt;nis&gt;"</span><span class="p">,</span> <span class="n">param1</span><span class="p">):</span> <span class="k">Exit</span> <span class="k">Function</span>
+
+            <span class="c1">'validasi no hp siswa</span>
+            <span class="c1">'nama sekolah sebaiknya disimpan didalam variabel</span>
+            <span class="nf">If</span> <span class="k">Not</span> <span class="n">isValidHPSiswa</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">phoneNumber</span><span class="p">)</span> <span class="k">Then</span>
+                <span class="n">getBalasanSms</span> <span class="o">=</span> <span class="n">Replace</span><span class="p">(</span><span class="n">HP_UNREG</span><span class="p">,</span> <span class="s">"&lt;nama_sekolah&gt;"</span><span class="p">,</span> <span class="s">"SMA Negeri Yogyakarta"</span><span class="p">)</span>
+                <span class="n">getBalasanSms</span> <span class="o">=</span> <span class="n">Replace</span><span class="p">(</span><span class="n">getBalasanSms</span><span class="p">,</span> <span class="s">"&lt;no_hp&gt;"</span><span class="p">,</span> <span class="n">phoneNumber</span><span class="p">):</span> <span class="k">Exit</span> <span class="k">Function</span>
+            <span class="nf">End</span> <span class="k">If</span>
+
+            <span class="n">strSql</span> <span class="o">=</span> <span class="s">"SELECT UPPER(nama) FROM siswa WHERE nis = '"</span> <span class="o">&amp;</span> <span class="n">param1</span> <span class="o">&amp;</span> <span class="s">"'"</span>
+            <span class="n">nama</span> <span class="o">=</span> <span class="k">CStr</span><span class="p">(</span><span class="n">dbGetValue</span><span class="p">(</span><span class="n">strSql</span><span class="p">,</span> <span class="s">""</span><span class="p">))</span>
+
+            <span class="c1">'mulai proses pencarian nilai</span>
+            <span class="n">strSql</span> <span class="o">=</span> <span class="s">"SELECT matapelajaran_kode, nilai "</span> <span class="o">&amp;</span> <span class="n">_</span>
+                     <span class="s">"FROM nilai_ulangan "</span> <span class="o">&amp;</span> <span class="n">_</span>
+                     <span class="s">"WHERE siswa_nis = '"</span> <span class="o">&amp;</span> <span class="n">param1</span> <span class="o">&amp;</span> <span class="s">"' AND tahun_ajaran = '"</span> <span class="o">&amp;</span> <span class="n">tha</span> <span class="o">&amp;</span> <span class="s">"' AND semester = "</span> <span class="o">&amp;</span> <span class="n">semester</span> <span class="o">&amp;</span> <span class="s">" "</span> <span class="o">&amp;</span> <span class="n">_</span>
+                     <span class="s">"ORDER BY matapelajaran_kode"</span>
+            <span class="k">Set</span> <span class="n">rs</span> <span class="o">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">OpenRecordset</span><span class="p">(</span><span class="n">strSql</span><span class="p">)</span>
+            <span class="k">If</span> <span class="k">Not</span> <span class="n">rs</span><span class="p">.</span><span class="n">EOF</span> <span class="k">Then</span>
+                <span class="k">Do</span> <span class="k">While</span> <span class="k">Not</span> <span class="n">rs</span><span class="p">.</span><span class="n">EOF</span>
+                    <span class="n">nilai</span> <span class="o">=</span> <span class="n">nilai</span> <span class="o">&amp;</span> <span class="n">rs</span><span class="p">(</span><span class="s">"matapelajaran_kode"</span><span class="p">).</span><span class="n">Value</span> <span class="o">&amp;</span> <span class="s">"="</span> <span class="o">&amp;</span> <span class="n">rs</span><span class="p">(</span><span class="s">"nilai"</span><span class="p">).</span><span class="n">Value</span> <span class="o">&amp;</span> <span class="s">", "</span>
+                    <span class="n">rs</span><span class="p">.</span><span class="n">MoveNext</span>
+                <span class="k">Loop</span>
+            <span class="k">End</span> <span class="k">If</span>
+
+            <span class="k">If</span> <span class="n">Len</span><span class="p">(</span><span class="n">nilai</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">Then</span>
+                <span class="n">nilai</span> <span class="o">=</span> <span class="n">Left</span><span class="p">(</span><span class="n">nilai</span><span class="p">,</span> <span class="n">Len</span><span class="p">(</span><span class="n">nilai</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="n">getBalasanSms</span> <span class="o">=</span> <span class="s">"Nilai ulangan ("</span> <span class="o">&amp;</span> <span class="n">nama</span> <span class="o">&amp;</span> <span class="s">") : "</span> <span class="o">&amp;</span> <span class="n">nilai</span>
+
+            <span class="k">Else</span>
+                <span class="n">getBalasanSms</span> <span class="o">=</span> <span class="s">"Nilai ulangan ("</span> <span class="o">&amp;</span> <span class="n">nama</span> <span class="o">&amp;</span> <span class="s">") sedang dalam proses pendataan"</span>
+            <span class="k">End</span> <span class="k">If</span>
+
+        <span class="k">Case</span> <span class="k">Else</span>
+            <span class="n">getBalasanSms</span> <span class="o">=</span> <span class="s">"Keyword sms salah"</span>
+    <span class="k">End</span> <span class="k">Select</span>
+<span class="k">End</span> <span class="k">Function</span></code></pre></figure>
+
+<p><img src="http://coding4ever.files.wordpress.com/2010/07/12072010-2.jpg" alt="" class="align-center"></p>
+
+<p>Untuk mengetahui daftar hp/modem apa saja yang didukung, jangan sungkan dan malu-malu untuk mengklik link <a href="http://www.activexperts.com/xmstoolkit/gsmlist/">ini</a>.</p>
+
+<p>Selamat <a href="https://github.com/k4m4r82/SMSGateway">MENCOBA</a> <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/activexpert-sms" class="page__taxonomy-item" rel="tag">ActiveXpert SMS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/at-command" class="page__taxonomy-item" rel="tag">AT COMMAND</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/hp" class="page__taxonomy-item" rel="tag">hp</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/modem" class="page__taxonomy-item" rel="tag">modem</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/pembuatan-sms-gateway" class="page__taxonomy-item" rel="tag">pembuatan sms gateway</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/shareware" class="page__taxonomy-item" rel="tag">shareware</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/sms-gateway" class="page__taxonomy-item" rel="tag">SMS Gateway</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/sms-gateway" class="page__taxonomy-item" rel="tag">SMS Gateway</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/sqlite" class="page__taxonomy-item" rel="tag">SQLite</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/categories/visual-basic" class="page__taxonomy-item" rel="tag">Visual Basic</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2010-07-12T07:01:35+07:00">July 12, 2010</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Membuat+sms+gateway+itu+gampang%2C+jangan+dipersulit+%21%21%21%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2010%2F07%2F12%2Fmembuat-sms-gateway-itu-gampang-jangan-dipersulit%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2010%2F07%2F12%2Fmembuat-sms-gateway-itu-gampang-jangan-dipersulit%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2010%2F07%2F12%2Fmembuat-sms-gateway-itu-gampang-jangan-dipersulit%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2010/07/05/mengakses-database-sqlite-menggunakan-library-dhsqlite/" class="pagination--pager" title="Mengakses database SQLite menggunakan library dhSQLite
+">Previous</a>
+    
+    
+      <a href="/blog/2010/07/27/sms-tausiyah-manager/" class="pagination--pager" title="SMS Tausiyah Manager
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://coding4ever.net/blog/2010/07/12/membuat-sms-gateway-itu-gampang-jangan-dipersulit/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/2010/07/12/membuat-sms-gateway-itu-gampang-jangan-dipersulit"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>

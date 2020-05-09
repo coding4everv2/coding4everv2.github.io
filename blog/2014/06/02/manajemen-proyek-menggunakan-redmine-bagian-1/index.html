@@ -1,0 +1,888 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Manajemen Proyek Menggunakan Redmine Bagian 1 | » Coding4ever’s Blog «</title>
+<meta name="description" content="Dalam pengembangan proyek, biasanya dibutuhkan aplikasi untuk mencatat hal-hal yang berhubungan dengan proyek yang sedang dikembangkan. Seperti daftar fitur, bug, dokumentasi dan seterusnya.  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Manajemen Proyek Menggunakan Redmine Bagian 1">
+<meta property="og:url" content="http://coding4ever.net/blog/2014/06/02/manajemen-proyek-menggunakan-redmine-bagian-1/">
+
+
+  <meta property="og:description" content="Dalam pengembangan proyek, biasanya dibutuhkan aplikasi untuk mencatat hal-hal yang berhubungan dengan proyek yang sedang dikembangkan. Seperti daftar fitur, bug, dokumentasi dan seterusnya.  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2014-06-02T11:27:10+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://coding4ever.net/blog/2014/06/02/manajemen-proyek-menggunakan-redmine-bagian-1/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://coding4ever.net/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Manajemen Proyek Menggunakan Redmine Bagian 1">
+    <meta itemprop="description" content="Dalam pengembangan proyek, biasanya dibutuhkan aplikasi untuk mencatat hal-hal yang berhubungan dengan proyek yang sedang dikembangkan. Seperti daftar fitur, bug, dokumentasi dan seterusnya.">
+    <meta itemprop="datePublished" content="2014-06-02T11:27:10+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Manajemen Proyek Menggunakan Redmine Bagian 1
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2014-06-02T11:27:10+07:00">June 2, 2014</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+				
+				 • <a href="http://coding4ever.net/blog/2014/06/02/manajemen-proyek-menggunakan-redmine-bagian-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><img src="http://coding4ever.net/assets/images/logo/redmine-logo.png" alt="" class="align-left">Dalam pengembangan proyek, biasanya dibutuhkan aplikasi untuk mencatat hal-hal yang berhubungan dengan proyek yang sedang dikembangkan. Seperti daftar fitur, bug, dokumentasi dan seterusnya.</p>
+
+<!-- more -->
+
+<p>Selama ini ada beberapa aplikasi proyek manajemen yang biasa saya gunakan :</p>
+
+<ul>
+  <li>
+<a href="http://coding4ever.net/blog/2013/01/10/todo-list/">ToDo List</a> - Aplikasi berbasis windows yang gratis dan open source. Salah satu kekurangannya adalah aplikasi ini adalah aplikasi standalone, sehingga akan menyulitkan untuk mengelola proyek yang dikerjakan oleh tim.</li>
+  <li>
+<a href="https://trello.com/">Trello</a> - Aplikasi berbasis web yang simple, gratis dan online. Ini adalah salah satu aplikasi andalan saya sampai saat ini.</li>
+  <li>
+<a href="http://redmine.org/">Redmine</a> - Aplikasi berbasis web dengan fitur lengkap, gratis dan open source. Untuk menggunakan <a href="http://redmine.org/">Redmine</a> harus dilakukan instalasi terlebih dulu.</li>
+</ul>
+
+<p>Pada bagian pertama ini kita hanya akan membahas instalasi <a href="http://redmine.org/">Redmine</a> dengan target database <a href="http://dev.mysql.com/downloads/mysql/">MySQL</a>.</p>
+
+<h3 id="instalasi">Instalasi</h3>
+
+<p><a href="http://redmine.org/">Redmine</a> adalah aplikasi proyek manajemen berbasis web yang dikembangkan menggunakan framework <code class="language-plaintext highlighter-rouge">Ruby on Rails</code>. Dukungan database pun lumayan banyak seperti <code class="language-plaintext highlighter-rouge">SQLite</code>, <code class="language-plaintext highlighter-rouge">MySQL</code>, <code class="language-plaintext highlighter-rouge">PostgreSQL</code> dan <code class="language-plaintext highlighter-rouge">SQL Server</code>.</p>
+
+<p>Untuk menginstall aplikasi berbasis web yang dikembangkan menggunakan framework <code class="language-plaintext highlighter-rouge">Ruby on Rails</code> tentu berbeda dengan menginstall aplikasi berbasis web yang dikembangkan menggunakan <code class="language-plaintext highlighter-rouge">php</code>.</p>
+
+<p>Untuk saat ini ada banyak tool yang mempermudah proses instalasi <a href="http://redmine.org/">Redmine</a> seperti <a href="http://www.helicontech.com/articles/installing-redmine-on-windows-in-production/">Web Platform Installer</a> dan <a href="http://bitnami.org/stack/redmine">BitNami Redmine Stack</a>. Tapi dipostingan kali ini kita akan melakukan instalasi secara manual.</p>
+
+<p>Oke kita langsung saja, berikut adalah langkah-langkah instalasi <a href="http://redmine.org/">Redmine</a>.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>Hal-hal yang perlu kita siapkan sebelum masuk ke proses instalasi <a href="http://redmine.org/">Redmine</a>.</p>
+
+<ul>
+  <li>Install <code class="language-plaintext highlighter-rouge">Ruby</code> dan <code class="language-plaintext highlighter-rouge">Development Kit</code>. Untuk mempermudah instalasi anda bisa menggunakan <a href="https://s3.amazonaws.com/railsinstaller/Windows/railsinstaller-2.2.3.exe">RailsInstaller</a> yang di dalamnya sudah diikutsertakan paket <code class="language-plaintext highlighter-rouge">Ruby</code> dan <code class="language-plaintext highlighter-rouge">Development Kit</code>.</li>
+  <li>Install <a href="http://dev.mysql.com/downloads/mysql/">MySQL</a>.</li>
+  <li>
+    <p>Download <a href="http://dev.mysql.com/downloads/connector/c/">MySQL Connector/C</a>, kemudian ekstrak ke folder <code class="language-plaintext highlighter-rouge">C:\mysql-connector</code></p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2014/06/1.png" alt="" class="align-center"></p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2014/06/2.png" alt="" class="align-center"></p>
+
+    <p>kemudian copykan file <code class="language-plaintext highlighter-rouge">libmysql.dll</code> yang ada di folder <code class="language-plaintext highlighter-rouge">C:\mysql-connector\lib</code> ke folder <code class="language-plaintext highlighter-rouge">C:\RailsInstaller\Ruby1.9.3\bin</code></p>
+  </li>
+  <li>Install <a href="http://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/binaries/ImageMagick-6.7.7-0-Q16-windows-dll.exe">ImageMagick</a> (optional). 
+Petunjuk instalasinya ada di<a href="http://www.redmine.org/projects/redmine/wiki/HowTo_install_rmagick_gem_on_Windows">sini</a>.
+Tujuan menginstall library ini adalah agar laporan yang dihasilkan <a href="http://redmine.org/">Redmine</a> seperti <code class="language-plaintext highlighter-rouge">Gantt chart</code> bisa disimpan dalam format png dan pdf.</li>
+</ul>
+
+<h3 id="instalasi-redmine">Instalasi Redmine</h3>
+
+<ul>
+  <li>
+    <p>Download source code terakhir <a href="http://www.redmine.org/projects/redmine/wiki/Download">Redmine</a>, kemudian ekstrak ke folder yang sudah ditentukan misal <code class="language-plaintext highlighter-rouge">C:\Redmine</code>.</p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2014/06/3.png" alt="" class="align-center"></p>
+  </li>
+  <li>
+    <p>Membuat database kosong dengan nama <code class="language-plaintext highlighter-rouge">redmine</code>
+ <code class="language-plaintext highlighter-rouge">CREATE DATABASE redmine CHARACTER SET utf8;</code></p>
+  </li>
+  <li>
+    <p>Konfigurasi koneksi database</p>
+
+    <p>Copykan file <code class="language-plaintext highlighter-rouge">database.yml.example</code> yang ada di folder <code class="language-plaintext highlighter-rouge">config</code> ke folder yang sama dengan nama <code class="language-plaintext highlighter-rouge">database.yml</code>. Kemudian edit file <code class="language-plaintext highlighter-rouge">database.yml</code> menggunakan editor kesayangan anda setelah itu update informasi yang ada di bagian <code class="language-plaintext highlighter-rouge">production</code> (database, host, username dan password).</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb">  <span class="n">production</span><span class="p">:</span>
+  <span class="n">adapter</span><span class="p">:</span> <span class="n">mysql2</span>
+  <span class="n">database</span><span class="p">:</span> <span class="n">redmine</span>
+  <span class="n">host</span><span class="p">:</span> <span class="n">localhost</span>
+  <span class="n">username</span><span class="p">:</span> <span class="n">user_mysql</span>
+  <span class="n">password</span><span class="p">:</span> <span class="n">password_user_mysql</span>
+  </code></pre></figure>
+
+<h4 id="langkah-langkah-berikut-dijalankan-melalui-command-prompt">Langkah-langkah berikut dijalankan melalui command prompt</h4>
+
+<ul>
+  <li>Aktifkan command prompt</li>
+  <li>
+    <p>Set variabel environment CPATH dan LIBRARY_PATH ImageMagick (optional)
+<code class="language-plaintext highlighter-rouge">set CPATH=C:\ImageMagick\include</code>  <br>
+<code class="language-plaintext highlighter-rouge">set LIBRARY_PATH=C:\ImageMagick\lib</code></p>
+  </li>
+  <li>
+    <p>Install library mysql
+  <code class="language-plaintext highlighter-rouge">gem install mysql2 --platform=ruby -- '--with-mysql-dir="C:\mysql-connector"'</code></p>
+  </li>
+  <li>
+    <p>Install <a href="http://bundler.io/">bundler</a><br>
+  <code class="language-plaintext highlighter-rouge">gem install bundler</code></p>
+  </li>
+  <li>
+    <p>Install semua paket gem yang dibutuhkan   <br>
+  <code class="language-plaintext highlighter-rouge">bundle install --without development test</code></p>
+  </li>
+  <li>
+    <p>Mengenerate session store secret. Untuk menyimpan cookie dan variabel session        <br>
+  <code class="language-plaintext highlighter-rouge">rake generate_secret_token</code></p>
+  </li>
+  <li>
+    <p>Membuat objek database  <br>
+  <code class="language-plaintext highlighter-rouge">set RAILS_ENV=production</code>  <br>
+  <code class="language-plaintext highlighter-rouge">rake db:migrate</code></p>
+  </li>
+  <li>Set konfigurasi default  <br>
+  <code class="language-plaintext highlighter-rouge">set RAILS_ENV=production</code>  <br>
+  <code class="language-plaintext highlighter-rouge">set REDMINE_LANG=en</code>  <br>
+  <code class="language-plaintext highlighter-rouge">rake redmine:load_default_data</code>
+</li>
+</ul>
+
+<p>Setelah instalasi selesai, kita bisa melakukan tes dengan mengetikan skrip berikut : 
+<code class="language-plaintext highlighter-rouge">ruby script/rails server webrick -e production</code></p>
+
+<p>kemudian akses url : <code class="language-plaintext highlighter-rouge">http://localhost:3000/</code></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2014/06/5.png" alt="" class="align-center"></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2014/06/6.png" alt="" class="align-center"></p>
+
+<p>Login dengan user dan password <code class="language-plaintext highlighter-rouge">admin</code>.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2014/06/7.png" alt="" class="align-center"></p>
+
+<p>Sampai disini proses instalasi <a href="http://redmine.org/">Redmine</a> sudah berhasil :)</p>
+
+<h3 id="mendaftarkan-service-redmine-ke-windows-service">Mendaftarkan service Redmine ke Windows Service</h3>
+
+<p>Tentu enggak kren klo setiap ingin mengakses <a href="http://redmine.org/">Redmine</a>, kita harus selalu menjalankan skrip <code class="language-plaintext highlighter-rouge">ruby script/rails server webrick -e production</code>, jadi ada baiknya service Redminenya kita daftarkan sebagai service Windows.</p>
+
+<p>Berikut langkah-langkah untuk mendaftarkan service <a href="http://redmine.org/">Redmine</a> sebagai Windows Service :</p>
+
+<ul>
+  <li>
+    <p>Aktifkan command prompt kemudian ketik perintah berikut <br>
+  <code class="language-plaintext highlighter-rouge">gem install win32-service</code></p>
+  </li>
+  <li>
+    <p>Buat file dengan nama <code class="language-plaintext highlighter-rouge">service.rb</code> simpan di folder instalasi <code class="language-plaintext highlighter-rouge">redmine</code></p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2014/06/8.png" alt="" class="align-center"></p>
+
+    <p>kemudian copas kode berikut :</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">REDMINE_DIR</span> <span class="o">=</span> <span class="s1">'C:\redmine'</span>
+<span class="no">LOG_FILE</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="no">REDMINE_DIR</span><span class="si">}</span><span class="se">\\</span><span class="s2">log</span><span class="se">\\</span><span class="s2">service.log"</span> 
+
+<span class="k">begin</span>
+  <span class="nb">require</span> <span class="s1">'win32/daemon'</span>
+  <span class="kp">include</span> <span class="no">Win32</span>
+
+  <span class="k">class</span> <span class="nc">RedmineService</span> <span class="o">&lt;</span> <span class="no">Daemon</span>
+
+    <span class="k">def</span> <span class="nf">service_init</span>
+      <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="no">LOG_FILE</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">){</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="p">.</span><span class="nf">puts</span> <span class="s2">"Initializing service </span><span class="si">#{</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span> 
+
+      <span class="vi">@server_pid</span> <span class="o">=</span> <span class="no">Process</span><span class="p">.</span><span class="nf">spawn</span> <span class="s1">'ruby script/rails s -e production'</span><span class="p">,</span> <span class="ss">:chdir</span> <span class="o">=&gt;</span> <span class="no">REDMINE_DIR</span><span class="p">,</span> <span class="ss">:err</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="no">LOG_FILE</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">]</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">service_main</span>
+      <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="no">LOG_FILE</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">){</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="p">.</span><span class="nf">puts</span> <span class="s2">"Service is running </span><span class="si">#{</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="si">}</span><span class="s2"> with pid </span><span class="si">#{</span><span class="vi">@server_pid</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+      <span class="k">while</span> <span class="n">running?</span>
+        <span class="nb">sleep</span> <span class="mi">10</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="k">def</span> <span class="nf">service_stop</span>
+      <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="no">LOG_FILE</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">){</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="p">.</span><span class="nf">puts</span> <span class="s2">"Stopping server thread </span><span class="si">#{</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+      <span class="nb">system</span> <span class="s2">"taskkill /PID </span><span class="si">#{</span><span class="vi">@server_pid</span><span class="si">}</span><span class="s2"> /T /F"</span> 
+      <span class="no">Process</span><span class="p">.</span><span class="nf">waitall</span>
+      <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="no">LOG_FILE</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">){</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="p">.</span><span class="nf">puts</span> <span class="s2">"Service stopped </span><span class="si">#{</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+      <span class="nb">exit!</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  <span class="no">RedmineService</span><span class="p">.</span><span class="nf">mainloop</span>
+
+<span class="k">rescue</span> <span class="no">Exception</span> <span class="o">=&gt;</span> <span class="n">e</span>
+  <span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="no">LOG_FILE</span><span class="p">,</span><span class="s1">'a+'</span><span class="p">){</span> <span class="o">|</span><span class="n">f</span><span class="o">|</span> <span class="n">f</span><span class="p">.</span><span class="nf">puts</span> <span class="s2">" ***Daemon failure </span><span class="si">#{</span><span class="no">Time</span><span class="p">.</span><span class="nf">now</span><span class="si">}</span><span class="s2"> exception=</span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">inspect</span><span class="si">}</span><span class="se">\n</span><span class="si">#{</span><span class="n">e</span><span class="p">.</span><span class="nf">backtrace</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="vg">$/</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span> <span class="p">}</span>
+  <span class="k">raise</span>
+<span class="k">end</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p>Kembali lagi ke command prompt kemudian ketik perintah berikut
+ <code class="language-plaintext highlighter-rouge">sc create Redmine binPath= "C:\RailsInstaller\Ruby1.9.3\bin\rubyw -C C:\redmine\ service.rb"</code></p>
+  </li>
+  <li>
+    <p>Jalankan service redmine <br>
+  <code class="language-plaintext highlighter-rouge">net start Redmine</code></p>
+
+    <p><img src="https://coding4ever.files.wordpress.com/2014/06/9.png" alt="" class="align-center"></p>
+  </li>
+</ul>
+
+<p>Akhirnya selesai juga :), dan untuk langkah-langkah penggunaan <a href="http://redmine.org/">Redmine</a> insya Alloh akan kita bahas dilain kesempatan.</p>
+
+<p>Selamat mencoba <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/railsinstaller" class="page__taxonomy-item" rel="tag">RailsInstaller</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/redmine" class="page__taxonomy-item" rel="tag">Redmine</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/ruby" class="page__taxonomy-item" rel="tag">Ruby</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/todo-list" class="page__taxonomy-item" rel="tag">Todo List</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/trello" class="page__taxonomy-item" rel="tag">Trello</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/aplikasi" class="page__taxonomy-item" rel="tag">Aplikasi</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2014-06-02T11:27:10+07:00">June 2, 2014</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Manajemen+Proyek+Menggunakan+Redmine+Bagian+1%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2014%2F06%2F02%2Fmanajemen-proyek-menggunakan-redmine-bagian-1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2014%2F06%2F02%2Fmanajemen-proyek-menggunakan-redmine-bagian-1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2014%2F06%2F02%2Fmanajemen-proyek-menggunakan-redmine-bagian-1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2014/05/21/manajemen-password-menggunakan-keepass/" class="pagination--pager" title="Manajemen Password Menggunakan KeePass
+">Previous</a>
+    
+    
+      <a href="/blog/2014/06/08/entity-framework-part-8/" class="pagination--pager" title="Entity Framework Part 8
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://coding4ever.net/blog/2014/06/02/manajemen-proyek-menggunakan-redmine-bagian-1/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/2014/06/02/manajemen-proyek-menggunakan-redmine-bagian-1"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>
