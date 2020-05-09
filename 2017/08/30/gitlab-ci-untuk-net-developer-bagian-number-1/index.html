@@ -1,0 +1,917 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>GitLab CI untuk .NET Developer Bagian #1 | » Coding4ever’s Blog «</title>
+<meta name="description" content="Sudah hampir setahun saya menggunakan Jenkins sebagai tool/software CI Continuous Integration. Ada banyak manfaat yang saya rasakan terutama untuk mengurangi pekerjaan-pekerjaan sepele tapi berulang seperti pembuatan paket instalasi, upload updatean terbaru ke server atau deploy web api/service ke server development atau production.  Dengan menggunakan software CI(Continuous Integration) seperti Jenkins pekerjaan-pekerjaan membosankan tersebut bisa dilakukan hanya dengan mengklik satu tombol atau bisa juga dibuat otomatis ketika kita mem-push perubahan source code ke repository git. Waktu yang dibutuhkan juga biasanya tidak lama sekitar 1-3 menit, ya tergantung besar atau kecilnya project yang akan dibuild/deploy.  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="GitLab CI untuk .NET Developer Bagian #1">
+<meta property="og:url" content="http://coding4ever.net/blog/2017/08/30/gitlab-ci-untuk-net-developer-bagian-number-1/">
+
+
+  <meta property="og:description" content="Sudah hampir setahun saya menggunakan Jenkins sebagai tool/software CI Continuous Integration. Ada banyak manfaat yang saya rasakan terutama untuk mengurangi pekerjaan-pekerjaan sepele tapi berulang seperti pembuatan paket instalasi, upload updatean terbaru ke server atau deploy web api/service ke server development atau production.  Dengan menggunakan software CI(Continuous Integration) seperti Jenkins pekerjaan-pekerjaan membosankan tersebut bisa dilakukan hanya dengan mengklik satu tombol atau bisa juga dibuat otomatis ketika kita mem-push perubahan source code ke repository git. Waktu yang dibutuhkan juga biasanya tidak lama sekitar 1-3 menit, ya tergantung besar atau kecilnya project yang akan dibuild/deploy.  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2017-08-30T12:32:47+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://coding4ever.net/blog/2017/08/30/gitlab-ci-untuk-net-developer-bagian-number-1/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://coding4ever.net/blog/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/blog/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/blog/"><img src="/blog/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/blog/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/blog/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/blog/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/blog/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/blog/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/blog/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="GitLab CI untuk .NET Developer Bagian #1">
+    <meta itemprop="description" content="Sudah hampir setahun saya menggunakan Jenkins sebagai tool/software CI Continuous Integration. Ada banyak manfaat yang saya rasakan terutama untuk mengurangi pekerjaan-pekerjaan sepele tapi berulang seperti pembuatan paket instalasi, upload updatean terbaru ke server atau deploy web api/service ke server development atau production.  Dengan menggunakan software CI(Continuous Integration) seperti Jenkins pekerjaan-pekerjaan membosankan tersebut bisa dilakukan hanya dengan mengklik satu tombol atau bisa juga dibuat otomatis ketika kita mem-push perubahan source code ke repository git. Waktu yang dibutuhkan juga biasanya tidak lama sekitar 1-3 menit, ya tergantung besar atau kecilnya project yang akan dibuild/deploy.">
+    <meta itemprop="datePublished" content="2017-08-30T12:32:47+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">GitLab CI untuk .NET Developer Bagian #1
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2017-08-30T12:32:47+07:00">August 30, 2017</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  8 minute read
+
+
+				
+				 • <a href="http://coding4ever.net/2017/08/30/gitlab-ci-untuk-net-developer-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><img src="http://coding4ever.net/blog/assets/images/logo/gitlabci-logo.png" alt="" class="align-left">Sudah hampir setahun saya menggunakan <a href="http://coding4ever.net/categories/jenkins/">Jenkins</a> sebagai tool/software CI <a href="http://coding4ever.net/categories/continuous-integration/">Continuous Integration</a>. Ada banyak manfaat yang saya rasakan terutama untuk mengurangi pekerjaan-pekerjaan <code class="language-plaintext highlighter-rouge">sepele</code> tapi <code class="language-plaintext highlighter-rouge">berulang</code> seperti pembuatan paket instalasi, upload updatean terbaru ke server atau deploy web api/service ke server development atau production.  Dengan menggunakan software CI(<a href="http://coding4ever.net/categories/continuous-integration/">Continuous Integration</a>) seperti <a href="http://coding4ever.net/categories/jenkins/">Jenkins</a> pekerjaan-pekerjaan membosankan tersebut bisa dilakukan hanya dengan mengklik satu tombol atau bisa juga dibuat otomatis ketika kita mem-push perubahan source code ke repository git. Waktu yang dibutuhkan juga biasanya tidak lama sekitar 1-3 menit, ya tergantung besar atau kecilnya project yang akan dibuild/deploy.</p>
+
+<!-- more -->
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-011.png" alt="" class="align-center"></p>
+
+<p>Selain itu dari sisi dokumentasi juga ikut terbantu, karena tool seperti <a href="http://coding4ever.net/categories/jenkins/">Jenkins</a> dan dengan bantuan pluginnya bisa otomatis mengenerate history build dari waktu ke waktu.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-021.png" alt="" class="align-center"></p>
+
+<p>Tapi pada postingan kali ini saya ingin membahas tool/software CI(<a href="http://coding4ever.net/categories/continuous-integration/">Continuous Integration</a>) yang lain yaitu <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a>. Beberapa hari ini saya menyempatkan untuk mencoba <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> dan kesimpulannya ada beberapa kelebihan <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> dibandingkan <a href="http://coding4ever.net/categories/jenkins/">Jenkins</a> yaitu:</p>
+
+<ul>
+  <li>
+<a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> sudah terintegrasi dengan <a href="https://gitlab.com/">GitLab </a>. <a href="https://gitlab.com/">GitLab </a> adalah layanan cloud untuk repository git, jadi mirip dengan <a href="http://github.com/">github</a> atau <a href="http://bitbucket.org/">bitbucket</a>. Kelebihan gitlab dibandingkan dengan github dan bitbucket adalah untuk layanan gratisnya tidak ada pembatasan jumlah tim atau jumlah repository private yang bisa dibuat. Sedangkan untuk <a href="http://coding4ever.net/categories/jenkins/">Jenkins</a> repository gitnya harus diinstall terpisah atau menggunakan layanan repository git yang sudah ada seperti gitlab, github atau bitbucket.</li>
+  <li>Konfigurasi Job di <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> lebih sederhana dibandingkan <a href="http://coding4ever.net/categories/jenkins/">Jenkins</a>. Konfigurasi job <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> menggunakan file text biasa dengan format <a href="https://en.wikipedia.org/wiki/YAML">YAML</a>, sehingga file konfigurasi ini bisa kita tambahkan ke repository git.</li>
+  <li>Satu konfigurasi <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> sudah bisa digunakan untuk beberapa <a href="https://docs.gitlab.com/ee/ci/yaml/#jobs">job</a> dan <a href="https://docs.gitlab.com/ee/ci/yaml/README.html#stages">stage</a> sedangkan dengan <a href="http://coding4ever.net/categories/jenkins/">Jenkins</a> kita harus membuat beberapa job untuk masing-masing stage (<a href="https://en.wiktionary.org/wiki/CMIIW">CMIIW</a>).</li>
+  <li>Penggunaan  <a href="http://coding4ever.net/categories/jenkins/">Jenkins</a> sangat cocok untuk keperluan internal kantor, jadi jika ingin digunakan secara public (di akses via internet) harus menyediakan mesin khusus yang mempunyai ip public atau bisa juga menggunakan VPS. Sedangkan untuk <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> sendiri kita cukup menyediakan mesin yang mempunyai akses internet dan tidak harus mempunyai ip public.</li>
+  <li>Apalagi ya…, silahkan dicoba sendiri he he <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">
+</li>
+</ul>
+
+<h3 id="continuous-integration">Continuous Integration</h3>
+
+<p>Sebelum kita lanjut ke pembahasan <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a>, saya ingin mereview kembali apa yang dimaksud dengan CI (<a href="http://coding4ever.net/categories/continuous-integration/">Continuous Integration</a>).  <a href="http://coding4ever.net/categories/continuous-integration/">Continuous Integration</a>, untuk selanjutnya kita sebut CI saja, merupakan salah satu kegiatan untuk meningkatkan produktivitas dalam pengembangan aplikasi di mana seluruh hasil kerja (source code) dari masing-masing developer digabungkan (push) ke dalam satu wadah (server repository source code). Bisa sekali sehari, bisa juga beberapa kali dalam sehari. Setiap penggabungan source code akan diverifikasi secara otomatis oleh server CI, yang memungkinkan tim untuk mendeteksi secara dini jika ada masalah/konflik/error pada saat penggabungan source code.</p>
+
+<p>Setelah penggabungan hasil kerja (source code) selesai, server CI otomatis akan melakukan proses build untuk memastikan tidak ada kode yang merusak/membuat proses build gagal. Jadi semakin cepat kegagalan build ini diketahui semakin cepat pula kita meresponnya. Dan jika proses build-nya berhasil akan dilanjutkan dengan proses deploy. Selain itu server CI juga bisa dikonfigurasi untuk melakukan proses lain seperti menjalankan unit testing, integration testing dan testing otomatis lainnya.</p>
+
+<p>Sebagai .NET developer kita sudah biasa melakukan proses build dengan menekan tombol F5 (Start Debugging) atau Ctrl+F5 (Start Without Debugging) baik pada waktu development atau perbaikan bug. Sedangkan untuk contoh deploy anggap saja seperti kita membuat paket installer yang akan didistribusikan ke komputer/server klien. Nah dengan menggunakan CI semua proses ini bisa dilakukan secara otomatis dan terpusat, sehingga kita mempunyai arsip hasil build dan deploy dari waktu ke waktu. Jadi untuk mencari file setup/paket installer terakhir enggak usah lagi nanya ke developer karena bisa langsung kita download dari server CI-nya.</p>
+
+<p>Proses build ini selain bisa dibuat otomatis setiap kita mem-push source code ke server repository bisa juga kita buatkan jadwalnya, misal pas jam makan siang atau jam pulang kantor. Jadi di kantor dibuat kesepakatan/aturan klo ada yang merusak build pas jam makan siang enggak boleh makan siang sampai proses build-nya berhasil atau yang merusak build pas jam pulang kantor enggak boleh pulang sampai proses build-nya berhasil <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20"></p>
+
+<p>Jadi dengan menggunakan CI, alur kerja kita lebih kurang seperti berikut :</p>
+
+<ul>
+  <li>Menulis kode, build dan tes di komputer masing-masing (seperti biasa).</li>
+  <li>Commit dan push kode ke server repository/source control seperti GIT atau SVN.</li>
+  <li>Server CI akan meng-clone/pull repository kemudian melakukan build, menjalankan tes otomatis (jika ada) dan deploy secara otomatis. Jika buildnya gagal ulangi lagi langkah pertama.</li>
+</ul>
+
+<p>Nah mudah-mudahan sampai di sini sudah punya gambaran ya tentang apa itu <a href="http://coding4ever.net/categories/continuous-integration/">Continuous Integration</a> dan bagaimana cara kerjanya.</p>
+
+<h3 id="apa-saja-yang-perlu-dipelajari-">Apa saja yang perlu dipelajari ?</h3>
+
+<p>Untuk belajar CI, tentu saja ada pengetahun penunjang yang perlu Anda pelajari yaitu penggunaan <a href="https://en.wikipedia.org/wiki/Version_control">Source/Version Control</a> terutama <a href="https://git-scm.com/">GIT</a> dan aplikasi GIT Client seperti <a href="https://tortoisegit.org/download/">TortoiseGit</a>. Pengetahun lainnya adalah pembuatan paket instalasi menggunakan <a href="http://coding4ever.net/categories/inno-setup/">Inno Setup</a> untuk aplikasi desktop atau bisa juga pengetahuan mendeploy web api/service ke server.</p>
+
+<h3 id="gitlab-ci">GitLab CI</h3>
+
+<p><a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> adalah salah satu tool/software <a href="http://coding4ever.net/categories/continuous-integration/">Continuous Integration</a> gratis yang merupakan bagian dari <a href="https://about.gitlab.com/">GitLab</a>. <a href="https://about.gitlab.com/">GitLab</a> sendiri merupakan layanan cloud repository git, jadi mirip dengan <a href="http://github.com/">github</a> atau <a href="http://bitbucket.org/">bitbucket</a>. Kelebihan dari <a href="https://about.gitlab.com/">GitLab</a> ini sendiri, untuk versi gratisnya tidak dibatasi seperti halnya <a href="http://github.com/">github</a> dan <a href="http://bitbucket.org/">bitbucket</a>. Jadi dengan versi gratisnya tidak ada pembatasan jumlah private repository yang bisa kita buat ataupun jumlah tim yang terlibat. Menarik bukan untuk sebuah layanan cloud repository git yang gratis.</p>
+
+<p><a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> sendiri kalo kita lihat lebih mirip dengan sebuah dashboard untuk mengelola job dan log hasil buildnya. Jadi aslinya yang melakukan build dan deploy itu bukanlah <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> tapi tool lain yang disebut dengan  <a href="https://docs.gitlab.com/runner/#using-gitlab-runner">GitLab Runner</a>. <a href="https://docs.gitlab.com/runner/#using-gitlab-runner">GitLab Runner</a> ini harus kita install di mesin (pc/server) yang mempunyai akses internet agar bisa terhubung ke service <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a>. Mesin untuk <a href="https://docs.gitlab.com/runner/#using-gitlab-runner">GitLab Runner</a> tidak harus mempunyai ip public yang penting terkoneksi dengan internet.</p>
+
+<p>Idenya sederhana tapi brilian, dengan konsep seperti ini akan menghemat resource dari server <a href="https://about.gitlab.com/">GitLab</a> itu sendiri, karena semua resource yang dibutuhkan untuk proses build dan deploy di tanggung oleh mesin dari user/developer. Tapi dari sisi user/developer juga diuntungkan karena mesin untuk build dan deploynya adalah milik kita sendiri, sehingga kita punya akses full untuk setup/konfigurasi tool/software apa saja yang dibutuhkan untuk proses build dan deploy tersebut.</p>
+
+<h3 id="gitlab-runner">GitLab Runner</h3>
+
+<p><a href="https://docs.gitlab.com/runner/#using-gitlab-runner">GitLab Runner</a> adalah tool/software yang bertugas untuk menjalankan job dan mengirimkan kembali hasilnya ke <a href="https://about.gitlab.com/">GitLab</a>, nah data-data inilah yang akan diolah oleh <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a>.</p>
+
+<p>GitLab Runner bisa diinstall untuk GNU/Linux, macOS, FreeBSD, dan Windows.</p>
+
+<h4 id="instalasi-gitlab-runner">Instalasi GitLab Runner</h4>
+
+<p><a href="https://docs.gitlab.com/runner/install/windows.html">Instalasi GitLab Runner</a> sendiri sangat mudah, ditambah dengan dokumentasi yang lengkap. Jadi seharusnya Anda tidak akan mendapatkan masalah untuk langkah-langkah instalasinya. Untuk petunjuknya bisa ada cek di <a href="https://docs.gitlab.com/runner/install/windows.html">sini</a>.</p>
+
+<p>Untuk memastikan instalasinya GitLab Runnernya berhasil, silahkan Anda cek service GitLab Runnernya.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-03.png" alt="" class="align-center"></p>
+
+<p>Selain menginstall <a href="https://docs.gitlab.com/runner/install/">GitLab Runner</a>, kita juga perlu menginstall beberapa tool pendukung seperti:</p>
+
+<ul>
+  <li>.NET Framework 4.0, 4.5.x</li>
+  <li><a href="https://www.microsoft.com/en-us/download/details.aspx?id=48159">Microsoft Build 2015</a></li>
+  <li>Source/version control <a href="https://git-scm.com/">Git</a>
+</li>
+  <li>Pembuat paket installer seperti <a href="http://www.jrsoftware.org/">Inno Setup</a>
+</li>
+  <li>
+<a href="https://www.nuget.org/downloads">Nuget</a> untuk merestore paket nuget</li>
+  <li>FTP Client seperti <a href="https://winscp.net/eng/index.php">WinSCP</a>
+</li>
+</ul>
+
+<p>Intinya semua tool pendukung di atas, diinstall sesuai dengan kebutuhan environment development.</p>
+
+<h4 id="mendaftarkan-repository-ke-gitlab-runner">Mendaftarkan Repository ke GitLab Runner</h4>
+
+<p>Setelah instalasi GitLab Runner, berikutnya adalah mendaftarkan repository git ke GitLab Runner. Berikut langkah-langkahnya:</p>
+
+<p><strong>Langkah 1</strong>.	Login ke <a href="https://about.gitlab.com/">GitLab</a>, klo belum punya ya silahkan daftar terlebih dulu.</p>
+
+<p><strong>Langkah 2</strong>.	Buat repository baru</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-04.png" alt="" class="align-center"></p>
+
+<p><strong>Langkah 3</strong>.	Setelah membuat repositorynya berhasil, klik link <code class="language-plaintext highlighter-rouge">Settings</code> -&gt; <code class="language-plaintext highlighter-rouge">Pipelines</code></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-05.png" alt="" class="align-center"></p>
+
+<p>Scroll ke bawah sedikit, kemudian catat informasi <code class="language-plaintext highlighter-rouge">Specific Runners</code> untuk poin 2 dan 3.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-06.png" alt="" class="align-center"></p>
+
+<p>Kemudian di bagian <code class="language-plaintext highlighter-rouge">Shared Runners</code> klik tombol <code class="language-plaintext highlighter-rouge">Disable shared Runners</code></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-07.png" alt="" class="align-center"></p>
+
+<p><strong>Langkah 4</strong>.	Berikutnya adalah mengaktifkan <code class="language-plaintext highlighter-rouge">Command Prompt</code> dengan mode <code class="language-plaintext highlighter-rouge">Administrator</code> kemudian masuk ke folder instalasi GitLab Runner</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-08.png" alt="" class="align-center"></p>
+
+<p>Setelah itu ketik perintah <code class="language-plaintext highlighter-rouge">gitlab-runner register</code>, kemudian tinggal jawab pertanyaan yang ada termasuk informasi <code class="language-plaintext highlighter-rouge">Specific Runners</code> yang kita dapatkan di <code class="language-plaintext highlighter-rouge">langkah 3</code>.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-09.png" alt="" class="align-center"></p>
+
+<p>Jika proses registrasinya berhasil, kita bisa cek runner aktifnya dibawah informasi <code class="language-plaintext highlighter-rouge">Specific Runners</code></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-10.png" alt="" class="align-center"></p>
+
+<h3 id="contoh-project">Contoh Project</h3>
+
+<p>Untuk keperluan uji coba kali ini saya menggunakan contoh aplikasi Northwind yang bisa Anda download di <a href="https://github.com/k4m4r82/RepositoryPattern">sini</a>. Setelah itu kita <code class="language-plaintext highlighter-rouge">push</code> source codenya ke link repository gitlab yang sudah kita buat di langkah-langkah sebelumnya.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-11.png" alt="" class="align-center"></p>
+
+<p>Dan untuk proses <code class="language-plaintext highlighter-rouge">push</code>-nya saya menggunakan <a href="https://tortoisegit.org/download/">TortoiseGit</a>.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-12.png" alt="" class="align-center"></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-13.png" alt="" class="align-center"></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-14.png" alt="" class="align-center"></p>
+
+<h3 id="menambahkan-file-gitlab-ciyml">Menambahkan file .gitlab-ci.yml</h3>
+
+<p>Untuk melakukan konfigurasi <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a>, kita perlu menambahkan file dengan nama <a href="https://docs.gitlab.com/ee/ci/yaml/">.gitlab-ci.yml</a>. File ini adalah file text biasa yang menggunakan format <a href="https://en.wikipedia.org/wiki/YAML">YAML</a>, sehingga file konfigurasi ini bisa kita tambahkan ke folder source code kemudian kita simpan juga ke repository git.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-15.png" alt="" class="align-center"></p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-161.png" alt="" class="align-center"></p>
+
+<p>Berikut contoh isi file <code class="language-plaintext highlighter-rouge">.gitlab-ci.yml</code></p>
+
+<script src="https://gist.github.com/f88e4bb02eb8ade0d9d049a07ec6ee30.js"> </script>
+
+<p>Coba perhatikan skrip di atas, di baris ke-6 kita mendefinisikan beberapa stage yaitu <code class="language-plaintext highlighter-rouge">restore</code> dan <code class="language-plaintext highlighter-rouge">build</code>, kita bisa juga menambahkan stage yang lain misal <code class="language-plaintext highlighter-rouge">test</code>, <code class="language-plaintext highlighter-rouge">deploy</code>, <code class="language-plaintext highlighter-rouge">development</code>, <code class="language-plaintext highlighter-rouge">production</code>, dst. Stage digunakan untuk menentukan jenis dari job. Jadi perlu diingat bahwa stage dan job itu berbeda, walaupun dibanyak contoh menggunakan nama yang sama untuk stage dan job.</p>
+
+<p>Eksekusi antar job di <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> itu sifatnya independen atau dengan kata lain tidak ada hubungan antar job. Ketika job B membutuhkan file yang dihasilkan oleh job A secara default tidak bisa, sehingga kita perlu menambahkan konfigurasi <code class="language-plaintext highlighter-rouge">cache</code>, seperti yang terlihat di baris ke-10. Kita mendaftarkan folder <code class="language-plaintext highlighter-rouge">lib</code> ke dalam konfigurasi <code class="language-plaintext highlighter-rouge">cache</code>. Folder <code class="language-plaintext highlighter-rouge">lib</code> ini berisi file-file library (*.dll) hasil dari job <code class="language-plaintext highlighter-rouge">restore_nuget_package</code>. Semua file yang ada di folder <code class="language-plaintext highlighter-rouge">lib</code> ini dibutuhkan pada saat menjalankan job <code class="language-plaintext highlighter-rouge">build_solution</code>.</p>
+
+<p>Berikutnya kita pindah ke baris 15, di baris ini kita mendefinisikan job dengan nama <code class="language-plaintext highlighter-rouge">restore_nuget_package</code> dengan tipe stage <code class="language-plaintext highlighter-rouge">restore</code>, kemudian menjalankan skrip untuk merestore paket nuget.</p>
+
+<p>Terakhir di baris ke-21, kita mendefinisikan job lain dengan nama <code class="language-plaintext highlighter-rouge">build_solution</code>, sesuai namanya job ini digunakan untuk membuild solution atau project atau klo lewat IDE Visual Studio .NET kita menekan tombol F5 (Start Debugging) atau Ctrl+F5 (Start Without Debugging).</p>
+
+<h3 id="cara-mengecekmemvalidasi-skrip-file-gitlab-ciyml">Cara Mengecek/Memvalidasi Skrip File .gitlab-ci.yml</h3>
+
+<p>Sebelum kita menambahkan file <code class="language-plaintext highlighter-rouge">.gitlab-ci.yml</code> ke repository git, ada baiknya kita cek terlebih dahulu apakah script yang kita tuliskan sudah benar atau belum.
+<a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a> sudah menyediakan link khusus untuk mengeceknya, yang bisa Anda cek di <a href="https://gitlab.com/ci/lint">sini</a>.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-171.png" alt="" class="align-center"></p>
+
+<h3 id="testing-build">Testing Build</h3>
+
+<p>Untuk testing build kita tinggal melakukan push ke repository git.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-181.png" alt="" class="align-center"></p>
+
+<p>Kemudian untuk melihat log progres buildnya kita bisa cek link <code class="language-plaintext highlighter-rouge">Pipelines</code>.</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-19.png" alt="" class="align-center"></p>
+
+<p>Gambar detail job yang sedang dijalankan</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-201.png" alt="" class="align-center"></p>
+
+<p>Untuk melihat detail log dari masing-masing job, tinggal kita klik nama jobnya, misal job restore nuget package</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-211.png" alt="" class="align-center"></p>
+
+<p>job build solution</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-221.png" alt="" class="align-center"></p>
+
+<p>Status proses build berhasil</p>
+
+<p><img src="https://coding4ever.files.wordpress.com/2017/08/20170830-231.png" alt="" class="align-center"></p>
+
+<p>Untuk contoh lengkap hasil buildnya bisa Anda cek di <a href="https://gitlab.com/rudi.krsoftware/Northwind/pipelines">sini</a></p>
+
+<p>Akhirnya selesai juga postingan <a href="http://coding4ever.net/blog/2017/08/30/gitlab-ci-untuk-net-developer-bagian-number-1/">GitLab CI untuk .NET Developer Bagian #1</a>, dan mudah-mudahan bisa dipahami <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">. Untuk postingan berikutnya insyaAlloh kita akan menambahkan job untuk membuat paket instalasi menggunakan Inno Setup dan menguploadnya sehingga bisa langsung didownload via  Dashboard <a href="https://about.gitlab.com/features/gitlab-ci-cd/">GitLab CI</a>.</p>
+
+<p>Selamat <a href="https://gitlab.com/rudi.krsoftware/Northwind/pipelines">MENCOBA</a> <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/blog/tags/build" class="page__taxonomy-item" rel="tag">build</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/continuous-integration" class="page__taxonomy-item" rel="tag">continuous integration</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/deploy" class="page__taxonomy-item" rel="tag">deploy</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/gitlab-ci" class="page__taxonomy-item" rel="tag">gitlab ci</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/gitlab-runner" class="page__taxonomy-item" rel="tag">gitLab runner</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/git" class="page__taxonomy-item" rel="tag">git</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/job" class="page__taxonomy-item" rel="tag">job</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/blog/categories/continuous-integration" class="page__taxonomy-item" rel="tag">continuous integration</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/categories/gitlab-ci" class="page__taxonomy-item" rel="tag">gitlab ci</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-08-30T12:32:47+07:00">August 30, 2017</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=GitLab+CI+untuk+.NET+Developer+Bagian+%231%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2017%2F08%2F30%2Fgitlab-ci-untuk-net-developer-bagian-number-1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2017%2F08%2F30%2Fgitlab-ci-untuk-net-developer-bagian-number-1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2017%2F08%2F30%2Fgitlab-ci-untuk-net-developer-bagian-number-1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2017/08/22/membuat-service-sms-gateway-untuk-engine-gammu/" class="pagination--pager" title="Membuat Service SMS Gateway untuk Engine Gammu
+">Previous</a>
+    
+    
+      <a href="/blog/2017/09/09/gitlab-ci-untuk-net-developer-bagian-number-2/" class="pagination--pager" title="GitLab CI untuk .NET Developer Bagian #2
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/blog/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-50866618-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://coding4ever.net/blog/2017/08/30/gitlab-ci-untuk-net-developer-bagian-number-1/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/2017/08/30/gitlab-ci-untuk-net-developer-bagian-number-1"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>

@@ -1,0 +1,996 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Mengakses database MySQL menggunakan C# bagian 2 | » Coding4ever’s Blog «</title>
+<meta name="description" content="Seperti yang sudah saya janjikan pada postingan sebelumnya, kali ini kita akan membahas bagaimana cara memanfaatkan class Mahasiswa dan MahasiswaDao pada Presentation layer  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Mengakses database MySQL menggunakan C# bagian 2">
+<meta property="og:url" content="http://coding4ever.net/blog/2011/06/26/mengakses-database-mysql-menggunakan-c-bagian-2/">
+
+
+  <meta property="og:description" content="Seperti yang sudah saya janjikan pada postingan sebelumnya, kali ini kita akan membahas bagaimana cara memanfaatkan class Mahasiswa dan MahasiswaDao pada Presentation layer  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2011-06-26T11:04:42+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://coding4ever.net/blog/2011/06/26/mengakses-database-mysql-menggunakan-c-bagian-2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://coding4ever.net/blog/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/blog/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/blog/"><img src="/blog/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/blog/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/blog/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/blog/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/blog/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/blog/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/blog/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Mengakses database MySQL menggunakan C# bagian 2">
+    <meta itemprop="description" content="Seperti yang sudah saya janjikan pada postingan sebelumnya, kali ini kita akan membahas bagaimana cara memanfaatkan class Mahasiswa dan MahasiswaDao pada Presentation layer">
+    <meta itemprop="datePublished" content="2011-06-26T11:04:42+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Mengakses database MySQL menggunakan C# bagian 2
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2011-06-26T11:04:42+07:00">June 26, 2011</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+				
+				 • <a href="http://coding4ever.net/2011/06/26/mengakses-database-mysql-menggunakan-c-bagian-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>Seperti yang sudah saya janjikan pada <a href="http://coding4ever.net/blog/2011/06/25/mengakses-database-mysql-menggunakan-c-bagian-1/">postingan</a> sebelumnya, kali ini kita akan membahas bagaimana cara memanfaatkan class Mahasiswa dan MahasiswaDao pada Presentation layer</p>
+
+<p>Sudah merupakan rahasia umum <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20"> untuk melakukan koneksi ke database MySQL kita membutuhkan string koneksi berikut :</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">SERVER</span><span class="o">=</span>nama_server<span class="p">;</span><span class="nv">DATABASE</span><span class="o">=</span>nama_database<span class="p">;</span><span class="nv">UID</span><span class="o">=</span>user_database<span class="p">;</span><span class="nv">PASSWORD</span><span class="o">=</span>user_password</code></pre></figure>
+
+<!-- more -->
+
+<p>Terlihat dengan jelas ada beberapa informasi yang tentunya tidak ingin kita hardcode di program, kita ambil contoh informasi <strong>nama_server</strong> dan <strong>nama_database</strong>.</p>
+
+<p>Kalo dulu mungkin kita biasanya meyimpan informasi tersebut di registry windows atau file dengan format <a href="http://coding4ever.net/blog/2010/04/23/contoh-sederhana-memanipulasi-ini-file-untuk-menyimpan-informasi/">INI</a>, tapi kali ini kita akan memanfaatkan file XML yang sudah disediakan .NET</p>
+
+<p>Bagaimana cara menambahkan file XML tersebut ikuti langkah-langkah berikut :</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/06/26062011-1.png" alt="" class="align-center"></p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/06/26062011-2.png" alt="" class="align-center"></p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/06/26062011-3.png" alt="" class="align-center"></p>
+
+<p>kemudian kita lengkapi kodenya seperti berikut :</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/06/26062011-4.png" alt="" class="align-center"></p>
+
+<p>gampang bukan ??? :)</p>
+
+<p>Cara mengakses informasi pada file XML tersebut akan kita bahas pada saat pembuat class DBConnection.</p>
+
+<p>Class DBConnection dari namanya kita sudah ngerti kalo class ini tugasnya untuk melakukan koneksi ke database dalam hal ini database MySQL.</p>
+
+<p>Oke langsung saja kita tambahkan class baru.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/06/26062011-5.png" alt="" class="align-center"></p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/06/26062011-6.png" alt="" class="align-center"></p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/06/26062011-7.png" alt="" class="align-center"></p>
+
+<p>Namespace (package kalo istilah javanya) <strong>MySql.Data.MySqlClient</strong> kita butuhkan untuk bisa menggunakan class-class akses database MySQL.</p>
+
+<p>Sedangkan namespace <strong>System.Configuration</strong> dibutuhkan agar kita bisa menggunakan class ConfigurationSettings untuk mengakses file XML yang sudah kita buat pada langkah-langkah sebelumnya.</p>
+
+<p>Berikut adalah kode lengkap class DBConnectionnya :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">MySql.Data.MySqlClient</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Configuration</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">DemoDAO</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">DBConnection</span>
+    <span class="p">{</span>
+
+        <span class="k">private</span> <span class="n">MySqlConnection</span> <span class="n">conn</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+        <span class="k">private</span> <span class="k">static</span> <span class="n">DBConnection</span> <span class="n">dbConn</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+        <span class="c1">// constructor</span>
+        <span class="k">private</span> <span class="nf">DBConnection</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">conn</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">// cara membaca informasi yang ada pada file XML (App.config)</span>
+                <span class="kt">string</span> <span class="n">server</span> <span class="p">=</span> <span class="n">ConfigurationSettings</span><span class="p">.</span><span class="n">AppSettings</span><span class="p">[</span><span class="s">"Server"</span><span class="p">];</span>
+                <span class="kt">string</span> <span class="n">database</span> <span class="p">=</span> <span class="n">ConfigurationSettings</span><span class="p">.</span><span class="n">AppSettings</span><span class="p">[</span><span class="s">"Database"</span><span class="p">];</span>
+
+                <span class="kt">string</span> <span class="n">user</span> <span class="p">=</span> <span class="s">"root"</span><span class="p">;</span>
+                <span class="kt">string</span> <span class="n">password</span> <span class="p">=</span> <span class="s">"rahasia"</span><span class="p">;</span>
+
+                <span class="kt">string</span> <span class="n">strConn</span> <span class="p">=</span> <span class="s">"SERVER="</span> <span class="p">+</span> <span class="n">server</span> <span class="p">+</span> <span class="s">";DATABASE="</span> <span class="p">+</span> <span class="n">database</span> <span class="p">+</span> <span class="s">";UID="</span> <span class="p">+</span> <span class="n">user</span> <span class="p">+</span> <span class="s">";PASSWORD="</span> <span class="p">+</span> <span class="n">password</span><span class="p">;</span>
+
+                <span class="n">conn</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MySqlConnection</span><span class="p">(</span><span class="n">strConn</span><span class="p">);</span>
+                <span class="n">conn</span><span class="p">.</span><span class="nf">Open</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">static</span> <span class="n">DBConnection</span> <span class="nf">GetInstance</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">dbConn</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span> <span class="n">dbConn</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DBConnection</span><span class="p">();</span> <span class="p">}</span>
+
+            <span class="k">return</span> <span class="n">dbConn</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">MySqlConnection</span> <span class="nf">GetConnection</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">conn</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Sampai disini semua persiapan sudah oke, saatnya kita melengkapi kode program untuk Presentation layer dan untuk merefresh ingatan kita saya tampilkan kembali form mahasiswa yang sudah kita rancang pada <a href="http://coding4ever.net/blog/2011/06/25/mengakses-database-mysql-menggunakan-c-bagian-1/">postingan</a> sebelumnya.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/06/25062011-31.png" alt="" class="align-center"></p>
+
+<p>Aktifkan terlebih dulu FrmMahasiswanya kemudian masuk kebagian editor codenya setelah itu tambahkan kode berikut :</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/06/26062011-8.png" alt="" class="align-center"></p>
+
+<p>Namespace DemoDAO.Model dan DemoDAO.Dao dibutuhkan agar bisa mengakses class Mahasiswa dan MahasiswaDao.</p>
+
+<p><strong>1. Menyimpan Data</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">btnSimpan_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// buat objek mhs</span>
+    <span class="n">Mahasiswa</span> <span class="n">mhs</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Mahasiswa</span><span class="p">();</span>
+
+    <span class="c1">// isi nilai masing-masing property</span>
+    <span class="n">mhs</span><span class="p">.</span><span class="n">NomorMahasiswa</span> <span class="p">=</span> <span class="n">txtNomorMahasiswa</span><span class="p">.</span><span class="n">Text</span><span class="p">;</span>
+    <span class="n">mhs</span><span class="p">.</span><span class="n">Nama</span> <span class="p">=</span> <span class="n">txtNama</span><span class="p">.</span><span class="n">Text</span><span class="p">;</span>
+    <span class="n">mhs</span><span class="p">.</span><span class="n">Alamat</span> <span class="p">=</span> <span class="n">txtAlamat</span><span class="p">.</span><span class="n">Text</span><span class="p">;</span>
+
+    <span class="n">result</span> <span class="p">=</span> <span class="n">mhsDao</span><span class="p">.</span><span class="nf">Save</span><span class="p">(</span><span class="n">mhs</span><span class="p">);</span> <span class="c1">// panggil method Save</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">MsgInfo</span><span class="p">(</span><span class="s">"Data sudah disimpan"</span><span class="p">);</span>
+        <span class="nf">KosongkanInputan</span><span class="p">();</span>
+
+        <span class="n">txtNomorMahasiswa</span><span class="p">.</span><span class="nf">Focus</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="nf">MsgInfo</span><span class="p">(</span><span class="s">"Data gagal disimpan"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>2. Mengupdate Data</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">btnPerbaiki_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// buat objek mhs</span>
+    <span class="n">Mahasiswa</span> <span class="n">mhs</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Mahasiswa</span><span class="p">();</span>
+
+    <span class="c1">// isi nilai masing-masing property</span>
+    <span class="n">mhs</span><span class="p">.</span><span class="n">NomorMahasiswa</span> <span class="p">=</span> <span class="n">txtNomorMahasiswa</span><span class="p">.</span><span class="n">Text</span><span class="p">;</span>
+    <span class="n">mhs</span><span class="p">.</span><span class="n">Nama</span> <span class="p">=</span> <span class="n">txtNama</span><span class="p">.</span><span class="n">Text</span><span class="p">;</span>
+    <span class="n">mhs</span><span class="p">.</span><span class="n">Alamat</span> <span class="p">=</span> <span class="n">txtAlamat</span><span class="p">.</span><span class="n">Text</span><span class="p">;</span>
+
+    <span class="n">result</span> <span class="p">=</span> <span class="n">mhsDao</span><span class="p">.</span><span class="nf">Update</span><span class="p">(</span><span class="n">mhs</span><span class="p">);</span> <span class="c1">// panggil method Update</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">MsgInfo</span><span class="p">(</span><span class="s">"Data sudah disimpan"</span><span class="p">);</span>
+        <span class="nf">KosongkanInputan</span><span class="p">();</span>
+
+        <span class="n">txtNomorMahasiswa</span><span class="p">.</span><span class="nf">Focus</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="nf">MsgInfo</span><span class="p">(</span><span class="s">"Data gagal disimpan"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>3. Menghapus Data</strong></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">btnHapus_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">result</span> <span class="p">=</span> <span class="n">mhsDao</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="n">txtNomorMahasiswa</span><span class="p">.</span><span class="n">Text</span><span class="p">);</span> <span class="c1">// panggil method Delete</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">MsgInfo</span><span class="p">(</span><span class="s">"Data sudah dihapus"</span><span class="p">);</span>
+        <span class="nf">KosongkanInputan</span><span class="p">();</span>
+
+        <span class="n">txtNomorMahasiswa</span><span class="p">.</span><span class="nf">Focus</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="nf">MsgInfo</span><span class="p">(</span><span class="s">"Data gagal dihapus"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>4. Menampilkan data</strong></p>
+
+<p>Untuk menampilkan data kita membutuhkan 2 methode yaitu <strong>FillToListView</strong> untuk menambahkan objek mahasiswa ke ListView dan <strong>LoadDataMahasiswa</strong> untuk mengambil data mahasiswa dari database dan menyimpannya ke objek mahasiswa.</p>
+
+<p>Karena data mahasiswa yang ditampilkan bisa lebih dari satu disini kita bisa menggunakan class List untuk menampung objeknya.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">FillToListView</span><span class="p">(</span><span class="n">Mahasiswa</span> <span class="n">mhs</span><span class="p">)</span>
+<span class="p">{</span>
+
+    <span class="kt">int</span> <span class="n">noUrut</span> <span class="p">=</span> <span class="n">lvwMahasiswa</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Count</span> <span class="p">+</span> <span class="m">1</span><span class="p">;</span>
+
+    <span class="n">ListViewItem</span> <span class="n">item</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ListViewItem</span><span class="p">(</span><span class="n">noUrut</span><span class="p">.</span><span class="nf">ToString</span><span class="p">());</span>
+
+    <span class="n">item</span><span class="p">.</span><span class="n">SubItems</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">mhs</span><span class="p">.</span><span class="n">NomorMahasiswa</span><span class="p">);</span>
+    <span class="n">item</span><span class="p">.</span><span class="n">SubItems</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">mhs</span><span class="p">.</span><span class="n">Nama</span><span class="p">);</span>
+    <span class="n">item</span><span class="p">.</span><span class="n">SubItems</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">mhs</span><span class="p">.</span><span class="n">Alamat</span><span class="p">);</span>
+
+    <span class="n">lvwMahasiswa</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">LoadDataMahasiswa</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">lvwMahasiswa</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="nf">Clear</span><span class="p">();</span>
+
+    <span class="n">List</span><span class="p">&lt;</span><span class="n">Mahasiswa</span><span class="p">&gt;</span> <span class="n">daftarMhs</span> <span class="p">=</span> <span class="n">mhsDao</span><span class="p">.</span><span class="nf">GetAll</span><span class="p">();</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="n">Mahasiswa</span> <span class="n">mhs</span> <span class="k">in</span> <span class="n">daftarMhs</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">FillToListView</span><span class="p">(</span><span class="n">mhs</span><span class="p">);</span> <span class="c1">// panggil method FillToListView</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Setelah itu tinggal panggil method LoadDataMahasiswa di constructor FrmMahasiswa</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/06/26062011-9.png" alt="" class="align-center"></p>
+
+<p><strong>5. Pencarian Data Berdasarkan Nama</strong></p>
+
+<p>Untuk pencarian data kita tinggal mengoverload method  LoadDataMahasiswa dimana kita menambahkan parameter nama dengan tipe string, selain itu method MahasiswaDao yang kita panggil adalah GetByName</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">LoadDataMahasiswa</span><span class="p">(</span><span class="kt">string</span> <span class="n">nama</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">lvwMahasiswa</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="nf">Clear</span><span class="p">();</span>
+
+    <span class="n">List</span><span class="p">&lt;</span><span class="n">Mahasiswa</span><span class="p">&gt;</span> <span class="n">daftarMhs</span> <span class="p">=</span> <span class="n">mhsDao</span><span class="p">.</span><span class="nf">GetByName</span><span class="p">(</span><span class="n">nama</span><span class="p">);</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="n">Mahasiswa</span> <span class="n">mhs</span> <span class="k">in</span> <span class="n">daftarMhs</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">FillToListView</span><span class="p">(</span><span class="n">mhs</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Selanjutnya tinggal dipanggil di event btnCari_Click</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">btnCari_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nf">LoadDataMahasiswa</span><span class="p">(</span><span class="n">txtKeywordPencarian</span><span class="p">.</span><span class="n">Text</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Sebagai bonus :) saya akan tambahkan satu lagi method untuk pencarian data berdasarkan nomor mahasiswa, untuk melakukan ini kita akan menambahkan method <strong>GetByNoMahasiswa</strong>, adapun kodenya sebgai berikut :</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="n">Mahasiswa</span> <span class="nf">GetByNoMahasiswa</span><span class="p">(</span><span class="kt">string</span> <span class="n">nomorMahasiswa</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Mahasiswa</span> <span class="n">mhs</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="n">strSql</span> <span class="p">=</span> <span class="s">"SELECT nomor_mahasiswa, nama, alamat FROM mahasiswa "</span> <span class="p">+</span>
+             <span class="s">"WHERE nomor_mahasiswa = @1"</span><span class="p">;</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="n">MySqlCommand</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MySqlCommand</span><span class="p">(</span><span class="n">strSql</span><span class="p">,</span> <span class="n">conn</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">cmd</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">AddWithValue</span><span class="p">(</span><span class="s">"@1"</span><span class="p">,</span> <span class="n">nomorMahasiswa</span><span class="p">);</span>
+
+        <span class="k">using</span> <span class="p">(</span><span class="n">MySqlDataReader</span> <span class="n">dtr</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="nf">ExecuteReader</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">dtr</span><span class="p">.</span><span class="nf">Read</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="n">mhs</span> <span class="p">=</span> <span class="nf">MappingRowToObject</span><span class="p">(</span><span class="n">dtr</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">mhs</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Method tersebut ditambahkan di class MahasiswaDao, selain itu kita juga menambahkan satu button lagi di FrmMahasiswa untuk memanggil method tersebut.</p>
+
+<p><img src="http://coding4ever.files.wordpress.com/2011/06/26062011-10.png" alt="" class="align-center"></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">btnCariByNoMhs_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Mahasiswa</span> <span class="n">mhs</span> <span class="p">=</span> <span class="n">mhsDao</span><span class="p">.</span><span class="nf">GetByNoMahasiswa</span><span class="p">(</span><span class="n">txtNomorMahasiswa</span><span class="p">.</span><span class="n">Text</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">mhs</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">txtNomorMahasiswa</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">mhs</span><span class="p">.</span><span class="n">NomorMahasiswa</span><span class="p">;</span>
+        <span class="n">txtNama</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">mhs</span><span class="p">.</span><span class="n">Nama</span><span class="p">;</span>
+        <span class="n">txtAlamat</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">mhs</span><span class="p">.</span><span class="n">Alamat</span><span class="p">;</span>
+
+        <span class="nf">MsgInfo</span><span class="p">(</span><span class="s">"Data mahasiswa ditemukan"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">else</span>
+    <span class="p">{</span>
+        <span class="nf">MsgInfo</span><span class="p">(</span><span class="s">"Nomor mahasiswa tidak ditemukan"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Akhirnya selesai juga, tapi mungkin saya butuh satu postingan lagi untuk menutup artikel berseri ini, insya Allah :).</p>
+
+<p>Selamat <a href="http://www.4shared.com/file/MSyZd_nN/DemoDAO2.html">MENCOBA</a> <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/blog/tags/dao" class="page__taxonomy-item" rel="tag">dao</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/delete" class="page__taxonomy-item" rel="tag">DELETE</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/list" class="page__taxonomy-item" rel="tag">List</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/mysql" class="page__taxonomy-item" rel="tag">mysql</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/save" class="page__taxonomy-item" rel="tag">Save</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/update" class="page__taxonomy-item" rel="tag">UPDATE</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/blog/categories/mysql" class="page__taxonomy-item" rel="tag">MySql</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/categories/visual-c" class="page__taxonomy-item" rel="tag">Visual C#</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2011-06-26T11:04:42+07:00">June 26, 2011</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Mengakses+database+MySQL+menggunakan+C%23+bagian+2%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2011%2F06%2F26%2Fmengakses-database-mysql-menggunakan-c-bagian-2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2011%2F06%2F26%2Fmengakses-database-mysql-menggunakan-c-bagian-2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2011%2F06%2F26%2Fmengakses-database-mysql-menggunakan-c-bagian-2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2011/06/25/mengakses-database-mysql-menggunakan-c-bagian-1/" class="pagination--pager" title="Mengakses database MySQL menggunakan C# bagian 1
+">Previous</a>
+    
+    
+      <a href="/blog/2011/06/29/hasil-investigasi-google-talk/" class="pagination--pager" title="Hasil investigasi Google Talk
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/blog/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-50866618-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://coding4ever.net/blog/2011/06/26/mengakses-database-mysql-menggunakan-c-bagian-2/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/2011/06/26/mengakses-database-mysql-menggunakan-c-bagian-2"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>

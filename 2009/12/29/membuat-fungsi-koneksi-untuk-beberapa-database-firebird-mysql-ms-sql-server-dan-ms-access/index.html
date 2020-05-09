@@ -1,0 +1,827 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Membuat fungsi koneksi untuk beberapa database (Firebird, MySQL, Ms SQL Server dan Ms Access) | » Coding4ever’s Blog «</title>
+<meta name="description" content="1. Tambahkan sebuah modul dan copy paste kode berikut :  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Membuat fungsi koneksi untuk beberapa database (Firebird, MySQL, Ms SQL Server dan Ms Access)">
+<meta property="og:url" content="http://coding4ever.net/blog/2009/12/29/membuat-fungsi-koneksi-untuk-beberapa-database-firebird-mysql-ms-sql-server-dan-ms-access/">
+
+
+  <meta property="og:description" content="1. Tambahkan sebuah modul dan copy paste kode berikut :  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2009-12-29T14:55:07+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://coding4ever.net/blog/2009/12/29/membuat-fungsi-koneksi-untuk-beberapa-database-firebird-mysql-ms-sql-server-dan-ms-access/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://coding4ever.net/blog/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/blog/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/blog/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/blog/"><img src="/blog/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/blog/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/blog/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/blog/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/blog/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/blog/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/blog/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Membuat fungsi koneksi untuk beberapa database (Firebird, MySQL, Ms SQL Server dan Ms Access)">
+    <meta itemprop="description" content="1. Tambahkan sebuah modul dan copy paste kode berikut :">
+    <meta itemprop="datePublished" content="2009-12-29T14:55:07+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Membuat fungsi koneksi untuk beberapa database (Firebird, MySQL, Ms SQL Server dan Ms Access)
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2009-12-29T14:55:07+07:00">December 29, 2009</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+
+				
+				 • <a href="http://coding4ever.net/2009/12/29/membuat-fungsi-koneksi-untuk-beberapa-database-firebird-mysql-ms-sql-server-dan-ms-access/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><strong>1. Tambahkan sebuah modul dan copy paste kode berikut :</strong></p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Public</span> <span class="n">conn</span> <span class="ow">As</span> <span class="n">ADODB</span><span class="p">.</span><span class="n">Connection</span>
+
+<span class="k">Public</span> <span class="k">Enum</span> <span class="nc">TIPE_DATABASE</span>
+   <span class="n">FIREBIRD</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="n">MYSQL</span> <span class="o">=</span> <span class="mi">2</span>
+   <span class="n">SQLSERVER</span> <span class="o">=</span> <span class="mi">3</span>
+   <span class="n">MSACCESS</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="k">End</span> <span class="k">Enum</span>
+
+<span class="k">Public</span> <span class="k">Function</span> <span class="nf">connToDB</span><span class="p">(</span><span class="k">ByVal</span> <span class="n">tipeDb</span> <span class="ow">As</span> <span class="n">TIPE_DATABASE</span><span class="p">,</span> <span class="k">Optional</span> <span class="k">ByVal</span> <span class="n">serverName</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span><span class="p">,</span> <span class="n">_</span>
+   <span class="k">Optional</span> <span class="k">ByVal</span> <span class="n">userName</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span><span class="p">,</span> <span class="k">Optional</span> <span class="k">ByVal</span> <span class="n">userPass</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span><span class="p">,</span> <span class="n">_</span>
+   <span class="k">Optional</span> <span class="k">ByVal</span> <span class="n">dbPath</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span><span class="p">,</span> <span class="k">Optional</span> <span class="k">ByVal</span> <span class="n">dbName</span> <span class="ow">As</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">""</span><span class="p">)</span> <span class="ow">As</span> <span class="kt">Boolean</span>
+
+   <span class="k">Dim</span> <span class="nv">strCon</span> <span class="ow">As</span> <span class="kt">String</span>
+
+   <span class="k">On</span> <span class="k">Error</span> <span class="k">GoTo</span> <span class="n">errHandle</span>
+
+   <span class="k">Select</span> <span class="k">Case</span> <span class="n">tipeDb</span>
+      <span class="k">Case</span> <span class="n">FIREBIRD</span>
+         <span class="n">strCon</span> <span class="o">=</span> <span class="s">"DRIVER=Firebird/Interbase(r) Driver;UID="</span> <span class="o">&amp;</span> <span class="n">userName</span> <span class="o">&amp;</span> <span class="s">";PWD="</span> <span class="o">&amp;</span> <span class="n">userPass</span> <span class="o">&amp;</span> <span class="s">";"</span> <span class="o">&amp;</span> <span class="n">_</span>
+         <span class="s">"DBNAME="</span> <span class="o">&amp;</span> <span class="n">serverName</span> <span class="o">&amp;</span> <span class="s">":"</span> <span class="o">&amp;</span> <span class="n">dbPath</span> <span class="o">&amp;</span> <span class="s">"\"</span> <span class="o">&amp;</span> <span class="n">dbName</span> <span class="o">&amp;</span> <span class="s">""</span>
+
+      <span class="k">Case</span> <span class="n">MYSQL</span>
+         <span class="n">strCon</span> <span class="o">=</span> <span class="s">"DRIVER={MySQL ODBC 5.1 Driver};SERVER="</span> <span class="o">&amp;</span> <span class="n">serverName</span> <span class="o">&amp;</span> <span class="s">";DATABASE="</span> <span class="o">&amp;</span> <span class="n">dbName</span> <span class="o">&amp;</span> <span class="s">";"</span> <span class="o">&amp;</span> <span class="n">_</span>
+         <span class="s">"UID="</span> <span class="o">&amp;</span> <span class="n">userName</span> <span class="o">&amp;</span> <span class="s">";PWD="</span> <span class="o">&amp;</span> <span class="n">userPass</span> <span class="o">&amp;</span> <span class="s">";OPTION=3"</span>
+
+      <span class="k">Case</span> <span class="n">SQLSERVER</span>
+         <span class="n">strCon</span> <span class="o">=</span> <span class="s">"Provider=SQLOLEDB.1;User ID="</span> <span class="o">&amp;</span> <span class="n">userName</span> <span class="o">&amp;</span> <span class="s">";Pwd="</span> <span class="o">&amp;</span> <span class="n">userPass</span> <span class="o">&amp;</span> <span class="s">";"</span> <span class="o">&amp;</span> <span class="n">_</span>
+         <span class="s">"Initial Catalog="</span> <span class="o">&amp;</span> <span class="n">dbName</span> <span class="o">&amp;</span> <span class="s">";Data Source="</span> <span class="o">&amp;</span> <span class="n">serverName</span> <span class="o">&amp;</span> <span class="s">""</span>
+
+      <span class="k">Case</span> <span class="n">MSACCESS</span>
+        <span class="k">If</span> <span class="n">Len</span><span class="p">(</span><span class="n">userPass</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">Then</span>
+           <span class="n">strCon</span> <span class="o">=</span> <span class="s">"Provider=Microsoft.Jet.OLEDB.4.0;Data Source= "</span> <span class="o">&amp;</span> <span class="n">dbPath</span> <span class="o">&amp;</span> <span class="s">"\"</span> <span class="o">&amp;</span> <span class="n">dbName</span> <span class="o">&amp;</span> <span class="s">";"</span> <span class="o">&amp;</span> <span class="n">_</span>
+           <span class="s">"Jet OLEDB:Database Password="</span> <span class="o">&amp;</span> <span class="n">userPass</span> <span class="o">&amp;</span> <span class="s">""</span>
+        <span class="k">Else</span>
+           <span class="n">strCon</span> <span class="o">=</span> <span class="s">"Provider=Microsoft.Jet.OLEDB.4.0;Data Source= "</span> <span class="o">&amp;</span> <span class="n">dbPath</span> <span class="o">&amp;</span> <span class="s">"\"</span> <span class="o">&amp;</span> <span class="n">dbName</span> <span class="o">&amp;</span> <span class="s">""</span>
+        <span class="k">End</span> <span class="k">If</span>
+   <span class="k">End</span> <span class="k">Select</span>
+
+   <span class="k">Set</span> <span class="n">conn</span> <span class="o">=</span> <span class="k">New</span> <span class="n">ADODB</span><span class="p">.</span><span class="n">Connection</span>
+   <span class="n">conn</span><span class="p">.</span><span class="n">ConnectionString</span> <span class="o">=</span> <span class="n">strCon</span>
+   <span class="n">conn</span><span class="p">.</span><span class="n">Open</span>
+
+   <span class="n">connToDB</span> <span class="o">=</span> <span class="k">True</span>
+
+   <span class="k">Exit</span> <span class="k">Function</span>
+<span class="nf">errHandle</span><span class="p">:</span>
+   <span class="n">connToDB</span> <span class="o">=</span> <span class="k">False</span>
+<span class="k">End</span> <span class="k">Function</span></code></pre></figure>
+
+<p><strong>2. Pada form tambahkan sebuah objek command dan set properties Name = cmdTesKoneksi</strong></p>
+
+<p>copy paste kode berikut :</p>
+
+<figure class="highlight"><pre><code class="language-vb" data-lang="vb"><span class="k">Private</span> <span class="k">Sub</span> <span class="nf">cmdTesKoneksi_Click</span><span class="p">()</span>
+   <span class="k">Dim</span> <span class="nv">result</span>  <span class="ow">As</span> <span class="kt">Boolean</span>
+
+   <span class="c1">'Firebird</span>
+   <span class="n">result</span> <span class="o">=</span> <span class="n">connToDB</span><span class="p">(</span><span class="n">FIREBIRD</span><span class="p">,</span> <span class="s">"127.0.0.1"</span><span class="p">,</span> <span class="s">"SYSDBA"</span><span class="p">,</span> <span class="s">"masterkey"</span><span class="p">,</span> <span class="s">"d:\data"</span><span class="p">,</span> <span class="s">"db_akademik.fdb"</span><span class="p">)</span>
+   <span class="n">Debug</span><span class="p">.</span><span class="n">Print</span> <span class="n">result</span>
+
+   <span class="c1">'MySQL</span>
+   <span class="n">result</span> <span class="o">=</span> <span class="n">connToDB</span><span class="p">(</span><span class="n">MYSQL</span><span class="p">,</span> <span class="s">"127.0.0.1"</span><span class="p">,</span> <span class="s">"root"</span><span class="p">,</span> <span class="s">"masterkey"</span><span class="p">,</span> <span class="p">,</span> <span class="s">"db_akademik"</span><span class="p">)</span>
+   <span class="n">Debug</span><span class="p">.</span><span class="n">Print</span> <span class="n">result</span>
+
+   <span class="c1">'SQL Server 2000</span>
+   <span class="n">result</span> <span class="o">=</span> <span class="n">connToDB</span><span class="p">(</span><span class="n">SQLSERVER</span><span class="p">,</span> <span class="s">"127.0.0.1"</span><span class="p">,</span> <span class="s">"sa"</span><span class="p">,</span> <span class="s">"masterkey"</span><span class="p">,</span> <span class="p">,</span> <span class="s">"db_akademik"</span><span class="p">)</span>
+   <span class="n">Debug</span><span class="p">.</span><span class="n">Print</span> <span class="n">result</span>
+
+   <span class="c1">'Ms Access - tanpa password</span>
+   <span class="n">result</span> <span class="o">=</span> <span class="n">connToDB</span><span class="p">(</span><span class="n">MSACCESS</span><span class="p">,</span> <span class="p">,</span> <span class="p">,</span> <span class="p">,</span> <span class="s">"d:\data"</span><span class="p">,</span> <span class="s">"db_akademik.mdb"</span><span class="p">)</span>
+   <span class="n">Debug</span><span class="p">.</span><span class="n">Print</span> <span class="n">result</span>
+
+   <span class="c1">'Ms Access - menggunakan password</span>
+   <span class="n">result</span> <span class="o">=</span> <span class="n">connToDB</span><span class="p">(</span><span class="n">MSACCESS</span><span class="p">,</span> <span class="p">,</span> <span class="p">,</span> <span class="s">"masterkey"</span><span class="p">,</span> <span class="s">"d:\data"</span><span class="p">,</span> <span class="s">"db_akademik.mdb"</span><span class="p">)</span>
+   <span class="n">Debug</span><span class="p">.</span><span class="n">Print</span> <span class="n">result</span>
+<span class="k">End</span> <span class="k">Sub</span></code></pre></figure>
+
+<p>Untuk nilai semua parameter fungsi connToDB disesuaikan dengan kondisi komputer Anda. Selamat mencoba <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/blog/tags/database" class="page__taxonomy-item" rel="tag">Database</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/firebird" class="page__taxonomy-item" rel="tag">firebird</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/koneksi-ke-firebird" class="page__taxonomy-item" rel="tag">koneksi ke firebird</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/koneksi-ke-ms-acess" class="page__taxonomy-item" rel="tag">koneksi ke ms acess</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/koneksi-ke-mysql" class="page__taxonomy-item" rel="tag">koneksi ke mysql</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/koneksi-ke-sql-server" class="page__taxonomy-item" rel="tag">koneksi ke sql server</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/koneksi" class="page__taxonomy-item" rel="tag">koneksi</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/ms-asccess" class="page__taxonomy-item" rel="tag">ms asccess</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/mysql" class="page__taxonomy-item" rel="tag">mysql</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/tags/sql-server" class="page__taxonomy-item" rel="tag">sql server</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/blog/categories/firebird" class="page__taxonomy-item" rel="tag">Firebird</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/categories/mysql" class="page__taxonomy-item" rel="tag">MySql</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/categories/sql-server" class="page__taxonomy-item" rel="tag">SQL Server</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/blog/categories/visual-basic" class="page__taxonomy-item" rel="tag">Visual Basic</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2009-12-29T14:55:07+07:00">December 29, 2009</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Membuat+fungsi+koneksi+untuk+beberapa+database+%28Firebird%2C+MySQL%2C+Ms+SQL+Server+dan+Ms+Access%29%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2009%2F12%2F29%2Fmembuat-fungsi-koneksi-untuk-beberapa-database-firebird-mysql-ms-sql-server-dan-ms-access%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2009%2F12%2F29%2Fmembuat-fungsi-koneksi-untuk-beberapa-database-firebird-mysql-ms-sql-server-dan-ms-access%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2009%2F12%2F29%2Fmembuat-fungsi-koneksi-untuk-beberapa-database-firebird-mysql-ms-sql-server-dan-ms-access%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2009/12/29/membuat-paket-instalasi-update-program-menggunakan-inno-setup/" class="pagination--pager" title="Membuat paket instalasi update program menggunakan Inno Setup
+">Previous</a>
+    
+    
+      <a href="/blog/2009/12/29/menambahkan-menu-baru-di-system-menu/" class="pagination--pager" title="Menambahkan menu baru di system menu
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  7 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/blog/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/blog/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/blog/assets/js/lunr/lunr.min.js"></script>
+<script src="/blog/assets/js/lunr/lunr-store.js"></script>
+<script src="/blog/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-50866618-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://coding4ever.net/blog/2009/12/29/membuat-fungsi-koneksi-untuk-beberapa-database-firebird-mysql-ms-sql-server-dan-ms-access/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/2009/12/29/membuat-fungsi-koneksi-untuk-beberapa-database-firebird-mysql-ms-sql-server-dan-ms-access"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>
