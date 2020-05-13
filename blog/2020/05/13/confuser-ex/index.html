@@ -1,0 +1,873 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Proteksi Hasil Compile Aplikasi Anda Menggunakan ConfuserEx | » Coding4ever’s Blog «</title>
+<meta name="description" content="Apa itu ConfuserEx?  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Proteksi Hasil Compile Aplikasi Anda Menggunakan ConfuserEx">
+<meta property="og:url" content="http://coding4ever.net/blog/2020/05/13/confuser-ex/">
+
+
+  <meta property="og:description" content="Apa itu ConfuserEx?  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-05-13T22:19:44+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://coding4ever.net/blog/2020/05/13/confuser-ex/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://coding4ever.net/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Proteksi Hasil Compile Aplikasi Anda Menggunakan ConfuserEx">
+    <meta itemprop="description" content="Apa itu ConfuserEx?">
+    <meta itemprop="datePublished" content="2020-05-13T22:19:44+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Proteksi Hasil Compile Aplikasi Anda Menggunakan ConfuserEx
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2020-05-13T22:19:44+07:00">May 13, 2020</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+				
+				 • <a href="http://coding4ever.net/blog/2020/05/13/confuser-ex/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="apa-itu-confuserex">Apa itu ConfuserEx?</h2>
+
+<p><img src="http://coding4ever.net/assets/images/logo/confuser-ex-logo.png" alt="" class="align-left"><a href="https://yck1509.github.io/ConfuserEx/">ConfuserEx</a> adalah tool open-source yang berfungsi untuk melindungi hasil compile aplikasi yang dikembangkan di atas platform .NET (C#, VB.NET, F# dan bahasa .NET lainnya). ConfuserEx dianggap sebagai salah satu tool <a href="https://en.wikipedia.org/wiki/Obfuscation_(software)">obfuscators</a> terbaik yang tersedia gratis untuk platform .NET.</p>
+
+<!-- more -->
+
+<p>Hasil compile (assembly) yang sudah diproteksi menggunakan <a href="https://yck1509.github.io/ConfuserEx/">ConfuserEx</a> akan menyulitkan orang lain untuk membaca kembali kodenya walaupun sudah di <code class="language-plaintext highlighter-rouge">decompile</code> menggunakan tool decompiler sekelas <a href="https://www.jetbrains.com/decompiler/">JetBrains dotPeek</a>.</p>
+
+<h2 id="net-framework-yang-disupport">.NET Framework yang disupport</h2>
+
+<p>Walaupun pengembangan <a href="https://yck1509.github.io/ConfuserEx/">ConfuserEx</a> untuk saat ini sudah dihentikan. Untuk versi terakhirnya sudah mendukung .NET Framework sampai versi 4.6.x. Saya sendiri biasanya jika membuat aplikasi desktop tetap menggunakan .NET Framework versi 4.0 dengan pertimbangan agar aplikasinya tetap bisa di jalankan di Windows XP, sehingga tool <a href="https://yck1509.github.io/ConfuserEx/">ConfuserEx</a> ini masih tetap bisa saya gunakan.</p>
+
+<h2 id="jetbrains-dotpeek">JetBrains dotPeek</h2>
+
+<p><a href="https://www.jetbrains.com/decompiler/">JetBrains dotPeek</a> adalah tool decompiler gratis untuk aplikasi yang dikembangkan di atas platform .NET (C#, VB.NET, F# dan bahasa .NET lainnya).</p>
+
+<p>Di <a href="http://coding4ever.net/blog/2020/05/13/confuser-ex/">postingan</a> ini saya akan menggunakan tool <a href="https://www.jetbrains.com/decompiler/">JetBrains dotPeek</a> untuk keperluan uji coba decompiler hasil compile dari aplikasi .NET Framework.</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/01-jetBrains-dotPeek.png" alt="" class="align-center"></p>
+
+<h2 id="hasil-compile-aplikasi-net-framework">Hasil Compile Aplikasi .NET Framework</h2>
+
+<p>Perlu diketahui bawah hasil compile dari aplikasi .NET masih dalam bentuk <a href="https://en.wikipedia.org/wiki/Common_Intermediate_Language">IL</a> jadi belum dalam bentuk native code (bahasa mesin), sehingga dibutuhkan .NET Framework agar hasil compile ini bisa berjalan.</p>
+
+<p>Ada banyak tool yang bisa dengan <em>sempurna</em> melakukan proses <a href="https://en.wikipedia.org/wiki/Decompiler">decompiler</a> hasil compile aplikasi .NET Framework, salah satunya ada tool <a href="https://www.jetbrains.com/decompiler/">JetBrains dotPeek</a>.</p>
+
+<p>Sebagai contoh sudah saya buatkan aplikasi yang akan kita coba decompile hasil compilenya menggunakan <a href="https://www.jetbrains.com/decompiler/">JetBrains dotPeek</a>. Aplikasi ini bisa Anda download di<a href="https://github.com/k4m4r82/NorthwindMVC">sini</a>. Ini adalah aplikasi CRUD sederhana yang sudah menerapkan konsep <a href="http://coding4ever.net/categories/repository-pattern/">Repository Pattern</a> dan <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC Pattern</a>. Untuk database saya menggunakan MySQL.</p>
+
+<p>Yuk, kita liat dulu tampilan aplikasinya</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/02-form-list.png" alt="" class="align-center"></p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/03-form-entry.png" alt="" class="align-center"></p>
+
+<p>Struktur project sudah menerapkan konsep <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC Pattern</a></p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/04-struktur-project.png" alt="" class="align-center"></p>
+
+<p><code class="language-plaintext highlighter-rouge">Model</code> adalah layer yang bertugas untuk berkomunikasi dengan database secara langsung. Salah satu class yang ada di layer ini adalah class <code class="language-plaintext highlighter-rouge">DbContext.cs</code>. Class <code class="language-plaintext highlighter-rouge">DbContext.cs</code> ini bertanggung jawab untuk berinteraksi secara langsung dengan database, seperti membuat koneksi, menjalankan perintah sql seperti insert, update, delete dan select atau mengeksekusi objek database seperti store procedure dan function. Sehingga di class inilah biasanya kita menuliskan beberapa <code class="language-plaintext highlighter-rouge">informasi rahasia</code> seperti <code class="language-plaintext highlighter-rouge">username</code> dan <code class="language-plaintext highlighter-rouge">password</code> yang digunakan untuk melakukan koneksi ke database seperti MySQL.</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/05-class-dbcontext.png" alt="" class="align-center"></p>
+
+<p>Berikutnya kita akan melihat kode yang ada di class Repository. Class Repository adalah class yang berisi kode-kode untuk menjalankan operasi <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a>. Sebagai contoh kita akan melihat isi dari class <a href="https://github.com/k4m4r82/NorthwindMVC/blob/master/src/NorthwindApp/Model/Repository/ProductRepository.cs">ProductRepository.cs</a>.</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/06-class-repository1.png" alt="" class="align-center"></p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/07-class-repository2.png" alt="" class="align-center"></p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/08-class-repository3.png" alt="" class="align-center"></p>
+
+<p>Setelah melihat kode di atas, sekarang akan kita lakukan proses build/compile projectnya</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/09-proses-compile.png" alt="" class="align-center"></p>
+
+<p>kemudian akan kita lakukan proses decompile menggunakan tool decompiler <a href="https://www.jetbrains.com/decompiler/">JetBrains dotPeek</a>.</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/10-proses-decompile.png" alt="" class="align-center"></p>
+
+<p>Pertama kita cek dulu hasil decompile class <code class="language-plaintext highlighter-rouge">DbContext.cs</code>nya.</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/11-hasil-decompile-class-dbcontext.png" alt="" class="align-center"></p>
+
+<p>Mengerikan bukan hasil decompilenya, sama persis dengan kode aslinya <img class="emoji" title=":scream:" alt=":scream:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f631.png" height="20" width="20"> <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20"></p>
+
+<p>Sekarang kita cek juga hasil decompile class ProductRepositorynya</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/12-hasil-decompile-class-product-repository.png" alt="" class="align-center"></p>
+
+<p>Nah sampai di sini sudah paham kan, kenapa kita harus mengeluarkan usaha lebih untuk mengamankan hasil compile aplikasi kita.</p>
+
+<h2 id="confuserex-in-acation">ConfuserEx In Acation</h2>
+
+<p>Ok berikutnya kita akan menambahkan proteksi hasil compile aplikasi kita menggunakan tool <a href="https://yck1509.github.io/ConfuserEx/">ConfuserEx</a>, jadi silahkan Anda download terlebih dulu aplikasinya di<a href="https://github.com/yck1509/ConfuserEx/releases/download/v1.0.0/ConfuserEx_bin.zip">sini</a>. Kemudian Anda ekstrak, misal ke folder <code class="language-plaintext highlighter-rouge">C:\ConfuserEx_bin</code>.</p>
+
+<p>Ada 2 cara untuk menggunakan <a href="https://yck1509.github.io/ConfuserEx/">ConfuserEx</a>, yaitu:</p>
+
+<ol>
+  <li>Menggunakan GUI</li>
+  <li>Menggunakan CLI (Command-line Interface)</li>
+</ol>
+
+<p>Di postingan ini saya akan menggunakan cara yang kedua yaitu menggunakan CLI (Command-line Interface). Berikut langkah-langkahnya:</p>
+
+<ol>
+  <li>
+    <p>Tambahkan sebuah file dengan ekstensi <code class="language-plaintext highlighter-rouge">crproj</code> (ConfuserEx project), dengan nama yang sama dengan nama projectnya. Kemudian simpan di folder aplikasi (satu folder dengan file project).</p>
+
+    <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/13-file-confuser-ex-project.png" alt=""></p>
+
+    <p>Kemudian lengkapi scriptnya seperti berikut:</p>
+
+    <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/14-isi-file-confuser-ex-project.png" alt=""></p>
+
+    <p>Jika file yang akan diproteksi lebih dari satu, Anda bisa tambahkan setelah baris perintah <code class="language-plaintext highlighter-rouge">&lt;module path="NorthwindApp.exe" /&gt;</code>. Contoh:</p>
+
+    <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/15-isi-file-confuser-ex-project.png" alt=""></p>
+  </li>
+  <li>
+    <p>Aktifkan <code class="language-plaintext highlighter-rouge">command prompt</code>, kemudian Anda pindah ke folder project Anda. Setelah itu ketik perintah berikut:</p>
+
+    <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/16-confuser-ex-cli.png" alt=""></p>
+
+    <p>tunggu beberapa saat sampai proses ConfuserExnya selesai</p>
+
+    <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/17-confuser-ex-cli-output.png" alt=""></p>
+
+    <p>bisa kita lihat pada gambar output di atas, untuk file <code class="language-plaintext highlighter-rouge">NorthwindApp.exe</code> yang sudah diproteksi ada di folder <code class="language-plaintext highlighter-rouge">Confused</code></p>
+
+    <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/18-confuser-ex-cli-output2.png" alt=""></p>
+
+    <p>Nah sekarang kita coba lagi untuk melakukan proses decompile ulang menggunakan tool decompiler <a href="https://www.jetbrains.com/decompiler/">JetBrains dotPeek</a>.</p>
+
+    <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/19-proses-decompile2.png" alt=""></p>
+
+    <p>Dan ini adalah hasil decompile untuk class <code class="language-plaintext highlighter-rouge">DbContext.cs</code>. Sudah tidak terlihat lagi <code class="language-plaintext highlighter-rouge">username</code> dan <code class="language-plaintext highlighter-rouge">password</code> untuk konek ke database.</p>
+
+    <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/20-proses-decompile2-class-dbcontext.png" alt=""></p>
+
+    <p>begitu juga dengan hasil decompile untuk class <code class="language-plaintext highlighter-rouge">ProductRepository.cs</code> sekarang sudah terproteksi dengan baik.</p>
+
+    <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/21-proses-decompile2-class-product-repository.png" alt=""></p>
+  </li>
+</ol>
+
+<h2 id="build-events">Build Events</h2>
+
+<p>Sebenarnya pembahasan tentang ConfuserEx ini sudah selesai, tapi berhubungan perintah ConfuserEx CLI di atas masih dijalankan secara manual via command prompt tentu akan menyulitkan sekali jika harus dijalankan secara berulang setiap selesai melakukan proses build/compile. Trus apa solusinya agar perintah ConfuserEx CLI di atas bisa dijalankan secara otomatis? Salah satu solusinya adalah dengan memanfaatkan fasilitas <a href="http://coding4ever.net/categories/build-events/">Build Events</a> yang sudah tersedia di Visual Studio .NET.</p>
+
+<p>Nah berikut script <a href="http://coding4ever.net/categories/build-events/">Build Events</a> yang harus kita buat untuk menjalankan ConfuserEx CLI di atas secara otomatis, setiap kali kita melakukan proses build.</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">rem <span class="nb">set </span>lokasi folder deploy
+<span class="nb">set </span><span class="nv">DeployDir</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span>SolutionDir<span class="si">)</span><span class="s2">..</span><span class="se">\d</span><span class="s2">eploy"</span>
+<span class="k">if </span>not exist %DeployDir% <span class="nb">mkdir</span> %DeployDir%
+
+rem copy hasil build ke folder deploy
+copy /Y <span class="s2">"</span><span class="si">$(</span>TargetDir<span class="si">)$(</span>TargetFileName<span class="si">)</span><span class="s2">.config"</span> %DeployDir%
+copy /Y <span class="s2">"</span><span class="si">$(</span>TargetDir<span class="si">)</span><span class="s2">*.dll"</span> %DeployDir%
+
+rem jalankan ConfuserEx CLI
+<span class="nb">set </span><span class="nv">ConfuserExDir</span><span class="o">=</span><span class="s2">"C:</span><span class="se">\C</span><span class="s2">onfuserEx_bin"</span>
+%ConfuserExDir%<span class="se">\C</span>onfuser.CLI.exe <span class="s2">"</span><span class="si">$(</span>ProjectDir<span class="si">)$(</span>ProjectName<span class="si">)</span><span class="s2">.crproj"</span>
+
+rem hapus file build yang tidak diperlukan
+del /s /q %DeployDir%<span class="se">\*</span>.vshost.<span class="k">*</span>
+del /s /q %DeployDir%<span class="se">\*</span>.xml
+del /s /q %DeployDir%<span class="se">\*</span>.pdb</code></pre></figure>
+
+<p>Untuk mengaktifkan <a href="http://coding4ever.net/categories/build-events/">Build Events</a>, klik kanan nama project -&gt; Properties -&gt; tab <a href="http://coding4ever.net/categories/build-events/">Build Events</a>. Kemudian copas script di atas di bagian <code class="language-plaintext highlighter-rouge">Post-build Event Command Line</code>.</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/22-script-build-event.png" alt="" class="align-center"></p>
+
+<p>Setelah itu lakukan proses build, dan secara otomatis perintah ConfuserEx CLI akan dijalankan.</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/23-run-build-event.png" alt="" class="align-center"></p>
+
+<p>Selamat mencoba <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/build-events" class="page__taxonomy-item" rel="tag">Build Events</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/compiler" class="page__taxonomy-item" rel="tag">compiler</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/compile" class="page__taxonomy-item" rel="tag">compile</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/decompiler" class="page__taxonomy-item" rel="tag">decompiler</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/obfuscators" class="page__taxonomy-item" rel="tag">obfuscators</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/visual-studio-net" class="page__taxonomy-item" rel="tag">Visual Studio .NET</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/confuserex" class="page__taxonomy-item" rel="tag">ConfuserEx</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-05-13T22:19:44+07:00">May 13, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Proteksi+Hasil+Compile+Aplikasi+Anda+Menggunakan+ConfuserEx%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2020%2F05%2F13%2Fconfuser-ex%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2020%2F05%2F13%2Fconfuser-ex%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2020%2F05%2F13%2Fconfuser-ex%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" class="pagination--pager" title="Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/" rel="permalink">Solusi Mengakses Database Lokal (IP Private) Secara Online
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-25T16:00:03+07:00">August 25, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/25/solusi-mengakses-database-lokal-ip-private-secara-online/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi software developer untuk aplikasi bisnis berbasis desktop adalah ketika klien meminta untuk mengonlinekan database mereka. Karena m...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-02T15:13:39+07:00">August 2, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Cara apa yang biasa Anda gunakan untuk menyimpan konfigurasi aplikasi? Biasanya ada beberapa pilihan seperti menyimpan dalam format text (INI, XML, JSON), da...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/" rel="permalink">Membuat jaringan VPN Menggunakan SoftEther VPN Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2018-07-05T14:50:45+07:00">July 5, 2018</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  6 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2018/07/05/membuat-jaringan-vpn-menggunakan-softether-vpn-bagian-number-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Salah satu tantangan bagi kita, pengembang software untuk aplikasi bisnis berbasis desktop adalah ketika klien kita bertanya “Mas, databasenya kalau di taruh...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-50866618-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://coding4ever.net/blog/2020/05/13/confuser-ex/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/2020/05/13/confuser-ex"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>

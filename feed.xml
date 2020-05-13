@@ -1,4 +1,159 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://coding4ever.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://coding4ever.net/" rel="alternate" type="text/html" /><updated>2020-05-10T14:42:27+07:00</updated><id>http://coding4ever.net/feed.xml</id><title type="html">» Coding4ever’s Blog «</title><subtitle>Coding4ever's Blog</subtitle><author><name>Kamarudin</name></author><entry><title type="html">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2</title><link href="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="alternate" type="text/html" title="Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2" /><published>2019-08-31T09:26:47+07:00</published><updated>2019-08-31T09:26:47+07:00</updated><id>http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2</id><content type="html" xml:base="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/">&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/logo/consul-logo.png&quot; alt=&quot;&quot; class=&quot;align-left&quot; /&gt;Oke, hari ini saya ingin melanjutkan pembahasan &lt;a href=&quot;http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/&quot;&gt;postingan&lt;/a&gt; saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan &lt;a href=&quot;https://www.consul.io/&quot;&gt;consul&lt;/a&gt;. Jika pada &lt;a href=&quot;http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/&quot;&gt;postingan&lt;/a&gt; sebelumnya fokus pembahasan pada instalasi kemudian dilanjutkan dengan demo cara mengakses data yang tersimpan pada &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;key-value store&lt;/code&gt; menggunakan salah satu tool REST Client favorit saya yaitu &lt;a href=&quot;https://www.getpostman.com/downloads/&quot;&gt;Postman&lt;/a&gt;, maka fokus pembahasan kali ini adalah bagaimana cara mengakses data &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;key-value store&lt;/code&gt; menggunakan bahasa pemrograman Visual Basic 6 dan C# (.NET).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://coding4ever.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://coding4ever.net/" rel="alternate" type="text/html" /><updated>2020-05-13T22:20:14+07:00</updated><id>http://coding4ever.net/feed.xml</id><title type="html">» Coding4ever’s Blog «</title><subtitle>Coding4ever's Blog</subtitle><author><name>Kamarudin</name></author><entry><title type="html">Proteksi Hasil Compile Aplikasi Anda Menggunakan ConfuserEx</title><link href="http://coding4ever.net/blog/2020/05/13/confuser-ex/" rel="alternate" type="text/html" title="Proteksi Hasil Compile Aplikasi Anda Menggunakan ConfuserEx" /><published>2020-05-13T22:19:44+07:00</published><updated>2020-05-13T22:19:44+07:00</updated><id>http://coding4ever.net/blog/2020/05/13/confuser-ex</id><content type="html" xml:base="http://coding4ever.net/blog/2020/05/13/confuser-ex/">&lt;h2 id=&quot;apa-itu-confuserex&quot;&gt;Apa itu ConfuserEx?&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/logo/confuser-ex-logo.png&quot; alt=&quot;&quot; class=&quot;align-left&quot; /&gt;&lt;a href=&quot;https://yck1509.github.io/ConfuserEx/&quot;&gt;ConfuserEx&lt;/a&gt; adalah tool open-source yang berfungsi untuk melindungi hasil compile aplikasi yang dikembangkan di atas platform .NET (C#, VB.NET, F# dan bahasa .NET lainnya). ConfuserEx dianggap sebagai salah satu tool &lt;a href=&quot;https://en.wikipedia.org/wiki/Obfuscation_(software)&quot;&gt;obfuscators&lt;/a&gt; terbaik yang tersedia gratis untuk platform .NET.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Hasil compile (assembly) yang sudah diproteksi menggunakan &lt;a href=&quot;https://yck1509.github.io/ConfuserEx/&quot;&gt;ConfuserEx&lt;/a&gt; akan menyulitkan orang lain untuk membaca kembali kodenya walaupun sudah di &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;decompile&lt;/code&gt; menggunakan tool decompiler sekelas &lt;a href=&quot;https://www.jetbrains.com/decompiler/&quot;&gt;JetBrains dotPeek&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;net-framework-yang-disupport&quot;&gt;.NET Framework yang disupport&lt;/h2&gt;
+
+&lt;p&gt;Walaupun pengembangan &lt;a href=&quot;https://yck1509.github.io/ConfuserEx/&quot;&gt;ConfuserEx&lt;/a&gt; untuk saat ini sudah dihentikan. Untuk versi terakhirnya sudah mendukung .NET Framework sampai versi 4.6.x. Saya sendiri biasanya jika membuat aplikasi desktop tetap menggunakan .NET Framework versi 4.0 dengan pertimbangan agar aplikasinya tetap bisa di jalankan di Windows XP, sehingga tool &lt;a href=&quot;https://yck1509.github.io/ConfuserEx/&quot;&gt;ConfuserEx&lt;/a&gt; ini masih tetap bisa saya gunakan.&lt;/p&gt;
+
+&lt;h2 id=&quot;jetbrains-dotpeek&quot;&gt;JetBrains dotPeek&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.jetbrains.com/decompiler/&quot;&gt;JetBrains dotPeek&lt;/a&gt; adalah tool decompiler gratis untuk aplikasi yang dikembangkan di atas platform .NET (C#, VB.NET, F# dan bahasa .NET lainnya).&lt;/p&gt;
+
+&lt;p&gt;Di &lt;a href=&quot;http://coding4ever.net/blog/2020/05/13/confuser-ex/&quot;&gt;postingan&lt;/a&gt; ini saya akan menggunakan tool &lt;a href=&quot;https://www.jetbrains.com/decompiler/&quot;&gt;JetBrains dotPeek&lt;/a&gt; untuk keperluan uji coba decompiler hasil compile dari aplikasi .NET Framework.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/01-jetBrains-dotPeek.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;hasil-compile-aplikasi-net-framework&quot;&gt;Hasil Compile Aplikasi .NET Framework&lt;/h2&gt;
+
+&lt;p&gt;Perlu diketahui bawah hasil compile dari aplikasi .NET masih dalam bentuk &lt;a href=&quot;https://en.wikipedia.org/wiki/Common_Intermediate_Language&quot;&gt;IL&lt;/a&gt; jadi belum dalam bentuk native code (bahasa mesin), sehingga dibutuhkan .NET Framework agar hasil compile ini bisa berjalan.&lt;/p&gt;
+
+&lt;p&gt;Ada banyak tool yang bisa dengan &lt;em&gt;sempurna&lt;/em&gt; melakukan proses &lt;a href=&quot;https://en.wikipedia.org/wiki/Decompiler&quot;&gt;decompiler&lt;/a&gt; hasil compile aplikasi .NET Framework, salah satunya ada tool &lt;a href=&quot;https://www.jetbrains.com/decompiler/&quot;&gt;JetBrains dotPeek&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sebagai contoh sudah saya buatkan aplikasi yang akan kita coba decompile hasil compilenya menggunakan &lt;a href=&quot;https://www.jetbrains.com/decompiler/&quot;&gt;JetBrains dotPeek&lt;/a&gt;. Aplikasi ini bisa Anda download di&lt;a href=&quot;https://github.com/k4m4r82/NorthwindMVC&quot;&gt;sini&lt;/a&gt;. Ini adalah aplikasi CRUD sederhana yang sudah menerapkan konsep &lt;a href=&quot;http://coding4ever.net/categories/repository-pattern/&quot;&gt;Repository Pattern&lt;/a&gt; dan &lt;a href=&quot;https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller&quot;&gt;MVC Pattern&lt;/a&gt;. Untuk database saya menggunakan MySQL.&lt;/p&gt;
+
+&lt;p&gt;Yuk, kita liat dulu tampilan aplikasinya&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/02-form-list.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/03-form-entry.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Struktur project sudah menerapkan konsep &lt;a href=&quot;https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller&quot;&gt;MVC Pattern&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/04-struktur-project.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Model&lt;/code&gt; adalah layer yang bertugas untuk berkomunikasi dengan database secara langsung. Salah satu class yang ada di layer ini adalah class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DbContext.cs&lt;/code&gt;. Class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DbContext.cs&lt;/code&gt; ini bertanggung jawab untuk berinteraksi secara langsung dengan database, seperti membuat koneksi, menjalankan perintah sql seperti insert, update, delete dan select atau mengeksekusi objek database seperti store procedure dan function. Sehingga di class inilah biasanya kita menuliskan beberapa &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;informasi rahasia&lt;/code&gt; seperti &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;username&lt;/code&gt; dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;password&lt;/code&gt; yang digunakan untuk melakukan koneksi ke database seperti MySQL.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/05-class-dbcontext.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Berikutnya kita akan melihat kode yang ada di class Repository. Class Repository adalah class yang berisi kode-kode untuk menjalankan operasi &lt;a href=&quot;https://en.wikipedia.org/wiki/Create,_read,_update_and_delete&quot;&gt;CRUD&lt;/a&gt;. Sebagai contoh kita akan melihat isi dari class &lt;a href=&quot;https://github.com/k4m4r82/NorthwindMVC/blob/master/src/NorthwindApp/Model/Repository/ProductRepository.cs&quot;&gt;ProductRepository.cs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/06-class-repository1.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/07-class-repository2.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/08-class-repository3.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Setelah melihat kode di atas, sekarang akan kita lakukan proses build/compile projectnya&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/09-proses-compile.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;kemudian akan kita lakukan proses decompile menggunakan tool decompiler &lt;a href=&quot;https://www.jetbrains.com/decompiler/&quot;&gt;JetBrains dotPeek&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/10-proses-decompile.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Pertama kita cek dulu hasil decompile class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DbContext.cs&lt;/code&gt;nya.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/11-hasil-decompile-class-dbcontext.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Mengerikan bukan hasil decompilenya, sama persis dengan kode aslinya :scream: :grin:&lt;/p&gt;
+
+&lt;p&gt;Sekarang kita cek juga hasil decompile class ProductRepositorynya&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/12-hasil-decompile-class-product-repository.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Nah sampai di sini sudah paham kan, kenapa kita harus mengeluarkan usaha lebih untuk mengamankan hasil compile aplikasi kita.&lt;/p&gt;
+
+&lt;h2 id=&quot;confuserex-in-acation&quot;&gt;ConfuserEx In Acation&lt;/h2&gt;
+
+&lt;p&gt;Ok berikutnya kita akan menambahkan proteksi hasil compile aplikasi kita menggunakan tool &lt;a href=&quot;https://yck1509.github.io/ConfuserEx/&quot;&gt;ConfuserEx&lt;/a&gt;, jadi silahkan Anda download terlebih dulu aplikasinya di&lt;a href=&quot;https://github.com/yck1509/ConfuserEx/releases/download/v1.0.0/ConfuserEx_bin.zip&quot;&gt;sini&lt;/a&gt;. Kemudian Anda ekstrak, misal ke folder &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C:\ConfuserEx_bin&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Ada 2 cara untuk menggunakan &lt;a href=&quot;https://yck1509.github.io/ConfuserEx/&quot;&gt;ConfuserEx&lt;/a&gt;, yaitu:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Menggunakan GUI&lt;/li&gt;
+  &lt;li&gt;Menggunakan CLI (Command-line Interface)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Di postingan ini saya akan menggunakan cara yang kedua yaitu menggunakan CLI (Command-line Interface). Berikut langkah-langkahnya:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tambahkan sebuah file dengan ekstensi &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;crproj&lt;/code&gt; (ConfuserEx project), dengan nama yang sama dengan nama projectnya. Kemudian simpan di folder aplikasi (satu folder dengan file project).&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/13-file-confuser-ex-project.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Kemudian lengkapi scriptnya seperti berikut:&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/14-isi-file-confuser-ex-project.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Jika file yang akan diproteksi lebih dari satu, Anda bisa tambahkan setelah baris perintah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;module path=&quot;NorthwindApp.exe&quot; /&amp;gt;&lt;/code&gt;. Contoh:&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/15-isi-file-confuser-ex-project.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Aktifkan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;command prompt&lt;/code&gt;, kemudian Anda pindah ke folder project Anda. Setelah itu ketik perintah berikut:&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/16-confuser-ex-cli.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;tunggu beberapa saat sampai proses ConfuserExnya selesai&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/17-confuser-ex-cli-output.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;bisa kita lihat pada gambar output di atas, untuk file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NorthwindApp.exe&lt;/code&gt; yang sudah diproteksi ada di folder &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Confused&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/18-confuser-ex-cli-output2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Nah sekarang kita coba lagi untuk melakukan proses decompile ulang menggunakan tool decompiler &lt;a href=&quot;https://www.jetbrains.com/decompiler/&quot;&gt;JetBrains dotPeek&lt;/a&gt;.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/19-proses-decompile2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Dan ini adalah hasil decompile untuk class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DbContext.cs&lt;/code&gt;. Sudah tidak terlihat lagi &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;username&lt;/code&gt; dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;password&lt;/code&gt; untuk konek ke database.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/20-proses-decompile2-class-dbcontext.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;begitu juga dengan hasil decompile untuk class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ProductRepository.cs&lt;/code&gt; sekarang sudah terproteksi dengan baik.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/21-proses-decompile2-class-product-repository.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;build-events&quot;&gt;Build Events&lt;/h2&gt;
+
+&lt;p&gt;Sebenarnya pembahasan tentang ConfuserEx ini sudah selesai, tapi berhubungan perintah ConfuserEx CLI di atas masih dijalankan secara manual via command prompt tentu akan menyulitkan sekali jika harus dijalankan secara berulang setiap selesai melakukan proses build/compile. Trus apa solusinya agar perintah ConfuserEx CLI di atas bisa dijalankan secara otomatis? Salah satu solusinya adalah dengan memanfaatkan fasilitas &lt;a href=&quot;http://coding4ever.net/categories/build-events/&quot;&gt;Build Events&lt;/a&gt; yang sudah tersedia di Visual Studio .NET.&lt;/p&gt;
+
+&lt;p&gt;Nah berikut script &lt;a href=&quot;http://coding4ever.net/categories/build-events/&quot;&gt;Build Events&lt;/a&gt; yang harus kita buat untuk menjalankan ConfuserEx CLI di atas secara otomatis, setiap kali kita melakukan proses build.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;rem &lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;lokasi folder deploy
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DeployDir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;SolutionDir&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;eploy&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;not exist %DeployDir% &lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; %DeployDir%
+
+rem copy hasil build ke folder deploy
+copy /Y &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;TargetDir&lt;span class=&quot;si&quot;&gt;)$(&lt;/span&gt;TargetFileName&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.config&quot;&lt;/span&gt; %DeployDir%
+copy /Y &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;TargetDir&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;*.dll&quot;&lt;/span&gt; %DeployDir%
+
+rem jalankan ConfuserEx CLI
+&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ConfuserExDir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;C:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\C&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;onfuserEx_bin&quot;&lt;/span&gt;
+%ConfuserExDir%&lt;span class=&quot;se&quot;&gt;\C&lt;/span&gt;onfuser.CLI.exe &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;ProjectDir&lt;span class=&quot;si&quot;&gt;)$(&lt;/span&gt;ProjectName&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.crproj&quot;&lt;/span&gt;
+
+rem hapus file build yang tidak diperlukan
+del /s /q %DeployDir%&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;.vshost.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+del /s /q %DeployDir%&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;.xml
+del /s /q %DeployDir%&lt;span class=&quot;se&quot;&gt;\*&lt;/span&gt;.pdb&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Untuk mengaktifkan &lt;a href=&quot;http://coding4ever.net/categories/build-events/&quot;&gt;Build Events&lt;/a&gt;, klik kanan nama project -&amp;gt; Properties -&amp;gt; tab &lt;a href=&quot;http://coding4ever.net/categories/build-events/&quot;&gt;Build Events&lt;/a&gt;. Kemudian copas script di atas di bagian &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Post-build Event Command Line&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/22-script-build-event.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Setelah itu lakukan proses build, dan secara otomatis perintah ConfuserEx CLI akan dijalankan.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/01-confuser-ex/23-run-build-event.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Selamat mencoba :blush:&lt;/p&gt;</content><author><name>Kamarudin</name></author><category term="Visual Studio .NET" /><category term="Build Events" /><category term="obfuscators" /><category term="compile" /><category term="compiler" /><category term="decompiler" /><summary type="html">Apa itu ConfuserEx?</summary></entry><entry><title type="html">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2</title><link href="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="alternate" type="text/html" title="Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2" /><published>2019-08-31T09:26:47+07:00</published><updated>2019-08-31T09:26:47+07:00</updated><id>http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2</id><content type="html" xml:base="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/">&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/logo/consul-logo.png&quot; alt=&quot;&quot; class=&quot;align-left&quot; /&gt;Oke, hari ini saya ingin melanjutkan pembahasan &lt;a href=&quot;http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/&quot;&gt;postingan&lt;/a&gt; saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan &lt;a href=&quot;https://www.consul.io/&quot;&gt;consul&lt;/a&gt;. Jika pada &lt;a href=&quot;http://coding4ever.net/blog/2019/08/02/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-1/&quot;&gt;postingan&lt;/a&gt; sebelumnya fokus pembahasan pada instalasi kemudian dilanjutkan dengan demo cara mengakses data yang tersimpan pada &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;key-value store&lt;/code&gt; menggunakan salah satu tool REST Client favorit saya yaitu &lt;a href=&quot;https://www.getpostman.com/downloads/&quot;&gt;Postman&lt;/a&gt;, maka fokus pembahasan kali ini adalah bagaimana cara mengakses data &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;key-value store&lt;/code&gt; menggunakan bahasa pemrograman Visual Basic 6 dan C# (.NET).&lt;/p&gt;
 
 &lt;!-- more --&gt;
 
@@ -1171,135 +1326,4 @@ CEKNILAI#NIS#&amp;lt;KODE MP&amp;gt; &lt;span class=&quot;c&quot;&gt;# request d
 
 &lt;p&gt;Dengan menggunakan library &lt;a href=&quot;https://logging.apache.org/log4net/&quot;&gt;log4net&lt;/a&gt; akan memudahkan tugas harian kita dalam membuat log aplikasi.&lt;/p&gt;
 
-&lt;p&gt;Selamat &lt;a href=&quot;https://github.com/k4m4r82/DemoLog4Net&quot;&gt;MENCOBA&lt;/a&gt; :blush:&lt;/p&gt;</content><author><name>Kamarudin</name></author><category term="logger" /><category term="log4net" /><category term="GlobalContext.Properties" /><category term="LogicalThreadContext.Properties" /><category term="Repository Pattern" /><category term="Appender" /><summary type="html">Secara teknis kita memang tidak bisa membuat aplikasi yang 100% bebas dari bug. Seberapa keraspun kita mencoba pasti aplikasi yang kita buat ada bugnya. Di sisi lain user adalah tester terbaik yang pernah ada :grin:. Mereka bisa melakukan hal-hal luar biasa di luar perkiraan dan skenario kita yang bisa menyebabkan error, sayangnya user biasanya kurang bisa menjelaskan dengan baik apa yang menyebabkan error. Yang jelas, kita tidak dapat memperbaiki bug sampai kita tahu penyebabnya.</summary></entry><entry><title type="html">Manajemen Perubahan Struktur Database Menggunakan Liquibase</title><link href="http://coding4ever.net/blog/2017/01/18/manajemen-perubahan-struktur-database-menggunakan-liquibase/" rel="alternate" type="text/html" title="Manajemen Perubahan Struktur Database Menggunakan Liquibase" /><published>2017-01-18T10:53:57+07:00</published><updated>2017-01-18T10:53:57+07:00</updated><id>http://coding4ever.net/blog/2017/01/18/manajemen-perubahan-struktur-database-menggunakan-liquibase</id><content type="html" xml:base="http://coding4ever.net/blog/2017/01/18/manajemen-perubahan-struktur-database-menggunakan-liquibase/">&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/logo/lb-logo.png&quot; alt=&quot;&quot; class=&quot;align-left&quot; /&gt;Dalam pembuatan aplikasi perubahan struktur/schema database merupakan hal yang wajar, baik pada fase development maupun setelah masuk ke fase implementasi (production/live). Ada banyak alasan kenapa kita perlu melakukan perubahan struktur database, contoh:&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Penambahan fitur baru yang membutuhan penambahan attribut/field di tabel yang sudah ada atau malah menambahkan tabel yang baru.&lt;/li&gt;
-  &lt;li&gt;Perbaikan bug yang menyebabkan perubahan nama atau jenis data dalam database.&lt;/li&gt;
-  &lt;li&gt;Issue kinerja sistem yang memerlukan tambahan index dalam database.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Perubahan-perubahan ini tentunya &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wajib&lt;/code&gt; kita catat baik secara manual maupun menggunakan tool khusus yang bisa dengan mudah membuat log perubahan struktur database dari waktu ke waktu, karena jika tidak bisa berpotensi menjadi bug di kemudian hari.&lt;/p&gt;
-
-&lt;p&gt;Beberapa tool database management seperti &lt;a href=&quot;https://www.webyog.com/&quot;&gt;SQLyog&lt;/a&gt; versi &lt;a href=&quot;https://www.webyog.com/product/sqlyogFeatureListExpanded&quot;&gt;Enterprise/Ultimate&lt;/a&gt; atau &lt;a href=&quot;http://www.sqlmanager.net/en/&quot;&gt;EMS SQL Manager&lt;/a&gt; versi berbayarnya memang menyediakan fitur untuk melakukan sinkronisasi struktur database dengan mudah, tapi bagi Anda yang mempunyai anggaran terbatas untuk membeli lisensinya ada alternatif tool gratis dan open source yang bisa kita gunakan salah satunya yaitu  &lt;a href=&quot;http://www.liquibase.org/&quot;&gt;Liquibase&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Pernah kebayang nggak ngoding tanpa &lt;a href=&quot;https://en.wikipedia.org/wiki/Version_control&quot;&gt;source/version control&lt;/a&gt; seperti &lt;a href=&quot;https://git-scm.com/&quot;&gt;Git&lt;/a&gt; atau &lt;a href=&quot;https://subversion.apache.org/&quot;&gt;SVN&lt;/a&gt; kalo dulu mungkin iya, kalo sekarang &lt;a href=&quot;https://en.wikipedia.org/wiki/Version_control&quot;&gt;source/version control&lt;/a&gt; merupakan hal yang &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wajib&lt;/code&gt; kita gunakan untuk memberikan rasa aman saat ber-coding ria :grin:. &lt;a href=&quot;https://en.wikipedia.org/wiki/Version_control&quot;&gt;Source/version control&lt;/a&gt; ini digunakan untuk mencatat perubahan kode dari waktu ke waktu, apalagi kalo ngodingnya bareng-bareng, hanya orang-orang &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kreatif&lt;/code&gt; saja yang bisa melakukannya tanpa  &lt;a href=&quot;https://en.wikipedia.org/wiki/Version_control&quot;&gt;source/version control&lt;/a&gt; :grin:. Dengan mengusung tema &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Source Control for Your Database&lt;/code&gt; &lt;a href=&quot;http://www.liquibase.org/&quot;&gt;Liquibase&lt;/a&gt; juga bisa kita fungsikan sebagai &lt;a href=&quot;https://en.wikipedia.org/wiki/Version_control&quot;&gt;source/version control&lt;/a&gt; untuk mencatat perubahan struktur/schema database.&lt;/p&gt;
-
-&lt;h3 id=&quot;instalasi--liquibase&quot;&gt;Instalasi  Liquibase&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.liquibase.org/&quot;&gt;Liquibase&lt;/a&gt; tidak memerlukan instalasi khusus, kita tinggal download filenya di web site resmi &lt;a href=&quot;http://www.liquibase.org/download/index.html&quot;&gt;Liquibase&lt;/a&gt; kemudian mengekstraknya.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/180117-01.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Selain itu ada tool lain yang perlu kita siapkan yaitu:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html&quot;&gt;JRE&lt;/a&gt; atau &lt;a href=&quot;http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html&quot;&gt;JDK&lt;/a&gt; karena &lt;a href=&quot;http://www.liquibase.org/&quot;&gt;Liquibase&lt;/a&gt; ditulis menggunakan Java.&lt;/li&gt;
-  &lt;li&gt;JDBC driver disesuaikan dengan database yang digunakan, untuk contoh di sini saya menggunakan database &lt;a href=&quot;https://www.postgresql.org/&quot;&gt;PostgreSQL&lt;/a&gt;. Setelah didownload kita copykan ke folder lib&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/180117-02.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;membuat-changelog&quot;&gt;Membuat Changelog&lt;/h3&gt;
-
-&lt;p&gt;Struktur database dalam &lt;a href=&quot;http://www.liquibase.org/&quot;&gt;Liquibase&lt;/a&gt; ditulis dalam format XML, disebut dengan istilah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;changelog&lt;/code&gt;. Ada beberapa &lt;a href=&quot;http://www.liquibase.org/documentation/command_line.html&quot;&gt;perintah&lt;/a&gt; yang bisa digunakan untuk menghasilkan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;changelog&lt;/code&gt;, tentunya disesuaikan dengan kebutuhan.&lt;/p&gt;
-
-&lt;h5 id=&quot;generatechangelog&quot;&gt;generateChangelog&lt;/h5&gt;
-
-&lt;p&gt;Perintah ini digunakan untuk membuat &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;changelog&lt;/code&gt; dari struktur database secara lengkap jadi mirip dengan perintah dump/export ke sql. Biasanya kita gunakan pada saat implementasi awal sistem untuk mengopykan struktur database kosongan dari server development ke server production/live. Misal di awal implementasi sistem kita mempunyai struktur database seperti berikut :&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/180117-03.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Dari gambar di atas kita baru mempunyai dua buah tabel yaitu &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m_customer&lt;/code&gt; dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m_supplier&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Kemudian kita jalankan perintah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;generateChangelog&lt;/code&gt;:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;liquibase &lt;span class=&quot;nt&quot;&gt;--url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jdbc:stuck_out_tongue:ostgresql://localhost:5432/db-develop&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;postgres &lt;span class=&quot;nt&quot;&gt;--password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;masterkey &lt;span class=&quot;nt&quot;&gt;--changeLogFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;output/db.changelog-1.0.xml generateChangeLog&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/180117-04.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Akan menghasilkan file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;changelog&lt;/code&gt; seperti berikut:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/180117-05.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/f1b99d6a19c05b241367caa332a11ed5.js&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;Mungkin tidak perlu dijelaskan lagi ya, karena isi dari file &lt;a href=&quot;https://gist.github.com/k4m4r82/f1b99d6a19c05b241367caa332a11ed5#file-db-changelog-1-0-xml&quot;&gt;db.changelog-1.0.xml&lt;/a&gt; di atas hanya menjelaskan struktur dari tabel &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m_customer&lt;/code&gt; dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m_supplier&lt;/code&gt; dalam format XML.&lt;/p&gt;
-
-&lt;p&gt;Setelah itu kita jalankan perintah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;update&lt;/code&gt; agar &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;changelog&lt;/code&gt; yang dihasilkan dari perintah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;generateChangelog&lt;/code&gt; di atas dieksekusi ke database target (db production/live).&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;liquibase &lt;span class=&quot;nt&quot;&gt;--url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jdbc:stuck_out_tongue:ostgresql://localhost:5432/db-production&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;postgres &lt;span class=&quot;nt&quot;&gt;--password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;masterkey &lt;span class=&quot;nt&quot;&gt;--changeLogFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;output/db.changelog-1.0.xml update	&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/180117-06.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Dari gambar di bawah ini terlihat kondisi database production sebelum (sebelah kiri) dan sesudah dijalankan perintah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;update&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/180117-07.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Pada saat pertama kali &lt;a href=&quot;http://www.liquibase.org/&quot;&gt;Liquibase&lt;/a&gt; dijalankan untuk database target, &lt;a href=&quot;http://www.liquibase.org/&quot;&gt;Liquibase&lt;/a&gt; akan membuat dua buah tabel sistem yaitu &lt;a href=&quot;http://www.liquibase.org/documentation/databasechangelog_table.html&quot;&gt;databasechangelog&lt;/a&gt; dan &lt;a href=&quot;http://www.liquibase.org/documentation/databasechangeloglock_table.html&quot;&gt;databasechangeloglock&lt;/a&gt; kedua tabel ini digunakan untuk mencatat hasil eksekusi &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;changelog&lt;/code&gt; dari waktu ke waktu. Jadi perlu diperhatikan kedua tabel ini jangan dihapus.&lt;/p&gt;
-
-&lt;h5 id=&quot;diffchangelog&quot;&gt;diffChangeLog&lt;/h5&gt;
-
-&lt;p&gt;Selama fase development maupun setelah masuk ke fase implementasi (production/live) kadang-kadang terjadi perubahan struktur database, sehingga kita perlu mengetahui perbedaan dari struktur lama dan baru, untuk melakukan ini kita menggunakan perintah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;diffChangeLog&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Misal seperti penjelasan gambar di bawah ini, yang sebelah kiri adalah struktur awal database yang hanya mempunyai dua buah tabel yaitu &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m_customer&lt;/code&gt; dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m_supplier&lt;/code&gt;, selama proses development berlangsung terjadi penambahan beberapa tabel baru yaitu &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m_golongan&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m_produk&lt;/code&gt; dan tabel baru lainnya.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/180117-08.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Nah untuk menghasilkan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;changelog&lt;/code&gt;, yang isinya adalah perbedaan struktur lama dan baru kita gunakan perintah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;diffChangeLog&lt;/code&gt;.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;liquibase &lt;span class=&quot;nt&quot;&gt;--url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jdbc:stuck_out_tongue:ostgresql://localhost:5432/db-production&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;postgres &lt;span class=&quot;nt&quot;&gt;--password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;masterkey &lt;span class=&quot;nt&quot;&gt;--referenceUrl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jdbc:stuck_out_tongue:ostgresql://localhost:5432/db-develop&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--referenceUsername&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;postgres &lt;span class=&quot;nt&quot;&gt;--referencePassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;masterkey  &lt;span class=&quot;nt&quot;&gt;--changeLogFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;output/db.changelog-1.1.xml diffChangeLog&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/180117-09.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Contoh file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;changelog&lt;/code&gt; yang dihasilkan:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/180117-10.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/e66ba9f2bff96f9ba50406d34864d87e.js&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;Kemudian kita jalankan lagi perintah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;update&lt;/code&gt;. Perintah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;update&lt;/code&gt; ini melakukan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;patch&lt;/code&gt; ke database target (database production/live).&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;liquibase &lt;span class=&quot;nt&quot;&gt;--url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jdbc:stuck_out_tongue:ostgresql://localhost:5432/db-production&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;postgres &lt;span class=&quot;nt&quot;&gt;--password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;masterkey &lt;span class=&quot;nt&quot;&gt;--changeLogFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;output/db.changelog-1.1.xml update&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Setelah itu kita cek lagi struktur database productionnya.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/180117-11.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Gampang bukan :blush:, dengan menggunakan &lt;a href=&quot;http://www.liquibase.org/&quot;&gt;Liquibase&lt;/a&gt; proses migrasi struktur database pun menjadi lebih mudah.&lt;/p&gt;
-
-&lt;h3 id=&quot;file-liquibase-properties&quot;&gt;File Liquibase Properties&lt;/h3&gt;
-
-&lt;p&gt;Untuk menyingkat penulisan perintah &lt;a href=&quot;http://www.liquibase.org/&quot;&gt;Liquibase&lt;/a&gt; kita bisa memanfaatkan file liquibase properties. Di file ini kita mengeset semua nilai parameter yang dibutuhkan pada saat menjalankan perintah &lt;a href=&quot;http://www.liquibase.org/&quot;&gt;Liquibase&lt;/a&gt;. Secara default nama yang digunakan untuk file liquibase properties adalah &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;liquibase.properties&lt;/code&gt;, jika menggunakan nama default ini kita bisa langsung menjalankan perintah &lt;a href=&quot;http://www.liquibase.org/&quot;&gt;Liquibase&lt;/a&gt; seperti berikut :&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;# generateChangelog&lt;/span&gt;
-liquibase generateChangelog
-
-&lt;span class=&quot;c&quot;&gt;# diffChangeLog&lt;/span&gt;
-liquibase diffChangeLog
-
-&lt;span class=&quot;c&quot;&gt;# update/patch database target&lt;/span&gt;
-liquibase update&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;dan jika menggunakan nama yang lain, misal untuk masing-masing perintah kita buatkan  file liquibase properties tersendiri, pada saat menjalankan perintah &lt;a href=&quot;http://www.liquibase.org/&quot;&gt;Liquibase&lt;/a&gt; harus kita sebutkan secara explicit nama file  liquibase properties-nya dengan menambahkan parameter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;defaultsFile=&amp;lt;nama_file_liquibase_properties&amp;gt;&lt;/code&gt;. Contoh:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;c&quot;&gt;# generateChangelog&lt;/span&gt;
-liquibase &lt;span class=&quot;nt&quot;&gt;--defaultsFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;generate-liquibase.properties generateChangelog
-
-&lt;span class=&quot;c&quot;&gt;# diffChangeLog&lt;/span&gt;
-liquibase &lt;span class=&quot;nt&quot;&gt;--defaultsFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;diff-liquibase.properties diffChangeLog
-
-&lt;span class=&quot;c&quot;&gt;# update/patch database target&lt;/span&gt;
-liquibase &lt;span class=&quot;nt&quot;&gt;--defaultsFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;update-liquibase.properties update&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Dan untuk masing-masing file liquibase properties-nya kita isi seperti berikut:&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/16429101488c5c734e8f86832c6dc646.js&quot;&gt; &lt;/script&gt;
-
-&lt;script src=&quot;https://gist.github.com/033067883ebff3ab40ed2b08b3c06a42.js&quot;&gt; &lt;/script&gt;
-
-&lt;script src=&quot;https://gist.github.com/4ad6e69e060e7fcd4da12fa56fbbaf0c.js&quot;&gt; &lt;/script&gt;
-
-&lt;p&gt;Selamat mencoba :blush:&lt;/p&gt;</content><author><name>Kamarudin</name></author><category term="liquibase" /><category term="liquibase properties" /><category term="database" /><category term="schema database" /><category term="struktur database" /><category term="source/version control" /><category term="changelog" /><category term="generateChangelog" /><category term="diffChangeLog" /><summary type="html">Dalam pembuatan aplikasi perubahan struktur/schema database merupakan hal yang wajar, baik pada fase development maupun setelah masuk ke fase implementasi (production/live). Ada banyak alasan kenapa kita perlu melakukan perubahan struktur database, contoh:</summary></entry></feed>
+&lt;p&gt;Selamat &lt;a href=&quot;https://github.com/k4m4r82/DemoLog4Net&quot;&gt;MENCOBA&lt;/a&gt; :blush:&lt;/p&gt;</content><author><name>Kamarudin</name></author><category term="logger" /><category term="log4net" /><category term="GlobalContext.Properties" /><category term="LogicalThreadContext.Properties" /><category term="Repository Pattern" /><category term="Appender" /><summary type="html">Secara teknis kita memang tidak bisa membuat aplikasi yang 100% bebas dari bug. Seberapa keraspun kita mencoba pasti aplikasi yang kita buat ada bugnya. Di sisi lain user adalah tester terbaik yang pernah ada :grin:. Mereka bisa melakukan hal-hal luar biasa di luar perkiraan dan skenario kita yang bisa menyebabkan error, sayangnya user biasanya kurang bisa menjelaskan dengan baik apa yang menyebabkan error. Yang jelas, kita tidak dapat memperbaiki bug sampai kita tahu penyebabnya.</summary></entry></feed>
