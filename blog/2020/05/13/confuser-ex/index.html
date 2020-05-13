@@ -350,7 +350,7 @@
 
 <p>Ada banyak tool yang bisa dengan <em>sempurna</em> melakukan proses <a href="https://en.wikipedia.org/wiki/Decompiler">decompiler</a> hasil compile aplikasi .NET Framework, salah satunya ada tool <a href="https://www.jetbrains.com/decompiler/">JetBrains dotPeek</a>.</p>
 
-<p>Sebagai contoh sudah saya buatkan aplikasi yang akan kita coba decompile hasil compilenya menggunakan <a href="https://www.jetbrains.com/decompiler/">JetBrains dotPeek</a>. Aplikasi ini bisa Anda download di<a href="https://github.com/k4m4r82/NorthwindMVC">sini</a>. Ini adalah aplikasi CRUD sederhana yang sudah menerapkan konsep <a href="http://coding4ever.net/categories/repository-pattern/">Repository Pattern</a> dan <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC Pattern</a>. Untuk database saya menggunakan MySQL.</p>
+<p>Sebagai contoh sudah saya buatkan aplikasi yang akan kita coba decompile hasil compilenya menggunakan <a href="https://www.jetbrains.com/decompiler/">JetBrains dotPeek</a>. Aplikasi ini bisa Anda download di <a href="https://github.com/k4m4r82/NorthwindMVC">sini</a>. Ini adalah aplikasi CRUD sederhana yang sudah menerapkan konsep <a href="http://coding4ever.net/categories/repository-pattern/">Repository Pattern</a> dan <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC Pattern</a>. Untuk database saya menggunakan MySQL.</p>
 
 <p>Yuk, kita liat dulu tampilan aplikasinya</p>
 
@@ -388,7 +388,7 @@
 
 <p>Mengerikan bukan hasil decompilenya, sama persis dengan kode aslinya <img class="emoji" title=":scream:" alt=":scream:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f631.png" height="20" width="20"> <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20"></p>
 
-<p>Sekarang kita cek juga hasil decompile class ProductRepositorynya</p>
+<p>Sekarang kita cek juga hasil decompile class ProductRepositorynya, dan hasilnya pun sama persis dengan kode aslinya.</p>
 
 <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/12-hasil-decompile-class-product-repository.png" alt="" class="align-center"></p>
 
@@ -396,7 +396,7 @@
 
 <h2 id="confuserex-in-acation">ConfuserEx In Acation</h2>
 
-<p>Ok berikutnya kita akan menambahkan proteksi hasil compile aplikasi kita menggunakan tool <a href="https://yck1509.github.io/ConfuserEx/">ConfuserEx</a>, jadi silahkan Anda download terlebih dulu aplikasinya di<a href="https://github.com/yck1509/ConfuserEx/releases/download/v1.0.0/ConfuserEx_bin.zip">sini</a>. Kemudian Anda ekstrak, misal ke folder <code class="language-plaintext highlighter-rouge">C:\ConfuserEx_bin</code>.</p>
+<p>Ok berikutnya kita akan menambahkan proteksi hasil compile aplikasi kita menggunakan tool <a href="https://yck1509.github.io/ConfuserEx/">ConfuserEx</a>, jadi silahkan Anda download terlebih dulu aplikasinya di <a href="https://github.com/yck1509/ConfuserEx/releases/download/v1.0.0/ConfuserEx_bin.zip">sini</a>. Kemudian Anda ekstrak, misal ke folder <code class="language-plaintext highlighter-rouge">C:\ConfuserEx_bin</code>.</p>
 
 <p>Ada 2 cara untuk menggunakan <a href="https://yck1509.github.io/ConfuserEx/">ConfuserEx</a>, yaitu:</p>
 
@@ -409,7 +409,7 @@
 
 <ol>
   <li>
-    <p>Tambahkan sebuah file dengan ekstensi <code class="language-plaintext highlighter-rouge">crproj</code> (ConfuserEx project), dengan nama yang sama dengan nama projectnya. Kemudian simpan di folder aplikasi (satu folder dengan file project).</p>
+    <p>Tambahkan sebuah file dengan ekstensi <code class="language-plaintext highlighter-rouge">.crproj</code> (ConfuserEx project), untuk nama filenya kita samakan dengan nama projectnya, setelah itu simpan di folder aplikasi (satu folder dengan file project).</p>
 
     <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/13-file-confuser-ex-project.png" alt=""></p>
 
@@ -417,12 +417,14 @@
 
     <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/14-isi-file-confuser-ex-project.png" alt=""></p>
 
-    <p>Jika file yang akan diproteksi lebih dari satu, Anda bisa tambahkan setelah baris perintah <code class="language-plaintext highlighter-rouge">&lt;module path="NorthwindApp.exe" /&gt;</code>. Contoh:</p>
+    <p>Jika file yang akan diproteksi lebih dari satu, Anda bisa tambahkan setelah baris perintah <code class="language-plaintext highlighter-rouge">&lt;module path=... /&gt;</code>. Contoh:</p>
 
     <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/15-isi-file-confuser-ex-project.png" alt=""></p>
   </li>
   <li>
-    <p>Aktifkan <code class="language-plaintext highlighter-rouge">command prompt</code>, kemudian Anda pindah ke folder project Anda. Setelah itu ketik perintah berikut:</p>
+    <p>Aktifkan <code class="language-plaintext highlighter-rouge">command prompt</code>, kemudian Anda pindah ke folder project Anda.</p>
+
+    <p>Setelah itu ketik perintah: <code class="language-plaintext highlighter-rouge">C:\ConfuserEx_bin\Confuser.CLI.exe NorthwindApp.crproj</code></p>
 
     <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/16-confuser-ex-cli.png" alt=""></p>
 
@@ -434,15 +436,15 @@
 
     <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/18-confuser-ex-cli-output2.png" alt=""></p>
 
-    <p>Nah sekarang kita coba lagi untuk melakukan proses decompile ulang menggunakan tool decompiler <a href="https://www.jetbrains.com/decompiler/">JetBrains dotPeek</a>.</p>
+    <p>Nah sekarang kita coba lagi untuk melakukan proses decompile ulang terhadap file hasil compile yang sudah kita tambahkan proteksi ConfuserExnya menggunakan tool decompiler yang sama yaitu <a href="https://www.jetbrains.com/decompiler/">JetBrains dotPeek</a>.</p>
 
     <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/19-proses-decompile2.png" alt=""></p>
 
-    <p>Dan ini adalah hasil decompile untuk class <code class="language-plaintext highlighter-rouge">DbContext.cs</code>. Sudah tidak terlihat lagi <code class="language-plaintext highlighter-rouge">username</code> dan <code class="language-plaintext highlighter-rouge">password</code> untuk konek ke database.</p>
+    <p>Dan ini adalah hasil decompile untuk class <code class="language-plaintext highlighter-rouge">DbContext.cs</code>. Sudah tidak terlihat lagi kan <code class="language-plaintext highlighter-rouge">username</code> dan <code class="language-plaintext highlighter-rouge">password</code> untuk konek ke database <img class="emoji" title=":thumbsup:" alt=":thumbsup:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" height="20" width="20"></p>
 
     <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/20-proses-decompile2-class-dbcontext.png" alt=""></p>
 
-    <p>begitu juga dengan hasil decompile untuk class <code class="language-plaintext highlighter-rouge">ProductRepository.cs</code> sekarang sudah terproteksi dengan baik.</p>
+    <p>begitu juga dengan hasil decompile untuk class ProductRepositorynya sudah terproteksi dengan baik.</p>
 
     <p><img src="http://coding4ever.net/assets/images/2020/01-confuser-ex/21-proses-decompile2-class-product-repository.png" alt=""></p>
   </li>
@@ -450,9 +452,9 @@
 
 <h2 id="build-events">Build Events</h2>
 
-<p>Sebenarnya pembahasan tentang ConfuserEx ini sudah selesai, tapi berhubungan perintah ConfuserEx CLI di atas masih dijalankan secara manual via command prompt tentu akan menyulitkan sekali jika harus dijalankan secara berulang setiap selesai melakukan proses build/compile. Trus apa solusinya agar perintah ConfuserEx CLI di atas bisa dijalankan secara otomatis? Salah satu solusinya adalah dengan memanfaatkan fasilitas <a href="http://coding4ever.net/categories/build-events/">Build Events</a> yang sudah tersedia di Visual Studio .NET.</p>
+<p>Sebenarnya pembahasan tentang ConfuserEx ini sudah selesai, tapi berhubungan perintah <code class="language-plaintext highlighter-rouge">ConfuserEx CLI</code> di atas masih dijalankan secara manual via <code class="language-plaintext highlighter-rouge">command prompt</code> tentu akan merepotkan sekali jika harus dijalankan secara berulang setiap selesai melakukan proses build/compile. Trus apa solusinya agar perintah <code class="language-plaintext highlighter-rouge">ConfuserEx CLI</code> di atas bisa dijalankan secara otomatis? Salah satu solusinya adalah dengan memanfaatkan fasilitas <a href="http://coding4ever.net/categories/build-events/">Build Events</a> yang sudah tersedia di Visual Studio .NET. Dengan fasilitas <a href="http://coding4ever.net/categories/build-events/">Build Events</a> kita bisa menuliskan perintah <code class="language-plaintext highlighter-rouge">command prompt (shell)</code> termasuk menjalankan perintah <code class="language-plaintext highlighter-rouge">ConfuserEx CLI</code>.</p>
 
-<p>Nah berikut script <a href="http://coding4ever.net/categories/build-events/">Build Events</a> yang harus kita buat untuk menjalankan ConfuserEx CLI di atas secara otomatis, setiap kali kita melakukan proses build.</p>
+<p>Nah berikut script <a href="http://coding4ever.net/categories/build-events/">Build Events</a> yang harus kita buat untuk menjalankan perintah <code class="language-plaintext highlighter-rouge">ConfuserEx CLI</code> di atas secara otomatis setiap kali kita melakukan proses build.</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell">rem <span class="nb">set </span>lokasi folder deploy
 <span class="nb">set </span><span class="nv">DeployDir</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span>SolutionDir<span class="si">)</span><span class="s2">..</span><span class="se">\d</span><span class="s2">eploy"</span>
