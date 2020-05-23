@@ -1,4 +1,295 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://coding4ever.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://coding4ever.net/" rel="alternate" type="text/html" /><updated>2020-05-14T18:48:45+07:00</updated><id>http://coding4ever.net/feed.xml</id><title type="html">» Coding4ever’s Blog «</title><subtitle>Coding4ever's Blog</subtitle><author><name>Kamarudin</name></author><entry><title type="html">Proteksi Hasil Compile Aplikasi Anda Menggunakan ConfuserEx</title><link href="http://coding4ever.net/blog/2020/05/13/confuser-ex/" rel="alternate" type="text/html" title="Proteksi Hasil Compile Aplikasi Anda Menggunakan ConfuserEx" /><published>2020-05-13T22:19:44+07:00</published><updated>2020-05-13T22:19:44+07:00</updated><id>http://coding4ever.net/blog/2020/05/13/confuser-ex</id><content type="html" xml:base="http://coding4ever.net/blog/2020/05/13/confuser-ex/">&lt;h2 id=&quot;apa-itu-confuserex&quot;&gt;Apa itu ConfuserEx?&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://coding4ever.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://coding4ever.net/" rel="alternate" type="text/html" /><updated>2020-05-23T12:50:03+07:00</updated><id>http://coding4ever.net/feed.xml</id><title type="html">» Coding4ever’s Blog «</title><subtitle>Coding4ever's Blog</subtitle><author><name>Kamarudin</name></author><entry><title type="html">ReportViewer untuk .NET Developer Bagian #1</title><link href="http://coding4ever.net/blog/2020/05/23/reportviewer-1/" rel="alternate" type="text/html" title="ReportViewer untuk .NET Developer Bagian #1" /><published>2020-05-23T12:49:22+07:00</published><updated>2020-05-23T12:49:22+07:00</updated><id>http://coding4ever.net/blog/2020/05/23/reportviewer-1</id><content type="html" xml:base="http://coding4ever.net/blog/2020/05/23/reportviewer-1/">&lt;blockquote&gt;
+  &lt;p&gt;Tak kenal maka tak sayang, tak sayang maka tak cinta.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/logo/rv-logo.png&quot; alt=&quot;&quot; class=&quot;align-left&quot; /&gt;Mungkin inilah pepatah yang pas sebagai pembuka postingan saya kali ini :grin:. Sudah banyak tool reporting yang saya gunakan untuk membuat laporan aplikasi mulai dari Data Report, Crystal Report, dan ActiveReport. Ketiga tool reporting ini saya gunakan ketika membuat aplikasi dengan menggunakan Visual Basic 6.&lt;/p&gt;
+
+&lt;p&gt;Ketika pindah ke platform .NET saya pun tetap menggunakan tool reporting yang sama yaitu Crystal Report .NET atau ActiveReport .NET. Walaupun waktu itu saya sudah mengetahui adanya ReportViewer yang merupakan tool reporting bawaan .NET, tapi ya karena memang sudah nyaman menggunakan Crystal Report .NET atau ActiveReport .NET jadi saya memang belum punya alasan atau motivasi yang kuat untuk nyobain yang namanya ReportViewer. Alasan lainnya karena waktu itu tool ReportViewer ini masih saya pandang sebelah mata, jadi saya masih mengganggap tool ini sama seperti tool Data Reportnya Visual Basic 6 yang kurang powerful untuk membuat laporan yang kompleks :grin:. Terakhir karena masalah lisensi akhirnya saya lebih memilih untuk menggunakan Crystal Report .NET dari pada ActiveReport .NET.&lt;/p&gt;
+
+&lt;p&gt;Nah masalah muncul ketika saya mulai mengembangkan project open source &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt; (2017). Sebenarnya bukan karena masalah teknis sih, tapi karena &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt; ini adalah project open source tentu akan menjadi &lt;strong&gt;mass production&lt;/strong&gt; (produksi massal) yang akan digunakan oleh banyak orang. Masalahnya adalah file runtime Crystal Report .NET itu punya ukuran yang lumayan besar, yang terdiri dari dua versi yaitu 32 bit (75 mb) dan 64 bit (83 mb). Jadi klo saya membuat paket instalasi untuk &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt; berarti saya harus mengikutsertakan ke dua file runtime Crystal Report .NET tersebut. Anggap saja untuk hasil build/compile project &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt; ini adalah 10 mb berarti klo ditambah runtime Crystal Report .NET maka file setup yang dihasilkan akan berukuran lebih kurang 168 mb :scream:, ini belum termasuk runtime NET Framework loh ya yang berukuran 40-60 mban. Jadi boro-boro ada user yang mau nyobain, download aja meles :grin:.&lt;/p&gt;
+
+&lt;p&gt;Singkat cerita setelah mendapat masukan dari salah satu teman yang menggunakan ReportViewer untuk tool reportingnya, saya pun memutuskan untuk menggunakan ReportViewer untuk keperluan pembuatan laporan di project &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt;. Motivasi utamanya jelas karena file runtime ReportViewer cuma berukuran 7.5 mb :thumbsup:.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/36-runtime-cr-vs-rv.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Jadi dengan menggunakan ReportViewer ditambah dengan file-file runtime lainnya, paket instalasi &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt; yang dihasilnya hanya berukuran 22 mb. Lumayan ngiritkan dari 168 mb menjadi 22 mb :grin:.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/37-setup-openretail.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;apa-itu-reportviewer&quot;&gt;Apa itu ReportViewer?&lt;/h2&gt;
+
+&lt;p&gt;ReportViewer adalah tool reporting gratis yang dikembangkan Microsoft untuk platform .NET, selain gratis tool ini juga secara built-in sudah terinstall ketika kita menginstall Visual Studio .NET.  Tapi sejak Visual Studio 2017, kita harus menginstall secara manual ReportViewer melalui menu &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tools&lt;/code&gt; -&amp;gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Extensions and Update&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Berikut adalah beberapa keuntungan menggunakan ReportViewer:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Drag-and-drop.&lt;/li&gt;
+  &lt;li&gt;Mendukung beberapa operasi standar seperti filtering, sorting grouping dan aggregation.&lt;/li&gt;
+  &lt;li&gt;Mendukung beberapa cara menampilkan data seperti list, tabel, grafik dan matrik (crosstabs).&lt;/li&gt;
+  &lt;li&gt;Mendukung conditional formatting atau embed expressions (bisa langsung coding direportnya).&lt;/li&gt;
+  &lt;li&gt;Mendukung mode print langsung atau print preview.&lt;/li&gt;
+  &lt;li&gt;Bisa dengan mudah mengatur jenis font, colors, border styles, background images dll.&lt;/li&gt;
+  &lt;li&gt;Bisa di ekspor ke Excel, Word and PDF formats.&lt;/li&gt;
+  &lt;li&gt;Selain bisa digunakan untuk WinForm dan WPF, ReportViewer juga bisa digunakan untuk project ASP.NET Web Forms atau ASP.NET MVC.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;cara-mengirim-data-ke-reportviewer&quot;&gt;Cara Mengirim Data ke ReportViewer&lt;/h2&gt;
+
+&lt;p&gt;Secara umum ada 2 cara yang bisa digunakan untuk mengirim data ke report.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Pull model – kita mengeset koneksi ke database, mengirimkan perintah SQL, menentukan filter dan sisanya akan langsung ditangani oleh tool reporting. Cara yang pertama ini adalah cara umum yang biasanya digunakan untuk menampilkan data, dan rata-rata tutorial yang beredar juga menggunakan cara ini.&lt;/li&gt;
+  &lt;li&gt;Push model – dengan cara yang kedua ini kita membuat tabel temporary dengan menggunakan objek DataSet, kemudian objek DataSet ini kita isi datanya dengan menggunakan objek collection, tapi sebelumnya objek collection ini kita olah dulu datanya dari aplikasi.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Tool reporting seperti &lt;a href=&quot;http://coding4ever.net/categories/crystal-reports-net/&quot;&gt;CrystalReport.NET&lt;/a&gt; mendukung 2 cara di atas, sedangkan &lt;a href=&quot;http://coding4ever.net/categories/reportviewer&quot;&gt;ReportViewer&lt;/a&gt; hanya mendukung cara yang kedua yaitu dengan menggunakan push model.&lt;/p&gt;
+
+&lt;h2 id=&quot;pembuatan-project-reportviewer&quot;&gt;Pembuatan Project ReportViewer&lt;/h2&gt;
+
+&lt;p&gt;Adapun tool yang digunakan dalam pembuatan project kali ini adalah:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.visualstudio.com/en-us/downloads/download-visual-studio-vs#d-community&quot;&gt;Visual Studio Community 2013&lt;/a&gt;, Anda bisa saja menggunakan Visual Studio .NET versi sebelumnya (2010, 2012) atau versi yang lebih tinggi&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://coding4ever.net/categories/nuget/&quot;&gt;NuGet&lt;/a&gt;, untuk memudahkan dalam menambahkan library pihak ketiga. Adapun library pihak ketiga yang digunakan dalam sample ini adalah &lt;a href=&quot;http://coding4ever.net/categories/dapper-net/&quot;&gt;Dapper .NET&lt;/a&gt; dan &lt;a href=&quot;https://www.nuget.org/packages/System.Data.SQLite.Core/&quot;&gt;System.Data.SQLite.Core&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;ReportViewer&lt;/li&gt;
+  &lt;li&gt;Database &lt;a href=&quot;http://www.sqlite.org/&quot;&gt;SQLite&lt;/a&gt;, dengan menggunakan sample data database &lt;a href=&quot;https://github.com/k4m4r82/ReportViewer1/tree/master/database&quot;&gt;Northwind&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Tipe project WinForm&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Untuk contoh postingan kali ini, kita hanya menggunakan satu buah tabel dengan struktur seperti berikut :&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/01-struktur-tabel.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Setelah semua tool yang dibutuhkan tersedia kita lanjutkan dengan pembuatan project :&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Buat project baru dengan type WinForm&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/02-membuat-project.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Kemudian atur atau sesuaikan struktur projectnya seperti gambar berikut&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/03-struktur-project.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Berikut keterangan atau fungsi dari folder di atas:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;Controller&lt;/p&gt;
+
+        &lt;p&gt;Selain berisi logic aplikasi, controller juga bertanggung jawab untuk mengatur komunikasi antara View dan Model. Jadi ketika ada &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;request&lt;/code&gt; dari View, Controller akan menentukan Model yang manakah yang berhak merespon request tersebut.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Context&lt;/p&gt;
+
+        &lt;p&gt;Folder Context berisi class yang bertanggung jawab untuk berinteraksi secara langsung dengan database, seperti membuat koneksi, menjalankan perintah sql seperti insert, update, delete dan select atau mengeksekusi objek database seperti store procedure dan function&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Entity&lt;/p&gt;
+
+        &lt;p&gt;Folder ini berisi class-class yang disebut dengan class model/entity. Class ini merupakan representasi dari tabel-tabel yang ada di dalam database. Tujuan dari pembuatan class ini adalah agar kita bisa melakukan mapping (pemetaan) baris/row yang merupakan hasil &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SELECT&lt;/code&gt; dari sebuah tabel menjadi sekumpulan objek (object collection).&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Repository&lt;/p&gt;
+
+        &lt;p&gt;Folder repository berisi class-class yang digunakan untuk menjalankan operasi &lt;a href=&quot;https://en.wikipedia.org/wiki/Create,_read,_update_and_delete&quot;&gt;CRUD&lt;/a&gt;. Untuk informasi lebih lanjut tentang bagaimana cara membuat class repository, bisa Anda baca postingan saya yang berjudul &lt;a href=&quot;http://coding4ever.net/categories/repository-pattern/&quot;&gt;Repository Pattern&lt;/a&gt;.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;View&lt;/p&gt;
+
+        &lt;p&gt;Folder ini berisi form atau file report (ReportViewer)&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;class-modelentity&quot;&gt;Class Model/Entity&lt;/h2&gt;
+
+&lt;p&gt;Untuk menerapkan konsep OOP (Object-oriented programming) dalam pemrograman database kita perlu membuat sebuah class yang disebut dengan istilah class Model atau Entity. Class ini merupakan representasi dari tabel-tabel yang ada di dalam database. Tujuan dari membuat class ini adalah agar kita bisa melakukan mapping (pemetaan) baris/row yang merupakan hasil &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SELECT&lt;/code&gt; dari sebuah tabel menjadi sekumpulan objek (object collection).&lt;/p&gt;
+
+&lt;p&gt;Pemetaan bisa dilakukan secara manual atau bisa juga secara otomatis dengan menggunakan tool-tool ORM dari pihak ketiga seperti &lt;a href=&quot;http://coding4ever.net/categories/dapper-net/&quot;&gt;Dapper .NET&lt;/a&gt; dan &lt;a href=&quot;http://coding4ever.net/categories/entity-framework/&quot;&gt;Entity Framework&lt;/a&gt;. Untuk contoh kali ini kita menggunakan &lt;a href=&quot;http://coding4ever.net/categories/dapper-net/&quot;&gt;Dapper .NET&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/04-ilustrasi-row-mapping.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Setelah memahami apa itu class model dan bagaimana proses pemetaan record ke objek terjadi, langkah berikutnya adalah menambahkan class model/entity &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Product&lt;/code&gt; yang mempunyai struktur sama persis dengan rancangan tabel di awal.&lt;/p&gt;
+
+&lt;p&gt;Berikut langkah-langkah untuk menambahkan class model/entity.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Klik kanan folder Entity -&amp;gt; Add -&amp;gt; Class…&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/05-add-class-entity1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/06-add-class-entity2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/07-add-class-entity3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Kemudian lengkapi kodenya seperti berikut:&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/08-class-product.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Yang perlu diperhatikan pada saat membuat class model/entity, untuk penamaan property class sebaiknya disamakan dengan nama field yang ada di tabel. Jadi nanti akan mempermudah kita melakukan proses mapping (pemetaan) baris/row yang merupakan hasil &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SELECT&lt;/code&gt; dari sebuah tabel menjadi sekumpulan objek (object collection)&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;class-repository-dan-controller&quot;&gt;Class Repository dan Controller&lt;/h2&gt;
+
+&lt;p&gt;Class Repository adalah class yang bertugas untuk menangani operasi database yang dikenal dengan istilah operasi &lt;a href=&quot;https://en.wikipedia.org/wiki/Create,_read,_update_and_delete&quot;&gt;CRUD&lt;/a&gt; (Create, Read, Update dan Delete). Di dalam class inilah kita menuliskan perintah-perintah SQL seperti &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;INSERT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UPDATE&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DELETE&lt;/code&gt; dan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SELECT&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Sebagai contoh kita akan mengambil salah satu method yang ada di dalam class repository yaitu method GetAll. Method ini akan mengeksekusi perintah SQL SELECT kemudian merubah/mengonversi hasilnya yang berupa objek resultset menjadi objek collection dengan bantuan library &lt;a href=&quot;http://coding4ever.net/categories/dapper-net/&quot;&gt;Dapper.NET&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/09-method-getall-repository.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GetAll&lt;/code&gt; yang ada di dalam class repository ini tidak langsung di panggil dari Form (View), tapi kita buatkan terlebih dulu method Controllernya dengan nama yang sama yaitu &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GetAll&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/10-method-getall-controller.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Setelah itu baru kita panggil dari Form (View).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/11-panggil-method-getall.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Berikut adalah hasil dari pemanggilan kode di atas&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/12-form-product.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;dataset&quot;&gt;DataSet&lt;/h2&gt;
+
+&lt;p&gt;Dengan model data push kita tidak langsung menghubungkan antara ReportViewer dengan database, jadi sebagai solusinya kita menggunakan DataSet yang berfungsi sebagai tabel temporary dan menjadi sumber data bagi ReportViewer. DataSet ini sendiri, nantinya akan kita isi datanya berupa objek collection yang kita dapatkan dari pemanggilan method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GetAll&lt;/code&gt; di atas.&lt;/p&gt;
+
+&lt;p&gt;Berikut langkah-langkah untuk menambahkan objek DataSet berikut objek DataTable yang ada di dalamnya:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Klik kanan folder Report -&amp;gt; Add -&amp;gt; New Item…&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/13-add-dataset1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/14-add-dataset2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Langkah berikutnya kita menambahkan DataTable&lt;/p&gt;
+
+    &lt;p&gt;Caranya dengan klik kanan pada Designer Dataset&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/15-add-datatable1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Kemudian ganti nama DataTablenya menjadi Product. Untuk semua field yang ada di DataTable Product harus disesuaikan dengan struktur tabel product atau sesuai dengan property yang ada di dalam class Product.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/16-add-datatable2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;mendesain-laporan-menggunakan-reportviewer&quot;&gt;Mendesain Laporan Menggunakan ReportViewer&lt;/h2&gt;
+
+&lt;p&gt;ReportViewer adalah tool reporting gratis yang dikembangkan Microsoft untuk platform .NET, selain gratis tool ini juga secara built-in sudah terinstall ketika kita menginstall Visual Studio .NET.&lt;/p&gt;
+
+&lt;p&gt;Berikut langkah-langkah mendesain laporan menggunakan ReportViewer:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Klik kanan folder Report -&amp;gt; Add -&amp;gt; New Item…&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/17-add-report1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;setelah itu akan tampil Designer ReportViewer&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/18-add-report2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;kemudian atur property &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Copy to Output Directory&lt;/code&gt; menjadi &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Copy if Newer&lt;/code&gt;.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/32-add-report3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Berikutnya aktifkan panel Report Data melalui menu View -&amp;gt; Report Data&lt;/p&gt;
+
+    &lt;p&gt;selanjutnya klik kanan folder Datasets -&amp;gt; Add Dataset…&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/19-add-report3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;kemudian atur nilai properties datasetnya seperti gambar berikut:&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/20-add-report4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/21-add-report5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Untuk menampilkan data dalam bentuk tabel kita bisa menggunakan komponen Table&lt;/p&gt;
+
+    &lt;p&gt;Caranya klik kanan Designer ReportViewer -&amp;gt; Insert -&amp;gt; Table&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/22-inset-table.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;setelah itu atur ukuran tabelnya seperti berikut:&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/23-design-table1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Kemudian drag field-field yang akan ditampilkan ke komponen tabel.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/24-design-table2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Jika kolom/field tabelnya masih kurang, untuk menambahkannya kita tinggal klik kanan kolom yang terakhir -&amp;gt; insert column -&amp;gt; right. Anda bisa mengulangi langkah-langkah ini sampai semua kolom/field yang dibutuhkan sudah lengkap.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/25-design-table3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Khusus untuk kolom No (No urut) karena nilainya tidak dibaca dari Dataset, kita bisa menggunakan built-in function &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RowNumber&lt;/code&gt; untuk mendapatkan nomor baris. Jadi kita tinggal panggil fungsi ini melalui propery &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Value&lt;/code&gt;.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/26-design-table4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Berikut hasil akhir design komponen tabel yang sudah dirapikan&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/27-design-table5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Untuk menambahkan judul laporan di atas (&lt;strong&gt;LAPORAN PRODUCT&lt;/strong&gt;), kita bisa menggunakan komponen &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TextBox&lt;/code&gt;.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/28-design-table6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;menambahkan-komponen-reportviewer&quot;&gt;Menambahkan Komponen ReportViewer&lt;/h2&gt;
+
+&lt;p&gt;Setelah semua persiapan selesai, langkah berikutnya adalah menambahkan komponen ReportViewer yang berfungsi sebagai container untuk untuk menampilkan report. Tapi sebelumnya kita akan menambahkan terlebih dulu form baru untuk menempatkan komponen ReportViewer ini. Form baru ini kita beri nama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FrmPreview&lt;/code&gt;, di form inilah kita akan menempatkan komponen ReportViewer.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/29-add-reportviewer1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Berikut langkah-langkah menambahkan komponen ReportViewer:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Aktifkan FrmPreview kemudian tambahkan Komponen ReportViewer&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/30-add-reportviewer2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;kemudian tambahkan kode berikut di &lt;a href=&quot;https://github.com/k4m4r82/ReportViewer1/blob/master/src/ReportViewer1/View/FrmPreview.cs&quot;&gt;FrmPreview&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/31-add-reportviewer3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Setelah menambahkan kode di atas, kembali ke FrmProduct kemudian klik ganda button Preview&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/33-button-preview1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;kemudian lengkapi kodenya seperti berikut:&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/34-button-preview2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Setelah melengkapi kode terakhir ini, kita tinggal jalankan aplikasinya kemudian klik button Preview. Berikut adalah contoh hasil laporan yang dibuat menggunakan ReportViewer :blush: :thumbsup:.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/02-report-viewer-1/35-reportviewer-preview.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Selamat mencoba :blush:&lt;/p&gt;
+
+&lt;p&gt;Referensi:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.gotreportviewer.com/&quot;&gt;Got ReportViewer&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.microsoft.com/en-us/sql/reporting-services/application-integration/using-the-winforms-reportviewer-control?view=sql-server-ver15&quot;&gt;Use the WinForms ReportViewer Control&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Kamarudin</name></author><category term="ReportViewer" /><category term="Push model" /><category term="Pull model" /><summary type="html">Tak kenal maka tak sayang, tak sayang maka tak cinta.</summary></entry><entry><title type="html">Proteksi Hasil Compile Aplikasi Anda Menggunakan ConfuserEx</title><link href="http://coding4ever.net/blog/2020/05/13/confuser-ex/" rel="alternate" type="text/html" title="Proteksi Hasil Compile Aplikasi Anda Menggunakan ConfuserEx" /><published>2020-05-13T22:19:44+07:00</published><updated>2020-05-13T22:19:44+07:00</updated><id>http://coding4ever.net/blog/2020/05/13/confuser-ex</id><content type="html" xml:base="http://coding4ever.net/blog/2020/05/13/confuser-ex/">&lt;h2 id=&quot;apa-itu-confuserex&quot;&gt;Apa itu ConfuserEx?&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/logo/confuser-ex-logo.png&quot; alt=&quot;&quot; class=&quot;align-left&quot; /&gt;&lt;a href=&quot;https://yck1509.github.io/ConfuserEx/&quot;&gt;ConfuserEx&lt;/a&gt; adalah tool open-source yang berfungsi untuk melindungi hasil compile aplikasi yang dikembangkan di atas platform .NET (C#, VB.NET, F# dan bahasa .NET lainnya). ConfuserEx dianggap sebagai salah satu tool &lt;a href=&quot;https://en.wikipedia.org/wiki/Obfuscation_(software)&quot;&gt;obfuscators&lt;/a&gt; terbaik yang tersedia gratis untuk platform .NET.&lt;/p&gt;
 
@@ -1150,189 +1441,4 @@ CEKNILAI#NIS#&amp;lt;KODE MP&amp;gt; &lt;span class=&quot;c&quot;&gt;# request d
 
 &lt;p&gt;&lt;img src=&quot;https://openretailblog.files.wordpress.com/2017/04/08042017-8.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Selamat mencoba :blush:&lt;/p&gt;</content><author><name>Kamarudin</name></author><category term="OpenRetail" /><category term="Open Retail" /><category term="Software" /><category term="Project" /><category term="Mini Market" /><category term="Toko Bangunan" /><category term="Open Source" /><summary type="html">Apa itu OpenRetail?</summary></entry><entry><title type="html">Membuat Log Aplikasi Menggunakan Log4Net</title><link href="http://coding4ever.net/blog/2017/01/23/membuat-log-aplikasi-menggunakan-log4net/" rel="alternate" type="text/html" title="Membuat Log Aplikasi Menggunakan Log4Net" /><published>2017-01-23T15:03:40+07:00</published><updated>2017-01-23T15:03:40+07:00</updated><id>http://coding4ever.net/blog/2017/01/23/membuat-log-aplikasi-menggunakan-log4net</id><content type="html" xml:base="http://coding4ever.net/blog/2017/01/23/membuat-log-aplikasi-menggunakan-log4net/">&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/logo/log4net-logo.png&quot; alt=&quot;&quot; class=&quot;align-left&quot; /&gt;Secara teknis kita memang tidak bisa membuat aplikasi yang 100% bebas dari bug. Seberapa keraspun kita mencoba pasti aplikasi yang kita buat ada bugnya. Di sisi lain user adalah tester terbaik yang pernah ada :grin:. Mereka bisa melakukan hal-hal luar biasa di luar perkiraan dan skenario kita yang bisa menyebabkan error, sayangnya user biasanya kurang bisa menjelaskan dengan baik apa yang menyebabkan error. Yang jelas, kita tidak dapat memperbaiki bug sampai kita tahu penyebabnya.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;Saat ini, sebagian besar aplikasi menggunakan logging sebagai cara untuk menyimpan informasi tentang operasi yang dilakukan, karena data tersebut sangat berguna ketika kita harus mendiagnosa masalah yang terjadi pada saat aplikasi dijalankan. Logging di sini tidak hanya digunakan untuk mencatat error yang terjadi, tapi bisa juga digunakan untuk mencatat operasi harian yang dilakukan oleh aplikasi, seperti operasi simpan, update, delete atau yang lebih dikenal dengan istilah operasi &lt;a href=&quot;https://en.wikipedia.org/wiki/Create,_read,_update_and_delete&quot;&gt;CRUD&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Dari pada kita harus membuat fungsi sendiri untuk melakukan proses logging, ada baiknya kita menggunakan library yang sudah terbukti ampuh, mudah digunakan dan open source. Salah satunya adalah &lt;a href=&quot;https://logging.apache.org/log4net/&quot;&gt;log4net&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;log4net&quot;&gt;Log4net&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://logging.apache.org/log4net/&quot;&gt;Log4net&lt;/a&gt; adalah library open source yang dibangun di atas teknologi .NET. Dengan menggunakan library ini kita bisa dengan mudah mengatur output dari log, apakah akan ditampilkan langsung di layar console, disimpan ke file text/database atau pilihan output lainnya. &lt;a href=&quot;https://logging.apache.org/log4net/&quot;&gt;Log4net&lt;/a&gt; merupakan hasil portingan dari library &lt;a href=&quot;https://logging.apache.org/log4j/2.x/&quot;&gt;Log4J&lt;/a&gt; yang digunakan untuk Java.&lt;/p&gt;
-
-&lt;p&gt;Beberapa fungsi atau fitur &lt;a href=&quot;https://logging.apache.org/log4net/&quot;&gt;Log4net&lt;/a&gt; yang akan dibahas pada postingan kali ini adalah:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Logger – Logger adalah object yang bertugas mengeluarkan pesan log. Inilah object utama yang kita gunakan dalam kode program.&lt;/li&gt;
-  &lt;li&gt;Level - Secara default, &lt;a href=&quot;https://logging.apache.org/log4net/&quot;&gt;Log4net&lt;/a&gt; menyediakan beberapa level logging, diurutkan berdasarkan urutan prioritas terendah
-    &lt;ul&gt;
-      &lt;li&gt;ALL&lt;/li&gt;
-      &lt;li&gt;DEBUG&lt;/li&gt;
-      &lt;li&gt;INFO&lt;/li&gt;
-      &lt;li&gt;WARN&lt;/li&gt;
-      &lt;li&gt;ERROR&lt;/li&gt;
-      &lt;li&gt;FATAL&lt;/li&gt;
-      &lt;li&gt;OFF&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Appender - Appender  adalah  object  yang  bertugas  menampilkan  log  message. Ada beberapa appender yang biasa digunakan, misalnya:
-    &lt;ul&gt;
-      &lt;li&gt;ConsoleAppender - untuk  menampilkan  log  ke  console atau command prompt&lt;/li&gt;
-      &lt;li&gt;RollingFileAppender - untuk menyimpan log ke dalam file&lt;/li&gt;
-    &lt;/ul&gt;
-
-    &lt;p&gt;Selain itu ada juga appender untuk menyimpan  ke  database,  mengirim  email,  mengakses  log  sistem operasi, dan berbagai tujuan lainnya. Untuk informasi lebih lanjut tentang &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;log4net appender&lt;/code&gt; bisa Anda cek di &lt;a href=&quot;https://logging.apache.org/log4net/release/config-examples.html&quot;&gt;sini&lt;/a&gt;.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;menggunakan-log4net&quot;&gt;Menggunakan Log4net&lt;/h3&gt;
-
-&lt;p&gt;Sebelum menggunakan &lt;a href=&quot;https://logging.apache.org/log4net/&quot;&gt;Log4net&lt;/a&gt; kita siapkan terlebih dulu project uji cobanya. Project ini bisa langsung Anda download di &lt;a href=&quot;https://github.com/k4m4r82/DemoLog4Net&quot;&gt;sini&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-01.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Project ini menggunakan konsep &lt;a href=&quot;http://coding4ever.net/categories/repository-pattern/&quot;&gt;Repository Pattern&lt;/a&gt; untuk menerapkan &lt;a href=&quot;https://en.wikipedia.org/wiki/Separation_of_concerns&quot;&gt;konsep separation of concern&lt;/a&gt; atau pemisahan kode program berdasarkan fungsinya. Semua kode untuk akses database harus dipisahkan dengan kode untuk pengaturan user interface. Informasi lebih lanjut tentang &lt;a href=&quot;http://coding4ever.net/categories/repository-pattern/&quot;&gt;Repository Pattern&lt;/a&gt; bisa Anda cek di &lt;a href=&quot;http://coding4ever.net/blog/2016/02/22/repository-pattern/&quot;&gt;sini&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h5 id=&quot;langkah-1-menyiapkan-tabel-untuk-menyimpan-hasil-log&quot;&gt;Langkah 1: Menyiapkan tabel untuk menyimpan hasil log&lt;/h5&gt;
-
-&lt;p&gt;Seperti yang sudah saya jelaskan di bagian intro, bahwa &lt;a href=&quot;https://logging.apache.org/log4net/&quot;&gt;Log4net&lt;/a&gt; mempunyai beberapa jenis objek appender yang bertugas untuk menampilkan log, salah satunya adalah  appender untuk menyimpan ke database. Karena data lognya akan disimpan ke database, tentunya kita harus menyiapkan struktur tabelnya terlebih dulu. Berdasarkan dokumentasi resmi &lt;a href=&quot;https://logging.apache.org/log4net/release/config-examples.html&quot;&gt;Apache log4net&lt;/a&gt; struktur tabel standar yang digunakan adalah sebagai berikut:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Log&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Id&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;IDENTITY&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;datetime&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Thread&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;varchar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;Level&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;varchar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Logger&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;varchar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;varchar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;varchar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Karena tidak semua field tabel di atas kita butuhkan, selain itu ada beberapa field yang perlu kita tambahkan, sehingga struktur tabel log di atas kita revisi seperti berikut:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sql&quot; data-lang=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Logs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;LogID&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;INTEGER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AUTOINCREMENT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    &lt;span class=&quot;k&quot;&gt;Level&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;ClassName&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;MethodName&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;Message&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;NewValue&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;OldValue&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;CreatedBy&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;LogDate&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;DATETIME&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DEFAULT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;CURRENT_TIMESTAMP&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Penjelasan struktur tabel:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Level – Berisi salah satu level dari &lt;a href=&quot;https://logging.apache.org/log4net/&quot;&gt;Log4net&lt;/a&gt; yaitu DEBUG, INFO, WARN, ERROR, FATAL dan level lainnya.&lt;/li&gt;
-  &lt;li&gt;ClassName – Berisi namespace dan nama class yang memanggil objek logger&lt;/li&gt;
-  &lt;li&gt;MethodName – Berisi nama method yang memanggil objek logger&lt;/li&gt;
-  &lt;li&gt;Message – Berisi pesan yang kita tambahkan pada saat memanggil objek logger&lt;/li&gt;
-  &lt;li&gt;NewValue – Berisi data yang ditambahkan atau data setelah di edit dalam format json&lt;/li&gt;
-  &lt;li&gt;OldValue – Berisi data sebelum di edit atau data yang dihapus&lt;/li&gt;
-  &lt;li&gt;Exception – Menyimpan nilai string dari objek exception&lt;/li&gt;
-  &lt;li&gt;CreatedBy – Menyimpan informasi user yang menjalankan aplikasi&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Di bawah ini adalah contoh hasil log yang sudah disimpan ke dalam database.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-021.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;langkah-2-menambahkan-library-log4net-via-nuget-package-manager&quot;&gt;Langkah 2: Menambahkan library &lt;a href=&quot;https://logging.apache.org/log4net/&quot;&gt;Log4net&lt;/a&gt; via &lt;a href=&quot;http://coding4ever.net/blog/2014/03/11/nuget/&quot;&gt;nuget package manager&lt;/a&gt;&lt;/h5&gt;
-
-&lt;p&gt;Library &lt;a href=&quot;https://logging.apache.org/log4net/&quot;&gt;Log4net&lt;/a&gt; sudah tersedia di repository &lt;a href=&quot;http://www.nuget.org/&quot;&gt;nuget&lt;/a&gt; sehingga mempermudah kita dalam proses instalasinya.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-03.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;langkah-3-menambahkan-class-log4netrepository-dan-log4netappender&quot;&gt;Langkah 3: Menambahkan class Log4NetRepository dan Log4NetAppender&lt;/h5&gt;
-
-&lt;p&gt;Setelah menyiapkan tabel &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;logs&lt;/code&gt; (langkah 1), langkah berikutnya adalah menambahkan &lt;a href=&quot;https://github.com/k4m4r82/DemoLog4Net/blob/master/src/Northwind.Repository.Service/Log4NetRepository.cs&quot;&gt;class repository&lt;/a&gt; untuk mengakses tabel tersebut. Class ini dibuat berdasarkan &lt;a href=&quot;http://coding4ever.net/categories/repository-pattern/&quot;&gt;repository pattern&lt;/a&gt; yang sudah pernah saya bahas di &lt;a href=&quot;http://coding4ever.net/categories/repository-pattern/&quot;&gt;sini&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-04.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Class &lt;a href=&quot;https://github.com/k4m4r82/DemoLog4Net/blob/master/src/Northwind.Repository.Service/Log4NetRepository.cs&quot;&gt;Log4NetRepository&lt;/a&gt; ini nantinya akan kita akses melalui class &lt;a href=&quot;https://github.com/k4m4r82/DemoLog4Net/blob/master/src/Northwind.Repository.Service/Log4NetAppender.cs&quot;&gt;Log4NetAppender&lt;/a&gt;. Class &lt;a href=&quot;https://github.com/k4m4r82/DemoLog4Net/blob/master/src/Northwind.Repository.Service/Log4NetAppender.cs&quot;&gt;Log4NetAppender&lt;/a&gt; merupakan class  custom Log4Net appender yang merupakan turunan dari class &lt;a href=&quot;https://logging.apache.org/log4net/log4net-1.2.13/release/sdk/log4net.Appender.AppenderSkeleton.html&quot;&gt;AppenderSkeleton&lt;/a&gt;. Class ini akan meng-override method Append.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-05.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Setelah itu kita lengkapi kode implementasinya seperti berikut:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-06.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Untuk informasi lebih lanjut tentang &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;log4net appender&lt;/code&gt; bisa Anda cek di &lt;a href=&quot;https://logging.apache.org/log4net/release/config-examples.html&quot;&gt;sini&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h5 id=&quot;langkah-4-menambahkan-konfigurasi-log4net&quot;&gt;Langkah 4: Menambahkan konfigurasi Log4Net&lt;/h5&gt;
-
-&lt;p&gt;Edit file app.config/web.config, di file ini kita akan menambahkan konfigurasi log4net untuk mengeset custom appender dan level logging yang sudah kita buat dilangkah 3.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-07.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;langkah-5-tes-pemanggilan-objek-logger&quot;&gt;Langkah 5: Tes Pemanggilan Objek Logger&lt;/h5&gt;
-
-&lt;p&gt;Sebelum kita lanjut ke tes pemanggilan objek logger, aktifkan terlebih dulu class  entry point (&lt;a href=&quot;https://github.com/k4m4r82/DemoLog4Net/blob/master/src/Northwind.WinFormApp/Program.cs&quot;&gt;Program.cs&lt;/a&gt;). Setelah itu tambahkan kode berikut:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-08.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Dibaris ke 9, kita menambahkan attribut &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[assembly: log4net.Config.XmlConfigurator(Watch = true)]&lt;/code&gt; yang berfungsi untuk membaca konfigurasi log4net yang tersimpan di file app.config/web.config.&lt;/p&gt;
-
-&lt;p&gt;Dibaris 14 kita menambahkan public static objek dengan nama log (logger), objek inilah yang bertugas untuk mengeluaran pesan log. Dan terakhir di baris 23 kita menambahkan custom property dengan nama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UserName&lt;/code&gt;. Nilai property ini akan di baca oleh class &lt;a href=&quot;https://github.com/k4m4r82/DemoLog4Net/blob/master/src/Northwind.Repository.Service/Log4NetAppender.cs&quot;&gt;custome Log4Net appender&lt;/a&gt; sebelum di simpan ke database.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-09.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Setelah semua persiapan selesai, kita akan memanggil objek logger pada event/method tertentu, misal pada saat menyimpan data (Save), Edit data (Update) dan Hapus Data (Delete).&lt;/p&gt;
-
-&lt;h4 id=&quot;logger-untuk-method-save&quot;&gt;Logger untuk Method Save&lt;/h4&gt;
-
-&lt;p&gt;Berikut adalah contoh pemanggilan objek logger untuk method Save.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-10.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Perhatikan baris ke 115, kita mengeset nilai custom property dengan nama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NewValue&lt;/code&gt;. Isinya adalah nilai dari objek class model/entity yang sudah di konversi ke format &lt;a href=&quot;http://www.json.org/&quot;&gt;JSON&lt;/a&gt;. Method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ToJson&lt;/code&gt; adalah &lt;a href=&quot;https://msdn.microsoft.com/en-us//library/bb383977.aspx&quot;&gt;method extension&lt;/a&gt; yang saya tambahkan untuk mempermudah proses konversi dari objek class model/entity ke format json. Saya sendiri menganggap &lt;a href=&quot;https://msdn.microsoft.com/en-us//library/bb383977.aspx&quot;&gt;method extension&lt;/a&gt; ini sebagai &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jurus terlarang&lt;/code&gt; :grin:, kenapa terlarang karena &lt;a href=&quot;https://msdn.microsoft.com/en-us//library/bb383977.aspx&quot;&gt;method extension&lt;/a&gt; ini melanggar salah satu aturan dalam dunia &lt;a href=&quot;https://en.wikipedia.org/wiki/Object-oriented_programming&quot;&gt;OOP&lt;/a&gt; yaitu kita bisa menambahkan method baru dari sebuah class tanpa melalui mekanisme pewarisan (inheritance). Berikut kode untuk &lt;a href=&quot;https://msdn.microsoft.com/en-us//library/bb383977.aspx&quot;&gt;method extension&lt;/a&gt; &lt;a href=&quot;https://github.com/k4m4r82/DemoLog4Net/blob/master/src/Northwind.Model/ModelExtension.cs&quot;&gt;ToJson&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-11.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Kembali ke method Save di atas,jika dipanggil akan menghasilkan log seperti berikut:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-12.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-21.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Perhatikan field &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NewValue&lt;/code&gt; di atas, isinya adalah nilai dari objek Category yang sudah di konversi ke dalam format json.&lt;/p&gt;
-
-&lt;h4 id=&quot;logger-untuk-method-delete&quot;&gt;Logger untuk Method Delete&lt;/h4&gt;
-
-&lt;p&gt;Mirip dengan contoh pemanggilan objek logger untuk method Save. Hanya saja di sini kita mengeset nilai custom property dengan nama &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OldValue&lt;/code&gt; yang isinya adalah nilai objek class model/entity yang sudah  dikonversi ke json.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-13.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-14.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;logger-untuk-method-update&quot;&gt;Logger untuk Method Update&lt;/h4&gt;
-
-&lt;p&gt;Khusus untuk method Update kita akan me-log dua data yaitu data sebelum (OldValue) dan sesudah (NewValue) diupdate. Jadi kita akan memanggil objek logger di dua lokasi yang berbeda yaitu di layer User Interface (UI) dan layer Data Access (Repository).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-15.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-16.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-17.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-18.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Field &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NewValue&lt;/code&gt; akan berisi dengan data setelah diupdate, sedangkan field &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OldValue&lt;/code&gt; akan berisi dengan data sebelum diupdate.&lt;/p&gt;
-
-&lt;h4 id=&quot;terakhir-logger-untuk-exceptionerror&quot;&gt;Terakhir Logger untuk Exception/Error&lt;/h4&gt;
-
-&lt;p&gt;Untuk log exception/error bisa langsung kita tempatkan di blok try .. catch.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-19.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/01/230117-20.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;kesimpulan&quot;&gt;Kesimpulan&lt;/h3&gt;
-
-&lt;p&gt;Dengan menggunakan library &lt;a href=&quot;https://logging.apache.org/log4net/&quot;&gt;log4net&lt;/a&gt; akan memudahkan tugas harian kita dalam membuat log aplikasi.&lt;/p&gt;
-
-&lt;p&gt;Selamat &lt;a href=&quot;https://github.com/k4m4r82/DemoLog4Net&quot;&gt;MENCOBA&lt;/a&gt; :blush:&lt;/p&gt;</content><author><name>Kamarudin</name></author><category term="logger" /><category term="log4net" /><category term="GlobalContext.Properties" /><category term="LogicalThreadContext.Properties" /><category term="Repository Pattern" /><category term="Appender" /><summary type="html">Secara teknis kita memang tidak bisa membuat aplikasi yang 100% bebas dari bug. Seberapa keraspun kita mencoba pasti aplikasi yang kita buat ada bugnya. Di sisi lain user adalah tester terbaik yang pernah ada :grin:. Mereka bisa melakukan hal-hal luar biasa di luar perkiraan dan skenario kita yang bisa menyebabkan error, sayangnya user biasanya kurang bisa menjelaskan dengan baik apa yang menyebabkan error. Yang jelas, kita tidak dapat memperbaiki bug sampai kita tahu penyebabnya.</summary></entry></feed>
+&lt;p&gt;Selamat mencoba :blush:&lt;/p&gt;</content><author><name>Kamarudin</name></author><category term="OpenRetail" /><category term="Open Retail" /><category term="Software" /><category term="Project" /><category term="Mini Market" /><category term="Toko Bangunan" /><category term="Open Source" /><summary type="html">Apa itu OpenRetail?</summary></entry></feed>
