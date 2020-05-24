@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://coding4ever.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://coding4ever.net/" rel="alternate" type="text/html" /><updated>2020-05-23T15:00:28+07:00</updated><id>http://coding4ever.net/feed.xml</id><title type="html">» Coding4ever’s Blog «</title><subtitle>Coding4ever's Blog</subtitle><author><name>Kamarudin</name></author><entry><title type="html">ReportViewer untuk .NET Developer Bagian #1</title><link href="http://coding4ever.net/blog/2020/05/23/reportviewer-1/" rel="alternate" type="text/html" title="ReportViewer untuk .NET Developer Bagian #1" /><published>2020-05-23T12:49:22+07:00</published><updated>2020-05-23T12:49:22+07:00</updated><id>http://coding4ever.net/blog/2020/05/23/reportviewer-1</id><content type="html" xml:base="http://coding4ever.net/blog/2020/05/23/reportviewer-1/">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://coding4ever.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://coding4ever.net/" rel="alternate" type="text/html" /><updated>2020-05-24T11:58:18+07:00</updated><id>http://coding4ever.net/feed.xml</id><title type="html">» Coding4ever’s Blog «</title><subtitle>Coding4ever's Blog</subtitle><author><name>Kamarudin</name></author><entry><title type="html">ReportViewer untuk .NET Developer Bagian #1</title><link href="http://coding4ever.net/blog/2020/05/23/reportviewer-1/" rel="alternate" type="text/html" title="ReportViewer untuk .NET Developer Bagian #1" /><published>2020-05-23T12:49:22+07:00</published><updated>2020-05-23T12:49:22+07:00</updated><id>http://coding4ever.net/blog/2020/05/23/reportviewer-1</id><content type="html" xml:base="http://coding4ever.net/blog/2020/05/23/reportviewer-1/">&lt;blockquote&gt;
   &lt;p&gt;Tak kenal maka tak sayang, tak sayang maka tak cinta.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -6,7 +6,7 @@
 
 &lt;p&gt;Ketika pindah ke platform .NET saya pun tetap menggunakan tool reporting yang sama yaitu Crystal Report .NET atau ActiveReport .NET. Walaupun waktu itu saya sudah mengetahui adanya ReportViewer yang merupakan tool reporting bawaan .NET, tapi ya karena memang sudah nyaman menggunakan Crystal Report .NET atau ActiveReport .NET jadi saya memang belum punya alasan atau motivasi yang kuat untuk nyobain yang namanya ReportViewer. Alasan lainnya karena waktu itu tool ReportViewer ini masih saya pandang sebelah mata, jadi saya masih mengganggap tool ini sama seperti tool Data Reportnya Visual Basic 6 yang kurang powerful untuk membuat laporan yang kompleks :grin:. Terakhir karena masalah lisensi akhirnya saya lebih memilih untuk menggunakan Crystal Report .NET dari pada ActiveReport .NET.&lt;/p&gt;
 
-&lt;p&gt;Nah masalah muncul ketika saya mulai mengembangkan project open source &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt; (2017). Sebenarnya bukan karena masalah teknis sih, tapi karena &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt; ini adalah project open source tentu akan menjadi &lt;strong&gt;mass production&lt;/strong&gt; (produksi massal) yang akan digunakan oleh banyak orang. Masalahnya adalah file runtime Crystal Report .NET itu punya ukuran yang lumayan besar, yang terdiri dari dua versi yaitu 32 bit (75 mb) dan 64 bit (83 mb). Jadi klo saya membuat paket instalasi untuk &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt; berarti saya harus mengikutsertakan ke dua file runtime Crystal Report .NET tersebut. Anggap saja untuk hasil build/compile project &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt; ini adalah 10 mb berarti klo ditambah runtime Crystal Report .NET maka file setup yang dihasilkan akan berukuran lebih kurang 168 mb :scream:, ini belum termasuk runtime NET Framework loh ya yang berukuran 40-60 mban. Jadi boro-boro ada user yang mau nyobain, download aja meles :grin:.&lt;/p&gt;
+&lt;p&gt;Nah masalah muncul ketika saya mulai mengembangkan project open source &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt; (2017). Sebenarnya bukan karena masalah teknis sih, tapi karena &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt; ini adalah project open source tentu akan menjadi &lt;strong&gt;mass production&lt;/strong&gt; (produksi massal) yang akan digunakan oleh banyak orang. Masalahnya adalah file runtime Crystal Report .NET itu punya ukuran yang lumayan besar, yang terdiri dari dua versi yaitu 32 bit (75 mb) dan 64 bit (83 mb). Jadi klo saya membuat paket instalasi untuk &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt; berarti saya harus mengikutsertakan ke dua file runtime Crystal Report .NET tersebut. Anggap saja untuk hasil build/compile project &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt; ini adalah 10 mb berarti klo ditambah runtime Crystal Report .NET maka file setup yang dihasilkan akan berukuran lebih kurang 168 mb :scream:, ini belum termasuk runtime NET Framework loh ya yang berukuran 40-60 mban. Jadi boro-boro ada user yang mau nyobain, download aja males :grin:.&lt;/p&gt;
 
 &lt;p&gt;Singkat cerita setelah mendapat masukan dari salah satu teman yang menggunakan ReportViewer untuk tool reportingnya, saya pun memutuskan untuk menggunakan ReportViewer untuk keperluan pembuatan laporan di project &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail&quot;&gt;OpenRetail&lt;/a&gt;. Motivasi utamanya jelas karena file runtime ReportViewer cuma berukuran 7.5 mb :thumbsup:.&lt;/p&gt;
 
@@ -43,6 +43,8 @@
 &lt;/ol&gt;
 
 &lt;p&gt;Tool reporting seperti &lt;a href=&quot;http://coding4ever.net/categories/crystal-reports-net/&quot;&gt;CrystalReport.NET&lt;/a&gt; mendukung 2 cara di atas, sedangkan &lt;a href=&quot;http://coding4ever.net/categories/reportviewer&quot;&gt;ReportViewer&lt;/a&gt; hanya mendukung cara yang kedua yaitu dengan menggunakan push model.&lt;/p&gt;
+
+&lt;p&gt;Nah pada postingan kali ini kita akan menggunakan cara yang kedua yaitu Push Model dengan sumber datanya berupa object collection.&lt;/p&gt;
 
 &lt;h2 id=&quot;pembuatan-project-reportviewer&quot;&gt;Pembuatan Project ReportViewer&lt;/h2&gt;
 
@@ -160,7 +162,22 @@
 
 &lt;p&gt;Dengan model data push kita tidak langsung menghubungkan antara ReportViewer dengan database, jadi sebagai solusinya kita menggunakan DataSet yang berfungsi sebagai tabel temporary dan menjadi sumber data bagi ReportViewer. DataSet ini sendiri, nantinya akan kita isi datanya berupa objek collection yang kita dapatkan dari pemanggilan method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GetAll&lt;/code&gt; di atas.&lt;/p&gt;
 
-&lt;p&gt;Berikut langkah-langkah untuk menambahkan objek DataSet berikut objek DataTable yang ada di dalamnya:&lt;/p&gt;
+&lt;p&gt;Ada beberapa cara untuk membuat DataSet yaitu:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Secara otomatis dengan memanfaatkan fasilitas Data Source, melalui menu Project -&amp;gt; Add New Data Source…&lt;/p&gt;
+
+    &lt;p&gt;Dengan cara pertama ini kita bisa langsung memilih database berikut tabel atau view (query) yang datanya akan ditampilkan ke ReportViewer. Objek DataSet dan DataTablenya sudah otomatis dibuatkan.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Secara manual dengan menambahkan objek DataSet melalui klik kanan Project -&amp;gt; Add -&amp;gt; New Item… -&amp;gt; DataSet&lt;/p&gt;
+
+    &lt;p&gt;Dengan cara yang kedua ini kita akan membuat objek DataSet dan DataTable secara manual.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Di postingan ini kita akan menggunakan cara kedua. Berikut langkah-langkahnya:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;

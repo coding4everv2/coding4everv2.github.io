@@ -332,7 +332,7 @@
 
 <p>Ketika pindah ke platform .NET saya pun tetap menggunakan tool reporting yang sama yaitu Crystal Report .NET atau ActiveReport .NET. Walaupun waktu itu saya sudah mengetahui adanya ReportViewer yang merupakan tool reporting bawaan .NET, tapi ya karena memang sudah nyaman menggunakan Crystal Report .NET atau ActiveReport .NET jadi saya memang belum punya alasan atau motivasi yang kuat untuk nyobain yang namanya ReportViewer. Alasan lainnya karena waktu itu tool ReportViewer ini masih saya pandang sebelah mata, jadi saya masih mengganggap tool ini sama seperti tool Data Reportnya Visual Basic 6 yang kurang powerful untuk membuat laporan yang kompleks <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">. Terakhir karena masalah lisensi akhirnya saya lebih memilih untuk menggunakan Crystal Report .NET dari pada ActiveReport .NET.</p>
 
-<p>Nah masalah muncul ketika saya mulai mengembangkan project open source <a href="https://github.com/rudi-krsoftware/open-retail">OpenRetail</a> (2017). Sebenarnya bukan karena masalah teknis sih, tapi karena <a href="https://github.com/rudi-krsoftware/open-retail">OpenRetail</a> ini adalah project open source tentu akan menjadi <strong>mass production</strong> (produksi massal) yang akan digunakan oleh banyak orang. Masalahnya adalah file runtime Crystal Report .NET itu punya ukuran yang lumayan besar, yang terdiri dari dua versi yaitu 32 bit (75 mb) dan 64 bit (83 mb). Jadi klo saya membuat paket instalasi untuk <a href="https://github.com/rudi-krsoftware/open-retail">OpenRetail</a> berarti saya harus mengikutsertakan ke dua file runtime Crystal Report .NET tersebut. Anggap saja untuk hasil build/compile project <a href="https://github.com/rudi-krsoftware/open-retail">OpenRetail</a> ini adalah 10 mb berarti klo ditambah runtime Crystal Report .NET maka file setup yang dihasilkan akan berukuran lebih kurang 168 mb <img class="emoji" title=":scream:" alt=":scream:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f631.png" height="20" width="20">, ini belum termasuk runtime NET Framework loh ya yang berukuran 40-60 mban. Jadi boro-boro ada user yang mau nyobain, download aja meles <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">.</p>
+<p>Nah masalah muncul ketika saya mulai mengembangkan project open source <a href="https://github.com/rudi-krsoftware/open-retail">OpenRetail</a> (2017). Sebenarnya bukan karena masalah teknis sih, tapi karena <a href="https://github.com/rudi-krsoftware/open-retail">OpenRetail</a> ini adalah project open source tentu akan menjadi <strong>mass production</strong> (produksi massal) yang akan digunakan oleh banyak orang. Masalahnya adalah file runtime Crystal Report .NET itu punya ukuran yang lumayan besar, yang terdiri dari dua versi yaitu 32 bit (75 mb) dan 64 bit (83 mb). Jadi klo saya membuat paket instalasi untuk <a href="https://github.com/rudi-krsoftware/open-retail">OpenRetail</a> berarti saya harus mengikutsertakan ke dua file runtime Crystal Report .NET tersebut. Anggap saja untuk hasil build/compile project <a href="https://github.com/rudi-krsoftware/open-retail">OpenRetail</a> ini adalah 10 mb berarti klo ditambah runtime Crystal Report .NET maka file setup yang dihasilkan akan berukuran lebih kurang 168 mb <img class="emoji" title=":scream:" alt=":scream:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f631.png" height="20" width="20">, ini belum termasuk runtime NET Framework loh ya yang berukuran 40-60 mban. Jadi boro-boro ada user yang mau nyobain, download aja males <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">.</p>
 
 <p>Singkat cerita setelah mendapat masukan dari salah satu teman yang menggunakan ReportViewer untuk tool reportingnya, saya pun memutuskan untuk menggunakan ReportViewer untuk keperluan pembuatan laporan di project <a href="https://github.com/rudi-krsoftware/open-retail">OpenRetail</a>. Motivasi utamanya jelas karena file runtime ReportViewer cuma berukuran 7.5 mb <img class="emoji" title=":thumbsup:" alt=":thumbsup:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" height="20" width="20">.</p>
 
@@ -369,6 +369,8 @@
 </ol>
 
 <p>Tool reporting seperti <a href="http://coding4ever.net/categories/crystal-reports-net/">CrystalReport.NET</a> mendukung 2 cara di atas, sedangkan <a href="http://coding4ever.net/categories/reportviewer">ReportViewer</a> hanya mendukung cara yang kedua yaitu dengan menggunakan push model.</p>
+
+<p>Nah pada postingan kali ini kita akan menggunakan cara yang kedua yaitu Push Model dengan sumber datanya berupa object collection.</p>
 
 <h2 id="pembuatan-project-reportviewer">Pembuatan Project ReportViewer</h2>
 
@@ -490,7 +492,22 @@
 
 <p>Dengan model data push kita tidak langsung menghubungkan antara ReportViewer dengan database, jadi sebagai solusinya kita menggunakan DataSet yang berfungsi sebagai tabel temporary dan menjadi sumber data bagi ReportViewer. DataSet ini sendiri, nantinya akan kita isi datanya berupa objek collection yang kita dapatkan dari pemanggilan method <code class="language-plaintext highlighter-rouge">GetAll</code> di atas.</p>
 
-<p>Berikut langkah-langkah untuk menambahkan objek DataSet berikut objek DataTable yang ada di dalamnya:</p>
+<p>Ada beberapa cara untuk membuat DataSet yaitu:</p>
+
+<ol>
+  <li>
+    <p>Secara otomatis dengan memanfaatkan fasilitas Data Source, melalui menu Project -&gt; Add New Data Source…</p>
+
+    <p>Dengan cara pertama ini kita bisa langsung memilih database berikut tabel atau view (query) yang datanya akan ditampilkan ke ReportViewer. Objek DataSet dan DataTablenya sudah otomatis dibuatkan.</p>
+  </li>
+  <li>
+    <p>Secara manual dengan menambahkan objek DataSet melalui klik kanan Project -&gt; Add -&gt; New Item… -&gt; DataSet</p>
+
+    <p>Dengan cara yang kedua ini kita akan membuat objek DataSet dan DataTable secara manual.</p>
+  </li>
+</ol>
+
+<p>Di postingan ini kita akan menggunakan cara kedua. Berikut langkah-langkahnya:</p>
 
 <ul>
   <li>
