@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://coding4ever.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://coding4ever.net/" rel="alternate" type="text/html" /><updated>2020-05-29T12:38:32+07:00</updated><id>http://coding4ever.net/feed.xml</id><title type="html">» Coding4ever’s Blog «</title><subtitle>Coding4ever's Blog</subtitle><author><name>Kamarudin</name></author><entry><title type="html">ReportViewer untuk .NET Developer Bagian #1</title><link href="http://coding4ever.net/blog/2020/05/23/reportviewer-1/" rel="alternate" type="text/html" title="ReportViewer untuk .NET Developer Bagian #1" /><published>2020-05-23T12:49:22+07:00</published><updated>2020-05-23T12:49:22+07:00</updated><id>http://coding4ever.net/blog/2020/05/23/reportviewer-1</id><content type="html" xml:base="http://coding4ever.net/blog/2020/05/23/reportviewer-1/">&lt;blockquote&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://coding4ever.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://coding4ever.net/" rel="alternate" type="text/html" /><updated>2020-07-07T15:23:32+07:00</updated><id>http://coding4ever.net/feed.xml</id><title type="html">» Coding4ever’s Blog «</title><subtitle>Coding4ever's Blog</subtitle><author><name>Kamarudin</name></author><entry><title type="html">WhatsApp Client Library untuk .NET Developer</title><link href="http://coding4ever.net/blog/2020/07/07/whatsapp-net-client/" rel="alternate" type="text/html" title="WhatsApp Client Library untuk .NET Developer" /><published>2020-07-07T15:18:00+07:00</published><updated>2020-07-07T15:18:00+07:00</updated><id>http://coding4ever.net/blog/2020/07/07/whatsapp-net-client</id><content type="html" xml:base="http://coding4ever.net/blog/2020/07/07/whatsapp-net-client/">&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/logo/wa-logo.png&quot; alt=&quot;&quot; class=&quot;align-left&quot; /&gt;WhatsApp NET Client adalah library untuk .NET Developer yang digunakan untuk mengembangkan aplikasi WhatsApp klien berbasis desktop. Library ini dikembangkan di atas teknologi .NET dengan menggunakan bahasa pemrograman C#, sehingga bisa juga digunakan untuk semua bahasa pemrograman .NET selain C# seperti VB.NET, F#, C++ dan bahasa .NET lainnya.&lt;/p&gt;
+
+&lt;p&gt;Dengan menggunakan library ini Anda bisa dengan mudah membuat aplikasi:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;WhatsApp Blast&lt;/li&gt;
+  &lt;li&gt;WhatsApp Bot&lt;/li&gt;
+  &lt;li&gt;Dan aplikasi WhatsApp klien lainnya&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;fitur&quot;&gt;Fitur&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Mengirim pesan&lt;/li&gt;
+  &lt;li&gt;Mengirim banyak pesan (broadcast)&lt;/li&gt;
+  &lt;li&gt;Mengirim pesan dengan gambar (bisa untuk pesan tunggal atau broadcast)&lt;/li&gt;
+  &lt;li&gt;Mengirim file dokumen (bisa untuk pesan tunggal atau broadcast)&lt;/li&gt;
+  &lt;li&gt;Mengirim pesan ke nomor/kontak yang belum terdaftar&lt;/li&gt;
+  &lt;li&gt;Listen/subscribe pesan yang masuk, jadi enggak perlu nambah objek timer lagi untuk membaca pesan masuk&lt;/li&gt;
+  &lt;li&gt;Auto replay pesan yang masuk&lt;/li&gt;
+  &lt;li&gt;Otomatis login (Jadi enggak perlu bolak-balik nyecan QRCode WAnya, cukup sekali aja)&lt;/li&gt;
+  &lt;li&gt;Semua method yang ada kecuali method untuk konek ke WA/Chrome browser, dibuat secara async (asynchronous) sehingga tidak memblok UI ketika dijalankan&lt;/li&gt;
+  &lt;li&gt;Bisa dengan mudah diintegrasikan dengan semua jenis database&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;persyaratan-sistem&quot;&gt;Persyaratan Sistem&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;.NET Framework 4.0, 4.5 dan .NET versi terbaru&lt;/li&gt;
+  &lt;li&gt;Versi minimal Google Chrome harus versi 83.xx (jadi klo belum sama silahkan diupdate dulu)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;screenshot&quot;&gt;Screenshot&lt;/h2&gt;
+
+&lt;p&gt;Di bawah ini adalah contoh aplikasi desktop yang dibuat dengan bantuan library WhatsApp NET Client.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/wanet-api.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Selamat MENCOBA :blush:&lt;/p&gt;
+
+&lt;p&gt;Referensi:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://wa-net.coding4ever.net/&quot;&gt;WhatsApp Client Library for .NET Developer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Kamarudin</name></author><category term="WhatsApp NET Client" /><summary type="html">WhatsApp NET Client adalah library untuk .NET Developer yang digunakan untuk mengembangkan aplikasi WhatsApp klien berbasis desktop. Library ini dikembangkan di atas teknologi .NET dengan menggunakan bahasa pemrograman C#, sehingga bisa juga digunakan untuk semua bahasa pemrograman .NET selain C# seperti VB.NET, F#, C++ dan bahasa .NET lainnya.</summary></entry><entry><title type="html">ReportViewer untuk .NET Developer Bagian #1</title><link href="http://coding4ever.net/blog/2020/05/23/reportviewer-1/" rel="alternate" type="text/html" title="ReportViewer untuk .NET Developer Bagian #1" /><published>2020-05-23T12:49:22+07:00</published><updated>2020-05-23T12:49:22+07:00</updated><id>http://coding4ever.net/blog/2020/05/23/reportviewer-1</id><content type="html" xml:base="http://coding4ever.net/blog/2020/05/23/reportviewer-1/">&lt;blockquote&gt;
   &lt;p&gt;Tak kenal maka tak sayang, tak sayang maka tak cinta.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -1424,38 +1468,4 @@ CEKNILAI#NIS#&amp;lt;KODE MP&amp;gt; &lt;span class=&quot;c&quot;&gt;# request d
 
 &lt;p&gt;&lt;img src=&quot;https://coding4ever.files.wordpress.com/2017/08/20170822-11.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Selamat &lt;a href=&quot;https://github.com/k4m4r82/gammu-sms-gateway&quot;&gt;MENCOBA&lt;/a&gt; :blush:&lt;/p&gt;</content><author><name>Kamarudin</name></author><category term="sms gateway" /><category term="windows service" /><category term="gammu" /><category term="repository" /><category term="dapper" /><summary type="html">Pasti udah pada tau kan apa itu Gammu ? Klo enggak ya keterlaluan he he. Itu loh engine yang biasa digunakan untuk mengirim dan menerima sms dan biasanya sering digunakan untuk membuat sms gateway.</summary></entry><entry><title type="html">OpenRetail - Open Source Project for Retail Business</title><link href="http://coding4ever.net/blog/2017/04/13/openretail-open-source-software-for-retail-business/" rel="alternate" type="text/html" title="OpenRetail - Open Source Project for Retail Business" /><published>2017-04-13T22:18:44+07:00</published><updated>2017-04-13T22:18:44+07:00</updated><id>http://coding4ever.net/blog/2017/04/13/openretail-open-source-software-for-retail-business</id><content type="html" xml:base="http://coding4ever.net/blog/2017/04/13/openretail-open-source-software-for-retail-business/">&lt;h3 id=&quot;apa-itu-openretail&quot;&gt;Apa itu OpenRetail?&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/logo/openretail-logo.png&quot; alt=&quot;&quot; class=&quot;align-left&quot; /&gt;&lt;a href=&quot;http://openretailblog.wordpress.com/&quot;&gt;OpenRetail&lt;/a&gt; adalah software open source khusus untuk bidang usaha ritel, grosir, mini market, toko bangunan, toko komputer, toko buku dan bidang usaha lainnya yang sejenis.&lt;/p&gt;
-
-&lt;p&gt;Saat ini pilihan software untuk usaha retil memang banyak ditambah lagi harga yang bervariasi mulai dari ratusan hingga jutaan rupiah. Tapi untuk software yang gratis, open source dan berkualitas mungkin OpenRetail adalah solusinya :blush:.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;h3 id=&quot;apakah-aplikasi-ini-benar-benar-gratis&quot;&gt;Apakah aplikasi ini benar-benar gratis?&lt;/h3&gt;
-
-&lt;p&gt;Yuph, benar-benar gratis, bahkan lebih dari itu &lt;a href=&quot;http://openretailblog.wordpress.com/&quot;&gt;OpenRetail&lt;/a&gt; adalah software open source sehingga Anda bisa mendownload kode sumbernya, mempelajarinya dan mengembangkan sendiri sesuai kebutuhan, tapi dengan syarat tidak boleh menghapus informasi asli tentang pembuat aplikasi ini.&lt;/p&gt;
-
-&lt;p&gt;Sebagai penutup, jika Anda merasakan manfaat menggunakan OpenRetail, jangan lupa untuk ikut &lt;a href=&quot;https://openretailblog.wordpress.com/kontribusi/&quot;&gt;berkontribusi&lt;/a&gt; dalam pengembangan &lt;a href=&quot;http://openretailblog.wordpress.com/&quot;&gt;OpenRetail&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Download: &lt;a href=&quot;https://github.com/rudi-krsoftware/open-retail/releases&quot;&gt;OpenRetail&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://openretailblog.files.wordpress.com/2017/04/08042017-1.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://openretailblog.files.wordpress.com/2017/04/08042017-2.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://openretailblog.files.wordpress.com/2017/04/08042017-3.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://openretailblog.files.wordpress.com/2017/04/08042017-4.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://openretailblog.files.wordpress.com/2017/04/08042017-5.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://openretailblog.files.wordpress.com/2017/01/07.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://openretailblog.files.wordpress.com/2017/04/08042017-6.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://openretailblog.files.wordpress.com/2017/04/08042017-7.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://openretailblog.files.wordpress.com/2017/04/08042017-8.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Selamat mencoba :blush:&lt;/p&gt;</content><author><name>Kamarudin</name></author><category term="OpenRetail" /><category term="Open Retail" /><category term="Software" /><category term="Project" /><category term="Mini Market" /><category term="Toko Bangunan" /><category term="Open Source" /><summary type="html">Apa itu OpenRetail?</summary></entry></feed>
+&lt;p&gt;Selamat &lt;a href=&quot;https://github.com/k4m4r82/gammu-sms-gateway&quot;&gt;MENCOBA&lt;/a&gt; :blush:&lt;/p&gt;</content><author><name>Kamarudin</name></author><category term="sms gateway" /><category term="windows service" /><category term="gammu" /><category term="repository" /><category term="dapper" /><summary type="html">Pasti udah pada tau kan apa itu Gammu ? Klo enggak ya keterlaluan he he. Itu loh engine yang biasa digunakan untuk mengirim dan menerima sms dan biasanya sering digunakan untuk membuat sms gateway.</summary></entry></feed>

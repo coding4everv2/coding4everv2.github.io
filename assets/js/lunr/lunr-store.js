@@ -1222,4 +1222,10 @@ var store = [{
         "tags": ["ReportViewer","Push model","Pull model"],
         "url": "http://coding4ever.net/blog/2020/05/23/reportviewer-1/",
         "teaser": null
+      },{
+        "title": "WhatsApp Client Library untuk .NET Developer",
+        "excerpt":"WhatsApp NET Client adalah library untuk .NET Developer yang digunakan untuk mengembangkan aplikasi WhatsApp klien berbasis desktop. Library ini dikembangkan di atas teknologi .NET dengan menggunakan bahasa pemrograman C#, sehingga bisa juga digunakan untuk semua bahasa pemrograman .NET selain C# seperti VB.NET, F#, C++ dan bahasa .NET lainnya.   Dengan menggunakan library ini Anda bisa dengan mudah membuat aplikasi:      WhatsApp Blast   WhatsApp Bot   Dan aplikasi WhatsApp klien lainnya   Fitur      Mengirim pesan   Mengirim banyak pesan (broadcast)   Mengirim pesan dengan gambar (bisa untuk pesan tunggal atau broadcast)   Mengirim file dokumen (bisa untuk pesan tunggal atau broadcast)   Mengirim pesan ke nomor/kontak yang belum terdaftar   Listen/subscribe pesan yang masuk, jadi enggak perlu nambah objek timer lagi untuk membaca pesan masuk   Auto replay pesan yang masuk   Otomatis login (Jadi enggak perlu bolak-balik nyecan QRCode WAnya, cukup sekali aja)   Semua method yang ada kecuali method untuk konek ke WA/Chrome browser, dibuat secara async (asynchronous) sehingga tidak memblok UI ketika dijalankan   Bisa dengan mudah diintegrasikan dengan semua jenis database   Persyaratan Sistem      .NET Framework 4.0, 4.5 dan .NET versi terbaru   Versi minimal Google Chrome harus versi 83.xx (jadi klo belum sama silahkan diupdate dulu)   Screenshot   Di bawah ini adalah contoh aplikasi desktop yang dibuat dengan bantuan library WhatsApp NET Client.      Selamat MENCOBA :blush:   Referensi:      WhatsApp Client Library for .NET Developer  ","categories": ["WhatsApp NET Client"],
+        "tags": ["WhatsApp NET Client"],
+        "url": "http://coding4ever.net/blog/2020/07/07/whatsapp-net-client/",
+        "teaser": null
       }]
