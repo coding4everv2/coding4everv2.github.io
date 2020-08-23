@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://coding4ever.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://coding4ever.net/" rel="alternate" type="text/html" /><updated>2020-07-07T15:23:32+07:00</updated><id>http://coding4ever.net/feed.xml</id><title type="html">» Coding4ever’s Blog «</title><subtitle>Coding4ever's Blog</subtitle><author><name>Kamarudin</name></author><entry><title type="html">WhatsApp Client Library untuk .NET Developer</title><link href="http://coding4ever.net/blog/2020/07/07/whatsapp-net-client/" rel="alternate" type="text/html" title="WhatsApp Client Library untuk .NET Developer" /><published>2020-07-07T15:18:00+07:00</published><updated>2020-07-07T15:18:00+07:00</updated><id>http://coding4ever.net/blog/2020/07/07/whatsapp-net-client</id><content type="html" xml:base="http://coding4ever.net/blog/2020/07/07/whatsapp-net-client/">&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/logo/wa-logo.png&quot; alt=&quot;&quot; class=&quot;align-left&quot; /&gt;WhatsApp NET Client adalah library untuk .NET Developer yang digunakan untuk mengembangkan aplikasi WhatsApp klien berbasis desktop. Library ini dikembangkan di atas teknologi .NET dengan menggunakan bahasa pemrograman C#, sehingga bisa juga digunakan untuk semua bahasa pemrograman .NET selain C# seperti VB.NET, F#, C++ dan bahasa .NET lainnya.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://coding4ever.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://coding4ever.net/" rel="alternate" type="text/html" /><updated>2020-08-23T09:58:19+07:00</updated><id>http://coding4ever.net/feed.xml</id><title type="html">» Coding4ever’s Blog «</title><subtitle>Coding4ever's Blog</subtitle><author><name>Kamarudin</name></author><entry><title type="html">WhatsApp Client Library untuk .NET Developer</title><link href="http://coding4ever.net/blog/2020/07/07/whatsapp-net-client/" rel="alternate" type="text/html" title="WhatsApp Client Library untuk .NET Developer" /><published>2020-07-07T15:18:00+07:00</published><updated>2020-07-07T15:18:00+07:00</updated><id>http://coding4ever.net/blog/2020/07/07/whatsapp-net-client</id><content type="html" xml:base="http://coding4ever.net/blog/2020/07/07/whatsapp-net-client/">&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/logo/wa-logo.png&quot; alt=&quot;&quot; class=&quot;align-left&quot; /&gt;WhatsApp NET Client adalah library untuk .NET Developer yang digunakan untuk mengembangkan aplikasi WhatsApp klien berbasis desktop. Library ini dikembangkan di atas teknologi .NET dengan menggunakan bahasa pemrograman C#, sehingga bisa juga digunakan untuk semua bahasa pemrograman .NET selain C# seperti VB.NET, F#, C++ dan bahasa .NET lainnya.&lt;/p&gt;
 
 &lt;p&gt;Dengan menggunakan library ini Anda bisa dengan mudah membuat aplikasi:&lt;/p&gt;
 
@@ -11,12 +11,15 @@
 &lt;h2 id=&quot;fitur&quot;&gt;Fitur&lt;/h2&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;Mode &lt;em&gt;siluman&lt;/em&gt; (headless/no window). Dengan mengaktifkan mode &lt;em&gt;siluman&lt;/em&gt;, chrome browser akan berjalan di background&lt;/li&gt;
+  &lt;li&gt;Grab contacts untuk membaca kontak WA sehingga hasilnya bisa Anda simpan ke database&lt;/li&gt;
   &lt;li&gt;Mengirim pesan&lt;/li&gt;
   &lt;li&gt;Mengirim banyak pesan (broadcast)&lt;/li&gt;
   &lt;li&gt;Mengirim pesan dengan gambar (bisa untuk pesan tunggal atau broadcast)&lt;/li&gt;
   &lt;li&gt;Mengirim file dokumen (bisa untuk pesan tunggal atau broadcast)&lt;/li&gt;
   &lt;li&gt;Mengirim pesan ke nomor/kontak yang belum terdaftar&lt;/li&gt;
   &lt;li&gt;Listen/subscribe pesan yang masuk, jadi enggak perlu nambah objek timer lagi untuk membaca pesan masuk&lt;/li&gt;
+  &lt;li&gt;Listen/subscribe pesan yang dikirim, dengan fitur ini kita bisa mengecek apakah pesan sudah terkirim atau belum.&lt;/li&gt;
   &lt;li&gt;Auto replay pesan yang masuk&lt;/li&gt;
   &lt;li&gt;Otomatis login (Jadi enggak perlu bolak-balik nyecan QRCode WAnya, cukup sekali aja)&lt;/li&gt;
   &lt;li&gt;Semua method yang ada kecuali method untuk konek ke WA/Chrome browser, dibuat secara async (asynchronous) sehingga tidak memblok UI ketika dijalankan&lt;/li&gt;
@@ -30,11 +33,25 @@
   &lt;li&gt;Versi minimal Google Chrome harus versi 83.xx (jadi klo belum sama silahkan diupdate dulu)&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&quot;instalasi&quot;&gt;Instalasi&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Download contoh source code di &lt;a href=&quot;https://github.com/WhatsAppNETClient/WhatsAppNETClient&quot;&gt;https://github.com/WhatsAppNETClient/WhatsAppNETClient&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Copykan file &lt;a href=&quot;https://github.com/WhatsAppNETClient/WhatsappNETClient/tree/master/libs&quot;&gt;chromedriver.exe&lt;/a&gt; yang ada di folder &lt;strong&gt;libs&lt;/strong&gt; ke folder &lt;strong&gt;bin\Debug&lt;/strong&gt; atau &lt;strong&gt;bin\Release&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Jika folder &lt;strong&gt;bin\Debug&lt;/strong&gt; atau &lt;strong&gt;bin\Release&lt;/strong&gt; belum ada, silahkan lakukan proses build project terlebih dulu.&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&quot;screenshot&quot;&gt;Screenshot&lt;/h2&gt;
 
 &lt;p&gt;Di bawah ini adalah contoh aplikasi desktop yang dibuat dengan bantuan library WhatsApp NET Client.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/wanet-api.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/1.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/2.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/3.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/4.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Selamat MENCOBA :blush:&lt;/p&gt;
 

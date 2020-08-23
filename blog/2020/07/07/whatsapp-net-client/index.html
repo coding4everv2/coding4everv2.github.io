@@ -337,12 +337,15 @@
 <h2 id="fitur">Fitur</h2>
 
 <ul>
+  <li>Mode <em>siluman</em> (headless/no window). Dengan mengaktifkan mode <em>siluman</em>, chrome browser akan berjalan di background</li>
+  <li>Grab contacts untuk membaca kontak WA sehingga hasilnya bisa Anda simpan ke database</li>
   <li>Mengirim pesan</li>
   <li>Mengirim banyak pesan (broadcast)</li>
   <li>Mengirim pesan dengan gambar (bisa untuk pesan tunggal atau broadcast)</li>
   <li>Mengirim file dokumen (bisa untuk pesan tunggal atau broadcast)</li>
   <li>Mengirim pesan ke nomor/kontak yang belum terdaftar</li>
   <li>Listen/subscribe pesan yang masuk, jadi enggak perlu nambah objek timer lagi untuk membaca pesan masuk</li>
+  <li>Listen/subscribe pesan yang dikirim, dengan fitur ini kita bisa mengecek apakah pesan sudah terkirim atau belum.</li>
   <li>Auto replay pesan yang masuk</li>
   <li>Otomatis login (Jadi enggak perlu bolak-balik nyecan QRCode WAnya, cukup sekali aja)</li>
   <li>Semua method yang ada kecuali method untuk konek ke WA/Chrome browser, dibuat secara async (asynchronous) sehingga tidak memblok UI ketika dijalankan</li>
@@ -356,11 +359,27 @@
   <li>Versi minimal Google Chrome harus versi 83.xx (jadi klo belum sama silahkan diupdate dulu)</li>
 </ul>
 
+<h2 id="instalasi">Instalasi</h2>
+
+<ul>
+  <li>Download contoh source code di <a href="https://github.com/WhatsAppNETClient/WhatsAppNETClient">https://github.com/WhatsAppNETClient/WhatsAppNETClient</a>
+</li>
+  <li>Copykan file <a href="https://github.com/WhatsAppNETClient/WhatsappNETClient/tree/master/libs">chromedriver.exe</a> yang ada di folder <strong>libs</strong> ke folder <strong>bin\Debug</strong> atau <strong>bin\Release</strong>
+</li>
+  <li>Jika folder <strong>bin\Debug</strong> atau <strong>bin\Release</strong> belum ada, silahkan lakukan proses build project terlebih dulu.</li>
+</ul>
+
 <h2 id="screenshot">Screenshot</h2>
 
 <p>Di bawah ini adalah contoh aplikasi desktop yang dibuat dengan bantuan library WhatsApp NET Client.</p>
 
-<p><img src="http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/wanet-api.png" alt="" class="align-center"></p>
+<p><img src="http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/1.png" alt="" class="align-center"></p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/2.png" alt="" class="align-center"></p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/3.png" alt="" class="align-center"></p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/4.png" alt="" class="align-center"></p>
 
 <p>Selamat MENCOBA <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
 
