@@ -1,0 +1,942 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.19.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Membuat WhatsApp Bot itu gampang, jangan dipersulit ! | » Coding4ever’s Blog «</title>
+<meta name="description" content="Beberapa waktu yang lalu saya merilis sebuah library dengan nama WhatsApp NET Client. Library ini merupakan hadiah dari saya :grin: untuk teman-teman .NET Developer yang ingin membuat aplikasi yang bisa berkomunikasi dengan aplikasi WhatsApp Web secara mudah.  ">
+
+
+  <meta name="author" content="Kamarudin">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content=">> Coding4ever's Blog <<">
+<meta property="og:title" content="Membuat WhatsApp Bot itu gampang, jangan dipersulit !">
+<meta property="og:url" content="http://coding4ever.net/blog/2020/11/22/whatsapp-bot/">
+
+
+  <meta property="og:description" content="Beberapa waktu yang lalu saya merilis sebuah library dengan nama WhatsApp NET Client. Library ini merupakan hadiah dari saya :grin: untuk teman-teman .NET Developer yang ingin membuat aplikasi yang bisa berkomunikasi dengan aplikasi WhatsApp Web secara mudah.  ">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-11-22T21:44:50+07:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://coding4ever.net/blog/2020/11/22/whatsapp-bot/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Kamarudin",
+      "url": "http://coding4ever.net/",
+      "sameAs": ["https://web.facebook.com/abu.anas.1232","https://github.com/k4m4r82","https://github.com/rudi-krsoftware","https://gitlab.com/rudi.krsoftware"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=">> Coding4ever's Blog << Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo-blog.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          &gt;&gt; Coding4ever's Blog &lt;&lt;
+          <span class="site-subtitle">Just coding... coding... and coding... because coding should be fun :)</span>
+        </a>
+        <ul class="visible-links">
+<li class="masthead__menu-item">
+              <a href="/year-archive/">Archives</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li>
+<li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li>
+</ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/avatar.png" alt="Kamarudin" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Kamarudin</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Software developer yang fokus mengembangkan aplikasi di atas platform .NET dan Android. Senang mempelajari teknologi baru terutama di bidang OOP, Design Pattern, ORM, Continuous Integration &amp; Deployment dan arsitektur Microservice.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Yogyakarta</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i><span class="label">Facebook</span></a></li>
+          
+        
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Membuat WhatsApp Bot itu gampang, jangan dipersulit !">
+    <meta itemprop="description" content="Beberapa waktu yang lalu saya merilis sebuah library dengan nama WhatsApp NET Client. Library ini merupakan hadiah dari saya :grin: untuk teman-teman .NET Developer yang ingin membuat aplikasi yang bisa berkomunikasi dengan aplikasi WhatsApp Web secara mudah.">
+    <meta itemprop="datePublished" content="2020-11-22T21:44:50+07:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Membuat WhatsApp Bot itu gampang, jangan dipersulit !
+</h1>
+		  
+          
+            <p class="page__meta">
+			
+				Posted by <i class="fas fa-user"></i> Kamarudin • 
+				
+				<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2020-11-22T21:44:50+07:00">November 22, 2020</time> • 
+				
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+				
+				 • <a href="http://coding4ever.net/blog/2020/11/22/whatsapp-bot/#disqus_thread" class="disqus-comment-count">Comments</a>
+			</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p><img src="http://coding4ever.net/assets/images/logo/wa-logo.png" alt="" class="align-left">Beberapa waktu yang lalu saya merilis sebuah library dengan nama <a href="http://wa-net.coding4ever.net/">WhatsApp NET Client</a>. Library ini merupakan <code class="language-plaintext highlighter-rouge">hadiah</code> dari saya <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20"> untuk teman-teman .NET Developer yang ingin membuat aplikasi yang bisa berkomunikasi dengan aplikasi WhatsApp Web secara mudah.</p>
+
+<p>Dengan menggunakan library ini Anda bisa dengan mudah membuat aplikasi:</p>
+
+<ul>
+  <li>WhatsApp Blast</li>
+  <li><a href="https://github.com/k4m4r82/OnlineTestWABot">WhatsApp Bot</a></li>
+  <li>Dan Aplikasi WhatsApp klien lainnya</li>
+</ul>
+
+<p>Jadi dipostingan kali ini kita akan memahas bagaimana mudahnya membuat aplikasi <a href="https://github.com/k4m4r82/OnlineTestWABot">WhatsApp Bot</a> dengan menggunakan library <a href="http://wa-net.coding4ever.net/">WhatsApp NET Client</a>. Jadi Anda tidak perlu lagi memikirkan bagaimana caranya berkomunikasi dengan WhatsApp web sehingga bisa lebih fokus ke proses bisnis atau logic aplikasi yang ingin dikembangkan.</p>
+
+<p>Ok untuk contoh kasusnya kita akan membuat <a href="https://github.com/k4m4r82/OnlineTestWABot">WhatsApp Bot</a> dengan tema <strong>Tes Online Bahasa Inggris</strong>. Di tes online ini kita akan menjawab soalnya bahasa inggris dengan pilihan ganda.</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/05-whatsapp-bot/05-screenshot-soal1.jpeg" alt="" class="align-center"></p>
+
+<h3 id="database">Database</h3>
+
+<p>Pertama kita rancang dulu databasenya dan berhubung dulu saya juga pernah menulis postingan tentang database <a href="http://coding4ever.net/blog/2010/06/14/mengenal-lebih-dekat-database-sqlite/">SQLite</a> jadi untuk databasenya kita menggunakan SQLite saja.</p>
+
+<p>SQLite adalah database standalone yang kecil, mungil dan gratis. Bagaimana cara membuat database di SQLite sudah saya bahas juga di <a href="http://coding4ever.net/blog/2010/06/14/mengenal-lebih-dekat-database-sqlite/">sini</a> kemudian bagaimana mengaksesnya dari aplikasi juga sudah saya bahasa di <a href="http://coding4ever.net/blog/2010/07/05/mengakses-database-sqlite-menggunakan-library-dhsqlite/">sini</a>.</p>
+
+<p>Berikut adalah rancangan sederhana database tes online bahasa inggris yang akan kita buat :</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/05-whatsapp-bot/01-struktur-database.png" alt="" class="align-center"></p>
+
+<h3 id="mengakses-whatsapp-web">Mengakses WhatsApp Web</h3>
+
+<p>Ada banyak cara agar aplikasi kita berkomunikasi dengan WhatsApp Web, yang pertama bisa dengan menggunakan <a href="https://www.selenium.dev/">Selenium WebDriver</a> secara langsung, tapi tentunya cara ini (menggunakan <a href="https://www.selenium.dev/">Selenium WebDriver</a>) bukan cara yang favorit dikalangan programmer instan seperti Anda dan Saya <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">, jadi dipostingan ini saya menggunakan library siap pakai seperti <a href="http://wa-net.coding4ever.net/">WhatsApp NET Client</a> yang bisa dengan mudah berkomunikasi dengan WhatsApp Web.</p>
+
+<blockquote>
+  <p>Ingat library ini adalah library gratis, segala resiko (kemudahan dalam membuat aplikasi <a href="https://github.com/k4m4r82/OnlineTestWABot">WhatsApp Bot</a>) silahkan ditanggung sendiri <img class="emoji" title=":grin:" alt=":grin:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f601.png" height="20" width="20">.</p>
+</blockquote>
+
+<h3 id="whatsapp-net-client">WhatsApp NET Client</h3>
+
+<p><a href="http://wa-net.coding4ever.net/">WhatsApp NET Client</a> adalah library gratis untuk .NET Developer yang digunakan untuk mengembangkan aplikasi WhatsApp klien berbasis desktop. Library ini dikembangkan di atas teknologi .NET dengan menggunakan bahasa pemrograman C#, sehingga bisa juga digunakan untuk semua bahasa pemrograman .NET selain C# seperti VB.NET, F#, C++ dan bahasa .NET lainnya.</p>
+
+<p><a href="http://wa-net.coding4ever.net/">WhatsApp NET Client</a> mempunyai beberapa fungsi standard seperti membaca/membalas pesan yang masuk. Sehingga dengan adanya fitur ini kita bisa dengan mudah membuat aplikasi seperti <a href="https://github.com/k4m4r82/OnlineTestWABot">WhatsApp Bot</a>.</p>
+
+<p>Berikut adalah beberapa cuplikan kode untuk membuat aplikasi <a href="https://github.com/k4m4r82/OnlineTestWABot">WhatsApp Bot</a> menggunakan library <a href="http://wa-net.coding4ever.net/">WhatsApp NET Client</a>:</p>
+
+<h4 id="1-mengakses-whatsapp-web">1. Mengakses WhatsApp Web</h4>
+
+<p>Langkah pertama yang harus kita lakukan adalah mengakses WhatsApp Web langsung dari library <a href="http://wa-net.coding4ever.net/">WhatsApp NET Client</a>. Untuk mengakses WhatsApp Web kita cukup memanggil method <code class="language-plaintext highlighter-rouge">Connect</code> dari objek WhatsApp NET Client.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="n">IWhatsAppNETAPI</span> <span class="n">_whatsAppApi</span><span class="p">;</span> <span class="c1">// deklarasi objek WhatsApp NET Client</span>
+
+<span class="k">private</span> <span class="k">void</span> <span class="nf">btnStart_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">_whatsAppApi</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WhatsAppNETAPI</span><span class="p">.</span><span class="nf">WhatsAppNETAPI</span><span class="p">();</span>
+
+    <span class="kt">var</span> <span class="n">url</span> <span class="p">=</span> <span class="s">"https://web.whatsapp.com"</span><span class="p">;</span>
+
+    <span class="k">using</span> <span class="p">(</span><span class="k">new</span> <span class="nf">StCursor</span><span class="p">(</span><span class="n">Cursors</span><span class="p">.</span><span class="n">WaitCursor</span><span class="p">,</span> <span class="k">new</span> <span class="nf">TimeSpan</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">)))</span>
+    <span class="p">{</span>
+        <span class="c1">// buka chrome web browser untuk menjalankan WhatsApp Web</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">_whatsAppApi</span><span class="p">.</span><span class="nf">Connect</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">while</span> <span class="p">(!</span><span class="n">_whatsAppApi</span><span class="p">.</span><span class="nf">OnReady</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="n">Thread</span><span class="p">.</span><span class="nf">Sleep</span><span class="p">(</span><span class="m">1000</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="c1">// subscribe event OnMessageRecieved </span>
+            <span class="n">_whatsAppApi</span><span class="p">.</span><span class="n">OnMessageRecieved</span> <span class="p">+=</span> <span class="n">OnMessageRecievedEventHandler</span><span class="p">;</span>
+            <span class="n">_whatsAppApi</span><span class="p">.</span><span class="nf">MessageSubscribe</span><span class="p">();</span>
+
+            <span class="n">btnStart</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+            <span class="n">btnStop</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+            <span class="n">_whatsAppApi</span><span class="p">.</span><span class="nf">Disconnect</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h4 id="2-subcribelisten-pesan-yang-masuk">2. Subcribe/listen pesan yang masuk</h4>
+
+<p>Untuk subcribe/listen pesan yang masuk kita cukup menambahkan kode berikut:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">_whatsAppApi</span><span class="p">.</span><span class="n">OnMessageRecieved</span> <span class="p">+=</span> <span class="n">OnMessageRecievedEventHandler</span><span class="p">;</span>
+<span class="n">_whatsAppApi</span><span class="p">.</span><span class="nf">MessageSubscribe</span><span class="p">();</span></code></pre></figure>
+
+<p>Kode di atas di panggil pada saat user menekan tombol Start (Langkah 1 - Mengakses WhatsApp Web). Untuk keperluan subscribe event <code class="language-plaintext highlighter-rouge">OnMessageRecieved</code> ini, kita perlu menyediakan method event handler yang akan merespon ketika event <code class="language-plaintext highlighter-rouge">OnMessageRecieved</code> tersebut aktif.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">OnMessageRecievedEventHandler</span><span class="p">(</span><span class="n">MsgArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>            
+    <span class="kt">var</span> <span class="n">user</span> <span class="p">=</span> <span class="k">new</span> <span class="n">User</span>
+    <span class="p">{</span>
+        <span class="n">user_id</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Sender</span>
+    <span class="p">};</span>
+
+    <span class="kt">var</span> <span class="n">chat</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Chat</span>
+    <span class="p">{</span>
+        <span class="n">user_id</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Sender</span><span class="p">,</span>
+        <span class="n">text</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Msg</span>
+    <span class="p">};</span>
+
+    <span class="kt">var</span> <span class="n">msgToReplay</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+    <span class="nf">AutoReplay</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">chat</span><span class="p">,</span> <span class="k">ref</span> <span class="n">msgToReplay</span><span class="p">);</span>
+
+    <span class="n">_whatsAppApi</span><span class="p">.</span><span class="nf">SendMessage</span><span class="p">(</span><span class="k">new</span> <span class="nf">MsgArgs</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Sender</span><span class="p">,</span> <span class="n">msgToReplay</span><span class="p">));</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Ketika method ini dijalankan, di dalamnya kita akan melakukan parsing pesan yang masuk, mengolahnya, dan kemudian mengirimkan hasilnya dengan memanggil method <code class="language-plaintext highlighter-rouge">SendMessage</code>.</p>
+
+<h4 id="3-memparsing-pesan-yang-masuk-kemudian-membalasnya">3. Memparsing pesan yang masuk kemudian membalasnya</h4>
+
+<p>Langkah berikutnya adalah menyiapkan method yang bertugas untuk memparsing pesan yang masuk.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">AutoReplay</span><span class="p">(</span><span class="n">User</span> <span class="n">user</span><span class="p">,</span> <span class="n">Chat</span> <span class="n">chat</span><span class="p">,</span> <span class="k">ref</span> <span class="kt">string</span> <span class="n">msgToReplay</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">chat</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">splitPesan</span> <span class="p">=</span> <span class="n">chat</span><span class="p">.</span><span class="n">text</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="sc">' '</span><span class="p">);</span>
+        <span class="kt">var</span> <span class="n">keyword</span> <span class="p">=</span> <span class="n">splitPesan</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+        <span class="kt">var</span> <span class="n">param</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">splitPesan</span><span class="p">.</span><span class="nf">Count</span><span class="p">()</span> <span class="p">&gt;</span> <span class="m">1</span><span class="p">)</span> <span class="n">param</span> <span class="p">=</span> <span class="n">splitPesan</span><span class="p">[</span><span class="m">1</span><span class="p">];</span>
+
+        <span class="nf">SaveUser</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+        <span class="nf">SaveChat</span><span class="p">(</span><span class="n">chat</span><span class="p">);</span>
+                
+        <span class="kt">var</span> <span class="n">perintahBot</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PerintahBot</span><span class="p">();</span>
+
+        <span class="k">switch</span> <span class="p">(</span><span class="n">keyword</span><span class="p">.</span><span class="nf">ToLower</span><span class="p">())</span>
+        <span class="p">{</span>
+            <span class="k">case</span> <span class="s">"/about"</span><span class="p">:</span>
+                <span class="n">msgToReplay</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="n">ABOUT</span><span class="p">,</span> <span class="n">_currentVersion</span><span class="p">,</span> <span class="n">AUTHOR</span><span class="p">,</span> <span class="n">EMAIL</span><span class="p">,</span> <span class="n">URL</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="k">case</span> <span class="s">"/bantuan"</span><span class="p">:</span>
+                <span class="n">msgToReplay</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="n">BANTUAN</span><span class="p">,</span> <span class="n">_currentVersion</span><span class="p">,</span> <span class="n">AUTHOR</span><span class="p">,</span> <span class="n">EMAIL</span><span class="p">,</span> <span class="n">URL</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="k">case</span> <span class="s">"/mulai"</span><span class="p">:</span>
+                <span class="n">perintahBot</span><span class="p">.</span><span class="nf">Mulai</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span> <span class="k">ref</span> <span class="n">msgToReplay</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="k">case</span> <span class="s">"/soal"</span><span class="p">:</span>
+                <span class="n">perintahBot</span><span class="p">.</span><span class="nf">Soal</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span> <span class="k">ref</span> <span class="n">msgToReplay</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="k">case</span> <span class="s">"/soalterakhir"</span><span class="p">:</span>
+                <span class="n">perintahBot</span><span class="p">.</span><span class="nf">SoalTerakhir</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span> <span class="k">ref</span> <span class="n">msgToReplay</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="k">case</span> <span class="s">"/jawab"</span><span class="p">:</span>
+                <span class="n">perintahBot</span><span class="p">.</span><span class="nf">Jawab</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="k">ref</span> <span class="n">msgToReplay</span><span class="p">);</span>                        
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="k">case</span> <span class="s">"/batal"</span><span class="p">:</span>
+                <span class="n">perintahBot</span><span class="p">.</span><span class="nf">Batal</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span> <span class="k">ref</span> <span class="n">msgToReplay</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="k">case</span> <span class="s">"/selesai"</span><span class="p">:</span>
+                <span class="n">perintahBot</span><span class="p">.</span><span class="nf">Selesai</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span> <span class="k">ref</span> <span class="n">msgToReplay</span><span class="p">);</span>                        
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="k">default</span><span class="p">:</span>
+                <span class="n">msgToReplay</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="nf">Format</span><span class="p">(</span><span class="n">PERINTAH_SALAH</span><span class="p">,</span> <span class="n">keyword</span><span class="p">.</span><span class="nf">ToLower</span><span class="p">());</span>
+                <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"msgToReplay: {0}"</span><span class="p">,</span> <span class="n">msgToReplay</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Kemudian method ini kita panggil melalui method <code class="language-plaintext highlighter-rouge">OnMessageRecievedEventHandler</code>.</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/05-whatsapp-bot/02-method-OnMessageRecievedEventHandler.png" alt="" class="align-center"></p>
+
+<h4 id="4-menutup-whatsapp-web">4. Menutup WhatsApp Web</h4>
+
+<p>Terakhir untuk menutup komunikasi ke WhatsApp Web, kita cukup memanggil method Disconnect dari object WhatsApp NET Client</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="nf">btnStop_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="p">(</span><span class="k">new</span> <span class="nf">StCursor</span><span class="p">(</span><span class="n">Cursors</span><span class="p">.</span><span class="n">WaitCursor</span><span class="p">,</span> <span class="k">new</span> <span class="nf">TimeSpan</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">)))</span>
+    <span class="p">{</span>
+        <span class="c1">// unsubscribe event OnMessageRecieved </span>
+        <span class="n">_whatsAppApi</span><span class="p">.</span><span class="n">OnMessageRecieved</span> <span class="p">-=</span> <span class="n">OnMessageRecievedEventHandler</span><span class="p">;</span>
+        <span class="n">_whatsAppApi</span><span class="p">.</span><span class="nf">MessageUnSubscribe</span><span class="p">();</span>
+
+        <span class="c1">// tutup chrome web browser</span>
+        <span class="n">_whatsAppApi</span><span class="p">.</span><span class="nf">Disconnect</span><span class="p">();</span>
+
+        <span class="n">btnStart</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+        <span class="n">btnStop</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>      
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="screenshot">Screenshot</h3>
+
+<p>Ini adalah tampilkan aplikasi utama <a href="https://github.com/k4m4r82/OnlineTestWABot">WhatsApp Bot</a>.</p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/05-whatsapp-bot/08-whatapp-bot.jpeg" alt="" class="align-center"></p>
+
+<p>Dan di bawah ini adalah screenshot ketika Anda berinteraksi dengan <a href="https://github.com/k4m4r82/OnlineTestWABot">WhatsApp Bot</a> via WhatsApp mobile.</p>
+
+<h4 id="1-menampilkan-perintah-yang-tersedia">1. Menampilkan perintah yang tersedia</h4>
+
+<p>Untuk menampilkan perintah yang tersedia, cukup dengan mengirimkan pesan: <code class="language-plaintext highlighter-rouge">/bantuan</code></p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/05-whatsapp-bot/03-screenshot-bantuan.jpeg" alt="" class="align-center"></p>
+
+<h4 id="2-memulai-sesi-tes-online">2. Memulai sesi tes online</h4>
+
+<p>Untuk memulai sesi tes online, kirimkan pesan: <code class="language-plaintext highlighter-rouge">/mulai</code></p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/05-whatsapp-bot/04-screenshot-mulai.jpeg" alt="" class="align-center"></p>
+
+<h4 id="3-menampilkan-soal-tes">3. Menampilkan soal tes</h4>
+
+<p>Untuk menampilkan soal tes online, kirimkan pesan: <code class="language-plaintext highlighter-rouge">/soal</code> dan untuk menjawabnya kirim pesan: <code class="language-plaintext highlighter-rouge">/jawab jawaban</code></p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/05-whatsapp-bot/05-screenshot-soal1.jpeg" alt="" class="align-center"></p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/05-whatsapp-bot/06-screenshot-soal2.jpeg" alt="" class="align-center"></p>
+
+<h4 id="4-selesai">4. Selesai</h4>
+
+<p>Terakhir untuk mengakhiri sesi tes online, kirimkan pesan: <code class="language-plaintext highlighter-rouge">/selesai</code></p>
+
+<p><img src="http://coding4ever.net/assets/images/2020/05-whatsapp-bot/07-screenshot-selesai.jpeg" alt="" class="align-center"></p>
+
+<p>Selamat <a href="https://github.com/k4m4r82/OnlineTestWABot">MENCOBA</a> <img class="emoji" title=":blush:" alt=":blush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f60a.png" height="20" width="20"></p>
+
+<p>Referensi:</p>
+
+<ul>
+  <li><a href="http://wa-net.coding4ever.net/">WhatsApp Client Library for .NET Developer</a></li>
+  <li>
+<a href="https://unicode.org/emoji/charts/full-emoji-list.html#1f976">Full Emoji List</a> - kode unicode untuk menampilkan emoji</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/whatsapp-bot" class="page__taxonomy-item" rel="tag">WhatsApp Bot</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/whatsapp" class="page__taxonomy-item" rel="tag">WhatsApp</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/whatsapp" class="page__taxonomy-item" rel="tag">WhatsApp</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-11-22T21:44:50+07:00">November 22, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Membuat+WhatsApp+Bot+itu+gampang%2C+jangan+dipersulit+%21%20http%3A%2F%2Fcoding4ever.net%2Fblog%2F2020%2F11%2F22%2Fwhatsapp-bot%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2020%2F11%2F22%2Fwhatsapp-bot%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fcoding4ever.net%2Fblog%2F2020%2F11%2F22%2Fwhatsapp-bot%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/blog/2020/07/07/whatsapp-net-client/" class="pagination--pager" title="WhatsApp Client Library untuk .NET Developer
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread"></section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You May Also Enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2020/07/07/whatsapp-net-client/" rel="permalink">WhatsApp Client Library untuk .NET Developer
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2020-07-07T15:18:00+07:00">July 7, 2020</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  1 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2020/07/07/whatsapp-net-client/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">WhatsApp NET Client adalah library untuk .NET Developer yang digunakan untuk mengembangkan aplikasi WhatsApp klien berbasis desktop. Library ini dikembangkan...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2020/05/23/reportviewer-1/" rel="permalink">ReportViewer untuk .NET Developer Bagian #1
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2020-05-23T12:49:22+07:00">May 23, 2020</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  8 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2020/05/23/reportviewer-1/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  Tak kenal maka tak sayang, tak sayang maka tak cinta.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2020/05/13/confuser-ex/" rel="permalink">Proteksi Hasil Compile Aplikasi Anda Menggunakan ConfuserEx
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2020-05-13T22:19:44+07:00">May 13, 2020</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  4 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2020/05/13/confuser-ex/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Apa itu ConfuserEx?
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/" rel="permalink">Menyimpan konfigurasi aplikasi secara terpusat menggunakan Consul Key-Value Store Bagian #2
+</a>
+      
+    </h2>
+    
+	  	  
+      <p class="page__meta">
+	    
+		Posted by <i class="fas fa-user"></i> Kamarudin • 
+		
+		<i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> <time datetime="2019-08-31T09:26:47+07:00">August 31, 2019</time> • 
+		
+		<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+
+
+		
+		 • <a href="http://coding4ever.net/blog/2019/08/31/menyimpan-konfigurasi-terpusat-menggunakan-consul-key-value-store-bagian-number-2/#disqus_thread" class="disqus-comment-count">Comments</a>
+	  </p>
+	  
+    
+    <p class="archive__item-excerpt" itemprop="description">Oke, hari ini saya ingin melanjutkan pembahasan postingan saya sebelumnya tentang penyimpanan konfigurasi aplikasi secara terpusat menggunakan consul. Jika p...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap">
+<form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term...">
+  </form>
+  <div id="results" class="results"></div>
+</div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+      
+        
+          <li><a href="https://web.facebook.com/abu.anas.1232/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+        
+      
+        
+          <li><a href="https://github.com/k4m4r82/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://gitlab.com/rudi.krsoftware/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-gitlab" aria-hidden="true"></i> GitLab</a></li>
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-50866618-1']);
+  
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://coding4ever.net/blog/2020/11/22/whatsapp-bot/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/blog/2020/11/22/whatsapp-bot"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://coding4ever.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+  
+
+
+
+
+	
+	<script id="dsq-count-scr" src="//coding4ever.disqus.com/count.js" async></script>	
+  </body>
+</html>
