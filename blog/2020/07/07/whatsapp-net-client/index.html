@@ -330,44 +330,49 @@
 
 <ul>
   <li>WhatsApp Blast</li>
-  <li>WhatsApp Bot</li>
+  <li><a href="https://github.com/k4m4r82/OnlineTestWABot">WhatsApp Bot</a></li>
   <li>Dan aplikasi WhatsApp klien lainnya</li>
 </ul>
 
 <h2 id="fitur">Fitur</h2>
 
 <ul>
-  <li>Mode <em>siluman</em> (headless/no window). Dengan mengaktifkan mode <em>siluman</em>, chrome browser akan berjalan di background</li>
-  <li>Grab contacts untuk membaca kontak WA sehingga hasilnya bisa Anda simpan ke database</li>
-  <li>Mengirim pesan</li>
+  <li>Full mode siluman (headless/no window). Anda bisa mengatakan selamat tinggal kepada chrome/firefox browser yang biasanya muncul untuk menjalankan WhatsApp Web.</li>
+  <li>Otomatis menyimpan sesi login (jadi scan qr code WAnya cukup sekali saja)</li>
+  <li>Mendukung penggunaan <a href="https://github.com/WhatsAppNETClient/WhatsAppNETClientMultiAccount">multi account WA</a>
+</li>
+  <li>Grab contacts untuk membaca kontak WA sehingga hasilnya bisa disimpan ke database</li>
+  <li>Grab groups dan members untuk membaca data group beserta anggotanya sehingga hasilnya juga bisa disimpan ke database</li>
+  <li>Mengirim pesan personal atau group</li>
   <li>Mengirim banyak pesan (broadcast)</li>
-  <li>Mengirim pesan dengan gambar (bisa untuk pesan tunggal atau broadcast)</li>
-  <li>Mengirim file dokumen (bisa untuk pesan tunggal atau broadcast)</li>
-  <li>Mengirim pesan ke nomor/kontak yang belum terdaftar</li>
-  <li>Listen/subscribe pesan yang masuk, jadi enggak perlu nambah objek timer lagi untuk membaca pesan masuk</li>
-  <li>Listen/subscribe pesan yang dikirim, dengan fitur ini kita bisa mengecek apakah pesan sudah terkirim atau belum.</li>
-  <li>Auto replay pesan yang masuk</li>
-  <li>Otomatis login (Jadi enggak perlu bolak-balik nyecan QRCode WAnya, cukup sekali aja)</li>
-  <li>Semua method yang ada kecuali method untuk konek ke WA/Chrome browser, dibuat secara async (asynchronous) sehingga tidak memblok UI ketika dijalankan</li>
+  <li>Mengirim pesan dengan gambar, audio, video, dan semua jenis dokumen</li>
+  <li>Mengirim pesan dengan gambar, audio, video, dan semua jenis dokumen via URL</li>
+  <li>Mengirim lokasi</li>
+  <li>ReplyMessage (quoted message)</li>
+  <li>Bisa menyimpan gambar, audio, video, semua jenis dokumen termasuk vcard dari pesan yang masuk (bisa ditentukan sendiri lokasi penyimpanannya)</li>
+  <li>Bisa juga membaca pesan dengan tipe vcard dan location</li>
+  <li>Bisa membaca pesan dari group dan mendapatkan informasi pengirimnya</li>
+  <li>Subscribe event ChangeState untuk memonitoring perubahan status koneksi</li>
+  <li>Subscribe pesan yang masuk, jadi enggak perlu nambah objek timer lagi untuk membaca pesan masuk</li>
+  <li>Subscribe pesan yang dikirim, dengan fitur ini kita bisa mengecek apakah pesan yang dikirim berhasil atau gagal</li>
+  <li>Archive chat</li>
+  <li>Delete chat</li>
+  <li>Logout</li>
   <li>Bisa dengan mudah diintegrasikan dengan semua jenis database</li>
 </ul>
 
 <h2 id="persyaratan-sistem">Persyaratan Sistem</h2>
 
 <ul>
-  <li>.NET Framework 4.0, 4.5 dan .NET versi terbaru</li>
-  <li>Versi minimal Google Chrome harus versi 83.xx (jadi klo belum sama silahkan diupdate dulu)</li>
+  <li>Windows 8, 10 dan windows versi terbaru</li>
+  <li>.NET Framework 4.5 dan .NET versi terbaru</li>
+  <li>Node.js versi 14.16.x atau versi terbaru</li>
+  <li>Software git (version control)</li>
 </ul>
 
 <h2 id="instalasi">Instalasi</h2>
 
-<ul>
-  <li>Download contoh source code di <a href="https://github.com/WhatsAppNETClient/WhatsAppNETClient">https://github.com/WhatsAppNETClient/WhatsAppNETClient</a>
-</li>
-  <li>Copykan file <a href="https://github.com/WhatsAppNETClient/WhatsappNETClient/tree/master/libs">chromedriver.exe</a> yang ada di folder <strong>libs</strong> ke folder <strong>bin\Debug</strong> atau <strong>bin\Release</strong>
-</li>
-  <li>Jika folder <strong>bin\Debug</strong> atau <strong>bin\Release</strong> belum ada, silahkan lakukan proses build project terlebih dulu.</li>
-</ul>
+<p>Petunjuk instalasi bisa Anda lihat di <a href="http://wa-net.coding4ever.net/">http://wa-net.coding4ever.net/</a>.</p>
 
 <h2 id="screenshot">Screenshot</h2>
 
@@ -375,9 +380,9 @@
 
 <p><img src="http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/1.png" alt="" class="align-center"></p>
 
-<p><img src="http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/2.png" alt="" class="align-center"></p>
+<p><img src="http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/2.jpg" alt="" class="align-center"></p>
 
-<p><img src="http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/3.png" alt="" class="align-center"></p>
+<p><img src="http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/3.jpg" alt="" class="align-center"></p>
 
 <p><img src="http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/4.png" alt="" class="align-center"></p>
 
@@ -703,7 +708,7 @@
   </ul>
 </div>
 
-<div class="page__footer-copyright">© 2009 - 2020 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">© 2009 - 2021 Kamarudin. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

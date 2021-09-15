@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://coding4ever.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://coding4ever.net/" rel="alternate" type="text/html" /><updated>2020-11-23T07:16:29+07:00</updated><id>http://coding4ever.net/feed.xml</id><title type="html">» Coding4ever’s Blog «</title><subtitle>Coding4ever's Blog</subtitle><author><name>Kamarudin</name></author><entry><title type="html">Membuat WhatsApp Bot itu gampang, jangan dipersulit !</title><link href="http://coding4ever.net/blog/2020/11/22/whatsapp-bot/" rel="alternate" type="text/html" title="Membuat WhatsApp Bot itu gampang, jangan dipersulit !" /><published>2020-11-22T21:44:50+07:00</published><updated>2020-11-22T21:44:50+07:00</updated><id>http://coding4ever.net/blog/2020/11/22/whatsapp-bot</id><content type="html" xml:base="http://coding4ever.net/blog/2020/11/22/whatsapp-bot/">&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/logo/wa-logo.png&quot; alt=&quot;&quot; class=&quot;align-left&quot; /&gt;Beberapa waktu yang lalu saya merilis sebuah library dengan nama &lt;a href=&quot;http://wa-net.coding4ever.net/&quot;&gt;WhatsApp NET Client&lt;/a&gt;. Library ini merupakan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hadiah&lt;/code&gt; dari saya :grin: untuk teman-teman .NET Developer yang ingin membuat aplikasi yang bisa berkomunikasi dengan aplikasi WhatsApp Web secara mudah.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://coding4ever.net/feed.xml" rel="self" type="application/atom+xml" /><link href="http://coding4ever.net/" rel="alternate" type="text/html" /><updated>2021-09-15T10:13:55+07:00</updated><id>http://coding4ever.net/feed.xml</id><title type="html">» Coding4ever’s Blog «</title><subtitle>Coding4ever's Blog</subtitle><author><name>Kamarudin</name></author><entry><title type="html">Membuat WhatsApp Bot itu gampang, jangan dipersulit !</title><link href="http://coding4ever.net/blog/2020/11/22/whatsapp-bot/" rel="alternate" type="text/html" title="Membuat WhatsApp Bot itu gampang, jangan dipersulit !" /><published>2020-11-22T21:44:50+07:00</published><updated>2020-11-22T21:44:50+07:00</updated><id>http://coding4ever.net/blog/2020/11/22/whatsapp-bot</id><content type="html" xml:base="http://coding4ever.net/blog/2020/11/22/whatsapp-bot/">&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/logo/wa-logo.png&quot; alt=&quot;&quot; class=&quot;align-left&quot; /&gt;Beberapa waktu yang lalu saya merilis sebuah library dengan nama &lt;a href=&quot;http://wa-net.coding4ever.net/&quot;&gt;WhatsApp NET Client&lt;/a&gt;. Library ini merupakan &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hadiah&lt;/code&gt; dari saya :grin: untuk teman-teman .NET Developer yang ingin membuat aplikasi yang bisa berkomunikasi dengan aplikasi WhatsApp Web secara mudah.&lt;/p&gt;
 
 &lt;p&gt;Dengan menggunakan library ini Anda bisa dengan mudah membuat aplikasi:&lt;/p&gt;
 
@@ -237,42 +237,48 @@
 
 &lt;ul&gt;
   &lt;li&gt;WhatsApp Blast&lt;/li&gt;
-  &lt;li&gt;WhatsApp Bot&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/k4m4r82/OnlineTestWABot&quot;&gt;WhatsApp Bot&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Dan aplikasi WhatsApp klien lainnya&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;fitur&quot;&gt;Fitur&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Mode &lt;em&gt;siluman&lt;/em&gt; (headless/no window). Dengan mengaktifkan mode &lt;em&gt;siluman&lt;/em&gt;, chrome browser akan berjalan di background&lt;/li&gt;
-  &lt;li&gt;Grab contacts untuk membaca kontak WA sehingga hasilnya bisa Anda simpan ke database&lt;/li&gt;
-  &lt;li&gt;Mengirim pesan&lt;/li&gt;
+  &lt;li&gt;Full mode siluman (headless/no window). Anda bisa mengatakan selamat tinggal kepada chrome/firefox browser yang biasanya muncul untuk menjalankan WhatsApp Web.&lt;/li&gt;
+  &lt;li&gt;Otomatis menyimpan sesi login (jadi scan qr code WAnya cukup sekali saja)&lt;/li&gt;
+  &lt;li&gt;Mendukung penggunaan &lt;a href=&quot;https://github.com/WhatsAppNETClient/WhatsAppNETClientMultiAccount&quot;&gt;multi account WA&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Grab contacts untuk membaca kontak WA sehingga hasilnya bisa disimpan ke database&lt;/li&gt;
+  &lt;li&gt;Grab groups dan members untuk membaca data group beserta anggotanya sehingga hasilnya juga bisa disimpan ke database&lt;/li&gt;
+  &lt;li&gt;Mengirim pesan personal atau group&lt;/li&gt;
   &lt;li&gt;Mengirim banyak pesan (broadcast)&lt;/li&gt;
-  &lt;li&gt;Mengirim pesan dengan gambar (bisa untuk pesan tunggal atau broadcast)&lt;/li&gt;
-  &lt;li&gt;Mengirim file dokumen (bisa untuk pesan tunggal atau broadcast)&lt;/li&gt;
-  &lt;li&gt;Mengirim pesan ke nomor/kontak yang belum terdaftar&lt;/li&gt;
-  &lt;li&gt;Listen/subscribe pesan yang masuk, jadi enggak perlu nambah objek timer lagi untuk membaca pesan masuk&lt;/li&gt;
-  &lt;li&gt;Listen/subscribe pesan yang dikirim, dengan fitur ini kita bisa mengecek apakah pesan sudah terkirim atau belum.&lt;/li&gt;
-  &lt;li&gt;Auto replay pesan yang masuk&lt;/li&gt;
-  &lt;li&gt;Otomatis login (Jadi enggak perlu bolak-balik nyecan QRCode WAnya, cukup sekali aja)&lt;/li&gt;
-  &lt;li&gt;Semua method yang ada kecuali method untuk konek ke WA/Chrome browser, dibuat secara async (asynchronous) sehingga tidak memblok UI ketika dijalankan&lt;/li&gt;
+  &lt;li&gt;Mengirim pesan dengan gambar, audio, video, dan semua jenis dokumen&lt;/li&gt;
+  &lt;li&gt;Mengirim pesan dengan gambar, audio, video, dan semua jenis dokumen via URL&lt;/li&gt;
+  &lt;li&gt;Mengirim lokasi&lt;/li&gt;
+  &lt;li&gt;ReplyMessage (quoted message)&lt;/li&gt;
+  &lt;li&gt;Bisa menyimpan gambar, audio, video, semua jenis dokumen termasuk vcard dari pesan yang masuk (bisa ditentukan sendiri lokasi penyimpanannya)&lt;/li&gt;
+  &lt;li&gt;Bisa juga membaca pesan dengan tipe vcard dan location&lt;/li&gt;
+  &lt;li&gt;Bisa membaca pesan dari group dan mendapatkan informasi pengirimnya&lt;/li&gt;
+  &lt;li&gt;Subscribe event ChangeState untuk memonitoring perubahan status koneksi&lt;/li&gt;
+  &lt;li&gt;Subscribe pesan yang masuk, jadi enggak perlu nambah objek timer lagi untuk membaca pesan masuk&lt;/li&gt;
+  &lt;li&gt;Subscribe pesan yang dikirim, dengan fitur ini kita bisa mengecek apakah pesan yang dikirim berhasil atau gagal&lt;/li&gt;
+  &lt;li&gt;Archive chat&lt;/li&gt;
+  &lt;li&gt;Delete chat&lt;/li&gt;
+  &lt;li&gt;Logout&lt;/li&gt;
   &lt;li&gt;Bisa dengan mudah diintegrasikan dengan semua jenis database&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;persyaratan-sistem&quot;&gt;Persyaratan Sistem&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;.NET Framework 4.0, 4.5 dan .NET versi terbaru&lt;/li&gt;
-  &lt;li&gt;Versi minimal Google Chrome harus versi 83.xx (jadi klo belum sama silahkan diupdate dulu)&lt;/li&gt;
+  &lt;li&gt;Windows 8, 10 dan windows versi terbaru&lt;/li&gt;
+  &lt;li&gt;.NET Framework 4.5 dan .NET versi terbaru&lt;/li&gt;
+  &lt;li&gt;Node.js versi 14.16.x atau versi terbaru&lt;/li&gt;
+  &lt;li&gt;Software git (version control)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;instalasi&quot;&gt;Instalasi&lt;/h2&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Download contoh source code di &lt;a href=&quot;https://github.com/WhatsAppNETClient/WhatsAppNETClient&quot;&gt;https://github.com/WhatsAppNETClient/WhatsAppNETClient&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Copykan file &lt;a href=&quot;https://github.com/WhatsAppNETClient/WhatsappNETClient/tree/master/libs&quot;&gt;chromedriver.exe&lt;/a&gt; yang ada di folder &lt;strong&gt;libs&lt;/strong&gt; ke folder &lt;strong&gt;bin\Debug&lt;/strong&gt; atau &lt;strong&gt;bin\Release&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Jika folder &lt;strong&gt;bin\Debug&lt;/strong&gt; atau &lt;strong&gt;bin\Release&lt;/strong&gt; belum ada, silahkan lakukan proses build project terlebih dulu.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;Petunjuk instalasi bisa Anda lihat di &lt;a href=&quot;http://wa-net.coding4ever.net/&quot;&gt;http://wa-net.coding4ever.net/&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;screenshot&quot;&gt;Screenshot&lt;/h2&gt;
 
@@ -280,9 +286,9 @@
 
 &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/1.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/2.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/2.jpg&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/3.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/3.jpg&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;http://coding4ever.net/assets/images/2020/04-whatsapp-net-client/4.png&quot; alt=&quot;&quot; class=&quot;align-center&quot; /&gt;&lt;/p&gt;
 
